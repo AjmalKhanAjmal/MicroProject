@@ -1,0 +1,14 @@
+{
+    "main": "server.js",
+    "scripts": {
+        "start": "npm sever.js",
+        "dev": "nodemon server.js"
+    },
+    "dependencies": {
+        "dotenv": "^17.2.1",
+        "express": "^5.1.0",
+        "mysql2": "^3.14.4",
+        "nodemon": "^3.1.10",
+        "sequelize": "^6.37.7"
+    }
+}
