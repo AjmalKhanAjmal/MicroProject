@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize")
 require('dotenv').config()
 
-console.log("error - 1 ");
 
 
 const db = new Sequelize(
@@ -15,7 +14,7 @@ const db = new Sequelize(
         logging: false,
     }
 )
-console.log("error - 2 ");
+
 
 async function connect(){
     try{
