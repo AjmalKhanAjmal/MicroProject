@@ -49,15 +49,25 @@ const productById = async (req, res) => {
 
 const getProductS = async (req, res) => {
     try {
-        if (req && req.query) {
-            limit = req.query.limit
-            offset = req.query.offset
-            sort = req.query.sort
-            sort_type = req.query.sort_type
+        if (req && req.query && req.query) {
+            if (req.query.store_id) {
+                limit = req.query.limit
+                offset = req.query.offset
+                sort = req.query.sort
+                sort_type = req.query.sort_type
+                category_id = req.query.category_id
+                status = req.query.status
+                store_id = req.query.store_id
 
-            let results = await createProduct.getAllProducts(limit, offset, sort, sort_type)
+                let results = await createProduct.getAllProducts(limit, offset, sort, sort_type, store_id, category_id, status)
 
-            return res.status(200).json(results)
+                return res.status(200).json(results)
+            }else{
+                return res.json({
+                    status : "error",
+                    message : "store id is required"
+                })
+            }
         }
     }
     catch (error) {

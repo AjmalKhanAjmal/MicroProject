@@ -23,10 +23,10 @@ function createStore(req, res) {
    
 }
 
-const updateStore = async (req, res) => {
+const updateStore = async (req) => {
     try {
-        if (req && req.body) {
-            let { id, name, description } = req.body
+        if (req) {
+            let { id, name, description } = req
             let update_store = await Store.update({ name, description }, { where: { id } })
             console.log(update_store);
             return res.status(200).json({

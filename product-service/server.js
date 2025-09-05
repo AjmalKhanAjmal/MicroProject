@@ -1,7 +1,9 @@
 const express = require("express")
 const app = express()
 require('dotenv').config()
+
 const db = require("./src/config/db")
+// const product = require("./src/model/product_modal")
 
 app.use(express.json())
 const routes = require("./src/routes/product_routes")

@@ -8,9 +8,11 @@ const { connectDb, sqlize } = require("./Config/db")
 
 const redis = require('redis');
 
+const routes = require("./routes/store_routes")
 const port = 3000
 
 app.use(express.json())
+app.use(routes)
 
 
 
@@ -92,7 +94,7 @@ app.get("/Sstores", getAllStores)
 
 
 app.post("/insertStore", insertStore)
-app.get("/stores", stores)
+//app.get("/stores", stores)
 //connectDb()
 app.post("/create", (req, res) => {
     try {

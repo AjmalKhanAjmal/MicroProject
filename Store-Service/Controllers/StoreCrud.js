@@ -150,7 +150,19 @@ const insertStore = async (req, res) => {
     }
 }
 
-
+const editStore = async(req,res)=>{
+   try{
+     if(req && req.body){
+        let results = await updateStore(req.body)
+        return res.status(200).json(results)
+    }
+   }catch(error){
+    res.status(500).json({
+        status : "error",
+        message : error.message
+    })
+   }
+}
 
 
 
@@ -168,7 +180,7 @@ const stores = async (req, res) => {
     }
 }
 console.log(" insert werwe" , stores);
-module.exports = {insertStore,stores}
+module.exports = {insertStore,stores,editStore}
 
 
 

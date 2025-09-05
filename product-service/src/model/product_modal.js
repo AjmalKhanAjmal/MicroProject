@@ -1,6 +1,6 @@
-const { DataTypes } = require("sequelize")
+const { DataTypes, BIGINT } = require("sequelize")
 const db = require("../config/db")
-const model = db.define("product", {
+const Product = db.define("product", {
     name: {
         type: DataTypes.STRING,
         allowNull: true
@@ -20,10 +20,14 @@ const model = db.define("product", {
     status : {
         type : DataTypes.STRING,
         allowNull : true
+    },
+    store_id :{
+        type : BIGINT,
+        allowNull : true
     }
 }, {
     timeStamp: true
 })
 
 
-module.exports = model
+module.exports = Product
