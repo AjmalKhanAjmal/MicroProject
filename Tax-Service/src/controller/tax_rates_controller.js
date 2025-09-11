@@ -29,6 +29,31 @@ async function insertTaxRates(req, res) {
 }
 
 
+
+
+
+const taxByid = async (req, res) => {
+    try {
+        if (req.params && req.params.id) {
+            let results = await tax_service.getTaxRatesById(req.params.id)
+            if (results === null) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "tax rates not found"
+                })
+            }
+            return res.status(200).json(results)
+        }
+    } catch (error) {
+        return res.status(500).json({
+            status: "error",
+            message: error.message
+        })
+    }
+}
+
+
+
 async function fetchTaxRates(req, res) {
     try {
         let tax_limit = req.query.limit
@@ -49,4 +74,25 @@ async function fetchTaxRates(req, res) {
     }
 }
 
-module.exports = { insertTaxRates, fetchTaxRates }
+
+const removeTaxRates = async (req, res) => {
+    try {
+        if (req && req.params) {
+            let id = req.params.id
+            let results = await tax_service.deleteTaxById(id)
+            if (results === null) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "tax_rate not found "
+                })
+            }
+            return res.status(200).json(results)
+        }
+    } catch (error) {
+        return res.status(200).json({
+            status: "error",
+            message: error.message
+        })
+    }
+}
+module.exports = { insertTaxRates, fetchTaxRates, taxByid,removeTaxRates }

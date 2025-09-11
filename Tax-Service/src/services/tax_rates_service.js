@@ -13,6 +13,24 @@ function createTaxRates(name, description, tax_category_id, rate) {
     }
 }
 
+async function getTaxRatesById(id) {
+  try {
+    if (id) {
+      results = await Tax_rates.findOne({
+        where: {
+          id: id
+        }
+      })
+      if (!results) {
+        return null
+      }
+      return results
+    }
+  }
+  catch (error) {
+    throw new Error(error.message)
+  }
+ }
 
 async function getTaxRates(limit, offset, sort, sort_type, search) {
     try {
@@ -63,9 +81,30 @@ async function getTaxRates(limit, offset, sort, sort_type, search) {
 }
 
 
+const deleteTaxById = async (id) => {
+  try {
+    if (id) {
+      let results = await Tax_rates.destroy({
+        where: {
+          id: id
+        }
+      })
+      if (results == 0) {
+        return null
+      }
+      return {
+        status: "success",
+        message: "tax rate deleted successfully"
+      }
+
+    }
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
 
 
 
 
 
-module.exports = { createTaxRates, getTaxRates }
+module.exports = { createTaxRates, getTaxRates,getTaxRatesById ,deleteTaxById}
