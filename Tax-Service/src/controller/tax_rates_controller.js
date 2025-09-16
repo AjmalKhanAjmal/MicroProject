@@ -30,8 +30,6 @@ async function insertTaxRates(req, res) {
 
 
 
-
-
 const taxByid = async (req, res) => {
     try {
         if (req.params && req.params.id) {
@@ -51,7 +49,6 @@ const taxByid = async (req, res) => {
         })
     }
 }
-
 
 
 async function fetchTaxRates(req, res) {
@@ -74,7 +71,6 @@ async function fetchTaxRates(req, res) {
     }
 }
 
-
 const removeTaxRates = async (req, res) => {
     try {
         if (req && req.params) {
@@ -95,4 +91,22 @@ const removeTaxRates = async (req, res) => {
         })
     }
 }
-module.exports = { insertTaxRates, fetchTaxRates, taxByid,removeTaxRates }
+
+const editTaxRates = async (req, res) => {
+    try {
+        if (req && req.body && req.params && req.params.id) {
+            let name = req.body.name
+            let description = req.body.description
+            let tax_category_id = req.body.tax_category_id
+            let rate = req.body.rates
+            let results = await tax_service.updateTaxRates(req.params.id,name, description, tax_category_id, rate)
+            return res.status(200).json(results)
+        }
+    }catch(error){
+       return res.status(500).json({
+        status : "error",
+        message : error.message
+       })
+    }
+}
+module.exports = { insertTaxRates, fetchTaxRates, taxByid, removeTaxRates,editTaxRates }
