@@ -8,5 +8,6 @@ console.log("request routes");
 
 routes.get("/api/store_hours",store_hours_controller.fetchStoreHours)
 
+routes.put("/api/store_hours",store_hours_controller.editStoreHours)
 
 module.exports= routes

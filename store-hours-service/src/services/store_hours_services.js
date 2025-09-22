@@ -114,14 +114,14 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
         //     createdAt: 2025-09-18T13:51:33.469Z
         //   },
         let create_hour_options = []
-        if (create_hours && create_hours.length > 0 && create_hours[0].id && store_hours_options && store_hours_options.length > 0) {
+        if (create_hours && create_hours.dataValues.id && store_hours_options && store_hours_options.length > 0) {
             let hour_options = []
             for (let i = 0; i < store_hours_options.length > 0; i++) {
                 x = store_hours_options[i]
                 let obj = {
                     day_of_week: x.day_of_week,
                     label: x.label,
-                    store_hour_id: create_hours[0].id,
+                    store_hour_id: String(create_hours.dataValues.id),
                     json_data: x.json_data,
                     is_special_hour_enabled: is_special_hour_enabled,
                     special_hour_data: special_hour_data
@@ -136,7 +136,7 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
 
         if (create_hours) {
             response["status"] = "success",
-                response["id"] = create_hours[0].id
+                response["id"] = create_hours.dataValues.id
             response["store_hours"] = "created"
         }
         if (create_hour_options && create_hour_options.length > 0) {
@@ -148,6 +148,104 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
     }
 
 }
+
+
+const updateStoreHours = async (id, name, time_zone, is_special_hour_enabled, special_hour_data, store_hours_options) => {
+    try {
+        let response = {}
+        let results = await Store_hours.update({
+            name, time_zone
+        }, {
+            where: { id: id }
+        })
+        if (results[0] == "1") {
+            response["store_data"] = "store data updated successfully "
+        } else return null
+        let hour_options = []
+        for (let i = 0; i < store_hours_options.length > 0; i++) {
+            x = store_hours_options[i]
+            let obj = {
+                id: x.id,
+                day_of_week: x.day_of_week,
+                label: x.label,
+                // store_hour_id: String(create_hours.dataValues.id),
+                json_data: x.json_data,
+                is_special_hour_enabled: is_special_hour_enabled,
+                special_hour_data: special_hour_data
+            }
+            hour_options.push(obj)
+        }
+
+        let hour_options_results = (hour_options.length > 0) ? await store_hours_options.update(hour_options) : null
+        if (hour_options_results[0] == "1") {
+            response["store_hour_options"] = "store hour options data updated successfully "
+        }
+
+        return response
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+
+}
+
+
+
+
+// const updates = [
+//   { id: 1, name: 'Store A Updated', status: 'open' },
+//   { id: 2, name: 'Store B Updated', status: 'closed' },
+//   { id: 3, name: 'Store C Updated', status: 'open' }
+// ];
+
+// const fields = ['name', 'status'];
+// const primaryKey = 'id';
+
+
+
+// async function bulkUpdate(tableName, primaryKey, data, fields, transaction) {
+//   if (!data || data.length === 0) return;
+
+//   const ids = data.map(row => row[primaryKey]);
+
+//   const setClauses = fields.map(field => {
+//     const cases = data.map(row => {
+//       const value = row[field];
+//       const formattedValue = typeof value === 'string' ? `'${value.replace(/'/g, "''")}'` : value;
+//       return `WHEN ${row[primaryKey]} THEN ${formattedValue}`;
+//     }).join(' ');
+
+//     return `\`${field}\` = CASE \`${primaryKey}\` ${cases} END`;
+//   });
+
+//   const query = `
+//     UPDATE \`${tableName}\`
+//     SET ${setClauses.join(', ')}
+//     WHERE \`${primaryKey}\` IN (${ids.join(', ')});
+//   `;
+
+//   return sequelize.query(query, { transaction });
+// }
+
+
+// UPDATE `Stores`
+// SET 
+//   `name` = CASE `id` 
+//     WHEN 1 THEN 'Store A Updated' 
+//     WHEN 2 THEN 'Store B Updated' 
+//     WHEN 3 THEN 'Store C Updated' 
+//   END,
+//   `status` = CASE `id` 
+//     WHEN 1 THEN 'open' 
+//     WHEN 2 THEN 'closed' 
+//     WHEN 3 THEN 'open' 
+//   END
+// WHERE `id` IN (1, 2, 3);
+
+
+
+
+
 
 
 const getStoreHours = async () => {
@@ -167,4 +265,4 @@ const getStoreHours = async () => {
 
 
 
-module.exports = { createStoreHours, getStoreHours }
+module.exports = { createStoreHours, getStoreHours, updateStoreHours }
