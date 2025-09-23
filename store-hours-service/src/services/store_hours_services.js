@@ -1,6 +1,7 @@
 const Store_hours = require("../model/store_hours")
 const Store_hours_options = require("../model/store_hours_options")
-
+const db = require("../config/db")
+const { response } = require("express")
 
 //Payload 
 
@@ -51,7 +52,7 @@ const Store_hours_options = require("../model/store_hours_options")
 //                 {
 //                     "start_time": "09:00:00",
 //                     "end_time": "17:00:00",
-//                     "is_closed": false
+//                     "is_closed": fal
 //                 },
 //                 {
 //                     "start_time": "20:00",
@@ -150,44 +151,85 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
 }
 
 
-const updateStoreHours = async (id, name, time_zone, is_special_hour_enabled, special_hour_data, store_hours_options) => {
-    try {
-        let response = {}
-        let results = await Store_hours.update({
-            name, time_zone
-        }, {
-            where: { id: id }
-        })
-        if (results[0] == "1") {
-            response["store_data"] = "store data updated successfully "
-        } else return null
-        let hour_options = []
-        for (let i = 0; i < store_hours_options.length > 0; i++) {
-            x = store_hours_options[i]
-            let obj = {
-                id: x.id,
-                day_of_week: x.day_of_week,
-                label: x.label,
-                // store_hour_id: String(create_hours.dataValues.id),
-                json_data: x.json_data,
-                is_special_hour_enabled: is_special_hour_enabled,
-                special_hour_data: special_hour_data
-            }
-            hour_options.push(obj)
-        }
+// const updateStoreHours = async (id, name, time_zone, is_special_hour_enabled, special_hour_data, store_hours_options) => {
+//     try {
+//         let response = {}
+//         let results = await Store_hours.update({
+//             name, time_zone
+//         }, {
+//             where: { id: id }
+//         })
+//         if (results[0] == "1") {
+//             response["store_data"] = "store data updated successfully "
+//         } else return null
+//         let hour_options = []
+//         let batch_size = 20
 
-        let hour_options_results = (hour_options.length > 0) ? await store_hours_options.update(hour_options) : null
-        if (hour_options_results[0] == "1") {
-            response["store_hour_options"] = "store hour options data updated successfully "
-        }
 
-        return response
+        
+//         let store_hours_length = store_hours_options.length
+//         let remaining_data = store_hours_options.length
+//         if(store_hours_length.length > 0){
+//             let count = 0
+//             let options = []
 
-    } catch (error) {
-        throw new Error(error.message)
-    }
+//             for(let i = count ;i<store_hours_length > 0 ; i++){
+//                  options.push(store_hours_options[i])
+//                 if(store_hours_length == batch_size ){
+//                    let results =  batchExecution(store_hours_options)
+//                    remaining_data -= 20
+//                    count += batch_size + 1
+//                    batch_size +=20
+//                    options =[]
+                   
+//                 }
+//             }
+//             for(let i = 0 ;i<options.length > 0 ; i++){
 
-}
+//             }
+//         }
+
+
+
+
+//         async function batchExecution(store_hours_options) {
+
+//             for (let i = 0; i < store_hours_options.length > 0; i++) {
+
+//                 x = store_hours_options[i]
+//                 let obj = {
+//                     id: x.id,
+//                     day_of_week: x.day_of_week,
+//                     label: x.label,
+//                     // store_hour_id: String(create_hours.dataValues.id),
+//                     json_data: x.json_data,
+//                     is_special_hour_enabled: is_special_hour_enabled,
+//                     special_hour_data: special_hour_data
+//                 }
+//                 let results = await Store_hours_options.update(obj, {
+//                     where: {
+//                         id: obj.id
+//                     }
+//                 })
+//                 hour_options.push(results)
+//                 // hour_options.push(obj)
+
+//             }
+//         }
+
+        
+
+//         if (hour_options.length > 0) {
+//             response["store_hour_options"] = hour_options
+//         }
+
+//         return response
+
+//     } catch (error) {
+//         throw new Error(error.message)
+//     }
+
+// }
 
 
 
@@ -248,6 +290,66 @@ const updateStoreHours = async (id, name, time_zone, is_special_hour_enabled, sp
 
 
 
+const updateStoreHours = async (id, name, time_zone, is_special_hour_enabled, special_hour_data, store_hours_options) => {
+    try {
+        let response = {};
+
+        // Step 1: Update store main data
+        const [storeUpdateCount] = await Store_hours.update(
+            { name, time_zone },
+            { where: { id } }
+        );
+
+        if (storeUpdateCount === 1) {
+            response["store_data"] = "Store data updated successfully";
+        } else {
+            return null; // store not updated
+        }
+
+        // Step 2: Batch update store hours options
+        const batchSize = 20;
+        const total = store_hours_options.length;
+        const hourOptionsResults = [];
+
+        // Split into batches and process
+        for (let i = 0; i < total; i += batchSize) {
+            const batch = store_hours_options.slice(i, i + batchSize);
+
+            // Process each item in the batch sequentially (or you could do Promise.all for parallel)
+            for (const item of batch) {
+                const obj = {
+                    id: item.id,
+                    day_of_week: item.day_of_week,
+                    label: item.label,
+                    json_data: item.json_data,
+                    is_special_hour_enabled,
+                    special_hour_data
+                };
+
+                const [updateCount] = await Store_hours_options.update(obj, {
+                    where: { id: obj.id }
+                });
+
+                hourOptionsResults.push({ id: obj.id, updated: updateCount === 1 });
+            }
+        }
+
+        if (hourOptionsResults.length > 0) {
+            response["store_hour_options"] = hourOptionsResults;
+        }
+
+        return response;
+
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+
+
+
+
+
 const getStoreHours = async () => {
     try {
         let response = {}
@@ -263,6 +365,42 @@ const getStoreHours = async () => {
 }
 
 
+const getStoreHoursById = async (id) => {
+    let response = {}
+    let get_query = `
+SELECT 
+    sh.name,    
+    sh.time_zone,
+    sho.store_hour_id,
+    sho.day_of_week,
+    sho.label,
+    sho.json_data 
+FROM
+    shop.store_hours sh 
+INNER JOIN 
+    shop.store_hours_options sho ON
+    sh.id = sho.store_hour_id
+WHERE
+    sh.id = ?`
 
 
-module.exports = { createStoreHours, getStoreHours, updateStoreHours }
+    let results = await db.query(get_query, {
+        replacements: [id]
+    })
+
+    // return (results[0].length > 0) ? ( response.data = results[0]) : null
+
+    if (results[0].length > 0) {
+        response.data = results[0]
+        return response
+    } else {
+        return null
+    }
+}
+
+
+
+module.exports = { createStoreHours, getStoreHours, updateStoreHours, getStoreHoursById }
+
+
+

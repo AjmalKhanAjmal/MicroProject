@@ -6,9 +6,11 @@ const db = require("./src/config/db")
 const Store_hours = require("./src/model/store_hours")
 const Store_hours_options = require("./src/model/store_hours_options")
 const routes = require("./src/routes/store_hour_routes")
-
+const errorHandler = require("./src/middleWares/errorHandler")
 app.use(express.json())
 app.use(routes)
+app.use(errorHandler)
+
 app.listen(process.env.SERVER_PORT, () => {
     console.log("store - hours running on PORT : ", process.env.SERVER_PORT);
 })
