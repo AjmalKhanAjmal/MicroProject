@@ -166,7 +166,7 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
 //         let batch_size = 20
 
 
-        
+
 //         let store_hours_length = store_hours_options.length
 //         let remaining_data = store_hours_options.length
 //         if(store_hours_length.length > 0){
@@ -181,7 +181,7 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
 //                    count += batch_size + 1
 //                    batch_size +=20
 //                    options =[]
-                   
+
 //                 }
 //             }
 //             for(let i = 0 ;i<options.length > 0 ; i++){
@@ -217,7 +217,7 @@ const createStoreHours = async (name, time_zone, is_special_hour_enabled, specia
 //             }
 //         }
 
-        
+
 
 //         if (hour_options.length > 0) {
 //             response["store_hour_options"] = hour_options
@@ -400,7 +400,47 @@ WHERE
 
 
 
-module.exports = { createStoreHours, getStoreHours, updateStoreHours, getStoreHoursById }
+const deleteStoreHours = async (id) => {
+    const response = {
+        data: {
+            store_hours_destroyed: null,
+            store_hour_option_destroyed: null
+        }
+    };
+
+    try {
+
+        const destroyedOptionsCount = await Store_hours_options.destroy({
+            where: { store_hour_id: id }
+        });
+
+        if (destroyedOptionsCount) {
+            response.data.store_hour_option_destroyed = `Store hours options destroyed, count: ${destroyedOptionsCount}`;
+        } else {
+            response.data.store_hour_option_destroyed = 'No store hours options found to delete';
+        }
+
+
+        const destroyedHoursCount = await Store_hours.destroy({
+            where: { id }
+        });
+
+        if (destroyedHoursCount) {
+            response.data.store_hours_destroyed = `Store hours destroyed, count: ${destroyedHoursCount}`;
+        } else {
+            response.data.store_hours_destroyed = 'No store hours found to delete';
+        }
+
+        if (response.data.store_hours_destroyed === null && response.data.store_hour_option_destroyed === null) return null
+
+    } catch (error) {
+
+        throw error;
+    }
+};
+
+
+module.exports = { createStoreHours, getStoreHours, updateStoreHours, getStoreHoursById, deleteStoreHours }
 
 
 

@@ -1,5 +1,7 @@
 const winston = require("winston");
 
+
+
 const logger = winston.createLogger({
 level: process.env.NODE_ENV === "production" ? "info" : "debug",
   // level:"debug",
@@ -24,3 +26,19 @@ level: process.env.NODE_ENV === "production" ? "info" : "debug",
 });
 
 module.exports = logger;
+
+
+
+// error (0)
+
+// warn (1)
+
+// info (2)
+
+// http (3)
+
+// verbose (4)
+
+// debug (5)
+
+// silly (6) 

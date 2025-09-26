@@ -136,6 +136,10 @@
 
 const { createStore, updateStore, getStoreById, getAllStores } = require("../Services/storeCrud")
 
+const redisServices = require("../Services/save_store_info")
+
+
+
 const insertStore = async (req, res) => {
     try {
         const store = await createStore(req)//send req.body 
@@ -150,18 +154,18 @@ const insertStore = async (req, res) => {
     }
 }
 
-const editStore = async(req,res)=>{
-   try{
-     if(req && req.body){
-        let results = await updateStore(req.body)
-        return res.status(200).json(results)
+const editStore = async (req, res) => {
+    try {
+        if (req && req.body) {
+            let results = await updateStore(req.body)
+            return res.status(200).json(results)
+        }
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            message: error.message
+        })
     }
-   }catch(error){
-    res.status(500).json({
-        status : "error",
-        message : error.message
-    })
-   }
 }
 
 
@@ -179,8 +183,64 @@ const stores = async (req, res) => {
         )
     }
 }
-console.log(" insert werwe" , stores);
-module.exports = {insertStore,stores,editStore}
+
+
+
+const postStoreDataInRedis = async (req, res) => {
+    try {
+        if (req && req.params && req.params.storeName && req.body) {
+            let results = await redisServices.saveStoreInfoRedis(req.params.storeName, req.body)
+            res.status(200).json(results.data)
+
+        } else {
+            let error = new Error("missing key name in params")
+            error.status = 400
+            throw error
+        }
+    } catch (error) {
+        let errorMessage = ""
+        if (error.response.data && error.response.data.message) {
+            errorMessage = error.response.data.message;
+        }
+        res.status(error.status || 500).json({
+            statuss: "error",
+            message: errorMessage || error.message
+        })
+    }
+}
+
+
+
+
+const fetchDataFromRedis = async (req, res) => {
+    try {
+        if (req.body && req.body.storeName) {
+
+
+            let results = await redisServices.getDataFromRedis(req.body.storeName)
+
+            res.status(results.status).json(results.data)
+
+        } else {
+            let error = new Error("missing key name in body")
+            error.status = 400
+            throw error
+        }
+    } catch (error) {
+        let errorMessage = ""
+        if (error.response.data && error.response.data.message) {
+            errorMessage = error.response.data.message;
+        }
+        res.status(error.status || 500).json({
+            statuss: "error",
+            message: errorMessage || error.message
+
+        })
+    }
+}
+// console.log(" insert werwe", stores);
+
+module.exports = { insertStore, stores, editStore, postStoreDataInRedis, fetchDataFromRedis }
 
 
 

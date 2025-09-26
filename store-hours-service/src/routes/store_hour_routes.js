@@ -10,4 +10,6 @@ routes.get("/api/store_hours",store_hours_controller.fetchStoreHours)
 routes.put("/api/store_hours",store_hours_controller.editStoreHours)
 
 routes.get("/api/store_hours/:id",store_hours_controller.fetchStoreHoursById)
+
+routes.delete("/api/store_hours/:id",store_hours_controller.destroyStoreHours)
 module.exports= routes

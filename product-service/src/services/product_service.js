@@ -1,30 +1,62 @@
 const Product = require("../model/product_modal")
 const db = require("../config/db")
-const createProduct = async (req) => {
-  //  console.log("rom service");
 
-  console.log("Product Service stareedd..");
+const logger = require("../utills/logger")
+// const createProduct = async (req) => {
+//   //  console.log("rom service");
+
+//   console.log("Product Service stareedd..");
+
+//   if (req) {
+//     try {
+//       const { name, price, description, status, category_id, store_id } = req
+
+//       if (!name || !price) {
+//         return { error: "Name and Price are required" };
+//       }
+
+//       const product = await Product.create({ name, price, description, status, category_id, store_id });
+//       console.log("product : ", product);
+
+//       return product
+
+//     } catch (error) {
+//       return { error: error.message };
+//     }
+//   }
+
+// }
+
+
+
+
+const createProduct = async (req) => {
+  logger.info("Product Service started...");  // Normal info
 
   if (req) {
     try {
-      const { name, price, description, status, category_id, store_id } = req
+      const { name, price, description, status, category_id, store_id } = req;
 
       if (!name || !price) {
+        logger.warn("Product creation attempt without required fields: name or price"); // Warning
         return { error: "Name and Price are required" };
       }
 
       const product = await Product.create({ name, price, description, status, category_id, store_id });
-      console.log("product : ", product);
 
-      return product
+      logger.info(`Product created successfully with ID: ${product.id}`);  // Success info
+      logger.debug(`Product details: ${JSON.stringify(product)}`);  // Debug - very detailed info
 
+      return product;
     } catch (error) {
+      logger.error(`Error creating product: ${error.message}`, { stack: error.stack });  // Critical error
       return { error: error.message };
     }
+  } else {
+    logger.warn("Received empty or invalid product creation request");  // Warning when req is missing
+    return { error: "Invalid request" };
   }
-
-}
-
+};
 const getProductById = async (id) => {
   try {
 
@@ -87,7 +119,7 @@ const getAllProducts = async (limit, offset, sort, sort_type, store_id, category
 
     let get_query = ''
     let total_count_query = ''
-    get_query = `SELECT name,descritpion,price,category_id,store_id,status,updatedAt,createdAt FROM shop.products where ${whereClause} order by ${product_sort} ${product_sort_type} limit ? offset ?`
+    get_query = `SELECT id,name,descritpion,price,category_id,store_id,status,updatedAt,createdAt FROM shop.products where ${whereClause} order by ${product_sort} ${product_sort_type} limit ? offset ?`
 
     total_count_query = `SELECT count(*) as total_count FROM shop.products where ${whereClause}`
 
@@ -129,8 +161,8 @@ const getAllProducts = async (limit, offset, sort, sort_type, store_id, category
     let results = []
     let total_count_results = []
     if (get_query) {
-      results = await db.query(get_query,{replacements :[ ...replacements ,product_limit,product_offset ]} )
-      total_count_results = await db.query(total_count_query,{replacements})
+      results = await db.query(get_query, { replacements: [...replacements, product_limit, product_offset] })
+      total_count_results = await db.query(total_count_query, { replacements })
     } else {
       return null
     }
