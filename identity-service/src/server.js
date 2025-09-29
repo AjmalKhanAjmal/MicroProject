@@ -4,6 +4,7 @@ const express = require("express");
 const routes = require("./routes/identity_routes")
 require("dotenv").config()
 const app = express();
+const { connectDB }  = require("./config/mongo")
 const PORT = process.env.SERVER_PORT || 3001;
 
 //connect to mongodb
@@ -20,6 +21,8 @@ app.use(routes)
 //Routes
 // app.use("/api/auth", routes);
 
+
+connectDB()
 
 app.listen(PORT, () => {
   console.log(`Identity service running on port ${PORT}`);
