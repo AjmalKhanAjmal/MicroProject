@@ -22,7 +22,7 @@ userSchema.pre("save", async function () { // async function (next) {
             this.password = await argon2.hash(this.password);
         } catch (error) {
             // return next(error);
-            return error
+            throw error
         }
     }
 });
