@@ -10,6 +10,7 @@ const saveProduct = async (req, res) => {
                 message: "bad requst"
             })
         }
+        
         let results = await createProduct.createProduct(req.body)
 
         return res.status(200).json(results)
