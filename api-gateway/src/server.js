@@ -16,7 +16,7 @@ const PORT = process.env.SERVER_PORT || 3000;
 require("dotenv").config()
 // const redisClient = new Redis(process.env.REDIS_URL);
 
- console.log("step - 0  ")
+console.log("step - 0  ")
 // app.use(helmet());
 // app.use(cors());
 app.use(express.json());
@@ -50,14 +50,26 @@ const proxyOptions = {
   },
   proxyErrorHandler: (err, res, next) => {
     // logger.error(`Proxy error: ${err.message}`);
-    res.status(500).json({
-      message: `Internal server error`,
-      error: err.message,
-    });
+
+
+    if (err.code === 'ECONNREFUSED') {
+      res.status(503).json({
+        success: false,
+        message: "Service unavailable - Connection refused",
+        error: err.message,
+        detail: "The target service is not accepting connections. Please check if the service is running."
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Internal server error in proxy",
+        error: err.message,
+      });
+    }
   },
 };
 
-  console.log("step -2 ")
+console.log("step -2 ")
 //setting up proxy for our identity service
 app.use(
   "/v1/auth/register",
@@ -87,7 +99,7 @@ app.use(
     ...proxyOptions,
     proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
       proxyReqOpts.headers["Content-Type"] = "application/json";
-    //   proxyReqOpts.headers["x-user-id"] = srcReq.user.userId;
+      //   proxyReqOpts.headers["x-user-id"] = srcReq.user.userId;
       proxyReqOpts.headers["x-user-id"] = srcReq.user.username;
 
 
@@ -102,6 +114,39 @@ app.use(
     },
   })
 );
+
+app.use("/v1/menu_category",
+  validateToken,
+  proxy(process.env.MENU_ORGANIZER_SERVICE_URL, {
+    ...proxyOptions,
+    proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
+      proxyReqOpts.headers["Content-Type"] = "application/json";
+      //   proxyReqOpts.headers["x-user-id"] = srcReq.user.userId;
+      // console.log("srcReq.user.userId", srcReq.user.userId);
+      proxyReqOpts.headers["x-user-id"] = srcReq.user.userId;
+      proxyReqOpts.headers["subscribed_application_id"] = srcReq.headers.application_id
+
+      return proxyReqOpts;
+    },
+    userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
+      console.log(
+        `Response received from Post service: ${proxyRes.statusCode}`
+      );
+
+      return proxyResData;
+    },
+  })
+)
+
+
+
+
+
+
+
+
+
+
 
 //setting up proxy for our media service
 // app.use(
@@ -153,14 +198,14 @@ app.use(
 // app.use(errorHandler);
 
 app.listen(PORT, () => {
-console.log(`API Gateway is running on port ${PORT}`);
+  console.log(`API Gateway is running on port ${PORT}`);
   console.log(
     `Identity service is running on port ${process.env.IDENTITY_SERVICE_URL}`
   );
   console.log(
     `Post service is running on port ${process.env.PRODUCT_SERVICE_URL}`
   );
-// 
+  // 
 
 
- });
+});

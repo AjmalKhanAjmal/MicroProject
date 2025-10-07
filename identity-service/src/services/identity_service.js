@@ -50,8 +50,8 @@ const resgiterUser = async (req, res) => {
   } catch (e) {
     // logger.error("Registration error occured", e);
     res.status(500).json({
-      success: false,
-      message: "Internal server error",
+      status:"error",
+      message:e.message,
     });
   }
 };
@@ -128,6 +128,7 @@ const refreshToken = async (req,res)=>{
   try{
     if(req && req.body && req.body.refresh_token){
       let refresh_token = req.body.refresh_token
+
       
       let refresh_token_details = await RefreshToken.findOne(
         {refresh_token}

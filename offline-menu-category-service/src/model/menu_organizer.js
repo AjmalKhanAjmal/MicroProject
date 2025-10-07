@@ -18,6 +18,10 @@ let menu_organizer_schema = new mongoose.Schema({
         required: false,
         get: (v) => BigInt(v),  // Convert back to BigInt when retrieved
         set: (v) => v.toString()  // Convert BigInt to String when saving
+    },
+    application_id :{
+        type : Number,
+        required :false
     }
 
 }, {
