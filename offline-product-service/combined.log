@@ -1,0 +1,60 @@
+{"0":"6","1":"8","10":"c","11":"c","12":"6","13":"7","14":"6","15":"2","16":"e","17":"6","18":"c","19":"f","2":"e","20":"1","21":"5","22":"5","23":"2","3":"6","4":"3","5":"e","6":"8","7":"0","8":"8","9":"f","level":"info","message":"Received request remove product : ","service":"post-service","timestamp":"2025-10-09T08:51:30.739Z"}
+{"level":"info","message":"Received request remove product : 68e63e808fcc6762e6cf1552 ","service":"post-service","timestamp":"2025-10-09T08:53:50.493Z"}
+{"level":"info","message":"Received request remove product : 68e63e808fcc6762e6cf1552 ","service":"post-service","timestamp":"2025-10-09T08:56:23.480Z"}
+{"level":"info","message":"Received request remove product : 68e63e808fcc6762e6cf1552 ","service":"post-service","timestamp":"2025-10-09T08:57:27.333Z"}
+{"level":"info","message":"Received request remove product : 68e63e808fcc6762e6cf1552 ","service":"post-service","timestamp":"2025-10-09T09:01:22.621Z"}
+{"level":"error","message":"error while deleting product : ","service":"post-service","stack":"ReferenceError: req is not defined\n    at Object.deleteProduct (C:\\MicroSe\\offline-product-service\\src\\services\\product_service.js:37:66)\n    at removeProduct (C:\\MicroSe\\offline-product-service\\src\\controllers\\product_controller.js:40:49)\n    at Layer.handleRequest (C:\\MicroSe\\offline-product-service\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\MicroSe\\offline-product-service\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\MicroSe\\offline-product-service\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\MicroSe\\offline-product-service\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\MicroSe\\offline-product-service\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\MicroSe\\offline-product-service\\node_modules\\router\\index.js:295:15\n    at param (C:\\MicroSe\\offline-product-service\\node_modules\\router\\index.js:600:14)\n    at param (C:\\MicroSe\\offline-product-service\\node_modules\\router\\index.js:610:14)","timestamp":"2025-10-09T09:01:22.625Z"}
+{"level":"info","message":"Received request remove product : 68e63e808fcc6762e6cf1552 ","service":"post-service","timestamp":"2025-10-09T09:03:12.303Z"}
+{"level":"info","message":"Received request deleteProduct service : 68e63e808fcc6762e6cf1552","service":"post-service","timestamp":"2025-10-09T09:03:12.306Z"}
+{"level":"info","message":"Product deleted successffully!","service":"post-service","timestamp":"2025-10-09T09:03:12.331Z"}
+{"level":"info","message":"Received request remove product : 68e75a01c0ff3cac6eb3df36 ","service":"post-service","timestamp":"2025-10-09T09:03:36.155Z"}
+{"level":"info","message":"Received request deleteProduct service : 68e75a01c0ff3cac6eb3df36","service":"post-service","timestamp":"2025-10-09T09:03:36.157Z"}
+{"level":"info","message":"Product deleted successffully!","service":"post-service","timestamp":"2025-10-09T09:03:36.162Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T09:50:37.314Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","status":"active","store_id":1,"timestamp":"2025-10-09T09:50:37.318Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"category_id\" is not allowed","timestamp":"2025-10-09T09:50:37.320Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T09:51:09.918Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","status":"active","store_id":1,"timestamp":"2025-10-09T09:51:09.919Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"status\" is not allowed","timestamp":"2025-10-09T09:51:09.920Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T09:51:22.809Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","store_id":1,"timestamp":"2025-10-09T09:51:22.810Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"store_id\" is not allowed","timestamp":"2025-10-09T09:51:22.811Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T09:51:36.226Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","timestamp":"2025-10-09T09:51:36.227Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"products__service_type\" is not allowed","timestamp":"2025-10-09T09:51:36.228Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T09:51:42.776Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","timestamp":"2025-10-09T09:51:42.777Z"}
+{"level":"debug","message":"Creating product with name:  Car Repair","service":"post-service","timestamp":"2025-10-09T09:51:42.778Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T10:01:09.892Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","timestamp":"2025-10-09T10:01:09.896Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"abc\" is not allowed","timestamp":"2025-10-09T10:01:09.900Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T10:02:58.738Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","name":" Car Repair","price":73.3233232,"service":"post-service","timestamp":"2025-10-09T10:02:58.742Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"abc\" is not allowed","timestamp":"2025-10-09T10:02:58.747Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T12:39:42.164Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","service":"post-service","status":"active","store_id":1,"timestamp":"2025-10-09T12:39:42.169Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"name\" is required","timestamp":"2025-10-09T12:39:42.174Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:07:28.706Z"}
+{"application_id":5454,"level":"info","message":" input fields : ","service":"post-service","timestamp":"2025-10-09T13:07:28.711Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"name\" is required","timestamp":"2025-10-09T13:07:28.715Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:07:45.998Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":"Car Repair","price":"29.99","service":"post-service","status":"active","store_id":1,"timestamp":"2025-10-09T13:07:45.999Z"}
+{"level":"debug","message":"Creating product with name: Car Repair","service":"post-service","timestamp":"2025-10-09T13:07:46.000Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:08:02.560Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":"Jamun","price":"29.99","service":"post-service","status":"active","store_id":1,"timestamp":"2025-10-09T13:08:02.560Z"}
+{"level":"debug","message":"Creating product with name: Jamun","service":"post-service","timestamp":"2025-10-09T13:08:02.561Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:08:33.116Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":"Chicken Biryani","price":"29.99","service":"post-service","service_type":["delivery"],"status":"active","store_id":1,"timestamp":"2025-10-09T13:08:33.116Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"service_type\" is not allowed","timestamp":"2025-10-09T13:08:33.118Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:09:19.970Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":"Chicken Biryani","price":"29.99","service":"post-service","service_type":["delivery"],"status":"active","store_id":1,"timestamp":"2025-10-09T13:09:19.974Z"}
+{"level":"debug","message":"Creating product with name: Chicken Biryani","service":"post-service","timestamp":"2025-10-09T13:09:19.976Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:09:51.104Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":"Gulab Jamun","price":"29.99","service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2025-10-09T13:09:51.105Z"}
+{"level":"debug","message":"Creating product with name: Gulab Jamun","service":"post-service","timestamp":"2025-10-09T13:09:51.107Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:10:30.229Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Mutton Biryani","price":"29.99","service":"post-service","service_type":["pickup","curbside"],"status":"active","store_id":1,"timestamp":"2025-10-09T13:10:30.230Z"}
+{"level":"debug","message":"Creating product with name: Mutton Biryani","service":"post-service","timestamp":"2025-10-09T13:10:30.231Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:10:41.715Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Family Mutton Biryani","price":"29.99","service":"post-service","service_type":["pickup"],"status":"active","store_id":1,"timestamp":"2025-10-09T13:10:41.716Z"}
+{"level":"debug","message":"Creating product with name: Family Mutton Biryani","service":"post-service","timestamp":"2025-10-09T13:10:41.717Z"}
