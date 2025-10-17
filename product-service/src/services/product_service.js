@@ -27,7 +27,15 @@ const logger = require("../utills/logger")
 
 // }
 
-
+function inValidateProductCache(req,product_id){
+  let delete_post = `product:${product_id}`
+  req.redisClient.del(delete_post)
+  let delete_posts = `products:*` //products:
+  // const keys = await req.redisClient.keys("posts:*");
+  // if (keys.length > 0) {
+  //   await req.redisClient.del(keys);
+  // }
+}
 
 
 const createProduct = async (req) => {
