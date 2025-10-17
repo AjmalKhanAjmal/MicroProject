@@ -68,4 +68,20 @@ const removeProduct = async (req, res, next) => {
     }
 }
 
-module.exports = { saveProduct, fetchProducts, removeProduct }
+
+const fetchIndexProducts = async (req,res,next)=>{
+    try{
+        if(req && req.params){
+            // console.log("req.params.name",req.params.name);
+            
+            let results = await product_service.productIndexSearch(req.params.name)
+            return res.json(results)
+        }
+    }catch(error){
+        console.log(error);
+        
+        next(error)
+    }
+}
+
+module.exports = { saveProduct, fetchProducts, removeProduct,fetchIndexProducts }

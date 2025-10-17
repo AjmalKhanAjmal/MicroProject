@@ -58,3 +58,15 @@
 {"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-09T13:10:41.715Z"}
 {"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Family Mutton Biryani","price":"29.99","service":"post-service","service_type":["pickup"],"status":"active","store_id":1,"timestamp":"2025-10-09T13:10:41.716Z"}
 {"level":"debug","message":"Creating product with name: Family Mutton Biryani","service":"post-service","timestamp":"2025-10-09T13:10:41.717Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-14T07:03:55.611Z"}
+{"application_id":5454,"category_id":101,"level":"info","message":" input fields : ","name":"Pine Apple","price":"29.99","service":"post-service","service_type":[],"status":"active","store_id":1,"timestamp":"2025-10-14T07:03:55.615Z"}
+{"level":"debug","message":"Creating product with name: Pine Apple","service":"post-service","timestamp":"2025-10-14T07:03:55.618Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-14T07:04:30.816Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Mushroom Biryani","price":"29.99","service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2025-10-14T07:04:30.817Z"}
+{"level":"debug","message":"Creating product with name: Mushroom Biryani","service":"post-service","timestamp":"2025-10-14T07:04:30.819Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-14T07:15:40.220Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Mushroom Biryani","price":"29.99","service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2025-10-14T07:15:40.223Z"}
+{"level":"debug","message":"Creating product with name: Mushroom Biryani","service":"post-service","timestamp":"2025-10-14T07:15:40.228Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-10-14T07:15:46.057Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Mushroom Pickle","price":"29.99","service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2025-10-14T07:15:46.058Z"}
+{"level":"debug","message":"Creating product with name: Mushroom Pickle","service":"post-service","timestamp":"2025-10-14T07:15:46.059Z"}

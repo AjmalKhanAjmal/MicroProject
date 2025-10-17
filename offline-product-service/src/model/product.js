@@ -3,7 +3,8 @@ const { mongoose, Schema } = require("mongoose")
 const product_schema = new Schema({
     product__name: {
         type: String,
-        required: true
+        required: true,
+        index : true
     },
     product__descritpion: {
         type: String,
@@ -39,7 +40,21 @@ const product_schema = new Schema({
         
     })
 
-
+   
+    // searchPostSchema.index({ content: "text" });
+    // product_schema.index({ product__name: 'text' });
 const Product = mongoose.model("proucts", product_schema)
 
 module.exports = { Product }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,16 +1,19 @@
 const express = require("express")
 const app = express()
 require('dotenv').config()
-
+const Redis = require("ioredis")
 const db = require("./src/config/db")
 // const product = require("./src/model/product_modal")
-
+const redisClient = new Redis(process.env.REDIS_URL)
 app.use(express.json())
 const routes = require("./src/routes/product_routes")
 
 
 
-app.use("/api",routes)
+app.use("/api/products", (req, res, next) => {
+    req.redisClient = redisClient
+    next()
+}, routes)
 
 
 console.log("routes -- 2 ");
