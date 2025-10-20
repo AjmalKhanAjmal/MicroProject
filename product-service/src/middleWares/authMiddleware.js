@@ -1,4 +1,4 @@
-const logger = require("../utils/logger");
+const logger = require("../utills/logger");
 
 const authenticateRequest = (req, res, next) => {
   const userId = req.headers["x-user-id"];
@@ -16,3 +16,7 @@ const authenticateRequest = (req, res, next) => {
 };
 
 module.exports = { authenticateRequest };
+
+
+
+

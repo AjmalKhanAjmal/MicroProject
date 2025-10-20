@@ -5,3 +5,35 @@
 {"level":"warn","message":"Product creation attempt without required fields: name or price","service":"api-gateway","timestamp":"2025-09-24T10:04:17.933Z"}
 {"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-09-24T10:05:03.319Z"}
 {"level":"error","message":"Error creating product: Incorrect decimal value: 'not-a-number' for column 'price' at row 1","service":"api-gateway","stack":"Error\n    at Query.run (C:\\MicroSe\\product-service\\node_modules\\sequelize\\lib\\dialects\\mysql\\query.js:52:25)\n    at C:\\MicroSe\\product-service\\node_modules\\sequelize\\lib\\sequelize.js:315:28\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async MySQLQueryInterface.insert (C:\\MicroSe\\product-service\\node_modules\\sequelize\\lib\\dialects\\abstract\\query-interface.js:308:21)\n    at async model.save (C:\\MicroSe\\product-service\\node_modules\\sequelize\\lib\\model.js:2490:35)\n    at async product.create (C:\\MicroSe\\product-service\\node_modules\\sequelize\\lib\\model.js:1362:12)\n    at async Object.createProduct (C:\\MicroSe\\product-service\\src\\services\\product_service.js:45:23)\n    at async saveProduct (C:\\MicroSe\\product-service\\src\\controllers\\product_controller.js:13:23)","timestamp":"2025-09-24T10:05:03.334Z"}
+{"level":"warn","message":"Access attempted without user ID","service":"api-gateway","timestamp":"2025-10-12T11:23:19.090Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T11:24:07.238Z"}
+{"level":"info","message":"Product created successfully with ID: 31","service":"api-gateway","timestamp":"2025-10-12T11:24:07.467Z"}
+{"level":"debug","message":"Product details: {\"id\":31,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T11:24:07.246Z\",\"createdAt\":\"2025-10-12T11:24:07.246Z\"}","service":"api-gateway","timestamp":"2025-10-12T11:24:07.470Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:17:51.904Z"}
+{"level":"info","message":"Product created successfully with ID: 32","service":"api-gateway","timestamp":"2025-10-12T14:17:52.009Z"}
+{"level":"debug","message":"Product details: {\"id\":32,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:17:51.914Z\",\"createdAt\":\"2025-10-12T14:17:51.914Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:17:52.012Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:43:28.798Z"}
+{"level":"info","message":"Product created successfully with ID: 33","service":"api-gateway","timestamp":"2025-10-12T14:43:28.912Z"}
+{"level":"debug","message":"Product details: {\"id\":33,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:43:28.811Z\",\"createdAt\":\"2025-10-12T14:43:28.811Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:43:28.914Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:44:01.132Z"}
+{"level":"info","message":"Product created successfully with ID: 34","service":"api-gateway","timestamp":"2025-10-12T14:44:01.329Z"}
+{"level":"debug","message":"Product details: {\"id\":34,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:44:01.133Z\",\"createdAt\":\"2025-10-12T14:44:01.133Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:44:01.331Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:53:13.309Z"}
+{"level":"info","message":"Product created successfully with ID: 35","service":"api-gateway","timestamp":"2025-10-12T14:53:13.671Z"}
+{"level":"debug","message":"Product details: {\"id\":35,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:53:13.318Z\",\"createdAt\":\"2025-10-12T14:53:13.318Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:53:13.675Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:54:56.253Z"}
+{"level":"info","message":"Product created successfully with ID: 36","service":"api-gateway","timestamp":"2025-10-12T14:54:56.361Z"}
+{"level":"debug","message":"Product details: {\"id\":36,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:54:56.254Z\",\"createdAt\":\"2025-10-12T14:54:56.254Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:54:56.363Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:57:42.153Z"}
+{"level":"info","message":"Product created successfully with ID: 37","service":"api-gateway","timestamp":"2025-10-12T14:57:42.247Z"}
+{"level":"debug","message":"Product details: {\"id\":37,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:57:42.162Z\",\"createdAt\":\"2025-10-12T14:57:42.162Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:57:42.250Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T14:58:29.776Z"}
+{"level":"info","message":"Product created successfully with ID: 38","service":"api-gateway","timestamp":"2025-10-12T14:59:14.488Z"}
+{"level":"debug","message":"Product details: {\"id\":38,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T14:59:14.358Z\",\"createdAt\":\"2025-10-12T14:59:14.358Z\"}","service":"api-gateway","timestamp":"2025-10-12T14:59:14.491Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T15:01:53.480Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T15:16:11.228Z"}
+{"level":"info","message":"Product created successfully with ID: 39","service":"api-gateway","timestamp":"2025-10-12T15:16:36.020Z"}
+{"level":"debug","message":"Product details: {\"id\":39,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T15:16:33.916Z\",\"createdAt\":\"2025-10-12T15:16:33.916Z\"}","service":"api-gateway","timestamp":"2025-10-12T15:16:37.045Z"}
+{"level":"info","message":"Product Service started...","service":"api-gateway","timestamp":"2025-10-12T15:20:02.546Z"}
+{"level":"info","message":"Product created successfully with ID: 40","service":"api-gateway","timestamp":"2025-10-12T15:20:10.817Z"}
+{"level":"debug","message":"Product details: {\"id\":40,\"name\":\"Zamun\",\"price\":20,\"updatedAt\":\"2025-10-12T15:20:09.692Z\",\"createdAt\":\"2025-10-12T15:20:09.692Z\"}","service":"api-gateway","timestamp":"2025-10-12T15:20:11.685Z"}
