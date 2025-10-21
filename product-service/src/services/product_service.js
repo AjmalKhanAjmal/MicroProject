@@ -27,10 +27,15 @@ const logger = require("../utills/logger")
 
 // }
 
-function inValidateProductCache(req,product_id){
+async function inValidateProductCache(redisClient, product_id) {
   let delete_post = `product:${product_id}`
-  req.redisClient.del(delete_post)
+  await redisClient.del(delete_post)
   let delete_posts = `products:*` //products:
+
+  const keys = await redisClient.keys(delete_posts)
+  if (keys.length > 0) {
+    await redisClient.del(keys)
+  }
   // const keys = await req.redisClient.keys("posts:*");
   // if (keys.length > 0) {
   //   await req.redisClient.del(keys);
@@ -38,7 +43,7 @@ function inValidateProductCache(req,product_id){
 }
 
 
-const createProduct = async (req) => {
+const createProduct = async (req, redisClient) => {
   logger.info("Product Service started...");  // Normal info
 
   if (req) {
@@ -52,6 +57,7 @@ const createProduct = async (req) => {
 
       const product = await Product.create({ name, price, description, status, category_id, store_id });
 
+      await inValidateProductCache(redisClient, product.id)
       logger.info(`Product created successfully with ID: ${product.id}`);  // Success info
       logger.debug(`Product details: ${JSON.stringify(product)}`);  // Debug - very detailed info
 
@@ -65,19 +71,30 @@ const createProduct = async (req) => {
     return { error: "Invalid request" };
   }
 };
-const getProductById = async (id) => {
+const getProductById = async (id, redisClient) => {
   try {
 
-
     if (id) {
+
+      let cachedProduct = await redisClient.get(`product:${id}`)
+
+      if (cachedProduct) return JSON.parse(cachedProduct)
       results = await Product.findOne({
         where: {
           id: id
         }
       })
-      console.log("results :; ");
 
-      console.log(results);
+      if (results) {
+        // redisClient.set(cachedPost,
+        //   3600,
+        //   JSON.stringify(results))
+        let dataa = await redisClient.setex(`product:${id}`,
+          3600,
+          JSON.stringify(results)
+        )
+      }
+
 
       if (!results) {
         return null
@@ -90,7 +107,7 @@ const getProductById = async (id) => {
   }
 }
 
-const getAllProducts = async (limit, offset, sort, sort_type, store_id, category_id, status) => {
+const getAllProducts = async (limit, offset, sort, sort_type, store_id, category_id, status, redisClient) => {
   try {
 
     let product_limit = parseInt(limit) || 15
@@ -102,8 +119,18 @@ const getAllProducts = async (limit, offset, sort, sort_type, store_id, category
     let product_status = status
 
 
+
+    let cached_key = `products:${product_offset}:${product_limit}`
     let conditions = []
     let replacements = []
+
+    let cached_products = await redisClient.get(cached_key)
+    console.log("cached_products",cached_products);
+    if (cached_products) {
+      return JSON.parse(cached_products)
+    }
+
+
 
 
     if (product_store_id) {
@@ -150,8 +177,8 @@ const getAllProducts = async (limit, offset, sort, sort_type, store_id, category
 
 
 
-    console.log(get_query);
-    console.log(total_count_query);
+    // console.log(get_query);
+    // console.log(total_count_query);
 
 
     // get_query = `SELECT name,descritpion,price,category_id,store_id,updatedAt,createdAt FROM shop.products where store_id = ? order by ${product_sort} ${product_sort_type} limit ? offset ?`
@@ -174,20 +201,25 @@ const getAllProducts = async (limit, offset, sort, sort_type, store_id, category
     } else {
       return null
     }
-    return {
+
+    let data = {
       status: "success",
       data: results[0],
       pagination: {
         total_count: total_count_results[0][0].total_count,
       },
     }
+
+    redisClient.setex(cached_key, 33909, JSON.stringify(data))
+
+    return data
   } catch (error) {
     throw new Error(error.message)
   }
 }
 
 
-const deleteProductById = async (id) => {
+const deleteProductById = async (id, redisClient) => {
   try {
     if (id) {
       let results = await Product.destroy({
@@ -198,6 +230,7 @@ const deleteProductById = async (id) => {
       if (results == 0) {
         return null
       }
+      await inValidateProductCache(redisClient, id)
       return {
         status: "success",
         message: "product deleted successfully"
@@ -212,117 +245,173 @@ const deleteProductById = async (id) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const getAllProducts = async ({ limit = 15, offset = 0, sort = "createdAt", sort_type = "ASC", store_id, category_id, status }) => {
-//   try {
-//     const product_limit = parseInt(limit);
-//     const product_offset = parseInt(offset);
-//     const product_sort = sort;
-//     const product_sort_type = sort_type.toUpperCase() === "DESC" ? "DESC" : "ASC";
-
-//     const conditions = [];
-//     const replacements = [];
-
-//     if (store_id) {
-//       conditions.push("store_id = ?");
-//       replacements.push(parseInt(store_id));
-//     }
-
-//     if (category_id) {
-//       conditions.push("category_id = ?");
-//       replacements.push(parseInt(category_id));
-//     }
-
-//     if (status) {
-//       conditions.push("status = ?");
-//       replacements.push(status); // assuming status is a string like 'active'
-//     }
-
-//     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
-
-//     const get_query = `
-//       SELECT name, description, price, category_id, store_id, status, updatedAt, createdAt
-//       FROM shop.products
-//       ${whereClause}
-//       ORDER BY ${product_sort} ${product_sort_type}
-//       LIMIT ? OFFSET ?
-//     `;
-
-//     const total_count_query = `
-//       SELECT COUNT(*) as total_count
-//       FROM shop.products
-//       ${whereClause}
-//     `;
-
-//     // Add limit and offset to the end of replacements
-//     const queryReplacements = [...replacements, product_limit, product_offset];
-
-//     const results = await db.query(get_query, { replacements: queryReplacements });
-//     const total_count_results = await db.query(total_count_query, { replacements });
-
-//     return {
-//       status: "success",
-//       data: results[0],
-//       pagination: {
-//         total_count: total_count_results[0][0].total_count,
-//       },
-//     };
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = {
   createProduct, getProductById, getAllProducts, deleteProductById
 }
 
 
 
+
+
+
+// async function invalidatePostCache(req, input) {
+//   const cachedKey = `post:${input}`;
+//   await req.redisClient.del(cachedKey);
+
+//   const keys = await req.redisClient.keys("posts:*");
+//   if (keys.length > 0) {
+//     await req.redisClient.del(keys);
+//   }
+// }
+
+// const createPost = async (req, res) => {
+//   logger.info("Create post endpoint hit");
+//   try {
+//     //validate the schema
+//     const { error } = validateCreatePost(req.body);
+//     if (error) {
+//       logger.warn("Validation error", error.details[0].message);
+//       return res.status(400).json({
+//         success: false,
+//         message: error.details[0].message,
+//       });
+//     }
+//     const { content, mediaIds } = req.body;
+//     const newlyCreatedPost = new Post({
+//       user: req.user.userId,
+//       content,
+//       mediaIds: mediaIds || [],
+//     });
+
+//     await newlyCreatedPost.save();
+
+//     await publishEvent("post.created", {
+//       postId: newlyCreatedPost._id.toString(),
+//       userId: newlyCreatedPost.user.toString(),
+//       content: newlyCreatedPost.content,
+//       createdAt: newlyCreatedPost.createdAt,
+//     });
+
+//     await invalidatePostCache(req, newlyCreatedPost._id.toString());
+//     logger.info("Post created successfully", newlyCreatedPost);
+//     res.status(201).json({
+//       success: true,
+//       message: "Post created successfully",
+//     });
+//   } catch (e) {
+//     logger.error("Error creating post", error);
+//     res.status(500).json({
+//       success: false,
+//       message: "Error creating post",
+//     });
+//   }
+// };
+
+// const getAllPosts = async (req, res) => {
+//   try {
+//     const page = parseInt(req.query.page) || 1;
+//     const limit = parseInt(req.query.limit) || 10;
+//     const startIndex = (page - 1) * limit;
+
+//     const cacheKey = `posts:${page}:${limit}`;
+//     const cachedPosts = await req.redisClient.get(cacheKey);
+
+//     if (cachedPosts) {
+//       return res.json(JSON.parse(cachedPosts));
+//     }
+
+//     const posts = await Post.find({})
+//       .sort({ createdAt: -1 })
+//       .skip(startIndex)
+//       .limit(limit);
+
+//     const totalNoOfPosts = await Post.countDocuments();
+
+//     const result = {
+//       posts,
+//       currentpage: page,
+//       totalPages: Math.ceil(totalNoOfPosts / limit),
+//       totalPosts: totalNoOfPosts,
+//     };
+
+//     //save your posts in redis cache
+//     await req.redisClient.setex(cacheKey, 300, JSON.stringify(result));
+
+//     res.json(result);
+//   } catch (e) {
+//     logger.error("Error fetching posts", error);
+//     res.status(500).json({
+//       success: false,
+//       message: "Error fetching posts",
+//     });
+//   }
+// };
+
+// const getPost = async (req, res) => {
+//   try {
+//     const postId = req.params.id;
+//     const cachekey = `post:${postId}`;
+//     const cachedPost = await req.redisClient.get(cachekey);
+
+//     if (cachedPost) {
+//       return res.json(JSON.parse(cachedPost));
+//     }
+
+//     const singlePostDetailsbyId = await Post.findById(postId);
+
+//     if (!singlePostDetailsbyId) {
+//       return res.status(404).json({
+//         message: "Post not found",
+//         success: false,
+//       });
+//     }
+
+//     await req.redisClient.setex(
+//       cachedPost,
+//       3600,
+//       JSON.stringify(singlePostDetailsbyId)
+//     );
+
+//     res.json(singlePostDetailsbyId);
+//   } catch (e) {
+//     logger.error("Error fetching post", error);
+//     res.status(500).json({
+//       success: false,
+//       message: "Error fetching post by ID",
+//     });
+//   }
+// };
+
+// const deletePost = async (req, res) => {
+//   try {
+//     const post = await Post.findOneAndDelete({
+//       _id: req.params.id,
+//       user: req.user.userId,
+//     });
+
+//     if (!post) {
+//       return res.status(404).json({
+//         message: "Post not found",
+//         success: false,
+//       });
+//     }
+
+//     //publish post delete method ->
+//     await publishEvent("post.deleted", {
+//       postId: post._id.toString(),
+//       userId: req.user.userId,
+//       mediaIds: post.mediaIds,
+//     });
+
+//     await invalidatePostCache(req, req.params.id);
+//     res.json({
+//       message: "Post deleted successfully",
+//     });
+//   } catch (e) {
+//     logger.error("Error deleting post", error);
+//     res.status(500).json({
+//       success: false,
+//       message: "Error deleting post",
+//     });
+//   }
+// };

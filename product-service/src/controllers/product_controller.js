@@ -11,7 +11,7 @@ const saveProduct = async (req, res) => {
             })
         }
         
-        let results = await createProduct.createProduct(req.body)
+        let results = await createProduct.createProduct(req.body,req.redisClient)
 
         return res.status(200).json(results)
 
@@ -30,7 +30,7 @@ const productById = async (req, res) => {
         if (req.params && req.params.id) {
 
 
-            let results = await createProduct.getProductById(req.params.id)
+            let results = await createProduct.getProductById(req.params.id,req.redisClient)
             if (results === null) {
                 return res.status(404).json({
                     status: "error",
@@ -60,7 +60,7 @@ const getProductS = async (req, res) => {
                 status = req.query.status
                 store_id = req.query.store_id
 
-                let results = await createProduct.getAllProducts(limit, offset, sort, sort_type, store_id, category_id, status)
+                let results = await createProduct.getAllProducts(limit, offset, sort, sort_type, store_id, category_id, status,req.redisClient)
 
                 return res.status(200).json(results)
             }else{
@@ -83,7 +83,7 @@ const removeProduct = async (req, res) => {
     try {
         if (req && req.params) {
             let id = req.params.id
-            let results = await createProduct.deleteProductById(id)
+            let results = await createProduct.deleteProductById(id,req.redisClient)
             if (results === null) {
                 return res.status(404).json({
                     status: "error",
