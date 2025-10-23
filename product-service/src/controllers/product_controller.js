@@ -1,5 +1,5 @@
 const createProduct = require("../services/product_service")
-
+const productFileService = require("../services/product_file_service")
 
 const saveProduct = async (req, res) => {
 
@@ -100,4 +100,20 @@ const removeProduct = async (req, res) => {
     }
 }
 
-module.exports = { saveProduct, productById, getProductS, removeProduct }
+
+
+const uploadFileProducts = async (req,res)=>{
+    console.log("req.file.path  : ", "abcccccc");
+    try{
+        console.log("req.file.path  : ", req.file.path);
+        
+        let results = await productFileService.uploadProductData( req.file.path)
+        res.status(200).json(results)
+    }catch(error){
+        res.status(500).json({
+            status : "error",
+            "message":error.message
+        })
+    }
+}
+module.exports = { saveProduct, productById, getProductS, removeProduct,uploadFileProducts}

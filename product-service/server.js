@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const Redis = require("ioredis");
 
+const { readProductFile } = require('./src/services/product_file_service')
 dotenv.config();
 
 const app = express();
