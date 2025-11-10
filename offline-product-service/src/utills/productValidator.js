@@ -9,7 +9,9 @@ let productSchema = joi.object({
     status: joi.string().optional(),
     store_id: joi.number().optional(),
     service_type: joi.array().optional(),
-    description: joi.string().optional()
+    description: joi.string().optional(),
+    product_id: joi.number().optional(),
+    variant_id: joi.number().optional()
 })
 
 module.exports = { productSchema }

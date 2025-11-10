@@ -71,11 +71,10 @@ const deleteMenu = async (id) => {
 
 const getMenuCategory = async (store_id, offset, limit, sort, sort_type, application_id) => {
     try {
-        console.log("executed -- 1 ");
-
+       
         let filter = {
             store_id: store_id,
-            application_id: application_id
+            // application_id: application_id
         }
         let menu_sort = "updatedAt"
         let menu_sort_type = 1

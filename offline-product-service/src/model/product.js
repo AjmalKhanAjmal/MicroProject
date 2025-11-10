@@ -4,7 +4,7 @@ const product_schema = new Schema({
     product__name: {
         type: String,
         required: true,
-        index : true
+        index: true
     },
     product__descritpion: {
         type: String,
@@ -14,8 +14,12 @@ const product_schema = new Schema({
         type: Number,
         required: false
     },
+    // product__price: {
+    //     type: Schema.Types.Decimal128,
+    //     required: false
+    // },
     product__price: {
-        type: Schema.Types.Decimal128,
+        type: Number,
         required: false
     },
     product__status: {
@@ -30,19 +34,27 @@ const product_schema = new Schema({
         type: [String], // Array of strings (e.g., tags or keywords),//[mongoose.Schema.Types.Mixed]
         required: false
     },
-    application_id :{
+    application_id: {
+        type: Number,
+        required: false
+    },
+    product__id: {
+        type: Number,
+        required: false
+    },
+    variant__id: {
         type: Number,
         required: false
     }
 },
     {
-        timestamps:  true
-        
+        timestamps: true
+
     })
 
-   
-    // searchPostSchema.index({ content: "text" });
-    // product_schema.index({ product__name: 'text' });
+
+// searchPostSchema.index({ content: "text" });
+// product_schema.index({ product__name: 'text' });
 const Product = mongoose.model("proucts", product_schema)
 
 module.exports = { Product }

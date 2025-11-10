@@ -48,7 +48,7 @@ const edit_menu_organizer = async (req, res) => {
 
 
 const fetchMenuOrganizer = async (req, res) => {
-    console.log("executed controller-- 1 ");
+   
     try {
 
         if (req && req.query && req.query.store_id) {
@@ -57,8 +57,8 @@ const fetchMenuOrganizer = async (req, res) => {
             let limit = req.query.limit
             let sort = req.query.sort
             let sort_type = req.query.sort_type
-            let application_id = req.user.application_id
-            let results = await menu_organizer_service.getMenuCategory(store_id, offset, limit, sort, sort_type, application_id)
+            // let application_id = req.user.application_id
+            let results = await menu_organizer_service.getMenuCategory(store_id, offset, limit, sort, sort_type, "application_id")
 
             if (results == null) {
                 let error = new Error("data not found ")
@@ -75,7 +75,7 @@ const fetchMenuOrganizer = async (req, res) => {
             throw error
         }
     } catch (error) {
-        console.log("executed controller-- 1 ");
+        
         res.status(500).json({
             status: "error",
             message: error.message

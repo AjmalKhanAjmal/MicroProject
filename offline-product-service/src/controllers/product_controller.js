@@ -3,17 +3,14 @@ const logger = require("../utills/logger")
 const { productSchema } = require("../utills/productValidator")
 const saveProduct = async (req, res, next) => {
     logger.info(" received request to saveProduct /api/product")
-    const { name, price, description, status, category_id, store_id, service_type, application_id } = req.body
-    logger.info(" input fields : ", { name, price, description, status, category_id, store_id, service_type, application_id })
+    const { name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id } = req.body
+    logger.info(" input fields : ", { name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id })
     try {
         let { error } = productSchema.validate(req.body)
         if (error) {
-            console.log("error", error.message);
-            console.log("error -- 1 ", error.details[0].message);
-
             throw error
         }
-        let results = await product_service.createProduct(name, price, description, status, category_id, store_id, service_type, application_id)
+        let results = await product_service.createProduct(name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id)
         res.status(200).json(results)
 
     } catch (error) {
@@ -36,7 +33,7 @@ const fetchProducts = async (req, res, next) => {
     try {
         const { store_id, status, service_types, category_ids, application_id } = req.body
         let results = await product_service.getProducts(store_id, status, service_types, category_ids, application_id)
-        if(results == null){
+        if (results == null) {
             let error = new Error("data not found")
             error.status = 404
             throw error
@@ -69,19 +66,40 @@ const removeProduct = async (req, res, next) => {
 }
 
 
-const fetchIndexProducts = async (req,res,next)=>{
-    try{
-        if(req && req.params){
+const fetchIndexProducts = async (req, res, next) => {
+    try {
+        if (req && req.params) {
             // console.log("req.params.name",req.params.name);
-            
+
             let results = await product_service.productIndexSearch(req.params.name)
-            return res.json(results)
+            res.json(results)
         }
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        
+
         next(error)
     }
 }
 
-module.exports = { saveProduct, fetchProducts, removeProduct,fetchIndexProducts }
+
+const fetchProductById = async (req, res, next) => {
+    try {
+        if (req && req.params && req.params.id) {
+            let results = await product_service.getProductById(req.params.id)
+            if (results == null) {
+                let error = new Error("data not found ")
+                error.status = 404
+                throw error/*  */
+            }
+
+            res.status(200).json(results)
+        }/*  */
+        else {
+            let error = new Error("id missing in params ")
+            throw error
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+module.exports = { saveProduct, fetchProducts, removeProduct, fetchIndexProducts, fetchProductById }

@@ -2,7 +2,7 @@ const { error } = require("winston");
 const { Product } = require("../model/product")
 const logger = require("../utills/logger")
 
-const createProduct = async (name, price, description, status, category_id, store_id, service_type, subscribed_application_id) => {
+const createProduct = async (name, price, description, status, category_id, store_id, service_type, subscribed_application_id, product_id, variant_id) => {
     // logger.debug("Creating product with name: %s", name )
     logger.debug(`Creating product with name: ${name}`);
 
@@ -15,6 +15,8 @@ const createProduct = async (name, price, description, status, category_id, stor
         const product__status = status
         const product__store_id = store_id
         const products__service_type = service_type
+        const product__id = product_id/*  */
+        const variant__id = variant_id
         let application_id = subscribed_application_id
         let results = await Product.create({
             product__name,
@@ -24,7 +26,9 @@ const createProduct = async (name, price, description, status, category_id, stor
             product__status,
             product__store_id,
             products__service_type,
-            application_id
+            application_id,
+            product__id,
+            variant__id
         })
         return results
     } catch (error) {
@@ -55,7 +59,7 @@ const getProducts = async (store_id, status, service_types, category_ids, subscr
 
     try {
         let filter = {
-            application_id: subscribed_application_id
+            // application_id: subscribed_application_id
         }
         if (store_id) {
             filter.product__store_id = store_id
@@ -166,8 +170,8 @@ const productIndexSearch = async (name) => {
             })
                 .limit(10 - map.size)
 
-                // console.log("substringResults",substringResults);
-                
+            // console.log("substringResults",substringResults);
+
             substringResults.forEach(function (data) {
                 map.set(data._id, data)
             })
@@ -263,7 +267,47 @@ const productIndexSearch = async (name) => {
 // console.log(productIndexSearch("Car"));
 
 
-module.exports = { createProduct, deleteProduct, getProducts, productIndexSearch }
+
+
+
+
+
+async function getProductById(id) {
+    try {
+        let results = await Product.find({
+            product__id: id
+        })
+        
+        if (!results || results.length < 1) {
+            return null
+        }
+        return results
+    } catch (error) {
+        throw error
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = { createProduct, deleteProduct, getProducts, productIndexSearch,getProductById }
 
 
 
