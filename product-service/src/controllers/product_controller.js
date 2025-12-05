@@ -1,6 +1,8 @@
 const createProduct = require("../services/product_service")
 const productFileService = require("../services/product_file_service")
-
+const logger = require("../utills/logger")
+const { parseFileFromBuffer } = require("../utills/file_parser")
+const { processProductFile } = require("../services/productUpload.service")
 const saveProduct = async (req, res) => {
 
     try {
@@ -10,8 +12,8 @@ const saveProduct = async (req, res) => {
                 message: "bad requst"
             })
         }
-        
-        let results = await createProduct.createProduct(req.body,req.redisClient)
+
+        let results = await createProduct.createProduct(req.body, req.redisClient)
 
         return res.status(200).json(results)
 
@@ -30,7 +32,7 @@ const productById = async (req, res) => {
         if (req.params && req.params.id) {
 
 
-            let results = await createProduct.getProductById(req.params.id,req.redisClient)
+            let results = await createProduct.getProductById(req.params.id, req.redisClient)
             if (results === null) {
                 return res.status(404).json({
                     status: "error",
@@ -60,13 +62,13 @@ const getProductS = async (req, res) => {
                 status = req.query.status
                 store_id = req.query.store_id
 
-                let results = await createProduct.getAllProducts(limit, offset, sort, sort_type, store_id, category_id, status,req.redisClient)
+                let results = await createProduct.getAllProducts(limit, offset, sort, sort_type, store_id, category_id, status, req.redisClient)
 
                 return res.status(200).json(results)
-            }else{
+            } else {
                 return res.json({
-                    status : "error",
-                    message : "store id is required"
+                    status: "error",
+                    message: "store id is required"
                 })
             }
         }
@@ -83,7 +85,7 @@ const removeProduct = async (req, res) => {
     try {
         if (req && req.params) {
             let id = req.params.id
-            let results = await createProduct.deleteProductById(id,req.redisClient)
+            let results = await createProduct.deleteProductById(id, req.redisClient)
             if (results === null) {
                 return res.status(404).json({
                     status: "error",
@@ -102,18 +104,44 @@ const removeProduct = async (req, res) => {
 
 
 
-const uploadFileProducts = async (req,res)=>{
+const uploadFileProducts = async (req, res) => {
     console.log("req.file.path  : ", "abcccccc");
-    try{
+    try {
         console.log("req.file.path  : ", req.file.path);
-        
-        let results = await productFileService.uploadProductData( req.file.path)
+        console.log("req.file  : ", req.file);
+        let results = await productFileService.uploadProductData(req.file.path)
         res.status(200).json(results)
-    }catch(error){
+    } catch (error) {
         res.status(500).json({
-            status : "error",
-            "message":error.message
+            status: "error",
+            "message": error.message
         })
     }
 }
-module.exports = { saveProduct, productById, getProductS, removeProduct,uploadFileProducts}
+
+// const productUploadController = async (req,res)=>{
+//     let results = parseFile(req.file.path)
+//     res.json(results)
+// }
+
+async function productUploadController(req, res, next) {
+    try {
+        logger.info("Got hit to process product file controller");
+        console.log("File received:", req.file);
+
+        if (!req.file) {
+            return res.status(400).json({ error: "No file uploaded" });
+        }
+
+        let results = await parseFileFromBuffer(req.file);
+        let files_data = await processProductFile(results)
+        res.json(files_data);
+
+    } catch (error) {
+        logger.error("Unexpected error in product file controller", error);
+        next(error);
+    }
+}
+
+
+module.exports = { saveProduct, productById, getProductS, removeProduct, uploadFileProducts, productUploadController }

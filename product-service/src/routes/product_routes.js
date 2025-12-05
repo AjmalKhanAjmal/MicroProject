@@ -4,7 +4,7 @@ const routes = express.Router()
 
 const product_controller = require("../controllers/product_controller")
 const upload = require("../middleWares/uploads");
-
+const temporay_uploads = require("../middleWares/temporaryUploads");
 
 // routes.post("/product/saveproduct",authenticateRequest,product_controller.saveProduct)
 routes.post("/product/saveproduct",product_controller.saveProduct)
@@ -17,4 +17,5 @@ routes.delete("/product/:id",product_controller.removeProduct)
 // CSV upload route
 routes.post("/product/upload", upload.single("file"), product_controller.uploadFileProducts);
 
+routes.post("/upload/product",temporay_uploads.single("file"),product_controller.productUploadController)
 module.exports = routes

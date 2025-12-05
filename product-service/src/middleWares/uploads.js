@@ -6,6 +6,8 @@ const path = require("path");
 
 const uploadDir = path.join(__dirname, "../../src/uploads"); // adjust according to your folder depth
 
+
+
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true }); // recursive ensures nested folders are created
 }

@@ -21,6 +21,7 @@ const fs = require("fs")
 const csv = require("csv-parser");
 
 function uploadProductData(filePath) {
+    
     return new Promise((resolve, reject) => {
         try {
             let product_list = [];
