@@ -1,0 +1,212 @@
+FlowChart : 
+=============
+/src
+  /models
+    Order.js
+  /payments
+    PaymentGateway.js
+    StripeGateway.js
+    PayPalGateway.js
+  /services
+    OrderService.js
+  /controllers
+    OrderController.js
+  server.js
+
+
+File : 1  
+==========
+// src/models/Order.js
+class Order {
+  #items;
+  #discount = 0;
+
+  constructor(user, items = []) {
+    this.user = user;
+    this.#items = items;
+    this.paid = false;
+    this.paymentRef = null;
+  }
+
+  addItem(item) {
+    this.#items.push(item);
+  }
+
+  applyDiscount(amount) {
+    this.#discount = amount;
+  }
+
+  calculateTotal() {
+    const subtotal = this.#items.reduce((sum, it) => sum + it.price * it.qty, 0);
+    return subtotal - this.#discount;
+  }
+
+  markPaid(ref) {
+    this.paid = true;
+    this.paymentRef = ref;
+  }
+
+  toJSON() {
+    return {
+      user: this.user,
+      items: this.#items,
+      total: this.calculateTotal(),
+      paid: this.paid,
+      paymentRef: this.paymentRef
+    };
+  }
+}
+
+module.exports = Order;
+
+
+
+
+File  : 2
+==========
+// src/payments/PaymentGateway.js
+class PaymentGateway {
+  constructor(config) {
+    this.config = config;
+  }
+
+  async charge(order, amount) {
+    throw new Error("charge() must be implemented by subclasses");
+  }
+}
+
+module.exports = PaymentGateway;
+
+
+
+
+
+File  : 3
+==========
+// src/payments/StripeGateway.js
+const PaymentGateway = require("./PaymentGateway");
+
+class StripeGateway extends PaymentGateway {
+  async charge(order, amount) {
+    console.log("Charging via Stripe...");
+
+    // Simulated API call
+    return {
+      success: true,
+      ref: "stripe_" + Date.now()
+    };
+  }
+}
+
+module.exports = StripeGateway;
+
+
+
+
+File  : 4
+==========
+
+
+// src/payments/PayPalGateway.js
+const PaymentGateway = require("./PaymentGateway");
+
+class PayPalGateway extends PaymentGateway {
+  async charge(order, amount) {
+    console.log("Charging via PayPal...");
+
+    // Simulated API call
+    return {
+      success: true,
+      ref: "paypal_" + Date.now()
+    };
+  }
+}
+
+module.exports = PayPalGateway;
+
+
+
+
+
+File  : 5
+==========
+
+// src/services/OrderService.js
+
+class OrderService {
+  constructor(paymentGateway) {
+    this.paymentGateway = paymentGateway; // Polymorphism
+  }
+
+  async checkout(order) {
+    const amount = order. ();
+
+    const result = await this.paymentGateway.charge(order, amount);
+
+    if (result.success) {
+      order.markPaid(result.ref);
+    }
+
+    return order;
+  }
+}
+
+module.exports = OrderService;
+
+
+
+
+
+
+
+File  : 6
+==========
+
+// src/controllers/OrderController.js
+const Order = require("../models/Order");
+const StripeGateway = require("../payments/StripeGateway");
+const OrderService = require("../services/OrderService");
+
+class OrderController {
+  static async createOrder(req, res) {
+    const user = req.body.user;
+    const items = req.body.items;
+    const discount = req.body.discount || 0;
+
+    // Create order object
+    const order = new Order(user, items);
+    order.applyDiscount(discount);
+
+    // Using Stripe by default
+    const gateway = new StripeGateway({ apiKey: "sk_test" });
+
+    const orderService = new OrderService(gateway);
+    const paidOrder = await orderService.checkout(order);
+
+    res.json({
+      message: "Order processed successfully",
+      order: paidOrder.toJSON()
+    });
+  }
+}
+
+module.exports = OrderController;
+
+
+
+
+
+File  : 7
+==========
+
+// server.js
+const express = require("express");
+const OrderController = require("./src/controllers/OrderController");
+
+const app = express();
+app.use(express.json());
+
+// Routes
+app.post("/create-order", OrderController.createOrder);
+
+app.listen(3000, () => console.log("Server running on port 3000"));
