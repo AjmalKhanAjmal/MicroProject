@@ -210,3 +210,133 @@ app.use(express.json());
 app.post("/create-order", OrderController.createOrder);
 
 app.listen(3000, () => console.log("Server running on port 3000"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step : 1 
+
+
+
+class Order {
+  #items;
+  #discount = 0;
+  #tax_details;
+  included_tax_total = 0
+  sub_total = 0
+  total = 0
+  constructor(user, platform_fee = 0 ) {
+    this.user = user;
+    // this.#items = items;
+    this.paid = false;
+    this.paymentRef = null;
+    this.platform_fee = platform_fee
+  }
+
+
+  addItems(items) {
+    try {
+      if (!Array.isArray(items)) {
+        let error = new Error("missing items or items not in array")
+        throw error
+      }
+      this.#items = items;
+      // console.log(this.#items);
+
+    } catch (err) {
+      console.log(err);
+
+    }
+  }
+
+
+  addTaxDetails(tax) {
+    this.#tax_details = tax
+  }
+  calculateTotal() {
+    let sub_ttl = 0
+
+    for (let i = 0; i < this.#items.length; i++) {
+      let current_record = this.#items[i]
+      sub_ttl += Number(current_record.products__price)
+      this.included_tax_total += this.#tax_details.reduce((accu, details) => {
+        if (details.tax_category_id == current_record.products__tax_category_id) {
+          return accu + current_record.products__price * details.amount / 100
+        }
+      }, 0)
+    }
+    this.sub_total = sub_ttl
+
+
+    this.total = this.platform_fee + this.included_tax_total + this.sub_total
+  }
+
+
+  toJSON() {
+    return {
+      "sub_total": this.sub_total.toFixed(2),
+      "total": this.total.toFixed(2),
+      "included_tax_total": this.included_tax_total.toFixed(2),
+      "platform_fee": this.platform_fee.toFixed(2)
+    }
+
+  }
+
+}
+
+
+
+let tax_details = [{
+  "amount": 6.33,
+  "zone_id": 2,
+  "tax_category_id": 3880217089818077,
+  "included_in_price": true,
+  "name": "Sample Modifier Tax3"
+}]
+
+let products = [{
+  "products__name": "Upma",
+  "products__description": "Upma",
+  "products__price": 9.0,
+  "products__files": "[]",
+  "products__tax_category_id": 3880217089818077,
+  "products__category_id": 3899131312327677,
+  "products__is_single_variant": true,
+  "products__prod_size": null,
+  "products__brand": null
+}, {
+  "products__name": "Biryani",
+  "products__description": "Biryani",
+  "products__price": 19.0,
+  "products__files": "[]",
+  "products__tax_category_id": 3880217089818077,
+  "products__category_id": 3899131312327677,
+  "products__is_single_variant": true,
+  "products__prod_size": null,
+  "products__brand": null,
+}]
+const order = new Order({ "a": "value " },1.99)
+
+
+
+// order.addItems([{ "abv": "j sd" }])
+order.addTaxDetails(tax_details)
+order.addItems(products)
+order.calculateTotal()
+console.log(order.toJSON());
+
+console.log(order);
+
+
+
+
+
