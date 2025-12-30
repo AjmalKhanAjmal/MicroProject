@@ -39,10 +39,10 @@ class Order {
 
     for (let i = 0; i < this.#items.length; i++) {
       let current_record = this.#items[i]
-      sub_ttl += Number(current_record.products__price)
+      sub_ttl += Number(current_record.product__price)
       this.included_tax_total += this.#tax_details.reduce((accu, details) => {
         if (details.tax_category_id == current_record.products__tax_category_id) {
-          return accu + current_record.products__price * details.amount / 100
+          return accu + current_record.product__price * details.amount / 100
         }
       }, 0)
     }

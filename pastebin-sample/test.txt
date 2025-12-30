@@ -1,0 +1,42 @@
+
+step - 1 : npm init -y
+step -2 : npm install express ioredis uuid ejs dotenv
+
+step -3 : 
+routes
+services
+utils
+db
+views
+
+step -4 :
+server.js
+.env
+
+
+pastebin-sample/
+├── package.json
+├── .env
+└── src/
+    ├── server.js
+    ├── routes/
+    ├── services/
+    ├── db/
+    ├── utils/
+    └── views/
+
+
+health api 
+============
+curl --location 'http://localhost:3000/api/healthz'
+
+
+pastes
+=========
+curl --location 'http://localhost:3000/api/pastes' \
+--header 'Content-Type: application/json' \
+--data '{
+    "content": "Hello, this is my first paste",
+    "ttl_seconds": 20,
+    "max_views": 2
+}'
