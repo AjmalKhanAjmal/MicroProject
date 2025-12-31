@@ -1,20 +1,32 @@
-
-
 const { connectMongo } = require("../config/mongo");
 const mongoose = require("mongoose");
 const { Order } = require("../domain/order");
-function orderService (){
+async function orderService() {
 
-const order = new Order()
-const productIds = [
-  "68ee53c195cf76d135e4e29d",
-  "68ee53c895cf76d135e4e29e"
-];
-let products = []
+  const order = new Order()
+
+  let products = []
+
+  products = await getData();
+  order.addTaxDetails(tax_details)
+  order.addItems(products)
+  order.calculateTotal()
+  return order.toJSON()
+
+  // console.log(order);
+
+
+}
+
 
 async function getData() {
   const conn = await connectMongo();
+  const productIds = [
+    "68ee53c195cf76d135e4e29d",
+    "68ee53c895cf76d135e4e29e"
+  ];
 
+  
   products = await conn.db
     .collection("products")
     .find({
@@ -24,28 +36,11 @@ async function getData() {
     })
     .toArray();
 
-  // console.log(products);
+ return  products
 }
 
 
-(async ()=>{
-  await getData();
-  order.addTaxDetails(tax_details)
-  order.addItems(products)
-  order.calculateTotal()
-  console.log(order.toJSON());
-
-  // console.log(order);
-
-})()
-
-
-
-}
-
-
-
-module.exports = {orderService}
+module.exports = { orderService }
 
 let tax_details = [{
   "amount": 6.33,
