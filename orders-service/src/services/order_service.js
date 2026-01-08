@@ -7,11 +7,30 @@ async function orderService() {
 
   let products = []
 
+
+  db_tax_details = [{
+    id: "68ee53c195cf76d135e4e29d",
+    amount: 10
+  },
+  {
+    id: "68ee53c195cf76d135e4e29d",
+    amount: 20
+  }
+  ]
+
   products = await getData();
   order.addTaxDetails(tax_details)
   order.addItems(products)
-  order.calculateTotal()
+  // order.calculateTax(db_tax_details)
+  order.calculateSubTotal()
+  order.calculateTax(db_tax_details)
+  order.calculateTip("percentage", 10)
+  // await Promise.all([order.calculateTax(db_tax_details),order. calculateTip("percentage",10)])
+
+  console.log(order.toJSON());
   return order.toJSON()
+ 
+
 
   // console.log(order);
 
@@ -26,7 +45,7 @@ async function getData() {
     "68ee53c895cf76d135e4e29e"
   ];
 
-  
+
   products = await conn.db
     .collection("products")
     .find({
@@ -35,9 +54,15 @@ async function getData() {
       }
     })
     .toArray();
-
- return  products
+  console.log(products);
+  return products
 }
+
+
+
+
+orderService()
+
 
 
 module.exports = { orderService }

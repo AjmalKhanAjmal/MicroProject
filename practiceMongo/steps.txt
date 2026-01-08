@@ -1,0 +1,61 @@
+npm init -y
+npm install mongoose express dotenv nodemon 
+
+findByIdAndDelete
+
+ let filter = {
+            // application_id: subscribed_application_id
+        }
+        if (store_id) {
+            filter.product__store_id = store_id
+        }
+        if (category_ids && category_ids.length > 0) {
+            filter.product__category_id = { $in: category_ids }
+        }
+
+
+
+Product.find(filter)
+
+
+
+
+
+problems :  
+
+db.proucts.aggregate([
+  {
+    $match: {
+      product__status: "active"
+    }
+  },
+  {
+    $group: {
+      _id: "$application_id",
+      product_names: { $push: "$product__name" }
+    }
+  },
+  {
+    $project: {
+      application_id: "$_id",
+      product_names: 1,
+      _id: 0
+    }
+  }
+])
+
+
+
+problem : 2
+
+db.products.find({
+  $and: [
+    { product__name: "Gulab Jamun" },
+    { product__status: "active" }
+  ]
+})
+
+
+problem : 3
+
+db["proucts"].find({product__name : {$eq :"Gulab Jamun"}})

@@ -11,3 +11,16 @@ new Promise((resolve,reject)=>{
         )
     })
 })
+
+
+// const mongoose = require("mongoose");
+
+// const driver_mongo_url = `${process.env.MONGO_HOST_URL}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}`;
+
+// mongoose.connect(driver_mongo_url)
+//   .then(() => {
+//     console.log("db connected successfully");
+//   })
+//   .catch((error) => {
+//     console.log("error -- :", error.message);
+//   });

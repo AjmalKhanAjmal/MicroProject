@@ -2,7 +2,7 @@ const Sequelize = require("sequelize")
 require('dotenv').config()
 
 
-
+  
 const db = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -19,7 +19,7 @@ const db = new Sequelize(
 async function connect(){
     try{
         await db.authenticate()
-        console.log("db connected Successfully ");
+        console.log("db connected Successfully");
     }
     catch (error){
         console.log(error.message);
