@@ -59,3 +59,116 @@ db.products.find({
 problem : 3
 
 db["proucts"].find({product__name : {$eq :"Gulab Jamun"}})
+
+
+
+
+
+
+
+
+
+Integration : 
+==================
+
+axios.post(
+  "http://localhost:9000/api/users",
+  {
+    name: "Ajmal",
+    email: "ajmal@gmail.com",
+    role: "user"
+  },
+  { headers }
+);
+
+
+
+axios.get(
+  "http://localhost:9000/api/users",
+  {
+    params: {
+      page: 1,
+      limit: 10,
+      sort: "createdAt"
+    },
+    headers
+  }
+);
+
+
+axios.get(
+  "http://localhost:9000/api/users/10",
+  { headers }
+);
+
+
+axios.put(
+  "http://localhost:9000/api/users/10",
+  {
+    name: "Ajmal Updated",
+    email: "new@gmail.com"
+  },
+  { headers }
+);
+
+
+axios.patch(
+  "http://localhost:9000/api/users/10",
+  { name: "Only Name Changed" },
+  { headers }
+);
+
+
+axios.delete(
+  "http://localhost:9000/api/users/10",
+  { headers }
+);
+
+
+Fetch : 
+============
+const createUser = async () => {
+  const response = await fetch(
+    "http://localhost:9000/api/users",
+    {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        name: "Ajmal",
+        email: "ajmal@gmail.com",
+        role: "user"
+      })
+    }
+  );
+
+  if (!response.ok) throw new Error("Create failed");
+
+  const data = await response.json();
+  console.log(data);
+};
+
+
+
+
+fetch(`http://localhost:9000/api/users/10`, {
+  headers
+});
+
+
+
+
+const params = new URLSearchParams({
+  page: 1,
+  limit: 10
+});
+
+fetch(`http://localhost:9000/api/users/25?${params}`, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "Bearer token"
+  },
+  body: JSON.stringify({
+    status: "active"
+  })
+});

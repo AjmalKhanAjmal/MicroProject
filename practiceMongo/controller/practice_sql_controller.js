@@ -1,58 +1,160 @@
 const { db } = require("../config/sql_bd_con")
-
+const axios = require("axios")
 const { practice_table_schema } = require("../model/practice_model_sql")
 
 
 const createPracticeTable = async (name, description, req, res) => {
-    try {
-        // if (req && req.body) {
-        
-        // }
-        await db.sync();
-        let create_table = await practice_table_schema.create({
-            name, description
-        })
+  try {
+    // if (req && req.body) {
 
-        console.log(create_table);
+    // }
+    await db.sync();
+    let create_table = await practice_table_schema.create({
+      name, description
+    })
 
-    } catch (error) {
-        console.log(error.message);
+    console.log(create_table);
 
-        // res.status(500).json({
-        //     'status': "error",
-        //     'message': error.message
-        // })
-    }
+  } catch (error) {
+    console.log(error.message);
+
+    // res.status(500).json({
+    //     'status': "error",
+    //     'message': error.message
+    // })
+  }
 
 }
 
 
 
-const findPracticeTable = async ( req, res) => {
-    try {
-        await db.sync();
-        let create_table = await practice_table_schema.findAll({  attributes: ["id", "name", "description"],limit : 10, offset : 1,raw: true })
+const findPracticeTable = async (req, res) => {
+  try {
+    let limit = 10;
+    let offset = 0
+    await db.sync();
+    let create_table = await practice_table_schema.findAll({ order: [["id", "asc"]], raw: true, offset, limit })
 
-        console.log("dataaa",create_table);
-
-//         limit,
-//   offset,
-//   order: [["createdAt", "DESC"]],
-//   raw: true,
-
-    } catch (error) {
-        console.log(error.message);
-
-        // res.status(500).json({
-        //     'status': "error",
-        //     'message': error.message
-        // })
+    let ApiResponse = {
+      total_count: create_table.count,
+      data: create_table
     }
+    console.log("dataaa", ApiResponse);
+
+    //   limit,
+    //   offset,
+    //   order: [["createdAt", "DESC"]],
+    //   raw: true,
+
+  } catch (error) {
+    console.log(error.message);
+
+    // res.status(500).json({
+    //     'status': "error",
+    //     'message': error.message
+    // })
+  }
 
 }
 // createPracticeTable("John", 'john bhai')
 
-findPracticeTable()
+// findPracticeTable()
+
+
+
+
+
+
+
+const updatePracticeTable = async (req, res) => {
+  let data = {
+    name: "joseph",
+    description: "sdd"
+  }
+  let results = await practice_table_schema.update(data, {
+    where: { id: 1 }
+  })
+
+
+  console.log(results);
+
+}
+
+
+
+const deletePracticeTable = async (req, res) => {
+  let data = {
+    name: "joseph",
+    description: "sdd"
+  }
+
+  id = 1
+  let results = await practice_table_schema.destroy({
+    where: { id }
+  })
+
+
+
+  console.log(results);
+
+}
+
+// (async () => {
+
+//   await updatePracticeTable()
+//   await findPracticeTable()
+// }
+// )()
+
+// deletePracticeTable()
+// findPracticeTable()
+
+
+
+
+
+// axios
+// =======
+
+// axios.post(url, payload, { headers })
+
+let url = 'http://localhost:9000/api/practice_table'
+// let payload ={
+//   "name": "abcc",
+//   "details": {
+//     "type": "anbdna",
+//     "required": "kndknk"
+//   },
+//   "ids": [
+//     7483,
+//     23,
+//     54
+//   ]
+// }
+
+
+
+
+// GET :
+// ===========================
+//   const url = "http://localhost:9000/api/practice_table"
+//   const response = await axios.get(url); // 👈 wait here
+//    res.status(200).json(response.data);
+
+  //  console.log({
+  //   data : JSON.stringify(data.data, null, 2)
+  // });
+  
+  
+// })
+// response.then((data)=>{
+//   console.log(data);
+  
+// })
+
+
+
+
 
 
 //==================
@@ -150,3 +252,5 @@ logging: false
     });
 
 */
+
+
