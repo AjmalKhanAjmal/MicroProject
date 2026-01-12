@@ -107,13 +107,44 @@ class Order {
   calculateDiscount() {
 
   }
+
+  total = this.included_tax_total +this.sub_total + this.tip_total
+
+
+ getOrderNumber() {
+    // if (number.length < 2) {
+    //   throw new Error('Length should be at least 2');
+    // }
+    const letterCharset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numberCharset = '0123456789';
+    let randomString = '';
+    // Generate the first character (letter)
+    const randomLetterIndex = Math.floor(Math.random() * letterCharset.length);
+    randomString += letterCharset.charAt(randomLetterIndex);
+    // Generate the remaining characters (numbers)
+    for (let i = 1; i < 10; i++) {
+      const randomNumberIndex = Math.floor(Math.random() * numberCharset.length);
+      randomString += numberCharset.charAt(randomNumberIndex);
+    }
+    return randomString;
+  }
+
+calculateTotal() {
+  this.total =
+    this.included_tax_total +
+    this.sub_total +
+    this.tip_total;
+    return this.total
+}
+
   toJSON() {
     return {
       "sub_total": this.sub_total.toFixed(2),
-      "total": this.total.toFixed(2),
+      "total": this.calculateTotal(),
       "included_tax_total": this.included_tax_total.toFixed(2),
       "platform_fee": this.platform_fee.toFixed(2),
-      "tip_total":this.tip_total
+      "tip_total":this.tip_total,
+      "order_number" : this.getOrderNumber()
 
     }
 

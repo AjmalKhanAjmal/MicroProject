@@ -21,7 +21,7 @@ async function orderService() {
   products = await getData();
   order.addTaxDetails(tax_details)
   order.addItems(products)
-  // order.calculateTax(db_tax_details)
+  
   order.calculateSubTotal()
   order.calculateTax(db_tax_details)
   order.calculateTip("percentage", 10)
@@ -31,8 +31,6 @@ async function orderService() {
   return order.toJSON()
  
 
-
-  // console.log(order);
 
 
 }
@@ -54,7 +52,7 @@ async function getData() {
       }
     })
     .toArray();
-  console.log(products);
+   
   return products
 }
 
