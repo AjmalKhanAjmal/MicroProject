@@ -1,0 +1,8 @@
+npx create-react-app order-app
+
+cd order-app
+
+npm start
+
+
+npm install socket.io-client

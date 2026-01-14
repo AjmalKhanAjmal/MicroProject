@@ -1,13 +1,54 @@
 const express = require("express")
+const http = require("http");
+
 const app =  express()
+
+const { initSocket} = require("./src/socket/index");
 const {route}=  require("./src/routes/order_routes")
+
+
+
 require("dotenv").config()
+
+const server = http.createServer(app);
+
 app.use(route)
 
 
-console.log("hirt 1 ");
+initSocket(server);
 
-app.listen(process.env.SERVER_PORT,()=>{
-    console.log("server running on PORT : ",process.env.SERVER_PORT);
+server.listen(process.env.SERVER_PORT, () => {
+  console.log(`Server running on port ${process.env.SERVER_PORT}`);
+});
+
+
+//Importtatnt 
+//++++++++++++++++
+
+// app.listen(5000);
+// Behind the scenes Express does this 👇
+
+// js
+// Copy code
+// const server = http.createServer(app);
+// server.listen(5000);
+
+
+
+
+
+// app.listen(process.env.SERVER_PORT,()=>{
+//     console.log("server running on PORT : ",process.env.SERVER_PORT);
     
-})
+// })
+
+
+
+
+
+// const PORT = 5000;
+
+// create HTTP server
+// const server = http.createServer(app);
+
+// init socket.io

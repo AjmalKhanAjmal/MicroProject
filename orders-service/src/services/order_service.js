@@ -1,6 +1,7 @@
 const { connectMongo } = require("../config/mongo");
 const mongoose = require("mongoose");
 const { Order } = require("../domain/order");
+const { getIO } = require('../socket/index')
 async function orderService() {
 
   const order = new Order()
@@ -21,17 +22,19 @@ async function orderService() {
   products = await getData();
   order.addTaxDetails(tax_details)
   order.addItems(products)
-  
+
   order.calculateSubTotal()
   order.calculateTax(db_tax_details)
   order.calculateTip("percentage", 10)
+
+  setTimeout(() => {
+    getIO().emit("orderCreated", order);
+  },10000)
+
   // await Promise.all([order.calculateTax(db_tax_details),order. calculateTip("percentage",10)])
 
-  console.log(order.toJSON());
+  // console.log(order.toJSON());
   return order.toJSON()
- 
-
-
 
 }
 
@@ -52,7 +55,7 @@ async function getData() {
       }
     })
     .toArray();
-   
+
   return products
 }
 
