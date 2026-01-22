@@ -1,0 +1,187 @@
+promise callbacks Example :
+=================================
+
+
+// function proceedToPayment(cart_id) {
+//     return new Promise((resolve, reject) => {
+//         (!cart_id) ? reject("cart_id required") : ""
+
+//         setTimeout(() => {
+//             resolve({
+//                 "data": {
+//                     message: "payment done",
+//                     cart_id: cart_id
+//                 }
+//             })
+//         }, 1000)
+//     })
+// }
+
+
+
+
+
+// function createOrder(cart_id) {
+//     let data = {
+//         "data": {
+//             message: "order created",
+//             cart_id: cart_id,
+//             order_id: "2352"
+//         }
+//     }
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             console.log(data);
+
+//             resolve(data)
+//         }, 1000)
+//     })
+// }
+
+
+// function sendEmail(data) {
+//     return new Promise((resolve, reject) => {
+//         if (data?.cart_id) {
+//             setTimeout(() => {
+//                 console.log("Email sent");
+//             }, 1000)
+//         }
+//         else {
+//             reject("error in sendding email ")
+//         }
+//     })
+// }
+// proceedToPayment("1234")
+//     .then((data) => {
+//         if (data?.data?.cart_id) {
+//             return createOrder(data.data.cart_id)
+//         }
+//     })
+//     .then((createOrder) => {
+//         if (createOrder?.data?.cart_id) {
+//             sendEmail(createOrder.data)
+//         }
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
+
+// proceedToPayment().then((data) => {
+//     console.log("dataa : ", data);
+// }).catch((error)=>{
+//     console.log(error);
+// })
+
+
+
+
+
+
+
+
+function proceedToPayment(cart_id, callback) {
+
+    (!cart_id) ? callback("cart_id required") : ""
+
+    setTimeout(() => {
+        callback(null, {
+            "data": {
+                message: "payment done",
+                cart_id: cart_id
+            }
+        })
+    }, 1000)
+
+}
+
+
+
+
+
+function createOrder(data) {
+    let data =
+        (!data) ? callback("cart_id required") : ""
+
+    setTimeout(() => {
+        callback(null, {
+            "data": {
+                message: "order created",
+                cart_id: cart_id,
+                order_id: "2352"
+            }
+        })
+    }, 1000)
+}
+
+
+function sendEmail(data) {
+    if (data?.cart_id) {
+        setTimeout(() => {
+            console.log("Email sent");
+        }, 1000)
+    }
+    else {
+        reject("error in sendding email ")
+    }
+}
+
+
+
+function sendSMS(data) {
+    if (data?.cart_id) {
+        setTimeout(() => {
+            console.log("Email sent");
+        }, 1000)
+    }
+    else {
+        reject("error in sendding email ")
+    }
+}
+
+function reduceStock(data) {
+    if (data?.cart_id) {
+        setTimeout(() => {
+            console.log("Email sent");
+        }, 1000)
+    }
+    else {
+        reject("error in sendding email ")
+    }
+}
+
+function validateCoupon(){
+    
+}
+
+// Simulating a real checkout for cart_id "1234"
+function checkout(cart_id) {
+    console.log("Starting checkout for cart:", cart_id);
+
+    proceedToPayment(cart_id, (paymentError, paymentData) => {
+        if (paymentError) {
+            return console.error("Payment Error:", paymentError);
+        }
+        console.log("Payment successful:", paymentData.data.cart_id);
+
+        createOrder(paymentData.data.cart_id, (orderError, orderData) => {
+            if (orderError) {
+                return console.error("Order Creation Error:", orderError);
+            }
+            console.log("Order created with ID:", orderData.data.order_id);
+
+            sendEmail(orderData, (emailError, emailStatus) => {
+                if (emailError) {
+                    return console.error("Email Error:", emailError);
+                }
+                console.log("Checkout Complete! Email Status:", emailStatus);
+            });
+        });
+    });
+}
+
+
+
+
+// Run the checkout
+checkout("1234");
+

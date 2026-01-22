@@ -13,6 +13,68 @@ app.listen(9000, () => {
 })
 app.use(express.json());
 
+
+
+
+
+
+
+class OrderService {
+  createOrder() {
+    console.log("Order created");
+  }
+}
+
+class OrderController {
+  constructor(service) {
+    this.service = service;
+  }
+
+  create(req, res) {
+    this.service.createOrder();
+    res.send("OK");
+  }
+}
+
+const service = new OrderService();
+const controller = new OrderController(service);
+
+app.post("/orders", controller.create.bind(controller));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post('/api/practice_table/intt', async (req, res) => {
 
     try {

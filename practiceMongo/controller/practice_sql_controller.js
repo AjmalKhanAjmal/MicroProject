@@ -3,6 +3,45 @@ const axios = require("axios")
 const { practice_table_schema } = require("../model/practice_model_sql")
 
 
+
+ 
+
+
+
+
+
+
+class OrderService {
+  createOrder() {
+    console.log("Order created");
+  }
+}
+
+class OrderController {
+  constructor(service) {
+    this.service = service;
+  }
+
+  create(req, res) {
+    this.service.createOrder();
+    res.send("OK");
+  }
+}
+
+const service = new OrderService();
+const controller = new OrderController(service);
+
+app.post("/orders", controller.create.bind(controller));
+
+
+
+
+
+
+
+
+
+
 const createPracticeTable = async (name, description, req, res) => {
   try {
     // if (req && req.body) {

@@ -12,7 +12,7 @@ function OrdersGrid() {
     console.log("get  ordersss ");
     
     setOrders([{ id: 2, status: "active" }]);
-  };
+  }; 
 
   useEffect(() => {
     // 1️⃣ Load existing orders
