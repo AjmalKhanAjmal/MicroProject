@@ -1,0 +1,2186 @@
+DBMS
+ 
+ 
+1.What is Table :  Collection of rows and columns.
+ 
+2.What is data base : Collection of tables
+ 
+3.What is database sever : Collection of databases.
+ 
+4.What is database management system 
+:
+ dbms (database management system)
+Dbms is a software which used to store the data.
+● Dbms is a software which used to perform Crud operations with Database Server.
+ 
+--> dbms is a software which allows to create and manage the database.
+--> the database which is created by using dbms software uses files for storing the data.
+ 
+--> files are having disadvantages.
+disadvantages of files 
+1. data redundency (duplicate data)
+2. data inconsistency
+3. no data recovery
+4. limited data
+5. no query language
+6. no security
+ 
+
+Difference between DBMS and MongoDB (Basic English)
+=============================================================
+
+-->DBMS stores data in tables with rows and columns.
+-->DBMS is used when structure is fixed and relations are important.
+Ex : orders
+
+-->MongoDB stores data in JSON-like documents.
+-->Data structure is not fixed and can change easily.
+-->MongoDB is used when data is large, schema changes frequently, and the application needs high scalability and performance
+
+●●rdbms (relational database management system)
+ 
+--> rdbms is the advance version of dbms
+--> rdbms is a software which allows to create and manage the database.
+ 
+●Rdms is used to store or manage the data only in the form of tables
+--> the database which is created using rdbms software uses tables for
+storing the data.
+●RDBMS data is structured in database tables, fields (columns) and records (rows)
+ advantages of rdbms
+I, no data redundancy
+2, data consistency
+3. data recovery
+4 unlimited data
+5 query language support
+6, security
+ 
+●The following are the rdbms softwares
+1. Oracle Database
+2. MySQL Database
+3. Sybase Database
+4. DB2 Database
+5. 5QL Server
+ 
+ 
+What is Sql : 
+=============
+
+--> SQL is a query language which is used to communicate or interact with
+the database server.
+●communicating or interacting with the database means sending the sql queries.
+ 
+●Sql is a query language used to perform Crud operations with dbms software.
+ (oracle DB,My SQL,IBM DB2,...)
+ 
+●Nowadays, SQL is widely used in data science and analytics.
+ 
+ 
+Sql features :
+---------------------
+SEQUEL:  (Structural English Query Language)
+ 
+SQL:
+->Each statement in SQL is called as Query
+ 
+->Each Query in SQL should ends with ;
+ 
+->Sql statements are not case sensitive
+create-> Create, CREATE , CrEate
+ 
+->A11 Sql statements should compiled by SQL> (sql prompt)
+ 
+->One time only one Sql statement should compiled by SQL>
+ 
+->SQL is a collection of following 5 languages commands
+ 
+
+
+Q 3.What is Schema? (Amazon) 
+=================================
+Schema is a logical representation of database.
+Schema is a structural view of a database.
+
+Schema nothing but it says
+It tells what fields are there and what type of data we store.
+
+If interviewer asks What is commc.demo_requests?, say:
+------------------------------------------------------
+“commc is the database name and demo_requests is the table name.”
+
+● It represents the relationship between the tables. However, it does not show the data present in the tables
+It categorized into 3 levels
+●physical level
+●logical level
+●view level 
+
+
+Instance  : 
+=============
+Data of a database can be change frequently (time to time)
+Ex day 1 : 50 stu
+     Day 2  : 70 stu
+ 
+RDBMS data is structured in database tables, fields (columns) and records (rows).
+ 
+ER model
+ 
+ 
+• ER model stands for an Entity-Relationship model. It is a high-level data model.
+• Er model has 3 components 
+• 1.Entity
+       2.Attributes
+        3.Relationships
+•  This model is used to define the data elements and relationship for a specified system.
+Entity : it is a real word objects.ex. Student  teachers,classes.
+Entity set : It is a collection of similar type of entities
+ 
+●An entity may be any object, class, person or place. 
+●In the ER diagram, an entity can be represented as rectangles.
+ 
+Weak Entity
+ 
+An entity that depends on another entity called a weak entity. The weak entity doesn't contain any key attribute of its own. The weak entity is represented by a double rectangle.
+ 
+ 
+ 
+Attributes : . Attribute
+ 
+The attribute is used to describe the property of an entity.
+● Eclipse is used to represent an attribute.
+ 
+For example, id, age, contact number, name, etc. can be attributes of a student.
+https://www.javatpoint.com/dbms-er-model-concept
+
+
+Relationship :
+
+●A relationship is used to describe the relation between entities.
+●Diamond or rhombus is used to represent the relationship.
+●Different types of relationships 
+1. one to one
+2. one to many
+3.many to many
+ 
+
+ 
+●Nowadays, SQL is widely used in data science and analytics.
+ 
+Types of SQL commands
+==========================
+
+-> there are 5 types of 5QL commands
+
+• It is used to perform specific tasks, functions, and queries of data.
+
+There are five types of SQL commands: DDL, DML, DCL, TCL, and DQL.
+ 
++++What is DDL? (TCS) 
+====================
+DDL (Data Definition Language):
+ It is used to define the database structure or schema such as tables.
+●DDL is a set of SQL commands used to create, modify, and delete database structures
+
+●DDL commands are:
+-------------------
+• CREATE
+• ALTER
+• DROP
+• TRUNCATE
+
+• CREATE:
+---------
+ This command is used to create the database or its objects (like table, index, function, views, store procedure, and triggers).
+• Syntax: CREATE database database-name; Example for Creating Database, CREATE database Test;
+ 
+• DROP:
+---------
+ This command is used to delete objects from the database.
+• Syntax: DROP  table table-name; For Example DROP table Student;
+
+ALTER COMMAND : 
+Alter :
+-------
+ Alter command user to modify column information like adding the column dropping the column renaming the column and resizing the column.
+ 
+Alter command is used for alteration of table Drop Command There are various uses of alter command, such as: 
+● to add a column to the existing table .
+
+ALTER TABLE Student
+ADD age INT;
+
+ ● to rename any existing column.
+
+ALTER TABLE Student
+RENAME COLUMN name TO student_name;
+
+ ● to change the datatype of any column or to modify its size.
+
+ALTER TABLE Student
+MODIFY name VARCHAR(100);
+
+● alter is also used to drop a column.
+
+ALTER TABLE Student
+DROP COLUMN age;
+
+ 
+TRUNCATE:
+----------
+ It is used to delete all the rows from the table and free the space containing the table.
+Drop command delete total structure or table of database, 
+Truncate delete all the data in database or rows in database
+Syntax:
+• TRUNCATE TABLE table_name;  
+Example:
+• TRUNCATE TABLE EMPLOYEE;  
+
++++2.DML
+ DML (Data Manipulation Language)
+--------------------
+● The DML statements used for managing data within schema objects which deal with data manipulation. 
+●DML commands are not auto-committed. It means changes are not permanent to the database, they can be rolled back.
+●Here are some commands that come under DML:
+ 
+• Insert
+• UPDATE
+• DELETE
+ 
+●INSERT COMMAND
+-----------------
+ Insert  command  is  used  to  insert  data  into a  table.
+INSERT INTO Student (id, name, age)
+VALUES (1, 'Rahim', 20);
+
+●UPDATE COMMAND 
+-----------------
+Update command is used to update a row of a  table. 
+UPDATE Student
+SET age = 21
+WHERE id = 1;
+ 
+DELETE COMMAND 
+-----------------
+
+Delete command is used to delete data from a table. Delete command can also be used with conditions to delete a particular row.
+
+DELETE FROM Student
+
+DELETE FROM Student
+WHERE id = 1;
+
+
+https://www.codingninjas.com/codestudio/guided-paths/dbms-database-management-systems/content/145842/offering/1751803
+ 
++++DCL (Data Control Language): 
+==============================
+DCL is used to control database security.
+
+It decides who can access the database and what they can do.
+
+●It is related to security issues
+ 
+List of  DCL commands: 
+ 
+• GRANT:This command gives users access privileges to the database.(Granting permission to access the database)
+ EX : GRANT SELECT, INSERT ON Employee TO user1;
+
+• REVOKE:This command withdraws the user’s access privileges given by using the GRANT command.(It is used to cancel previously granted permission(block))
+
+ EX :  REVOKE SELECT ON Employee FROM user1;
+
+
+When is GRANT used?
+---------------------
+When a new user joins
+
+When someone’s role changes
+
+When you want to control access
+
+
+When is REVOKE used?
+---------------------
+
+Employee leaves the company
+
+User misuses data
+
+Role no longer requires access
+
+
++++Transaction Control Language
+==============================
+TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
+If any of the tasks fail, the transaction fails. Therefore, a transaction has only two results: success or failure.
+When do we use TCL?
+If any of the tasks fail, we use TCL to undo all the changes or only the required changes.
+
+• COMMIT: Commit command is used to save all the transactions to the database.(Google pay)
+Syntax:
+• COMMIT;  
+Example:
+• DELETE FROM CUSTOMERS  
+• WHERE AGE = 25;  
+• COMMIT;  
+ 
+• ROLLBACK: 
+ -------------
+
+• This command helps you undo recent changes in a database, It is also used with SAVEPOINT command to jump to a savepoint in an ongoing transaction.
+ 
+• Rollbacks a transaction in case of any error occurs.
+ 
+• If we have used the UPDATE command to make some changes into the database, and realise that those changes were not required, then we can use the ROLLBACK command to rollback those changes, if they were not commited using the COMMIT command.
+
+• Following is rollback command's syntax,
+• 
+• ROLLBACK TO savepoint_name;
+• 
+• Example:
+• DELETE FROM CUSTOMERS  
+• WHERE AGE = 25;  
+• ROLLBACK;  
+ 
+🔹 When to use ROLLBACK?
+---------------------------
+Error occurs
+
+Payment fails
+
+User cancels operation
+
+
+
+• SAVEPOINT command
+----------------------
+ 
+• SAVEPOINT: It is used to roll the transaction back to a certain point without rolling back the entire transaction.(downloading a file)
+-->  SAVEPOINT is used only when partial rollback is required.
+• SAVEPOINT command is used to temporarily save a transaction so that you can rollback to that point whenever required.
+• 
+• Following is savepoint command's syntax,
+• 
+• SAVEPOINT savepoint_name;
+Syntax:
+• SAVEPOINT SAVEPOINT_NAME;  
+
+
+Example : 
+
+In our project, Initially we used transactions while placing an order.
+First, we create the order.
+Then, we reduce the product stock.
+After that, we take the payment.
+All these steps are executed inside a single transaction.
+
+If all steps are successful, we commit the transaction and save the data permanently.
+If any step fails, like payment failure, we roll back the transaction so that no partial data is saved.
+
+This helps us maintain data consistency and avoid incorrect orders or stock issues
+
+
+Ex: 2 
+payment done
+create order failed 
+check count and decrease count -- pending 
+roolback transacktion and cancel the payment
+
+Ex with no SAVEPOINT : 
+---------------------
+
+const placeOrder = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { productId, userId } = req.body;
+
+    // 2️⃣ Create order
+    const order = await Order.create(
+      {
+        userId,
+        totalAmount: 1000,
+      },
+      { transaction }
+    );
+
+    // 3️⃣ Reduce stock
+    product.stock -= 1;
+    await product.save({ transaction });
+
+    // 4️⃣ Simulate payment
+    const paymentSuccess = true; // imagine Razorpay response
+
+    if (!paymentSuccess) {
+      throw new Error("Payment failed");
+    }
+
+    // 5️⃣ Save payment
+    await Payment.create(
+      {
+        orderId: order.id,
+        status: "SUCCESS",
+      },
+      { transaction }
+    );
+
+    // ✅ 6️⃣ COMMIT
+    await transaction.commit();
+
+    res.json({ message: "Order placed successfully" });
+
+  } catch (error) {
+    // ❌ 7️⃣ ROLLBACK
+    await transaction.rollback();
+
+    res.status(500).json({
+      message: "Order failed",
+      error: error.message,
+    });
+  }
+};
+
+
+Ex with SAVEPOINT : 
+---------------------
+✔ Order stays
+❌ Stock undone
+❌ Payment undone
+
+
+
+sequelize.transaction({ transaction: t }, async (t2) => {})
+👉 Sequelize creates a SAVEPOINT
+
+Internally DB does:
+
+SAVEPOINT sequelize_savepoint_1;
+
+
+
+
+
+const placeOrder = async (req, res) => {
+  const t = await sequelize.transaction(); // MAIN transaction
+
+  try {
+    // 1️⃣ Create order
+    const order = await Order.create(
+      { userId: 1, totalAmount: 1000 },
+      { transaction: t }
+    );
+
+    // 2️⃣ SAVEPOINT starts here (nested transaction)
+    await sequelize.transaction({ transaction: t }, async (t2) => {
+      
+      // Reduce stock
+      const product = await Product.findByPk(1, { transaction: t2 });
+      product.stock -= 1;
+      await product.save({ transaction: t2 });
+
+      // Simulate payment failure
+      const paymentSuccess = false;
+
+      if (!paymentSuccess) {
+        throw new Error("Payment failed");
+      }
+
+      // Save payment
+      await Payment.create(
+        { orderId: order.id, status: "SUCCESS" },
+        { transaction: t2 }
+      );
+    });
+
+    // If everything is OK
+    await t.commit();
+    res.json({ message: "Order placed successfully" });
+
+  } catch (error) {
+    await t.rollback();
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+Data Query Language
+======================
+DQL is used to fetch the data from the database.
+ 
+It uses only one command:
+ 
+• SELECT
+ 
+a. SELECT: This is the same as the projection operation of relational algebra. It is used to select the attribute based on the condition described by WHERE clause.
+ 
+Syntax:
+• SELECT expressions    
+• FROM TABLES    
+• WHERE conditions;  
+For example:
+• SELECT emp_name  
+• FROM employee  
+• WHERE age > 20;  
+ 
+SQL Data Types
+Data types mainly classified into three categories for every database.
+ 
+• String Data types
+• Numeric Data types
+• Date and time Data types
+ 
+Data types : 
+-------------------
+ 
+1. Store student age             : number 
+2.store student height      : float
+3. Store student grade        : char
+4.Store student name        : char(size)
+5.Store student emailid       : varchar(size)
+5.Store student dob             : date
+6.Store student photo/sign/resume   : blob(byte large objects)
+MySQL String Data Types
+ 
+●CHAR(Size)It is used to specify a fixed length string that can contain numbers, letters, and special characters. Its size can be 0 to 255 characters. Default is ●1.VARCHAR(Size)It is used to specify a variable length string that can contain numbers, letters, and special characters. Its size can be from 0 to 65535 characters.
+●BINARY(Size)It is equal to CHAR() but stores binary byte strings. Its size parameter specifies the column length in the bytes. Default is 1.
+●VARBINARY(Size)It is equal to VARCHAR() but stores binary byte strings. Its size parameter specifies the maximum column length in bytes.
+●TEXT(Size)It holds a string that can contain a maximum length of 255 characters.
+●TINYTEXTIt holds a string with a maximum length of 255 characters.
+●MEDIUMTEXTIt holds a string with a maximum length of 16,777,215.
+●LONGTEXTIt holds a string with a maximum length of 4,294,967,295 characters.
+●ENUM(val1, val2, val3,...)It is used when a string object having only one value, cho
+ 
+
+
+Constraints in SQL
+====================
+
+Constraints in SQL means we are applying certain conditions or restrictions on the database.
+By using constraints we can apply some conditions and restrictions on database. 
+
+Constraints available in SQL are:
+ 
+• NOT NULL
+• UNIQUE
+• PRIMARY KEY
+• FOREIGN KEY
+• CHECK
+• DEFAULT
+
+1. NOT NULL
+ -----------
+• NULL means empty, i.e., the value is not available.
+• Whenever a table's column is declared as NOT NULL, then the value for that column cannot be empty for any of the table's records.
+• There must exist a value in the column to which the NOT NULL constraint is applied 
+ 
+CREATE TABLE Student (
+  id INT,
+  name VARCHAR(50) NOT NULL
+);
+
+• UNIQUE
+  -----------
+
+• Duplicate values are not allowed in the columns to which the UNIQUE constraint is applied.
+• The column with the unique constraint will always contain a unique value.
+• Using the UNIQUE constraint, you can also modify the already created tables.
+CREATE TABLE User (
+  email VARCHAR(100) UNIQUE
+);
+
+
+3. PRIMARY KEY
+  -----------
+
+• PRIMARY KEY Constraint is a combination of NOT NULL and Unique constraints.
+• NOT NULL constraint and a UNIQUE constraint together forms a PRIMARY constraint.
+• The column to which we have applied the primary constraint will always contain a unique value and will not allow null values.
+• Example : students id teachers id this type of examples are primary key.
+
+CREATE TABLE Employee (
+  emp_id INT PRIMARY KEY,
+  emp_name VARCHAR(50)
+);
+
+• 
+4. FOREIGN KEY
+  -----------
+
+●Is an attribute which establish relationship between two tables.
+• A foreign key is used for referential integrity.
+ 
+●Foreign key can contain duplicate values.
+● The table with the foreign key is called child table and the table with primary key is called referenced or parent table
+• When we have two tables, and one table takes reference from another table, i.e., the same column is present in both the tables and that column acts as a primary key in one table. That particular column will act as a foreign key in another table.
+ 
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+ 
+
+5. CHECK
+ 
+• Whenever a check constraint is applied to the table's column, and •••the user wants to insert the value in it, then the value will first be checked for certain conditions before inserting the value into that column.
+Example : age
+
+CREATE TABLE Product (
+  price INT CHECK (price > 0)
+);
+
+
+
+6. DEFAULT
+ 
+Whenever a default constraint is applied to the table's column, and the user has not specified the value to be inserted in it, then the default value which was specified while applying the default constraint will be inserted into that particular column.
+ Example: Salary 10000
+
+CREATE TABLE Account (
+  status VARCHAR(20) DEFAULT 'ACTIVE'
+);
+ 
+
+MySQL WHERE Clause
+●It specifies a specific position where you have to do the operation.
+●MySQL WHERE Clause is used with SELECT, INSERT, UPDATE and DELETE clause to filter the results. 
+ 
+Syntax:
+ 
+• WHERE conditions;  
+
+ 
+MySQL Aggregate Functions
+===========================
+●MySQL's aggregate function is used to perform calculations on multiple values and return the result in a single value like the average of all values,
+ 
+●We mostly use the aggregate functions with SELECT statements in the data query languages.
+●There are various aggregate functions available in MySQL. Some of the most commonly used aggregate functions are summarised in the below table:
+ 
+Count() Function
+ 
+MySQL count() function returns the total number of values in the expression.
+ 
+ 
+Sum() Function
+ 
+The MySQL sum() function returns the total summed (non-NULL) value of an expression.
+ 
+AVG() Function
+ 
+MySQL AVG() function calculates the average of the values specified in the column.
+●Suppose we want to get the average working hours of all employees in the table, we need to use the AVG() function as shown in the following query:
+ 
+MIN() Function
+●MySQL MIN() function returns the minimum (lowest) value of the specified column. It also works with numeric data type only.
+●Suppose we want to get minimum working hours of an employee available in the table, we need to use the MIN() function as shown in the following query:
+ 
+MAX() Function
+●MySQL MAX() function returns the maximum (highest) value of the specified column. It also works with numeric data type only.
+●Suppose we want to get maximum working hours of an employee available in the table, we need to use the MAX() function as shown in the following query
+ 
+DISTINCT FUN()
+● This function not collect duplicate values
+● By using distinct fun we can calculate max,min and avg values
+ 
+ 
+Example : 
+
+SELECT COUNT(*) FROM Employee;
+SELECT SUM(salary) FROM Employee;
+SELECT AVG(working_hours) FROM Employee;
+SELECT MIN(working_hours) FROM Employee;
+SELECT COUNT(DISTINCT working_hours) FROM Employee;
+
+
+
+
+
+
+JOINS:
+======
+●Joins are used to combine one or more table data.
+●To participate in join, the tables must have at least one common column name.
+●Joins are used to fetch the information from multiple tables.
+ 
+Types of joins:
+--------------
+1.Cross Join
+2.Inner Join 
+	2.1 Natural Join 
+3.Outer Join
+	3.1 Left Outer Join
+	3.2 Right Outer Join
+	3.3 Full Outer Join
+4.Equi Join
+5.Non-Equi Join
+6.Self Join
+ 
+●The connection between tables is established through the "where " clause.
+ 
+1.Cross Join:
+----------------
+●In a cross join, every row in table1 is matched with every row in table2, creating pairings between all rows from both tables.
+ 
+●In cross join, each row in table1 associated with each row in table2.
+ Here we need not specify the condition.
+	
+Query:SELECT * 
+FROM Employee 
+CROSS JOIN Department;
+
+| emp_id | name | dept_id | dept_name |
+| ------ | ---- | ------- | --------- |
+| 1      | A    | 10      | HR        |
+| 1      | A    | 20      | IT        |
+| 2      | B    | 10      | HR        |
+| 2      | B    | 20      | IT        |
+
+
+● INNER JOIN:
+------------------ 
+●Inner join retrive only matched rows.
+●In inner-join, we have to specify the condition & only matched rows are considered
+ 
+Inner join state that what data is same on two tables that data only retrieve. Then that is called a inner join.
+●It returns dataset that have matching value in both sides
+ 
+   
+2.1 Natural Join :
+--------------------
+It is same as inner-join with 2 differnces
+	1.duplicate column will not displayed
+	2 .Here we need not specify the condition
+Query:
+SELECT * 
+FROM Employee 
+NATURAL JOIN Department;
+
+sA natural join is a type of relational database operation that combines two tables based on matching column names. It automatically identifies and combines rows from both tables where the column names in both tables are the same, without the need for explicitly specifying the join condition. This type of join is used to simplify queries when tables have similar structures and share common columns, but it can also be risky if column names change or if there are multiple columns with the same name in the tables.
+ 
+
+
+ 
+ 
+● LEFT JOIN:
+---------------
+●It returns all Records from the left table and matched records from the right.
+● 
+ SELECT * 
+FROM Employee 
+LEFT JOIN Department 
+ON Employee.dept_id = Department.dept_id;
+
+ 
+● RIGHT JOIN:
+--------------
+It returns all Records from the right table and the matched records from left.
+ 
+ SELECT * 
+FROM Employee 
+RIGHT JOIN Department 
+ON Employee.dept_id = Department.dept_id;
+
+ 
+OUTER JOIN
+ ---------------
+OUTER JOIN in SQL Server returns all records from both tables
+ 
+. In other words, this join will not return only the matching record but also return all unmatched rows from one or both tables.
+   
+MySQL does not support FULL JOIN directly
+
+SELECT * FROM Employee
+LEFT JOIN Department ON Employee.dept_id = Department.dept_id
+UNION
+SELECT * FROM Employee
+RIGHT JOIN Department ON Employee.dept_id = Department.dept_id;
+
+4.Equi Join:
+---------------
+	In join condition, if we specify = operator then it is called as Equi Join
+SELECT * 
+FROM Employee, Department 
+WHERE Employee.dept_id = Department.dept_id;
+	 
+ 
+5.Non-Equi Join:	
+---------------
+	In join condition, if we specify except = operator(<,>,<=,>=,!=) then it is called as Non-Equi Join
+SELECT * 
+FROM Employee, Department 
+WHERE Employee.dept_id = Department.dept_id;
+  
+ 
+6.Self Join
+--------------
+	If join is performed on single table then it called as Self join
+SELF JOIN
+
+A table is joined to itself using the SELF JOIN.
+A self join is used to join a table to itself
+
+SELECT e1.name AS Employee, e2.name AS Manager
+FROM Employee e1, Employee e2
+WHERE e1.manager_id = e2.emp_id;
+
+
+SQL – ORDER BY
+=================
+The ORDER BY statement in SQL is used to sort the fetched data in either ascending or descending according to one or more columns. 
+ 
+• By default ORDER BY sorts the data in ascending order
+• We can use the keyword DESC to sort the data in descending order and the keyword ASC to sort in ascending order.
+●To sort in ascending or descending order we can use the keywords ASC or DESC respectively.    
+
+SQL group by
+======================
+
+• The GROUP BY clause is used to arrange required data into groups.
+• GROUP BY clause is used with the SELECT statement.
+• In the query , Group BY clause is placed before Having clause .
+  
+SQL HAVING Clause
+======================
+●Having clause is used to filter data
+●This clause (having) is used in SQL because we cannot use the WHERE clause with the SQL aggregate functions. Both WHERE and HAVING clauses are used for filtering the records in SQL queries.
+• Having clause is generally used in reports of large data.  
+• Having clause is only used with the SELECT clause.
+• Having clause is generally used after GROUP BY.  
+ 
+RANK Function in SQL
+====================== 
+ 
+• It always works with the OVER() clause.
+• It assigns a rank to each row based on the ORDER BY clause.
+• It assigns a rank to each row in consecutive order.
+• It always assigns a rank to rows, starting with one for each new partition.
+• SQL Server provides the following rank functions:
+• RANK()
+• ROW_NUMBER()
+• DENSE_RANK()
+• NTILE()
+ 
+• RANK():
+• This function is used to determine the rank for each row in the result set. 
+• It allows duplicate ranks
+• It gives similar rank if they have same value.
+•  
+•  
+• ROW_NUMBER()
+•  It will gives the different ranks for the row having similar values
+• It doesn't allows duplicate ranks.
+•  
+ 
+DENSE_RANK() Function
+It always specifies ranking in consecutive order. If we get a duplicate value, this function will assign it with the same rank, and the next rank being the next sequential number. This characteristic differs DENSE_RANK() function from the RANK() function.
+ 
+ 
+●Union and Intersection 
+ ======================
+       
+ 
+Alias name :
+======================
+if we want to give another name to original name then that process is called Alias.
+we have to use keyword 'as'   
+ 
+SQL | Subquery
+======================
+A Subquery is a query within another SQL query and embedded within the WHERE clause.
+• A subquery is enclosed in parentheses.
+• A subquery is a query within another query. The outer query is known as the main query, and the inner query is known as a subquery.
+• In the Subquery, ORDER BY command cannot be used. But GROUP BY command can be used to perform the same function as ORDER BY command.
+ 
+• A subquery can be placed in a number of SQL clauses like WHERE clause, FROM clause, HAVING clause.
+• You can use Subquery with SELECT, UPDATE, INSERT, DELETE statements along with the operators like =, <, >, >=, <=, IN, BETWEEN, etc
+
+If the inner query DOES NOT use outer query columns Non-Correlated Subquery
+
+If the inner query USES outer query columns Correlated Subquery 
+
+There are two types of subqueries 
+------------------------------------
+1.Non correlated sub queries.(normal subqueries)Nested query
+ 
+2.Correlated sub queries.
+ 
+1.Non correlated sub questions (normal subqueries)
+------------------------------------------------------------------------
+●In Non correlated sub queries Inner query runs first, and only once. Outer query is executed with result from Inner query 
+●It is a Bottom up approach.
+●In this mostly in ,not in , equal this are used
+    
+SELECT name
+FROM users
+WHERE id IN (
+    SELECT user_id
+    FROM orders
+    WHERE total_amount > (
+        SELECT AVG(total_amount)
+        FROM orders
+    )
+);
+
+
+
+SELECT name
+FROM products
+WHERE id IN (
+    SELECT id
+    FROM products
+    WHERE stock = 0
+);
+
+
+2.Correlated sub queries.
+----------------------------------  
+●Outer query Executes first and for every outer query row inner query is executed
+● It is a Top down approach.
+●In this ,exist and not exist are mostly used.
+
+SELECT DISTINCT u.name
+FROM users u
+WHERE EXISTS (
+    SELECT 1
+    FROM orders o
+    WHERE o.user_id = u.id
+      AND o.total_amount > (
+          SELECT AVG(total_amount)
+          FROM orders
+          WHERE user_id = u.id
+      )
+);
+
+
+SELECT o.id
+FROM orders o
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM payments p
+    WHERE p.order_id = o.id
+      AND p.payment_status = 'SUCCESS'
+);
+
+
+| Feature     | Non-Correlated     | Correlated         |
+| ----------- | ------------------ | ------------------ |
+| Runs        | Once               | Multiple times     |
+| Used for    | Reports, analytics | Validation, checks |
+| Operators   | `IN`, `=`          | `EXISTS`           |
+| Performance | Faster             | Slower             |
+
+   
+Normalization :
+=====================
+●It is a technique to remove or reduce Redundancy (Duplicacy) from a table.
+●There are two types of duplicacy 
+1.Row level.
+2.Column level.
+●Normalization is the process of dividing larger tables into smaller ones reducing the redundant data.
+❖ Maintenance becomes easier and faster since the data are organized logically in a normalized database in a flexible way.
+❖ Searching and sorting of records is easier and faster because data will appear in a separate, smaller table when a database is normalized allowing us to easily find them.
+ 
+ 
+ 
+1 NF :
+1st Normal Form (1NF)
+●(No multi-value attributes allowed).
+●There are no repeating groups: two columns do not store similar information in the same table.
+●Each table has a primary key: minimal se
+
+
+
+
+Sequence :
+===========
+Sequence are created to generate values for primary key columns 
+For example we can't input the values for primary key column that values must be  automatically generated
+ 
+Ex : when customer purchase some item the bill number should be generated automatically 
+We we buy items in online shopping then order number should be automatically generated this all can be done by using Sequence.
+
+
+ 
+# ✅ ACID Properties – 
+=======================================================
+ACID properties are database rules to handle transactions safely.
+
+They make sure data is not lost or corrupted during a transaction.
+
+
+
+ACID stands for:
+
+1. Atomicity
+2. Consistency
+3. Isolation
+4. Durability
+
+---
+
+## 1️⃣ Atomicity
+
+**Atomicity means all or nothing.**
+
+If a transaction has multiple steps and **any one step fails**, then **all changes are rolled back**.
+
+**Example:**
+While placing an order, if payment fails, then order creation and stock reduction are also cancelled.
+
+So, a failed transaction is **never partially saved**.
+
+---
+
+## 2️⃣ Consistency
+
+**Consistency means data rules must be correct before and after the transaction.**
+
+**Example:**
+In a bank transfer, total money before and after transfer remains the same.
+No business rule should be broken.
+
+So, the database always moves from **one valid state to another valid state**.
+
+---
+
+## 3️⃣ Isolation
+
+**Isolation means multiple transactions do not affect each other.**
+
+**Example:**
+If two users try to buy the last product at the same time, only one transaction is allowed only one allow to buy a product to one user.
+The other transaction waits or fails.
+
+order canceled after 15 min at that time we refund the customer amount
+
+So, users do not see incomplete or wrong data.
+
+---
+
+## 4️⃣ Durability
+
+**Durability means once a transaction is committed, data is permanently saved.**
+
+**Example:**
+After payment success, even if the server crashes, order and payment data are not lost.
+
+Data remains safe in the database.
+
+---
+
+## 🎤 Final One-Paragraph Answer (Very Important)
+
+> “ACID properties ensure reliable database transactions. Atomicity ensures rollback if any step fails, Consistency maintains business rules, Isolation handles multiple users safely, and Durability guarantees data is permanently saved after commit.”
+
+
+one more example : 
+	
+if order is cancelled 
+	|-- update status
+	|-- refund payment to customer
+	|-- Send cancell email to customer
+	|-- If order is delivery we have to send cancel emails with reason
+	|-- send WebSocket notification 
+
+
+
+2nd Example : 
+===============
+ ACID Properties – Cart & Payment Intent Example
+Scenario (Project Flow)
+
+First, cart is created
+
+Then payment intent is created (mandatory before payment)
+
+Customer updates cart (like increasing quantity)
+
+System recalculates total amount
+
+Payment intent, cart, and cart details tables are updated
+
+1️⃣ Atomicity
+--------------
+Atomicity means all steps must succeed or none should happen.
+
+In our project:
+
+When customer updates the cart:
+
+Update cart total
+
+Update cart details
+
+Update payment intent amount
+
+👉 If payment intent update fails, then:
+
+Cart update is rolled back
+
+Cart details update is rolled back
+
+So partial update never happens.
+
+Cart and payment intent are always updated together.
+
+2️⃣ Consistency
+----------------
+Consistency means business rules must be correct before and after transaction.
+
+In our project:
+
+Cart total amount = Payment intent amount
+
+Cart details prices = Cart total
+
+No mismatch allowed like:
+
+Cart amount updated but payment intent old ❌
+
+Payment intent updated but cart old ❌
+
+Database always moves from correct state to correct state.
+
+3️⃣ Isolation
+----------------
+Isolation means multiple updates do not disturb each other.
+
+In our project:
+
+User updates quantity
+
+At same time, user refreshes page or adds another item
+
+Only one transaction works at a time for the cart.
+Other update waits.
+
+This avoids wrong price calculation and duplicate updates.
+
+4️⃣ Durability
+--------------
+Durability means once update is completed, data is permanently saved.
+
+In our project:
+
+Cart updated
+
+Payment intent updated
+
+Transaction committed
+
+Even if server crashes, after restart:
+
+Cart has latest price
+
+Payment intent has latest amount
+
+Data is not lost.
+
+
+
+What is Views in SQL.
+==========================
+Views in SQL (Simple Explanation)
+A view is a virtual table because it doesn’t store data directly like normal tables. It just stores a query. When you use (execute) the view, it runs the query and shows data from the real tables.
+
+
+Why views are useful:
+Simplify complex queries – Instead of writing long queries with multiple tables every time, you can create a view once and just use it.
+Example: Instead of joining Students, Courses, and Enrollments every time, create a view called StudentCourseView and then do:
+SELECT * FROM StudentCourseView;
+
+**Hide complexity – Users don’t need to know how many tables exist or how they are connected. The view gives a simple interface to see data.
+
+**Improve security – You can show only specific columns to users.
+Example: Show only student names and departments, hide phone numbers or salaries.
+
+**Reusability – Once a view is created, you can use it in different reports or modules without writing the same query again.
+
+Consistency – Everyone using the view sees the same data and logic, which reduces mistakes.
+
+Materialized views (optional) – Some views can store the result of the query. This makes heavy queries faster because the data is precomputed.
+
+Updatable views – In some cases, you can insert, update, or delete data through a view. The changes go to the original table, not the view itself.
+
+Summary:
+Views make complex queries simple
+Hide table structure from users
+Improve security by showing only required data
+Can be reused across reports
+Keep data consistent
+Sometimes improve performance
+We can also make joins on resulted view data
+
+UseCases:
+**Used heavily in reporting and analytics.
+**Can be reused across multiple reports and dashboards screens.
+Create views to combine multiple tables (like Orders, Customers, Products) into one virtual table.
+Analysts and BI tools query the view instead of writing complex joins.
+
+In short: Views make working with databases easier, safer, and cleaner.
+
+
+Stored Procedures – Simple Explanation
+=========================================
+1. What is a Stored Procedure?
+A stored procedure is a set of SQL commands saved in the database. Once created, you can use it anytime without rewriting the same commands.
+
+2. Why are Stored Procedures Useful?
+Better Performance:
+we use Stored procedures because they are precompiled. This means the database doesn’t need to re-read or re-plan the commands every time you run them. So, they run faster, especially if the same task is done many times.
+
+Improved Security:S
+Users don’t need direct access to the tables. They can just run the stored procedure, which keeps the data safer.
+
+Easier Maintenance:
+If a rule changes (like a discount calculation), you only update it in the stored procedure. You don’t have to change code in many places.
+
+3. When Would You Use a Stored Procedure? (use cases)
+-----------------------------------------------------	
+When you need to do complex tasks in the database (like calculations or business rules).
+Used to execute multiple SQL operations in one call.
+When you want to reduce network traffic by doing multiple steps inside the database instead of sending many queries from the application.
+When you want to keep logic in one place so it’s easier to reuse.
+k
+
+
+. How to Explain in Interview:
+----------------------------------
+You can say something like this:
+“A stored procedure is a set of SQL commands stored in the database. It helps improve performance because it is precompiled, so the database doesn’t need to reprocess it every time.
+It also improves security because users don’t access tables directly.
+Stored procedures reduce network traffic because the database can do multiple steps in one call instead of sending many queries.
+For example, calculating a cart total and applying a discount can be done in one procedure instead of sending separate requests from the application, making it faster and easier to maintain.”
+If we implement subtotal logic without stored procedures
+
+
+
+
+
+What is Index in SQL?
+========================
+
+An Index in SQL is a database object that helps to find data faster from a table.
+
+Normally, if there is no index, database checks every row one by one if the table has large data like thousands or millions of rows which makes searching slow to overcome this problem we use index.
+An index helps the database to directly go to the required data, without checking all rows.
+
+This is called full table scan.
+It is slow when table is big.
+
+Full table scan is slow, especially when the table has large data like thousands or millions of rows.
+
+
+Index works like a book index page.
+If you want one topic, you go directly to page number.
+You don’t read full book.
+
+
+| Object Type | Object Name |
+| ----------- | ----------- |
+| Table       | users       |
+| Index       | idx_email   |
+| View        | user_view   |
+
+
+Why Index is Important?
+------------------------
+
+Indexes are very important in real projects.
+
+Indexes help to:
+
+Speed up SELECT queries (name..)
+
+Speed up JOIN queries (on o.user_id = c.id)
+
+Speed up WHERE condition (where email = "abc@gmail")
+
+Speed up ORDER BY (created_at and updated_at)
+
+Indexes reduce disk reading.
+Less disk read means better performance.
+
+Indexes are very useful when table has large data like lakhs or millions of rows.
+
+How Index Works Internally (Simple)
+-----------------------------------
+Index stores:
+
+Column value
+
+Row address
+
+Index data is stored in sorted order.
+
+Database uses B-Tree structure.
+
+B-Tree helps database to:
+
+Divide data
+
+Search step by step
+
+Reach data quickly
+
+Instead of checking 1 lakh rows,
+database checks only few steps.
+
+
+Disadvantages of Index
+------------------------------
+Indexes also have some problems.
+
+INSERT becomes slow
+
+UPDATE becomes slow
+
+DELETE becomes slow
+
+Index needs extra storage
+
+
+
+
+
+Ex : 
+-->CREATE INDEX idx_email ON users(email);
+
+
+--> module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define(
+    "User",
+    {
+      email: {
+        type: DataTypes.STRING
+      },
+      description: {
+        type: DataTypes.TEXT
+      }
+    },
+    {
+      tableName: "users",
+      indexes: [
+        {
+          name: "idx_email",
+          fields: ["email"]
+        },
+        {
+          name: "idx_description",
+          fields: ["description"]
+        }
+      ]
+    }
+  );
+
+  return User;
+};
+
+
+
+--> 1. limit and offset 
+
+
+
+
+Projects : 
+============
+
+I have worked on **US-based e-commerce projects** like **Straunt, Holiq, Kiosk, and POS systems, back office**.
+
+**Straunt** is a project for the **food industry**, and **Holiq** is for the **alcohol industry**. These applications are **multi-tenant**, which means multiple businesses can use the same system. Even though they are different industries, they use **shared concepts and code**, so we don’t need to write new code if a new industry comes in. We just add a **new industry ID**, and it works.
+
+Both **Straunt** and **Holiq** support **three order types**:
+
+* **Pickup**
+* **Curbside**
+* **Delivery**
+
+We also have **Auto Order Confirmation** and **Auto Cancellation**. This means if a customer places a delivery order, once the merchant confirms it, the order is automatically sent to **delivery partners** like **DoorDash, Uber, or Shipday**. In India, it is similar to **Zomato or Swiggy**.
+
+We maintain **two portals** in our project:
+
+1. **Storefront portal** – where customers see the store and place orders.
+2. **Merchant portal** – where merchants can **configure products, pricing, and store data**.
+
+A **special feature** in our project is **Channel Prices**. Merchants can set **different prices for different sales channels**. For example, the price for a delivery platform can be higher than for a pickup order.
+
+Another feature is **Channel Items**. Merchants can **control which items appear in each store or channel**. This helps stores **show different menus** for **pickup, curbside, or delivery orders**.
+
+We also have **ghost stores**. This means merchants can **create multiple stores with different names**, but all belong to one main store. Customers see these as **different stores**, even though they are managed by the same merchant. Merchants can **add the same items with different prices** to attract more customers to ghost stores.
+
+The **key strength** of our project is **reusability and flexibility**. One code works for different industries, different order types, and multiple sales channels. Merchants can easily manage products, prices, and menus without changing the code.
+
+In summary:
+
+* Worked on **food and alcohol e-commerce projects**.
+* **Multi-tenant** architecture for multiple industries.
+* Supports **pickup, curbside, and delivery orders**.
+* **Auto-confirmation and auto-cancellation** of orders.
+* Integration with **delivery partners**.
+* **Merchant portal** for product and store management.
+* **Channel prices and channel items** for flexible pricing and menu management.
+* **Ghost stores** for multiple store branding.
+* **Generic and reusable code** for any new industry.
+
+This is how our system helps merchants **manage orders, pricing, and stores efficiently**, and it is **scalable for new industries or platforms**.
+
+---
+
+
+
+What Is an Object in JavaScript?
+=====================================
+
+An **object** in JavaScript is a collection of **key-value pairs** (properties).
+
+* The keys are strings (called property names).
+* The values can be anything — including functions ,string, number, boolean, function, array, object, etc.							
+2. Accessing Properties
+
+**Dot notation:
+
+console.log(person.name); // Alice
+
+**Bracket notation (useful for dynamic keys):
+
+console.log(person["age"]); // 30
+
+
+✔ Can be created in many ways:
+===================================
+
+Object literal (most common)
+
+let obj = { key: "value" };
+
+Using new Object() constructor
+
+let obj = new Object();
+obj.key = "value";  // do print 
+
+Using a class or constructor function
+
+function Car(model) {
+  this.model = model;
+}
+let myCar = new Car("Tesla");
+
+🧠 Why Use Objects Instead of Other Data Types?
+------------------------------------------------------
+
+Objects group related values into one logical unit.
+
+Object keys make your code more readable and self-documenting.
+
+
+What Is an Array in JavaScript?
+=================================
+
+An array in JavaScript is a special type of object used to store multiple values in a single variable.
+
+They are dynamic: their size can grow or shrink at runtime.
+
+JavaScript arrays can store any data type.(numbers, strings, objects, and even other arrays)
+
+normal objects use named properties like "brand", "year" or "age", arrays use numbers as keys, called indexes.
+
+Example:
+
+let fruits = ["apple", "banana", "mango"];
+This is how JavaScript sees this array behind the scenes:
+
+{
+  0: "apple",
+  1: "banana",
+  2: "mango",
+  length: 3
+}
+
+The keys are 0, 1, and 2.
+There is a special property length which tells how many items are in the array.
+
+Why is Array Called an Object?
+-----------------------------------------
+
+Because arrays are stored as objects, but the keys are numbers instead of names.
+
+When you use typeof on an array, JavaScript says "object" because arrays are just objects with numeric keys.
+
+You can even add named properties to arrays, because they’re still objects!
+
+Example:
+
+
+let arr = ["a", "b", "c"];
+arr.customProperty = "hello";
+
+console.log(arr.customProperty);  // Output: hello
+console.log(typeof arr);          // Output: object
+
+
+Key takeaway
+
+Use forEach / map / for..of → iterates only array elements.
+
+Use for..in → iterates all enumerable properties of an object (including arrays).
+
+Method	Purpose	Example
+-------------------------------
+
+push()		Add to end		arr.push(4)
+pop()		Remove from end		arr.pop()
+unshift()	Add to start		arr.unshift(0)
+shift()		Remove from start	arr.shift()
+includes()	Check if value exists	arr.includes(10)
+indexOf()	Find index of element	arr.indexOf("apple")
+slice()		Extract a portion (non-destructive)	arr.slice(1, 3)
+splice()	Add/remove elements (destructive)	arr.splice(1, 1, "new")
+join()		Convert to string	arr.join(", ")
+reverse()	Reverse array order	arr.reverse()
+sort()		Sort array	arr.sort()
+
+
+🔍 Summary:
+
+Expression		Returns		Meaning
+
+typeof [1, 2, 3]	"object"	Arrays are objects
+Array.isArray([1,2])	true		Correct way to check for array
+typeof {}		"object"	Plain object
+typeof null		"object"	Quirk of JavaScript
+
+
+
+
+🧠 How to Declare Arrays
+--------------------------
+
+1. Using Array Literals (Recommended)
+
+let fruits = ["apple", "banana", "mango"];
+
+2. Using the Array Constructor
+
+let numbers = new Array(10, 20, 30);
+
+3. Empty Array
+
+let empty = [];
+
+
+
+
+---
+
+## map(), filter(), and reduce() in JavaScript (Simple English)
+===================================================================
+
+In JavaScript, **map()**, **filter()**, and **reduce()** are array methods.
+They are used to work with arrays and **create new results without changing the original array**.
+
+
+---
+## 1. map() Method
+
+**What is map()?**	
+
+map() is used when we want to change every element in an array and get a new array.
+.
+
+**In simple words:**
+
+* It goes through every element
+* It changes the value
+* It returns a new array
+
+### Example
+
+```javascript
+let arr = [2, 4, 8, 10];
+let updatedArr = arr.map(val => val + 2);
+
+console.log(arr);
+console.log(updatedArr);
+```
+
+**Output**
+
+```
+[2, 4, 8, 10]
+[4, 6, 10, 12]
+```
+
+
+---
+
+## 2. filter() Method
+
+**What is filter()?**
+The `filter()` method is used to **select elements** from an array based on a **condition**.
+
+### Example
+
+```javascript
+let arr = [2, 4, 8, 10];
+let updatedArr = arr.filter(val => val < 5);
+
+console.log(arr);
+console.log(updatedArr);
+```
+
+**Output**
+
+```
+[2, 4, 8, 10]
+[2, 4]
+```
+
+
+---
+
+## 3. reduce() Method
+
+**What is reduce()?**
+
+reduce() is used to combine all array values into one single value.
+
+**In simple words:**
+
+* It adds, subtracts, multiplies, or combines values
+* Final result is one value, not an array
+
+### Correct Example (Sum of all numbers)
+
+```javascript
+let arr = [2, 4, 8, 10];
+let result = arr.reduce((total, curr) => total + curr, 0);
+
+console.log(arr);
+console.log(result);
+```
+
+**Output**
+
+```
+[2, 4, 8, 10]
+24
+```
+
+---
+
+## Difference Between map(), filter(), and reduce()
+
+| Method   | What it returns | What it does                        |
+| -------- | --------------- | ----------------------------------- |
+| map()    | New array       | Changes every element               |
+| filter() | New array       | Keeps elements that match condition |
+| reduce() | Single value    | Combines all elements               |
+
+---
+
+## One-Line Interview Explanation (Very Easy)
+
+* **map()** → Change every value
+* **filter()** → Select some values
+* **reduce()** → Make one value
+
+
+forEach vs map / filter / reduce (Comparison Table)
+======================================================= 
+
+| No. | Feature                 | forEach           | map                 | filter              | reduce                 |
+| --- | ----------------------- | ----------------- | ------------------- | ------------------- | ---------------------- |
+
+| 1   | Main purpose            | Just run code     | Change each item    | Select items        | Combine items          |
+| 2   | Creates new array       | ❌ no              | ✅ yes               | ✅ yes               | ❌ no                   |
+| 3   | Code length             | Longer            | Short               | Short               | Short                  |
+| 4   | Readability             | Less clear        | Very clear          | Very clear          | Clear                  |
+| 5   | Side effects            | ✅ mostly used     | ❌ avoid             | ❌ avoid             | ❌ avoid                |
+| 6   | React / Redux usage     | Rare              | Very common         | Common              | Common                 |
+
+
+
+
+## 3️⃣ What Is a Method?
+=======================
+A method is just a function. When that function is stored inside an object, we call it a method.
+
+ Inside methods, we can also  `this` Because it belongs to the object, it can directly use the object’s data through this.
+
+A **method** is simply a **function that is a property of an object**.
+
+* Methods represent **behaviors or actions** related to that object.
+
+### Example:
+
+```javascript
+let car = {
+  brand: "Toyota",
+  speed: 100,
+  showSpeed: function () {
+    console.log(this.brand + " is going " + this.speed + " km/h");
+  }
+};
+
+car.showSpeed(); // Output: Toyota is going 100 km/h
+```
+
+
+---
+
+## 7️⃣ Methods vs. Functions Summary
+==================================
+
+
+| Aspect         | Function                                                  | Method                                  |
+| -------------- | --------------------------------------------        | --------------------------------------- |
+| Definition     | Independent reusable code block                  | Function inside an object               |
+| How to call    | `functionName()`                                       | `objectName.methodName()`               |
+| Access to data | Can't access object properties unless passed  | Can access object properties via `this` |
+| Example        | `function sayHi() {}`                                   | `let obj = { sayHi() {} }`              |
+
+---
+
+## 8️⃣ Real-Life Example: Calculator Object with Methods
+
+```javascript
+let calculator = {
+  add(a, b) {
+    return a + b;
+  },
+  subtract(a, b) {
+    return a - b;
+  },
+  multiply(a, b) {
+    return a * b;
+  },
+  divide(a, b) {
+    if (b === 0) {
+      return "Error! Division by zero.";
+    }
+    return a / b;
+  }
+};
+
+console.log(calculator.add(5, 3));      // 8
+console.log(calculator.subtract(5, 3)); // 2
+console.log(calculator.multiply(5, 3)); // 15
+console.log(calculator.divide(5, 0));   // Error! Division by zero.
+```
+
+
+## 5️⃣ Different Ways to Write Methods
+
+### Traditional syntax:
+
+```javascript
+let obj = {
+  methodName: function () {
+    // code here
+  }
+};
+```
+
+### ES6 shorthand syntax:
+
+```javascript
+let obj = {
+  methodName() {
+    // code here
+  }
+};
+```
+
+Both are valid and do the same thing.
+
+---
+> Are `push()` and `pop()` methods?
+=====================================
+> If yes, where is the object?
+
+---
+
+## 🔹 Answer:
+
+Yes! `push()` and `pop()` are **methods** of the **Array object** in JavaScript.
+
+Let’s break it down step by step.
+
+---
+
+## 🧱 Step 1: An Array is an Object
+
+In JavaScript:
+
+```javascript
+let arr = [1, 2, 3];
+```
+
+This may look like a "list", but **internally**, it's an **object**.
+
+### Behind the scenes:
+
+```javascript
+let arr = {
+  0: 1,
+  1: 2,
+  2: 3,
+  length: 3,
+  push: function() { ... },
+  pop: function() { ... },
+  // many more built-in methods
+};
+```
+
+===================================================
+===================================================
+
+
+
+function map(callback) {
+  let newArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let result = callback(array[i]);
+    newArray.push(result);
+  }
+
+  return newArray;
+}
+
+
+
+
+function forEach(callback) {
+  for (let i = 0; i < array.length; i++) {
+    callback(array[i]);
+  }
+  // DONE — no waiting
+}
+
+
+
+
+
+
+
+
+===================================================
+Difference between for loop and foreach :
+===================================================
+
+The **`for` loop** and **`forEach` loop** are both used to iterate over collections (like arrays), but they differ in **syntax**, **usage**, and some features**.
+
+--> “for loops give more control — I can break, continue, and use async/await properly.
+--> forEach is simpler and more readable, but it doesn’t support breaking the loop or waiting for async operations.”
+
+--> `for` loops** can be **faster**, especially for large arrays, because there's no overhead from a callback function.
+--> `forEach`** is **slightly slower**, but more readable and concise for simple tasks.
+
+---
+
+### 🔁 1. **Syntax and Structure**
+
+#### ✅ `for` loop (Traditional loop)
+
+
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+}
+
+
+* **Manual control** over the iteration.
+* Requires initialization (`i = 0`), condition (`i < length`), and increment (`i++`).
+
+#### ✅ `forEach` loop (Array method)
+
+
+array.forEach(function(item) {
+  console.log(item);
+});
+
+---
+
+### 🔍 2. **Use Case**
+
+| Feature                     | `for` Loop                            | `forEach` Loop                         |
+| --------------------------- | ------------------------------------- | -------------------------------------- |
+| Index access                | Directly available (`i`)              | Available via second parameter         |
+| Array mutation              | More flexible                         | Limited                                |
+| Early exit (break/return)   | ✅ Supports `break`, `continue`        | ❌ Can't break or continue              |
+| Asynchronous support        | Better when using `async/await`       | ❌ Does not handle `await` as expected  |
+| Universal (not just arrays) | ✅ Can loop over strings, ranges, etc. | ❌ Works only on arrays	 (or array-like) |
+
+
+
+
+
+amqp://
+
+This is the protocol.
+
+RabbitMQ communicates using AMQP
+
+Similar to:
+
+http:// → web APIs
+
+mongodb:// → MongoDB
+
+redis:// → Redis
+
+📌 So amqp:// =
+
+
+
+
+
+
+---
+Call, Apply and bind methods : 
+=================================
+
+---
+
+In JavaScript, call, apply, and bind are methods that allow you to control the value of the this keyword within a function and also enable you to
+pass arguments to a function in different ways. These methods are commonly used in object-oriented programming and functional programming paradigms.
+
+call 
+======
+--> The call method is used to call a function immediately with the given this value and Arguments are passed one by one (individually).
+
+Use case  :
+-----------
+--> Mostly call is used when want to reuse the same function logic across different contexts(for different objects or services), such as logging or shared utility functions
+Ex : logging function for different services
+
+
+### ✅ Use `call` when:
+
+* You want to execute immediately
+* Reusing logic across services
+* Context switching
+
+Call example 
+----------------
+
+# 5️⃣ `call` — REAL USE CASE (REUSE LOGIC)
+
+### Example: Logging utility reused across services
+
+function log(prefix, message) {
+  console.log(`[${this.module}] ${prefix}: ${message}`);
+}
+
+const orderContext = { module: "Order" };
+const paymentContext = { module: "Payment" };
+
+log.call(orderContext, "INFO", "Order created");
+log.call(paymentContext, "ERROR", "Payment failed");
+```
+
+### Output
+
+```txt
+[Order] INFO: Order created
+[Payment] ERROR: Payment failed
+```
+
+---
+
+# 7️⃣ Node.js REAL-WORLD EXAMPLE — DB CONNECTION REUSE
+
+
+```js
+function query(sql) {
+  console.log(`${this.dbName}: ${sql}`);
+}
+
+const mysql = { dbName: "MySQL" };
+const mongo = { dbName: "MongoDB" };
+
+query.call(mysql, "SELECT * FROM orders");
+query.call(mongo, "db.orders.find()");
+```
+
+
+
+apply : 
+==========
+--> apply method is similar to call method, the only difference is that instead of passing argument individually, will pass the argument in a list/array
+
+use case : 
+----------
+--> It’s useful when the arguments are already available in array form, such as dynamic data or error lists.
+
+---
+
+### Why `apply`?
+
+👉 Arguments already in an **array**
+
+
+
+### ✅ Use `apply` when:
+
+* Arguments are already in array
+* Dynamic argument lists
+* Math / validation utilities
+
+
+
+# 6️⃣ `apply` — REAL USE CASE (ARRAY DATA)
+
+### Example: Validation errors from DB
+
+```js
+function sendErrors(code, message1, message2) {
+  console.log(this.service, code, message1, message2);
+}
+
+const context = { service: "OrderAPI" };
+
+const errors = [400, "Invalid price", "Invalid quantity"];
+
+sendErrors.apply(context, errors);
+```
+
+
+
+
+
+
+bind : 
+=========
+-->`bind` is used when I want to fix the value of `this` and use the function later.
+--> It does not execute the function immediately. Instead, it returns a new function with `this` permanently bound.”
+
+**Real use case:**
+
+--> “In Express, when I pass a controller method as a route handler, I use `bind` so that `this` still points to the controller instance.”
+
+Example explanation (no code needed):
+
+--> “Without `bind`, `this` becomes undefined inside the controller method.”
+
+### 💡 Real use
+
+* Passing function as callback
+* Express routes
+* setTimeout / setInterval
+* Event listeners
+* Background jobs
+
+
+
+Example bind : 
+----------------
+
+class OrderService {
+  constructor() {
+    this.name = "OrderService";
+  }
+
+  createOrder() {
+    console.log("Service:", this.name);
+  }
+}
+
+const service = new OrderService();
+
+// simulate passing method as callback
+setTimeout(service.createOrder, 1000);
+```
+
+### ❌ Output
+
+Service: undefined
+
+
+Why?
+👉 `this` is LOST when method is passed as callback
+
+
+
+## ✅ FIX USING `bind` (MOST COMMON IN NODE)
+
+setTimeout(service.createOrder.bind(service), 1000);
+
+### ✅ Output
+
+Service: OrderService
+---------------------------------------
+# 4️⃣ `bind` — REAL EXPRESS USE CASE (VERY IMPORTANT)
+
+### ❌ Without bind (BUG)
+
+class OrderController {
+  constructor(service) {
+    this.service = service;
+  }
+
+  create(req, res) {
+    this.service.createOrder();
+    res.send("OK");
+  }
+}
+
+const controller = new OrderController(orderService);
+
+app.post("/orders", controller.create); // ❌
+
+
+Error:
+
+Cannot read property 'createOrder' of undefined
+
+--------------------------
+
+## ✅ With `bind`
+app.post("/orders", controller.create.bind(controller));
+
+
+# 8️⃣ call vs apply vs bind (REAL DIFFERENCE)
+==========================================
+
+function demo(a, b) {
+  console.log(this.name, a, b);
+}
+
+const ctx = { name: "NodeJS" };
+
+demo.call(ctx, 1, 2);        // executes now
+demo.apply(ctx, [1, 2]);    // executes now
+const fn = demo.bind(ctx);  // does NOT execute
+
+fn(1, 2);                   // executes later
+
+
+
+
+Q.Why not arrow functions instead of bind?
+==========================================
+Yes — in many cases, arrow functions can replace bind.But they are NOT the same thing, and each has a different purpose.
+
+Express calls the function later, and at that time this reference is lost.
+Using bind creates a new function where this is permanently set to the controller, so when Express executes it, this.service works correctly
+
+
+this keyword:
+============= 
+
+-->In JavaScript, the value of this is decided at runtime.
+-->It depends on how a function is called, not where it is written.
+-->Even though the function is written only once, this changes based on how it is called.
+function showName() {
+  console.log(this.name);
+}
+
+const user1 = { name: "Aziz" };
+const user2 = { name: "Khan" };
+
+showName.call(user1); // Aziz
+showName.call(user2); // Khan
+
+

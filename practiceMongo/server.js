@@ -19,29 +19,51 @@ app.use(express.json());
 
 
 
-class OrderService {
-  createOrder() {
+// class OrderService {
+//   createOrder() {
+//     console.log("Order created");
+//   }
+// }
+
+// class OrderController {
+//   constructor(service) {
+//     this.service = service;
+//   }
+
+//   create(req, res) {
+//     this.service.createOrder();
+//     res.send("OK");
+//   }
+// }
+
+// const service = new OrderService();
+// const controller = new OrderController(service);
+
+// // app.post("/orders", controller.create.bind(controller));
+// app.post("/orders", controller.create.bind(controller));
+
+
+
+
+
+
+  function createOrder() {
     console.log("Order created");
   }
-}
 
-class OrderController {
-  constructor(service) {
-    this.service = service;
-  }
 
-  create(req, res) {
-    this.service.createOrder();
+
+  function create(req, res) {
+    createOrder();
     res.send("OK");
   }
-}
-
-const service = new OrderService();
-const controller = new OrderController(service);
-
-app.post("/orders", controller.create.bind(controller));
 
 
+// const service = new OrderService();
+// const controller = new OrderController(service);
+
+// app.post("/orders", controller.create.bind(controller));
+app.post("/orders",create);
 
 
 
