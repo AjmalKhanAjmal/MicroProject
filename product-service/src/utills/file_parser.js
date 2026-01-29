@@ -38,7 +38,7 @@ module.exports.parseFileFromBuffer = async (file) => {
     const ext = file.originalname.split(".").pop().toLowerCase();
 
     if (ext === "csv") return await parseCSVBuffer(file.buffer);
-    // if (ext === "xlsx") return parseExcelBuffer(file.buffer);
+    if (ext === "xlsx") return parseExcelBuffer(file.buffer);
 
     throw new Error("Only CSV and Excel files are supported.");
   } catch (error) {

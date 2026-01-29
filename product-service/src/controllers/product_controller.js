@@ -3,6 +3,8 @@ const productFileService = require("../services/product_file_service")
 const logger = require("../utills/logger")
 const { parseFileFromBuffer } = require("../utills/file_parser")
 const { processProductFile } = require("../services/productUpload.service")
+const path = require("path");
+const { readProductsFromExcel } = require("../services/product_file_service_streams")
 const saveProduct = async (req, res) => {
 
     try {
@@ -144,4 +146,58 @@ async function productUploadController(req, res, next) {
 }
 
 
-module.exports = { saveProduct, productById, getProductS, removeProduct, uploadFileProducts, productUploadController }
+
+async function productStream(req, res) {
+    // let data = await importProductsWithStream()
+
+    // let parsed_sheet_data = await parseFileFromBuffer(req.file)
+    // let data = await importProductsWithStream(parsed_sheet_data)
+
+
+    // res.json(data)
+
+    // const filePath = path.join(__dirname, "../../uploads/products.xlsx");
+    // const filePath = path.join(__dirname, "../../sample_uploads/Book11.xlsx");
+
+
+    // console.log("folders name ",__dirname);
+    
+    //   const transaction = await sequelize.transaction();
+    if (!req.file) {
+    return res.status(400).json({ success: false, message: "No file uploaded" });
+  }
+let products_data = []
+    try {
+        console.log("req.file.path : ", req.file.path);
+        
+        await readProductsFromExcel(req.file.path, async (productsBatch) => {
+            //   await Product.bulkCreate(productsBatch, {
+            //     transaction,
+            //     validate: true,
+            //   });
+           products_data =  productsBatch
+           
+        });
+
+        // await transaction.commit();
+
+        res.status(200).json({
+            data : products_data,
+            success: true,
+            message: "Products imported successfully",
+        });
+    } catch (error) {
+        // await transaction.rollback();
+
+        console.error("Import failed:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Product import failed",
+        });
+    }
+};
+
+
+
+module.exports = { saveProduct, productById, getProductS, removeProduct, uploadFileProducts, productUploadController, productStream }

@@ -18,4 +18,7 @@ routes.delete("/product/:id",product_controller.removeProduct)
 routes.post("/product/upload", upload.single("file"), product_controller.uploadFileProducts);
 
 routes.post("/upload/product",temporay_uploads.single("file"),product_controller.productUploadController)
+
+routes.post("/product/stream/upload",upload.single("file"),product_controller.productStream)
+
 module.exports = routes
