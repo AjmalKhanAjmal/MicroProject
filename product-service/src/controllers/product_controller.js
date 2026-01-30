@@ -5,6 +5,7 @@ const { parseFileFromBuffer } = require("../utills/file_parser")
 const { processProductFile } = require("../services/productUpload.service")
 const path = require("path");
 const { readProductsFromExcel } = require("../services/product_file_service_streams")
+const Product = require("../model/product_modal")
 const saveProduct = async (req, res) => {
 
     try {
@@ -171,6 +172,7 @@ let products_data = []
         console.log("req.file.path : ", req.file.path);
         
         await readProductsFromExcel(req.file.path, async (productsBatch) => {
+            
             //   await Product.bulkCreate(productsBatch, {
             //     transaction,
             //     validate: true,

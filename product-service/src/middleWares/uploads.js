@@ -14,13 +14,25 @@ console.log("__dirname",__dirname);   //C:\MicroSe\product-service\src\middleWar
 console.log("uploadDir",uploadDir);  //C:\MicroSe\product-service\src\uploads
 
 
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true }); // recursive ensures nested folders are created
-}
+if (!fs.existsSync(uploadDir)) {    //Checks does this folder already exist?    
+    fs.mkdirSync(uploadDir, { recursive: true }); 
+    // Creates the folder uploadDir
+// recursive: true means:
+// Create parent folders if missing
+// Don’t throw error if already exists
+// recursive ensures nested folders are created
+} 
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, uploadDir),
+const storage = multer.diskStorage(
+    {  //Store uploaded files on DISK, not in memory
+    
+    destination: (req, file, cb) => cb(null, uploadDir), // Tells Multer WHERE to save the file
+    // req → request object (not used here)
+    // file → uploaded file metadata
+    // cb →     callback Multer uses
+
     filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`)
+    //Generates a unique filename Adds timestamp before original name EX : 1700000000-products.xlsx
 });
 
 const upload = multer({ storage });

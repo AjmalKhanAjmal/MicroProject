@@ -93,7 +93,9 @@ function getSafeValue(cell) {
 async function readProductsFromExcel(filePath, onBatch) {
   const workbook = new ExcelJS.stream.xlsx.WorkbookReader(filePath);
   let batch = [];
-  const BATCH_SIZE = 500;
+  // const BATCH_SIZE = 500;
+  const BATCH_SIZE = 5;
+
 
   for await (const worksheet of workbook) {
     let isHeader = true;
@@ -104,7 +106,6 @@ async function readProductsFromExcel(filePath, onBatch) {
         continue;
       }
 
-
       const product = {
         name: row.getCell(1).text,
         price: Number(row.getCell(2).value),
@@ -112,13 +113,8 @@ async function readProductsFromExcel(filePath, onBatch) {
         category: row.getCell(4).value,
       };
 
-      //   if (row.getCell(1).value) {
-      //   let data = row.getCell(1).value.richText.map(t => t.text).join("");
-      //   product.name = data
-      // }
-      // Basic validation
       if (!product.name || isNaN(product.price) || isNaN(product.stock)) {
-        continue; // skip invalid row
+        continue;
       }
 
       batch.push(product);
