@@ -1,0 +1,2 @@
+Id uniquely identifies each document within a collection. 
+It acts as the default primary key and helps in indexing and quick retrieval.

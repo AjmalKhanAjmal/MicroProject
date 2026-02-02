@@ -1,0 +1,14 @@
+
+-->DBMS stores data in tables with rows and columns.
+-->DBMS is used when structure is fixed and relations are important.
+Ex : orders
+
+-->MongoDB stores data in JSON-like documents.
+-->Data structure is not fixed and can change easily.
+-->MongoDB is used when data is large, schema changes frequently, and the application needs high scalability and performance
+
+-->For Sql structure is fixed mongo db is not fixed 
+-->We chose MongoDB for nested configurations like data inside data. MongoDB allows us to store single document, which avoids complex joins and makes read operations faster.
+--> Campaigns are primarily read-heavy, retrieved as a whole for execution and analytics, and MongoDB fits that access pattern well.
+For entities with strict relationships and transactional consistency—like users, billing, and permissions—we still use SQL. So the choice was data-driven, not technology-driven.
+

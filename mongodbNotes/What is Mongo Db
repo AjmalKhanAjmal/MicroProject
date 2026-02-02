@@ -1,0 +1,67 @@
+What is MongoDB?
+===================
+--> MongoDB is a NoSQL database used to store data in a flexible, JSON-like format instead of rows and columns.
+
+--> In simple words: 
+Traditional databases (like MySQL) store data in tables
+MongoDB stores data in documents
+These documents look very similar to JavaScript objects, so it’s easy for developers—especially when working with Node.js.
+
+--> Documents are grouped into collections. A collection is similar to a table, but no fixed structure is required
+
+Example:
+{
+  name: "Phone",
+  price: 15000,
+  stock: 10
+}
+
+
+fixed structure means 
+1️⃣ MySQL (FIXED STRUCTURE)
+
+First, you must create a table: You CANNOT add new fields without changing the table
+
+If later you want to store color for only one product ❌
+
+INSERT INTO products (name, price, color)
+VALUES ('Laptop', 50000, 'Black'); ❌ ERROR
+
+
+👉 Because color column does not exist
+
+To fix this, you must do:
+
+ALTER TABLE products ADD color VARCHAR(20);
+
+That’s why MySQL is called fixed structure.
+
+2️⃣ MongoDB (NO FIXED STRUCTURE)
+
+Now the same example in MongoDB.
+
+Same collection: products
+
+First document:
+db.products.insertOne({
+  name: "Phone",
+  price: 15000
+});
+
+
+Second document (extra field added):
+db.products.insertOne({
+  name: "Laptop",
+  price: 50000,
+  color: "Black"
+});
+
+👉 Both are stored without any error
+👉 No table change
+👉 No schema update
+
+🔑 Final simple meaning
+
+MySQL → “All rows must look the same”
+
+MongoDB → “Each document can look different

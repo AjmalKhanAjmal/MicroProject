@@ -1,0 +1,6 @@
+CRUD operations in MongoDB are used to create, read, update, and delete documents.
+
+Create: db.collection.insertOne({ name: "Alice", age: 25 })
+Read: db.collection.find({ name: "Alice" })
+Update: db.collection.updateOne({ name: "Alice" }, { $set: { age: 26 } })
+Delete: db.collection.deleteOne({ name: "Alice" })

@@ -1,0 +1,2 @@
+MongoDB stores data in BSON (Binary JSON) format, which is optimized for speed and traversing. 
+Collections are stored in databases as files on disk using the WiredTiger storage engine.

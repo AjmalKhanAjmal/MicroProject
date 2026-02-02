@@ -1,0 +1,19 @@
+
+-->aggregation helps us to process data step by step, and  get summary results like total, count, and group by
+
+
+-->Aggregation works by taking data stage wise. In each stage , MongoDB does one simple job like filtering data, grouping data, sorting data, or calculating totals. At the end, we get the final result.
+
+-->Aggregation operations in MongoDB are performed using the aggregate method. This method takes an array of pipeline stages
+
+In this example:
+=====================
+Stage 1 ($match) filters documents by status "A".
+Stage 2 ($group) groups documents by customer ID and calculates the total amount for each group.
+Stage 3 ($sort) sorts the results by total amount in descending order.
+
+db.orders.aggregate([
+  { $match: { status: "A" } },           // Stage 1: Filter documents by status
+  { $group: { _id: "$cust_id", total: { $sum: "$amount" } } },  // Stage 2: Group by customer ID and sum the amount
+  { $sort: { total: -1 } }               // Stage 3: Sort by total in descending order
+])

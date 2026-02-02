@@ -1,0 +1,14 @@
+MongoDB supports a variety of BSON data types, which extend standard JSON types:
+
+String – Textual data.
+Number – Integer (int), Long (long), Double (double), Decimal (Decimal128).
+Boolean – true or false.
+Date – Stores date and time in UTC format.
+Array – List of values (can store mixed types).
+Object / Embedded Document – Nested documents within a document.
+ObjectId – Unique identifier automatically generated for _id field.
+Null – Represents a null value.
+Binary Data – Stores binary data like images or files.
+Regular Expression – For pattern matching.
+Timestamp – Special internal type used for replication and sharding.
+Code / JavaScript – Stores JavaScript code.
