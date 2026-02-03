@@ -1,0 +1,33 @@
+
+-->DBMS stores data in tables with rows and columns.
+-->DBMS is used when structure is fixed and relations are important.
+Ex : orders
+--> MongoDB is Schema-less (or schema-flexible) Documents in the same collection can have different fields
+-->No real joins (only $lookup, which is limited & slower) No foreign key enforcement Relationships must be handled 
+manually in application code
+// You fetch student
+// Then fetch department separately
+
+-->MongoDB stores data in JSON-like documents.
+
+-->MongoDB is used when data is large, schema changes frequently, and the application needs high scalability and performance
+
+-->We chose MongoDB for nested configurations like data inside data. MongoDB allows us to store single document, which avoids 
+complex joins and makes read operations faster.
+--> Campaigns are primarily read-heavy, retrieved as a whole for execution and analytics, and MongoDB fits that access 
+pattern well.
+For entities with strict relationships and transactional consistency—like users, billing, and permissions—we still use SQL. So the choice was data-driven, not technology-driven.
+
+
+When to use MongoDB?
+------------------------
+-->You should use MongoDB when you are building internet and business applications that need to evolve quickly and scale elegantly.
+-->MongoDB is popular with developers of all kinds who are building scalable applications using agile methodologies.
+MongoDB is a great choice if one needs to:
+
+-->Support a rapid iterative development.
+-->Scale to high levels of read and write traffic - MongoDB supports horizontal scaling through Sharding, distributing data across 
+several machines, and facilitating high throughput operations with large sets of data.
+Scale your data repository to a massive size.
+--> Evolve the type of deployment as the business changes.
+-->Store, manage and search data with text, geospatial, or time-series dimensions

@@ -1,0 +1,32 @@
+
+What is Sql : 
+=============
+
+--> SQL is a query language which is used to communicate or interact with
+the database server.
+●communicating or interacting with the database means sending the sql queries.
+ 
+●Sql is a query language used to perform Crud operations with dbms software.
+ (oracle DB,My SQL,IBM DB2,...)
+ 
+●Nowadays, SQL is widely used in data science and analytics.
+ 
+ 
+Sql features :
+---------------------
+SEQUEL:  (Structural English Query Language)
+ 
+SQL:
+->Each statement in SQL is called as Query
+ 
+->Each Query in SQL should ends with ;
+ 
+->Sql statements are not case sensitive
+create-> Create, CREATE , CrEate
+ 
+->A11 Sql statements should compiled by SQL> (sql prompt)
+ 
+->One time only one Sql statement should compiled by SQL>
+ 
+->SQL is a collection of following 5 languages commands
+ 

@@ -1,0 +1,349 @@
+
+-> there are 5 types of 5QL commands
+
+• It is used to perform specific tasks, functions, and queries of data.
+
+There are five types of SQL commands: DDL, DML, DCL, TCL, and DQL.
+ 
+DDL (Data Definition Language):
+====================
+     It is used to define the database structure or schema such as tables.
+    ●DDL is a set of SQL commands used to create, modify, and delete database structures
+
+    ●DDL commands are:
+    -------------------
+    • CREATE
+    • ALTER
+    • DROP
+    • TRUNCATE
+
+    • CREATE:
+    ---------
+         This command is used to create the database or its objects (like table, index, function, views, store procedure, and triggers).
+        • Syntax: CREATE database database-name; Example for Creating Database, CREATE database Test;
+    
+    • DROP:
+    ---------
+     This command is used to delete objects from the database.
+        • Syntax: DROP  table table-name; For Example DROP table Student;
+
+    ALTER COMMAND : 
+    Alter :
+    -------
+        Alter command user to modify column information like adding the column dropping the column renaming the column and resizing the column.
+
+        Alter command is used for alteration of table Drop Command There are various uses of alter command, such as: 
+        ● to add a column to the existing table .
+
+        ALTER TABLE Student
+        ADD age INT;
+
+         ● to rename any existing column.
+
+        ALTER TABLE Student
+        RENAME COLUMN name TO student_name;
+
+         ● to change the datatype of any column or to modify its size.
+
+        ALTER TABLE Student
+        MODIFY name VARCHAR(100);
+
+        ● alter is also used to drop a column.
+
+        ALTER TABLE Student
+        DROP COLUMN age;
+
+
+    TRUNCATE:
+    ----------
+        It is used to delete all the rows from the table and free the space containing the table.
+        Drop command delete total structure or table of database, 
+        Truncate delete all the data in database or rows in database
+        Syntax:
+        • TRUNCATE TABLE table_name;  
+        Example:
+        • TRUNCATE TABLE EMPLOYEE;  
+
+
+2.DML (Data Manipulation Language)
+==============================
+    ● The DML statements used for managing data within schema objects which deal with data manipulation. 
+    ●DML commands are not auto-committed. It means changes are not permanent to the database, they can be rolled back.
+    ●Here are some commands that come under DML:
+    
+    • Insert
+    • UPDATE
+    • DELETE
+    
+    ●INSERT COMMAND
+    -----------------
+     Insert  command  is  used  to  insert  data  into a  table.
+    INSERT INTO Student (id, name, age)
+    VALUES (1, 'Rahim', 20);
+
+    ●UPDATE COMMAND 
+    -----------------
+    Update command is used to update a row of a  table. 
+    UPDATE Student
+    SET age = 21
+    WHERE id = 1;
+    
+    DELETE COMMAND 
+    -----------------
+
+    Delete command is used to delete data from a table. Delete command can also be used with conditions to delete a particular row.
+
+    DELETE FROM Student
+
+    DELETE FROM Student
+    WHERE id = 1;
+
+
+    https://www.codingninjas.com/codestudio/guided-paths/dbms-database-management-systems/content/145842/offering/1751803
+ 
+DCL (Data Control Language): 
+==============================
+    DCL is used to control database security.
+
+    It decides who can access the database and what they can do.
+
+    ●It is related to security issues
+    
+    List of  DCL commands: 
+    
+    • GRANT:This command gives users access privileges to the database.(Granting permission to access the database)
+     EX : GRANT SELECT, INSERT ON Employee TO user1;
+
+    • REVOKE:This command withdraws the user’s access privileges given by using the GRANT command.(It is used to cancel previously granted permission(block))
+
+     EX :  REVOKE SELECT ON Employee FROM user1;
+
+
+    When is GRANT used?
+    ---------------------
+        When a new user joins
+        When someone’s role changes
+        When you want to control access
+
+    When is REVOKE used?
+    ---------------------
+        Employee leaves the company
+        User misuses data
+        Role no longer requires access
+
+
+Transaction Control Language
+==============================
+    TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
+    If any of the tasks fail, the transaction fails. Therefore, a transaction has only two results: success or failure.
+    When do we use TCL?
+    If any of the tasks fail, we use TCL to undo all the changes or only the required changes.
+
+    • COMMIT:
+    ----------
+         Commit command is used to save all the transactions to the database.(Google pay)
+        Syntax:
+        • COMMIT;  
+        Example:
+        • DELETE FROM CUSTOMERS  
+        • WHERE AGE = 25;  
+        • COMMIT;  
+    
+    • ROLLBACK: 
+     -------------
+
+        • This command helps you undo recent changes in a database, It is also used with SAVEPOINT command to jump to a savepoint in an ongoing transaction.
+        
+        • Rollbacks a transaction in case of any error occurs.
+        
+        • If we have used the UPDATE command to make some changes into the database, and realise that those changes were not required, then we can use the ROLLBACK command to rollback those changes, if they were not commited using the COMMIT command.
+    
+        • Following is rollback command's syntax,
+        • 
+        • ROLLBACK TO savepoint_name;
+        • 
+        • Example:
+        • DELETE FROM CUSTOMERS  
+        • WHERE AGE = 25;  
+        • ROLLBACK;  
+    
+    🔹 When to use ROLLBACK?
+    ---------------------------
+        Error occurs
+
+        Payment fails
+
+        User cancels operation
+
+
+
+    • SAVEPOINT command
+    ----------------------
+    
+        • SAVEPOINT: It is used to roll the transaction back to a certain point without rolling back the entire transaction.(downloading a file)
+        -->  SAVEPOINT is used only when partial rollback is required.
+        • SAVEPOINT command is used to temporarily save a transaction so that you can rollback to that point whenever required.
+        • 
+        • Following is savepoint command's syntax,
+        • 
+        • SAVEPOINT savepoint_name;
+        Syntax:
+        • SAVEPOINT SAVEPOINT_NAME;  
+
+
+    Example : 
+
+        In our project, Initially we used transactions while placing an order.
+        First, we create the order.
+        Then, we reduce the product stock.
+        After that, we take the payment.
+        All these steps are executed inside a single transaction.
+
+        If all steps are successful, we commit the transaction and save the data permanently.
+        If any step fails, like payment failure, we roll back the transaction so that no partial data is saved.
+
+        This helps us maintain data consistency and avoid incorrect orders or stock issues
+
+
+    Ex: 2 
+        payment done
+        create order failed 
+        check count and decrease count -- pending 
+        roolback transacktion and cancel the payment
+
+    Ex with no SAVEPOINT : 
+    ---------------------
+
+    const placeOrder = async (req, res) => {
+      const transaction = await sequelize.transaction();
+
+      try {
+        const { productId, userId } = req.body;
+
+        // 2️⃣ Create order
+        const order = await Order.create(
+          {
+            userId,
+            totalAmount: 1000,
+          },
+          { transaction }
+        );
+
+        // 3️⃣ Reduce stock
+        product.stock -= 1;
+        await product.save({ transaction });
+
+        // 4️⃣ Simulate payment
+        const paymentSuccess = true; // imagine Razorpay response
+
+        if (!paymentSuccess) {
+          throw new Error("Payment failed");
+        }
+
+        // 5️⃣ Save payment
+        await Payment.create(
+          {
+            orderId: order.id,
+            status: "SUCCESS",
+          },
+          { transaction }
+        );
+
+        // ✅ 6️⃣ COMMIT
+        await transaction.commit();
+
+        res.json({ message: "Order placed successfully" });
+
+      } catch (error) {
+        // ❌ 7️⃣ ROLLBACK
+        await transaction.rollback();
+
+        res.status(500).json({
+          message: "Order failed",
+          error: error.message,
+        });
+      }
+    };
+
+
+    Ex with SAVEPOINT : 
+    ---------------------
+    ✔ Order stays
+    ❌ Stock undone
+    ❌ Payment undone
+
+
+
+    sequelize.transaction({ transaction: t }, async (t2) => {})
+    👉 Sequelize creates a SAVEPOINT
+
+    Internally DB does:
+
+    SAVEPOINT sequelize_savepoint_1;
+
+
+
+
+
+    const placeOrder = async (req, res) => {
+      const t = await sequelize.transaction(); // MAIN transaction
+
+      try {
+        // 1️⃣ Create order
+        const order = await Order.create(
+          { userId: 1, totalAmount: 1000 },
+          { transaction: t }
+        );
+
+        // 2️⃣ SAVEPOINT starts here (nested transaction)
+        await sequelize.transaction({ transaction: t }, async (t2) => {
+        
+          // Reduce stock
+          const product = await Product.findByPk(1, { transaction: t2 });
+          product.stock -= 1;
+          await product.save({ transaction: t2 });
+
+          // Simulate payment failure
+          const paymentSuccess = false;
+
+          if (!paymentSuccess) {
+            throw new Error("Payment failed");
+          }
+
+          // Save payment
+          await Payment.create(
+            { orderId: order.id, status: "SUCCESS" },
+            { transaction: t2 }
+          );
+        });
+
+        // If everything is OK
+        await t.commit();
+        res.json({ message: "Order placed successfully" });
+
+      } catch (error) {
+        await t.rollback();
+        res.status(500).json({ message: error.message });
+      }
+    };
+
+
+Data Query Language
+======================
+    DQL is used to fetch the data from the database.
+    
+    It uses only one command:
+    
+    • SELECT
+    
+    a. SELECT: This is the same as the projection operation of relational algebra. It is used to select the attribute based on the condition described by WHERE clause.
+    
+    Syntax:
+    • SELECT expressions    
+    • FROM TABLES    
+    • WHERE conditions;  
+    For example:
+    • SELECT emp_name  
+    • FROM employee  
+    • WHERE age > 20;  
+    

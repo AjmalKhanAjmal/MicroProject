@@ -1,5 +1,6 @@
 TTL (Time To Live) Indexes in MongoDB are special indexes that automaticallyremove documents from a collection
- after a certain period. They are commonly used for data that needs to expire after a specific time, such as session information, logs, or temporary data. To create a TTL index, you can specify the expiration time in seconds
+ after a certain period. They are commonly used for data that needs to expire after a specific time, such as session information,
+  logs, or temporary data. To create a TTL index, you can specify the expiration time in seconds
 
 Example: Remove documents 1 hour after createdAt:
 db.sessions.createIndex({ "createdAt": 1 }, { expireAfterSeconds: 3600 })

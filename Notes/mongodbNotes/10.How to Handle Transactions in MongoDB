@@ -1,0 +1,19 @@
+MongoDB supports multi-document ACID transactions by allowing us to perform a series of read and write 
+operations across multiple documents and collections in a transaction. This ensures data consistency and integrity. 
+To use transactions we typically start a session, begin a transaction, perform the operations and then commit or abort the transaction.
+
+Example in JavaScript:
+-----------------------
+const session = client.startSession();
+
+session.startTransaction();
+
+try {
+  db.collection1.insertOne({ name: "Alice" }, { session });
+  db.collection2.insertOne({ name: "Bob" }, { session });
+  session.commitTransaction();
+} catch (error) {
+  session.abortTransaction();
+} finally {
+  session.endSession();
+}

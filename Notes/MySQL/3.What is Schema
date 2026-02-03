@@ -1,0 +1,16 @@
+Schema is a logical representation of database.
+Schema is a structural view of a database.
+
+Schema nothing but it says
+It tells what fields are there and what type of data we store.
+
+If interviewer asks What is commc.demo_requests?, say:
+------------------------------------------------------
+“commc is the database name and demo_requests is the table name.”
+
+● It represents the relationship between the tables. However, it does not show the data present in the tables
+It categorized into 3 levels
+●physical level
+●logical level
+●view level 
+

@@ -1,0 +1,10 @@
+Full-Text Search in MongoDB is implemented using text indexes. These indexes allow you to perform text search queries
+ on string content within documents.
+
+Example:
+
+db.collection.createIndex({ content: "text" });
+db.collection.find({ $text: { $search: "mongodb" } });
+
+In this example, a text index is created on the content field, and a text search query is performed to find documents
+ containing the word "mongodb."

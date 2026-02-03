@@ -3,7 +3,7 @@ What is MongoDB?
 --> MongoDB is a NoSQL database used to store data in a flexible, JSON-like format instead of rows and columns.
 
 --> In simple words: 
-Traditional databases (like MySQL) store data in tables
+Traditional databases (like MySQL) store data in rows and columns
 MongoDB stores data in documents
 These documents look very similar to JavaScript objects, so it’s easy for developers—especially when working with Node.js.
 

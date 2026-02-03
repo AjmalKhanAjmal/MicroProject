@@ -1,0 +1,3 @@
+MongoDB ensures high availability and scalability through its features like replica sets and sharding.
+Replica sets provide redundancy and failover capabilities by ensuring that data is always available.
+Sharding distributes data across multiple servers, enabling horizontal scalability to handle large volumes of data and high traffic loads.

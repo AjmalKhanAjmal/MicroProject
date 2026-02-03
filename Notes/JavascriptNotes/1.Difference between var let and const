@@ -1,0 +1,8 @@
+| Feature         | var                | let       | const     |
+| --------------- | -----------------  | --------- | --------- |
+| Scope           | Function           | Block     | Block     |
+| Re-declare      | ✅ Yes             | ❌ No      | ❌ No      |
+| Update          | ✅ Yes             | ✅ Yes     | ❌ No      |
+| Hoisting        | Yes (`undefined`)  | Yes (TDZ) | Yes (TDZ) |
+| Must initialize | ❌ No              | ❌ No      | ✅ Yes     |
+

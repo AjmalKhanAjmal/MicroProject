@@ -1,0 +1,49 @@
+
+1.What is Table :  Collection of rows and columns.
+ 
+2.What is data base : Collection of tables
+ 
+3.What is database sever : Collection of databases.
+ 
+4.What is database management system 
+:
+ dbms (database management system)
+Dbms is a software which used to store the data.
+● Dbms is a software which used to perform Crud operations with Database Server.
+ 
+--> dbms is a software which allows to create and manage the database.
+--> the database which is created by using dbms software uses files for storing the data.
+ 
+--> files are having disadvantages.
+disadvantages of files 
+1. data redundency (duplicate data)
+2. data inconsistency
+3. no data recovery
+4. limited data
+5. no query language
+6. no security
+
+●●rdbms (relational database management system)
+ 
+--> rdbms is the advance version of dbms
+--> rdbms is a software which allows to create and manage the database.
+ 
+●Rdms is used to store or manage the data only in the form of tables
+--> the database which is created using rdbms software uses tables for
+storing the data.
+●RDBMS data is structured in database tables, fields (columns) and records (rows)
+ advantages of rdbms
+I, no data redundancy
+2, data consistency
+3. data recovery
+4 unlimited data
+5 query language support
+6, security
+ 
+●The following are the rdbms softwares
+1. Oracle Database
+2. MySQL Database
+3. Sybase Database
+4. DB2 Database
+5. 5QL Server
+

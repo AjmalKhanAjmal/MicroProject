@@ -1,0 +1,8 @@
+Monitoring and troubleshooting performance issues in MongoDB involve:
+
+Monitoring Tools: Use tools like MongoDB Cloud Manager, MongoDB Ops Manager, or third-party monitoring solutions.
+Logs: Analyze MongoDB logs for errors and performance metrics.
+Profiling: Enable database profiling to capture detailed information about operations.
+Explain Plans: Use the explain() method to understand query execution and identify bottlenecks.
+Index Analysis: Review and optimize indexes based on query patterns and usage.
+Resource Utilization: Monitor CPU, memory, and disk I/O usage to identify resource constraints.

@@ -1,0 +1,50 @@
+
+ER model
+===========
+• ER model stands for an Entity-Relationship model. It is a high-level data model.
+•  This model is used to define the data elements and relationship for a specified system.
+• Er model has 3 components 
+
+1.Entity
+2.Attributes
+3.Relationships
+
+
+Entity : 
+---------
+It is a real word objects.ex. Student  teachers,classes.
+Entity set : It is a collection of similar type of entities
+ 
+●An entity may be any object, class, person or place. 
+●In the ER diagram, an entity can be represented as rectangles.
+ 
+Weak Entity
+ 
+An entity that depends on another entity called a weak entity. The weak entity doesn't contain any key attribute of its own. 
+The weak entity is represented by a double rectangle.
+ 
+ 
+Attributes : 
+-------------------
+ 
+The attribute is used to describe the property of an entity.
+● Eclipse is used to represent an attribute.
+ 
+For example, id, age, contact number, name, etc. can be attributes of a student.
+https://www.javatpoint.com/dbms-er-model-concept
+
+
+Relationship :
+---------------
+
+●A relationship is used to describe the relation between entities.
+●Diamond or rhombus is used to represent the relationship.
+●Different types of relationships 
+1. one to one
+2. one to many
+3.many to many
+ 
+
+ 
+●Nowadays, SQL is widely used in data science and analytics.
+ 
