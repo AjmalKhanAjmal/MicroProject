@@ -1,0 +1,92 @@
+Constraints :
+    Constraints in SQL means we are applying certain conditions or restrictions on the database.
+    By using constraints we can apply some conditions and restrictions on database. 
+
+    Constraints available in SQL are:
+    
+    • NOT NULL
+    • UNIQUE
+    • PRIMARY KEY
+    • FOREIGN KEY
+    • CHECK
+    • DEFAULT
+
+    1. NOT NULL
+     -----------
+        • NULL means empty, i.e., the value is not available.
+        • Whenever a table's column is declared as NOT NULL, then the value for that column cannot be empty for any of the table's records.
+        • There must exist a value in the column to which the NOT NULL constraint is applied 
+
+        CREATE TABLE Student (
+          id INT,
+          name VARCHAR(50) NOT NULL
+        );
+
+    2. UNIQUE
+      -----------
+        • Duplicate values are not allowed in the columns to which the UNIQUE constraint is applied.
+        • The column with the unique constraint will always contain a unique value.
+        • Using the UNIQUE constraint, you can also modify the already created tables.
+        • So multiple NULLs are allowed in a column with a UNIQUE constraint (in most databases)
+        CREATE TABLE User (
+          email VARCHAR(100) UNIQUE
+        );
+
+
+    3. PRIMARY KEY
+      -----------
+        • PRIMARY KEY Constraint is a combination of NOT NULL and Unique constraints.
+        • NOT NULL constraint and a UNIQUE constraint together forms a PRIMARY constraint.
+        • The column to which we have applied the primary constraint will always contain a unique value and will not allow null values.
+        • Example : students id teachers id this type of examples are primary key.
+
+        CREATE TABLE Employee (
+          emp_id INT PRIMARY KEY,
+          emp_name VARCHAR(50)
+        );
+
+    4. FOREIGN KEY
+      -----------
+        ●Is an attribute which establish relationship between two tables.
+        • A foreign key is used for referential integrity.
+        ●Foreign key can contain duplicate values.
+        ● The table with the foreign key is called child table and the table with primary key is called referenced or parent table
+        • When we have two tables, and one table takes reference from another table, i.e., the same column is present in both
+          the tables and that column acts as a primary key in one table. That particular column will act as a foreign key in another table.
+
+        CREATE TABLE Orders (
+          order_id INT PRIMARY KEY,
+          user_id INT,
+          FOREIGN KEY (user_id) REFERENCES User(user_id)
+        );
+
+    5. CHECK
+    ----------
+        • Whenever a check constraint is applied to the table's column, and •••the user wants to insert the value in it, 
+        then the value will first be checked for certain conditions before inserting the value into that column.
+        Example : age
+
+        CREATE TABLE Product (
+          price INT CHECK (price > 0)
+        );
+
+    6. DEFAULT
+    -----------
+        Whenever a default constraint is applied to the table's column, and the user has not specified the value to be inserted 
+        in it, then the default value which was specified while applying the default constraint will be inserted into that 
+        particular column.
+         Example: Salary 10000
+    
+        CREATE TABLE Account (
+          status VARCHAR(20) DEFAULT 'ACTIVE'
+        );
+        
+
+    MySQL WHERE Clause
+        ●It specifies a specific position where you have to do the operation.
+        ●MySQL WHERE Clause is used with SELECT, INSERT, UPDATE and DELETE clause to filter the results. 
+
+        Syntax:
+
+        • WHERE conditions;  
+

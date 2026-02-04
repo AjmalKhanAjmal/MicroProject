@@ -1,0 +1,131 @@
+JOINS:
+======
+●Joins are used to combine one or more table data.
+●To participate in join, the tables must have at least one common column name.
+●Joins are used to fetch the information from multiple tables.
+
+Types of joins:
+--------------
+1.Cross Join
+2.Inner Join 
+	2.1 Natural Join 
+3.Outer Join
+	3.1 Left Outer Join
+	3.2 Right Outer Join
+	3.3 Full Outer Join
+4.Equi Join
+5.Non-Equi Join
+6.Self Join
+ 
+●The connection between tables is established through the "where " clause.
+ 
+1.Cross Join:
+----------------
+●In a cross join, every row in table1 is matched with every row in table2, creating pairings between all rows from both tables.
+ 
+●In cross join, each row in table1 associated with each row in table2.
+ Here we need not specify the condition.
+	
+Query:SELECT * 
+FROM Employee 
+CROSS JOIN Department;
+
+| emp_id | name | dept_id | dept_name |
+| ------ | ---- | ------- | --------- |
+| 1      | A    | 10      | HR        |
+| 1      | A    | 20      | IT        |
+| 2      | B    | 10      | HR        |
+| 2      | B    | 20      | IT        |
+
+
+● INNER JOIN:
+------------------ 
+●Inner join retrive only matched rows.
+●In inner-join, we have to specify the condition & only matched rows are considered
+ 
+Inner join state that what data is same on two tables that data only retrieve. Then that is called a inner join.
+●It returns dataset that have matching value in both sides
+ 
+   
+2.1 Natural Join :
+--------------------
+It is same as inner-join with 2 differnces
+	1.duplicate column will not displayed
+	2 .Here we need not specify the condition
+Query:
+SELECT * 
+FROM Employee 
+NATURAL JOIN Department;
+
+sA natural join is a type of relational database operation that combines two tables based on matching column names.
+It automatically identifies and combines rows from both tables where the column names in both tables are the same, 
+without the need for explicitly specifying the join condition. This type of join is used to simplify queries when tables
+have similar structures and share common columns, but it can also be risky if column names change or if there are multiple
+columns with the same name in the tables.
+ 
+
+
+ 
+ 
+● LEFT JOIN:
+---------------
+●It returns all Records from the left table and matched records from the right.
+● 
+ SELECT * 
+FROM Employee 
+LEFT JOIN Department 
+ON Employee.dept_id = Department.dept_id;
+
+ 
+● RIGHT JOIN:
+--------------
+It returns all Records from the right table and the matched records from left.
+ 
+ SELECT * 
+FROM Employee 
+RIGHT JOIN Department 
+ON Employee.dept_id = Department.dept_id;
+
+ 
+OUTER JOIN
+ ---------------
+OUTER JOIN in SQL Server returns all records from both tables
+ 
+. In other words, this join will not return only the matching record but also return all unmatched rows from one or both tables.
+   
+MySQL does not support FULL JOIN directly
+
+SELECT * FROM Employee
+LEFT JOIN Department ON Employee.dept_id = Department.dept_id
+UNION
+SELECT * FROM Employee
+RIGHT JOIN Department ON Employee.dept_id = Department.dept_id;
+
+4.Equi Join:
+---------------
+	In join condition, if we specify = operator then it is called as Equi Join
+SELECT * 
+FROM Employee, Department 
+WHERE Employee.dept_id = Department.dept_id;
+	 
+ 
+5.Non-Equi Join:	
+---------------
+	In join condition, if we specify except = operator(<,>,<=,>=,!=) then it is called as Non-Equi Join
+SELECT * 
+FROM Employee, Department 
+WHERE Employee.dept_id = Department.dept_id;
+  
+ 
+6.Self Join
+--------------
+	If join is performed on single table then it called as Self join
+SELF JOIN
+
+A table is joined to itself using the SELF JOIN.
+A self join is used to join a table to itself
+    
+SELECT e1.name AS Employee, e2.name AS Manager
+FROM Employee e1, Employee e2
+WHERE e1.manager_id = e2.emp_id;
+

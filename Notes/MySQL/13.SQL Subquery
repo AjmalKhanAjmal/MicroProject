@@ -1,0 +1,93 @@
+A Subquery is a query within another SQL query and embedded within the WHERE clause.
+• A subquery is enclosed in parentheses.
+• A subquery is a query within another query. The outer query is known as the main query, and the inner query is known as a subquery.
+• In the Subquery, ORDER BY command cannot be used. But GROUP BY command can be used to perform the same function as ORDER BY command.
+ 
+• A subquery can be placed in a number of SQL clauses like WHERE clause, FROM clause, HAVING clause.
+• You can use Subquery with SELECT, UPDATE, INSERT, DELETE statements along with the operators like =, <, >, >=, <=, IN, BETWEEN, etc
+
+If the inner query DOES NOT use outer query columns Non-Correlated Subquery
+
+If the inner query USES outer query columns Correlated Subquery 
+
+There are two types of subqueries 
+------------------------------------
+1.Non correlated sub queries.(normal subqueries)Nested query
+ 
+2.Correlated sub queries.
+ 
+1.Non correlated sub questions (normal subqueries)
+------------------------------------------------------------------------
+●In Non correlated sub queries Inner query runs first, and only once. Outer query is executed with result from Inner query 
+●It is a Bottom up approach.
+●In this mostly in ,not in , equal this are used
+    
+
+SELECT name
+FROM products
+WHERE id IN (
+    SELECT product_id
+    FROM order_details
+    GROUP BY product_id
+    HAVING SUM(quantity) > 2
+);
+
+
+SELECT name
+FROM users
+WHERE id IN (
+    SELECT user_id
+    FROM orders
+    WHERE total_amount > (
+        SELECT AVG(total_amount)
+        FROM orders
+    )
+);
+
+
+
+SELECT name
+FROM products
+WHERE id IN (
+    SELECT id
+    FROM products
+    WHERE stock = 0
+);
+
+2.Correlated sub queries.
+----------------------------------  
+●Outer query Executes first and for every outer query row inner query is executed
+● It is a Top down approach.
+●In this ,exist and not exist are mostly used.
+
+SELECT DISTINCT u.name
+FROM users u
+WHERE EXISTS (
+    SELECT 1
+    FROM orders o
+    WHERE o.user_id = u.id
+      AND o.total_amount > (
+          SELECT AVG(total_amount)
+          FROM orders
+          WHERE user_id = u.id
+      )
+);
+
+
+SELECT o.id
+FROM orders o
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM payments p
+    WHERE p.order_id = o.id
+      AND p.payment_status = 'SUCCESS'
+);
+
+
+| Feature     | Non-Correlated     | Correlated         |
+| ----------- | ------------------ | ------------------ |
+| Runs        | Once               | Multiple times     |
+| Used for    | Reports, analytics | Validation, checks |
+| Operators   | `IN`, `=`          | `EXISTS`           |
+| Performance | Faster             | Slower             |
+

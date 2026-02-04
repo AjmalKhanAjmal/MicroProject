@@ -1,0 +1,41 @@
+Aggregate function :
+
+    ●MySQL's aggregate function is used to perform calculations on multiple values and return the result in a single value like 
+    the average of all values,
+    
+    ●We mostly use the aggregate functions with SELECT statements in the data query languages.
+    ●There are various aggregate functions available in MySQL. Some of the most commonly used aggregate functions are summarised 
+    in the below table:
+    
+    Count() Function
+        MySQL count() function returns the total number of values in the expression.
+    
+    Sum() Function
+        The MySQL sum() function returns the total summed (non-NULL) value of an expression.
+    
+    AVG() Function
+        MySQL AVG() function calculates the average of the values specified in the column.
+        ●Suppose we want to get the average working hours of all employees in the table, we need to use the AVG() function as shown in the following query:
+    
+    MIN() Function
+        ●MySQL MIN() function returns the minimum (lowest) value of the specified column. It also works with numeric data type only.
+        ●Suppose we want to get minimum working hours of an employee available in the table, we need to use the MIN() function as shown in the following query:
+    
+    MAX() Function
+        ●MySQL MAX() function returns the maximum (highest) value of the specified column. It also works with numeric data type only.
+        ●Suppose we want to get maximum working hours of an employee available in the table, we need to use the MAX() function as shown in the following query
+    
+    DISTINCT FUN()
+        ● This function not collect duplicate values
+        ● By using distinct fun we can calculate max,min and avg values
+    
+    
+    Example : 
+
+    SELECT COUNT(*) FROM Employee;
+    SELECT SUM(salary) FROM Employee;
+    SELECT AVG(working_hours) FROM Employee;
+    SELECT MIN(working_hours) FROM Employee;
+    SELECT COUNT(DISTINCT working_hours) FROM Employee;
+
+

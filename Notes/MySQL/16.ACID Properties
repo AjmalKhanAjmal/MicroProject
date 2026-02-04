@@ -1,0 +1,182 @@
+ACID properties are database rules to handle transactions safely.
+
+They make sure data is not lost or corrupted during a transaction.
+
+
+
+ACID stands for:
+
+1. Atomicity
+2. Consistency
+3. Isolation
+4. Durability
+
+---
+
+## 1️⃣ Atomicity
+
+**Atomicity means all or nothing.**
+
+If a transaction has multiple steps and **any one step fails**, then **all changes are rolled back**.
+
+**Example:**
+While placing an order, if payment fails, then order creation and stock reduction are also cancelled.
+
+So, a failed transaction is **never partially saved**.
+
+---
+
+## 2️⃣ Consistency
+
+**Consistency means data rules must be correct before and after the transaction.**
+
+**Example:**
+In a bank transfer, total money before and after transfer remains the same.
+No business rule should be broken.
+
+So, the database always moves from **one valid state to another valid state**.
+
+---
+
+## 3️⃣ Isolation
+
+**Isolation means multiple transactions do not affect each other.**
+
+**Example:**
+If two users try to buy the last product at the same time, only one transaction is allowed only one allow to buy a product to one user.
+The other transaction waits or fails.
+
+order canceled after 15 min at that time we refund the customer amount
+
+So, users do not see incomplete or wrong data.
+
+---
+
+## 4️⃣ Durability
+
+**Durability means once a transaction is committed, data is permanently saved.**
+
+**Example:**
+After payment success, even if the server crashes, order and payment data are not lost.
+
+Data remains safe in the database.
+
+---
+
+## 🎤 Final One-Paragraph Answer (Very Important)
+
+> “ACID properties ensure reliable database transactions. Atomicity ensures rollback if any step fails, Consistency maintains business rules, Isolation handles multiple users safely, and Durability guarantees data is permanently saved after commit.”
+
+
+	Example : 1 
+	===============
+
+		if order is cancelled 
+			|-- update status
+			|-- refund payment to customer
+			|-- Send cancell email to customer
+			|-- If order is delivery we have to send cancel emails with reason
+			|-- send WebSocket notification 
+
+	Example : 2 
+	===============
+	        payment done
+	        create order failed 
+	        check count and decrease count -- pending 
+	        roolback transacktion and cancel the payment
+
+	Example : 3 
+	===============
+		 ACID Properties – Cart & Payment Intent Example
+		Scenario (Project Flow)
+	
+		First, cart is created
+	
+		Then payment intent is created (mandatory before payment)
+	
+		Customer updates cart (like increasing quantity)
+	
+		System recalculates total amount
+	
+		Payment intent, cart, and cart details tables are updated
+	
+		1️⃣ Atomicity
+		--------------
+		Atomicity means all steps must succeed or none should happen.
+	
+		In our project:
+	
+		When customer updates the cart:
+	
+		Update cart total
+	
+		Update cart details
+	
+		Update payment intent amount
+	
+		👉 If payment intent update fails, then:
+	
+		Cart update is rolled back
+	
+		Cart details update is rolled back
+	
+		So partial update never happens.
+	
+		Cart and payment intent are always updated together.
+	
+		2️⃣ Consistency
+		----------------
+		Consistency means business rules must be correct before and after transaction.
+	
+		In our project:
+	
+		Cart total amount = Payment intent amount
+	
+		Cart details prices = Cart total
+	
+		No mismatch allowed like:
+	
+		Cart amount updated but payment intent old ❌
+	
+		Payment intent updated but cart old ❌
+	
+		Database always moves from correct state to correct state.
+	
+		3️⃣ Isolation
+		----------------
+		Isolation means multiple updates do not disturb each other.
+	
+		In our project:
+	
+		User updates quantity
+	
+		At same time, user refreshes page or adds another item
+	
+		Only one transaction works at a time for the cart.
+		Other update waits.
+	
+		This avoids wrong price calculation and duplicate updates.
+	
+		4️⃣ Durability
+		--------------
+		Durability means once update is completed, data is permanently saved.
+	
+		In our project:
+	
+		Cart updated
+	
+		Payment intent updated
+	
+		Transaction committed
+	
+		Even if server crashes, after restart:
+	
+		Cart has latest price
+	
+		Payment intent has latest amount
+	
+		Data is not lost.
+	
+	
+	
+	

@@ -1,0 +1,5 @@
+Sequence are created to generate values for primary key columns 
+For example we can't input the values for primary key column that values must be  automatically generated
+ 
+Ex : when customer purchase some item the bill number should be generated automatically 
+We we buy items in online shopping then order number should be automatically generated this all can be done by using Sequence.

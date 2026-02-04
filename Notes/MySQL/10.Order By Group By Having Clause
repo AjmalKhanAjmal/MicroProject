@@ -1,0 +1,114 @@
+SQL – ORDER BY
+=================
+    The ORDER BY statement in SQL is used to sort the fetched data in either ascending or descending according to one or 
+    more columns. 
+    • By default ORDER BY sorts the data in ascending order
+    • We can use the keyword DESC to sort the data in descending order and the keyword ASC to sort in ascending order.
+    ●To sort in ascending or descending order we can use the keywords ASC or DESC respectively.    
+
+SQL group by
+======================
+    • The GROUP BY clause is used to arrange required data into groups.
+    • GROUP BY clause is used with the SELECT statement.
+    • In the query , Group BY clause is placed before Having clause .
+
+    Correct order:
+    --------------
+        SELECT ...
+        FROM ...
+        WHERE ...
+        GROUP BY ...
+        HAVING ...
+        ORDER BY ...
+    EX : 1
+    --------
+
+        ### 1️⃣ What `GROUP BY` actually does
+
+        When you use `GROUP BY`, SQL **combines multiple rows into one group** based on the columns you specify.
+
+        Example table `employees`:
+
+        | name  | department | salary |
+        | ----- | ---------- | ------ |
+        | Alice | HR         | 5000   |
+        | Bob   | HR         | 6000   |
+        | Carol | IT         | 7000   |
+        | Dave  | IT         | 8000   |
+
+        Query:
+        SELECT department
+        FROM employees
+        GROUP BY department;
+
+        **Result:**
+
+        | department |
+        | ---------- |
+        | HR         |
+        | IT         |
+
+        ✅ Rows are **combined by department**. All HR rows are treated as one group, all IT rows as another.
+
+        Imagine if we tried:
+
+        SELECT department, salary
+        FROM employees
+        GROUP BY department;
+
+        * SQL knows we want **one row per department**.
+        * But which `salary` should it pick for HR? 5000 or 6000?
+        * There is **no single answer**, so SQL doesn’t allow this.
+
+
+        **Use an aggregate function** (so SQL knows how to combine the multiple rows into one value)
+
+           SELECT department, AVG(salary)
+           FROM employees
+           GROUP BY department;
+           ```
+           ✅ Now SQL calculates a **single value** (average) for each group.
+
+    EX : 2 
+    -------
+
+
+        ### 1️⃣ Example table `employees`:
+
+        | name  | department | job_title | salary |
+        | ----- | ---------- | --------- | ------ |
+        | Alice | HR         | Manager   | 5000   |
+        | Bob   | HR         | Assistant | 4000   |
+        | Carol | IT         | Developer | 7000   |
+        | Dave  | IT         | Developer | 8000   |
+        | Eve   | IT         | Manager   | 9000   |
+        | Frank | HR         | Manager   | 5500   |
+
+        ---
+
+        ### 2️⃣ Query:
+
+        SELECT department, job_title, COUNT(*)
+        FROM employees
+        GROUP BY department, job_title;
+
+        * **`GROUP BY department, job_title`**
+         → Combine rows **where both department AND job_title are the same**.
+        `COUNT(*)`→ Count how many rows are in each group.
+
+        ### 4️⃣ Result:
+
+        | department | job_title | COUNT(*) |
+        | ---------- | --------- | -------- |
+        | HR         | Manager   | 2        |
+        | HR         | Assistant | 1        |
+        | IT         | Developer | 2        |
+        | IT         | Manager   | 1        |
+
+SQL HAVING Clause
+======================
+    ●Having clause is used to filter data
+    ●This clause (having) is used in SQL because we cannot use the WHERE clause with the SQL aggregate functions. Both WHERE and HAVING clauses are used for filtering the records in SQL queries.
+    • Having clause is generally used in reports of large data.  
+    • Having clause is only used with the SELECT clause.
+    • Having clause is generally used after GROUP BY.  

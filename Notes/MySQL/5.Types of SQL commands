@@ -30,7 +30,8 @@ DDL (Data Definition Language):
     ALTER COMMAND : 
     Alter :
     -------
-        Alter command user to modify column information like adding the column dropping the column renaming the column and resizing the column.
+        Alter command user to modify column information like adding the column dropping the column renaming the column and 
+        resizing the column.
 
         Alter command is used for alteration of table Drop Command There are various uses of alter command, such as: 
         ● to add a column to the existing table .
@@ -134,8 +135,16 @@ DCL (Data Control Language):
 
 Transaction Control Language
 ==============================
-    TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
-    If any of the tasks fail, the transaction fails. Therefore, a transaction has only two results: success or failure.
+    --> TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
+    -->Transaction Control Language (TCL) is a part of SQL that is used to manage changes made to a database. 
+      When we perform operations like inserting, updating, or deleting data, TCL helps decide whether those changes should be 
+      saved permanently or canceled.
+
+    -->TCL works with transactions. A transaction is a group of database operations that are treated as a single unit. 
+      If all the operations are successful, the changes can be saved. If something goes wrong, the changes can be undone to 
+      keep the data correct.
+    
+    
     When do we use TCL?
     If any of the tasks fail, we use TCL to undo all the changes or only the required changes.
 
@@ -152,11 +161,14 @@ Transaction Control Language
     • ROLLBACK: 
      -------------
 
-        • This command helps you undo recent changes in a database, It is also used with SAVEPOINT command to jump to a savepoint in an ongoing transaction.
+        • This command helps you undo recent changes in a database, It is also used with SAVEPOINT command to jump to a savepoint
+         in an ongoing transaction.
         
         • Rollbacks a transaction in case of any error occurs.
         
-        • If we have used the UPDATE command to make some changes into the database, and realise that those changes were not required, then we can use the ROLLBACK command to rollback those changes, if they were not commited using the COMMIT command.
+        • If we have used the UPDATE command to make some changes into the database, and realise that those changes were not 
+        required, then we can use the ROLLBACK command to rollback those changes, if they were not commited using the COMMIT 
+        command.
     
         • Following is rollback command's syntax,
         • 
@@ -199,8 +211,8 @@ Transaction Control Language
         After that, we take the payment.
         All these steps are executed inside a single transaction.
 
-        If all steps are successful, we commit the transaction and save the data permanently.
-        If any step fails, like payment failure, we roll back the transaction so that no partial data is saved.
+        If all steps are successful, we commit the transaction and save the data permanentlypartial.
+        If any step fails, like payment failure, we roll back the transaction so that no  data is saved.
 
         This helps us maintain data consistency and avoid incorrect orders or stock issues
 

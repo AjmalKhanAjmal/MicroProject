@@ -1,0 +1,97 @@
+
+
+## SQL Data Types (Box Format)
+
+    
+• String Data types
+• Numeric Data types
+• Date and time Data types
+• Boolean Data Types
+• Binary Data Types
+
+    ### 1. Numeric Data Types
+        
+        | Data Type    | Description                         | Example   |
+        | ------------ | ----------------------------------- | --------- |
+        | INT          | Stores whole numbers                | 10, 25    |
+        | SMALLINT     | Smaller range integers              | 100       |
+        | BIGINT       | Very large integers                 | 987654321 |
+        | DECIMAL(p,s) | Exact decimal values                | 45000.75  |
+        | NUMERIC(p,s) | Same as DECIMAL                     | 99.99     |
+        | FLOAT        | Approximate decimal values          | 4.5       |
+        | REAL         | Approximate values (less precision) | 3.14      |
+        | DOUBLE       | High precision floating point       | 123.456   |
+        
+        ---
+        
+    ### 2. Character / String Data Types
+        
+        | Data Type  | Description          | Example |
+        | ---------- | -------------------- | ------- |
+        | CHAR(n)    | Fixed-length text    | 'M'     |
+        | VARCHAR(n) | Variable-length text | 'Amit'  |
+        | TEXT       | Large text data      | Address |
+        
+        ---
+        
+    ### 3. Date & Time Data Types
+        
+        | Data Type | Description               | Example          |
+        | --------- | ------------------------- | ---------------- |
+        | DATE      | Stores date               | 2026-02-04       |
+        | TIME      | Stores time               | 10:30:00         |
+        | DATETIME  | Date and time             | 2026-02-04 10:30 |
+        | TIMESTAMP | Date & time with timezone | Auto-generated   |
+        
+        ---
+        
+    ### 4. Boolean Data Types
+        
+        | Data Type | Description   | Example      |
+        | --------- | ------------- | ------------ |
+        | BOOLEAN   | True or False | TRUE / FALSE |
+        | BIT       | Binary value  | 1 / 0        |
+        
+        ---
+        
+    ### 5. Binary Data Types
+        
+        | Data Type | Description              | Example    |
+        | --------- | ------------------------ | ---------- |
+        | BLOB      | Binary Large Object      | Image, PDF |
+        | BINARY    | Fixed-length binary data | File data  |
+        | VARBINARY | Variable-length binary   | Audio      |
+
+
+   Differences between FLOAT and DECIMAL
+
+    ### DECIMAL(p, s)
+        * Stores **exact numeric values**
+        * `p` = total number of digits
+        * `s` = number of digits after the decimal point
+        * No rounding errors
+        * Best for **financial and monetary data**
+        **Example**
+        salary DECIMAL(10,2)
+        12345.67
+        1000.00
+    ### FLOAT
+        * Stores **approximate numeric values**
+        * May cause small rounding errors
+        * Uses less storage
+        * Best for **scientific calculations** or approximate values
+        **Example**
+        rating FLOAT
+        4.6999999 instead of 4.7
+    
+   Difference betwenn char and varchar
+
+        | Feature     | CHAR                    | VARCHAR                   |
+    | ----------- | ----------------------- | ------------------------- |
+    | Length      | Fixed                   | Variable                  |
+    | Storage     | Uses full length        | Uses only required length |
+    | Space usage | More                    | Less                      |
+    | Performance | Faster                  | Slightly slower           |
+    | Best for    | Fixed values (Y/N, M/F) | Names, addresses          |
+
+

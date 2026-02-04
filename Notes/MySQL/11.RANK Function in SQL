@@ -1,0 +1,24 @@
+• It always works with the OVER() clause.
+• It assigns a rank to each row based on the ORDER BY clause.
+• It assigns a rank to each row in consecutive order.
+• It always assigns a rank to rows, starting with one for each new partition.
+• SQL Server provides the following rank functions:
+• RANK()
+• ROW_NUMBER()
+• DENSE_RANK()
+• NTILE()
+ 
+• RANK():
+• This function is used to determine the rank for each row in the result set. 
+• It allows duplicate ranks
+• It gives similar rank if they have same value.
+•  
+•  
+• ROW_NUMBER()
+•  It will gives the different ranks for the row having similar values
+• It doesn't allows duplicate ranks.
+•  
+ 
+DENSE_RANK() Function
+It always specifies ranking in consecutive order. If we get a duplicate value, this function will assign it with the same rank, and the next rank being the next sequential number. This characteristic differs DENSE_RANK() function from the RANK() function.
+ 

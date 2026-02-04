@@ -1,0 +1,15 @@
+●It is a technique to remove or reduce Redundancy (Duplicacy) from a table.
+●There are two types of duplicacy 
+1.Row level.
+2.Column level.
+●Normalization is the process of dividing larger tables into smaller ones reducing the redundant data.
+❖ Maintenance becomes easier and faster since the data are organized logically in a normalized database in a flexible way.
+❖ Searching and sorting of records is easier and faster because data will appear in a separate, smaller table when a database is normalized allowing us to easily find them.
+
+
+
+1 NF :
+1st Normal Form (1NF)
+●(No multi-value attributes allowed).
+●There are no repeating groups: two columns do not store similar information in the same table.
+●Each table has a primary key: minimal se

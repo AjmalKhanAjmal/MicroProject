@@ -1,0 +1,38 @@
+Stored Procedures – Simple Explanation
+=========================================
+1. What is a Stored Procedure?
+    A stored procedure is a set of SQL commands saved in the database. Once created, you can use it anytime without rewriting 
+    the same commands.
+
+2. Why are Stored Procedures Useful?
+    Better Performance:
+        we use Stored procedures because they are precompiled. This means the database doesn’t need to re-read or re-plan 
+        the commands every time you run them. So, they run faster, especially if the same task is done many times.
+
+    Improved Security:S
+        Users don’t need direct access to the tables. They can just run the stored procedure, which keeps the data safer.
+
+    Easier Maintenance:
+        If a rule changes (like a discount calculation), you only update it in the stored procedure. You don’t have to change
+        code in many places.
+
+3. When Would You Use a Stored Procedure? (use cases)
+-----------------------------------------------------	
+    When you need to do complex tasks in the database (like calculations or business rules).
+    Used to execute multiple SQL operations in one call.
+    When you want to reduce network traffic by doing multiple steps inside the database instead of sending many queries from the application.
+    When you want to keep logic in one place so it’s easier to reuse.
+
+
+
+How to Explain in Interview:
+----------------------------------
+    You can say something like this:
+    -->A stored procedure is a set of SQL commands stored in the database. It helps improve performance because it is precompiled,
+     so the database doesn’t need to reprocess it every time.
+    -->It also improves security because users don’t access tables directly.
+    -->Stored procedures reduce network traffic because the database can do multiple steps in one call instead of sending many
+    queries.
+    -->For example, calculating a cart total and applying a discount can be done in one procedure instead of sending separate r
+    equests from the application, making it faster and easier to maintain.”
+    -->If we implement subtotal logic without stored procedures

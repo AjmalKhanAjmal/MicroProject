@@ -1,0 +1,49 @@
+What is Views in SQL.
+==========================
+    Views in SQL (Simple Explanation)
+    A view is a virtual table because it doesn’t store data directly like normal tables. It just stores a query. 
+    When you use (execute) the view, it runs the query and shows data from the real tables.
+
+Why views are useful:
+
+    Simplify complex queries
+        Instead of writing long queries with multiple tables every time, you can create a view once and just use it.
+        Example: Instead of joining Students, Courses, and Enrollments every time, create a view called StudentCourseView and then do:
+        SELECT * FROM StudentCourseView;
+
+    **Hide complexity 
+        Users don’t need to know how many tables exist or how they are connected. The view gives a simple interface to see data.
+
+    **Improve security
+        You can show only specific columns to users.
+        Example: Show only student names and departments, hide phone numbers or salaries.
+
+    **Reusability
+        Once a view is created, you can use it in different reports or modules without writing the same query again.
+        and we can also make extra join
+
+    Consistency
+        Everyone using the view sees the same data and logic, which reduces mistakes.
+
+    Materialized views (optional) – Some views can store the result of the query. This makes heavy queries faster because 
+    the data is precomputed.
+
+    Updatable views – In some cases, you can insert, update, or delete data through a view. The changes go to the original table,
+     not the view itself.
+
+Summary:
+    Views make complex queries simple
+    Hide table structure from users
+    Improve security by showing only required data
+    Can be reused across reports
+    Keep data consistent
+    Sometimes improve performance
+    We can also make joins on resulted view data
+
+UseCases:
+    **Used heavily in reporting and analytics.
+    **Can be reused across multiple reports and dashboards screens.
+    Create views to combine multiple tables (like Orders, Customers, Products) into one virtual table.
+    Analysts and BI tools query the view instead of writing complex joins.
+
+    In short: Views make working with databases easier, safer, and cleaner.
