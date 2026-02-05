@@ -1,0 +1,121 @@
+What is Index in SQL?
+========================
+
+An Index in SQL is a database object that helps to find data faster from a table.
+
+Normally, if there is no index, database checks every row one by one if the table has large data like thousands or millions of 
+rows which makes searching slow to overcome this problem we use index.
+An index helps the database to directly go to the required data, without checking all rows.
+
+This is called full table scan.
+It is slow when table is big.
+
+Full table scan is slow, especially when the table has large data like thousands or millions of rows.
+
+
+Index works like a book index page.
+If you want one topic, you go directly to page number.
+You don’t read full book.
+
+
+| Object Type | Object Name |
+| ----------- | ----------- |
+| Table       | users       |
+| Index       | idx_email   |
+| View        | user_view   |
+
+
+Why Index is Important?
+------------------------
+
+Indexes are very important in real projects.
+
+Indexes help to:
+
+Speed up SELECT queries (name..)
+
+Speed up JOIN queries (on o.user_id = c.id)
+
+Speed up WHERE condition (where email = "abc@gmail")
+
+Speed up ORDER BY (created_at and updated_at)
+
+Indexes reduce disk reading.
+Less disk read means better performance.
+
+Indexes are very useful when table has large data like lakhs or millions of rows.
+
+How Index Works Internally (Simple)
+-----------------------------------
+Index stores:
+
+Column value
+
+Row address
+
+Index data is stored in sorted order.
+
+Database uses B-Tree structure.
+
+B-Tree helps database to:
+
+Divide data
+
+Search step by step
+
+Reach data quickly
+
+Instead of checking 1 lakh rows,
+database checks only few steps.
+
+
+Disadvantages of Index
+------------------------------
+Indexes also have some problems.
+
+INSERT becomes slow
+
+UPDATE becomes slow
+
+DELETE becomes slow
+
+Index needs extra storage
+
+
+
+
+
+Ex : 
+-->CREATE INDEX idx_email ON users(email);
+
+
+--> module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define(
+    "User",
+    {
+      email: {
+        type: DataTypes.STRING
+      },
+      description: {
+        type: DataTypes.TEXT
+      }
+    },
+    {
+      tableName: "users",
+      indexes: [
+        {
+          name: "idx_email",
+          fields: ["email"]
+        },
+        {
+          name: "idx_description",
+          fields: ["description"]
+        }
+      ]
+    }
+  );
+
+  return User;
+};
+
+

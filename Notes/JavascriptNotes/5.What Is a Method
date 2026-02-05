@@ -1,0 +1,161 @@
+
+## 3️⃣ What Is a Method?
+=======================
+A method is just a function. When that function is stored inside an object, we call it a method.
+
+ Inside methods, we can also  `this` Because it belongs to the object, it can directly use the object’s data through this.
+
+A **method** is simply a **function that is a property of an object**.
+
+* Methods represent **behaviors or actions** related to that object.
+
+### Example:
+
+```javascript
+let car = {
+  brand: "Toyota",
+  speed: 100,
+  showSpeed: function () {
+    console.log(this.brand + " is going " + this.speed + " km/h");
+  }
+};
+
+car.showSpeed(); // Output: Toyota is going 100 km/h
+```
+
+
+---
+
+## 7️⃣ Methods vs. Functions Summary
+==================================
+
+
+| Aspect         | Function                                                  | Method                                  |
+| -------------- | --------------------------------------------        | --------------------------------------- |
+| Definition     | Independent reusable code block                  | Function inside an object               |
+| How to call    | `functionName()`                                       | `objectName.methodName()`               |
+| Access to data | Can't access object properties unless passed  | Can access object properties via `this` |
+| Example        | `function sayHi() {}`                                   | `let obj = { sayHi() {} }`              |
+
+---
+
+## 8️⃣ Real-Life Example: Calculator Object with Methods
+
+```javascript
+let calculator = {
+  add(a, b) {
+    return a + b;
+  },
+  subtract(a, b) {
+    return a - b;
+  },
+  multiply(a, b) {
+    return a * b;
+  },
+  divide(a, b) {
+    if (b === 0) {
+      return "Error! Division by zero.";
+    }
+    return a / b;
+  }
+};
+
+console.log(calculator.add(5, 3));      // 8
+console.log(calculator.subtract(5, 3)); // 2
+console.log(calculator.multiply(5, 3)); // 15
+console.log(calculator.divide(5, 0));   // Error! Division by zero.
+```
+
+
+## 5️⃣ Different Ways to Write Methods
+
+### Traditional syntax:
+
+```javascript
+let obj = {
+  methodName: function () {
+    // code here
+  }
+};
+```
+
+### ES6 shorthand syntax:
+
+```javascript
+let obj = {
+  methodName() {
+    // code here
+  }
+};
+```
+
+Both are valid and do the same thing.
+
+---
+> Are `push()` and `pop()` methods?
+=====================================
+> If yes, where is the object?
+
+---
+
+## 🔹 Answer:
+
+Yes! `push()` and `pop()` are **methods** of the **Array object** in JavaScript.
+
+Let’s break it down step by step.
+
+---
+
+## 🧱 Step 1: An Array is an Object
+
+In JavaScript:
+
+```javascript
+let arr = [1, 2, 3];
+```
+
+This may look like a "list", but **internally**, it's an **object**.
+
+### Behind the scenes:
+
+```javascript
+let arr = {
+  0: 1,
+  1: 2,
+  2: 3,
+  length: 3,
+  push: function() { ... },
+  pop: function() { ... },
+  // many more built-in methods
+};
+```
+
+===================================================
+===================================================
+
+
+
+function map(callback) {
+  let newArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let result = callback(array[i]);
+    newArray.push(result);
+  }
+
+  return newArray;
+}
+
+
+
+
+function forEach(callback) {
+  for (let i = 0; i < array.length; i++) {
+    callback(array[i]);
+  }
+  // DONE — no waiting
+}
+
+
+
+

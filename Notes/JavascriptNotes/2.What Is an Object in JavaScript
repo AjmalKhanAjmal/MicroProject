@@ -1,0 +1,45 @@
+
+What Is an Object in JavaScript?
+=====================================
+
+An **object** in JavaScript is a collection of **key-value pairs** (properties).
+
+* The keys are strings (called property names).
+* The values can be anything — including functions ,string, number, boolean, function, array, object, etc.	
+						
+2. Accessing Properties
+
+**Dot notation:
+
+console.log(person.name); // Alice
+
+**Bracket notation (useful for dynamic keys):
+
+console.log(person["age"]); // 30
+
+
+✔ Can be created in many ways:
+===================================
+
+Object literal (most common)
+
+let obj = { key: "value" };
+
+Using new Object() constructor
+
+let obj = new Object();
+obj.key = "value";  // do print 
+
+Using a class or constructor function
+
+function Car(model) {
+  this.model = model;
+}
+let myCar = new Car("Tesla");
+
+🧠 Why Use Objects Instead of Other Data Types?
+------------------------------------------------------
+
+Objects group related values into one logical unit.
+
+Object keys make your code more readable and self-documenting.

@@ -1,0 +1,96 @@
+
+What Is an Array in JavaScript?
+=================================
+
+An array in JavaScript is a special type of object used to store multiple values in a single variable.
+
+They are dynamic: their size can grow or shrink at runtime.
+
+JavaScript arrays can store any data type.(numbers, strings, objects, and even other arrays)
+
+normal objects use named properties like "brand", "year" or "age", arrays use numbers as keys, called indexes.
+
+Example:
+
+let fruits = ["apple", "banana", "mango"];
+This is how JavaScript sees this array behind the scenes:
+
+{
+  0: "apple",
+  1: "banana",
+  2: "mango",
+  length: 3
+}
+
+The keys are 0, 1, and 2.
+There is a special property length which tells how many items are in the array.
+
+Why is Array Called an Object?
+-----------------------------------------
+
+Because arrays are stored as objects, but the keys are numbers instead of names.
+
+When you use typeof on an array, JavaScript says "object" because arrays are just objects with numeric keys.
+
+You can even add named properties to arrays, because they’re still objects!
+
+Example:
+
+
+let arr = ["a", "b", "c"];
+arr.customProperty = "hello";
+
+console.log(arr.customProperty);  // Output: hello
+console.log(typeof arr);          // Output: object
+
+
+Key takeaway
+
+Use forEach / map / for..of → iterates only array elements.
+
+Use for..in → iterates all enumerable properties of an object (including arrays).
+
+Method	Purpose	Example
+-------------------------------
+
+push()		Add to end		arr.push(4)
+pop()		Remove from end		arr.pop()
+unshift()	Add to start		arr.unshift(0)
+shift()		Remove from start	arr.shift()
+includes()	Check if value exists	arr.includes(10)
+indexOf()	Find index of element	arr.indexOf("apple")
+slice()		Extract a portion (non-destructive)	arr.slice(1, 3)
+splice()	Add/remove elements (destructive)	arr.splice(1, 1, "new")
+join()		Convert to string	arr.join(", ")
+reverse()	Reverse array order	arr.reverse()
+sort()		Sort array	arr.sort()
+
+
+🔍 Summary:
+
+Expression		Returns		Meaning
+
+typeof [1, 2, 3]	"object"	Arrays are objects
+Array.isArray([1,2])	true		Correct way to check for array
+typeof {}		"object"	Plain object
+typeof null		"object"	Quirk of JavaScript
+
+
+
+
+🧠 How to Declare Arrays
+--------------------------
+
+1. Using Array Literals (Recommended)
+
+let fruits = ["apple", "banana", "mango"];
+
+2. Using the Array Constructor
+
+let numbers = new Array(10, 20, 30);
+
+3. Empty Array
+
+let empty = [];
+
+

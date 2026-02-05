@@ -1,0 +1,281 @@
+this keyword :
+=================
+    --> In JavaScript, this is a keyword that refers to the object which is currently calling the function. 
+    -->In the case of classes, it points to the current instance of the class.
+    -->this not same as like other languages Its value is decided at runtime based and it depends on how a function is called,
+    not where the function is written**.
+
+    In simple words:
+
+    > **`this` = “who called me?”**
+
+    function showName() {
+      console.log(this.name);
+    }
+
+    const user1 = { name: "Aziz" };
+    const user2 = { name: "Khan" };
+
+    showName.call(user1); // Aziz
+    showName.call(user2); // Khan
+
+    --------------------------
+
+### Why do we need `this`?
+--------------------------
+
+    --> We need `this` to make our functions reusable and dynamic.
+    --> Instead of hard-coding values, `this` allows the same function to work with different objects.
+
+    In real applications, we use `this` to access:
+
+    * the current object’s properties
+    * the current class instance
+    * the current component or service state
+
+    Imagine you write **one function** and want to reuse it for **many objects**.
+
+    Without `this` ❌:
+
+
+    function printName() {
+      console.log(user1.name);
+    }
+
+    With `this` ✅:
+
+
+    function printName() {
+      console.log(this.name);
+    }
+
+    Now:
+
+    * Same function
+    * Works for many objects
+    * Cleaner, scalable code
+
+    👉 **This is why `this` exists.**
+    -----------------------------
+
+### `this` in different scenarios
+------------------------------------
+
+    **Global scope:**
+    -------------------------------------
+        In the browser, `this` refers to the `window` object.
+
+        Ex : 
+
+        console.log(this);
+
+        ### In browser:
+
+        window
+
+        📌 Reason:
+
+        * No caller
+        * JS uses global object
+
+        ---
+
+        # 4️⃣ `this` Inside a Normal Function
+
+        function test() {
+          console.log(this);
+        }
+        test();
+
+        ### Output (non-strict mode):
+
+        window
+
+        📌 Why?
+
+        * Function is called normally
+        * Default caller = global object
+
+    **Inside a normal function:**
+    -------------------------------------
+        If a function is called normally, `this` refers to the global object.
+        In strict mode, it becomes `undefined`.
+
+         `this` in Strict Mode (This Substitution)
+
+        "use strict";
+
+        function test() {
+          console.log(this);
+        }
+        test();
+
+
+        ### Output:
+
+        undefined
+
+        📌 Why?
+
+        * Strict mode **does not allow automatic `window` binding**
+        * Prevents bugs
+
+        👉 Interview line:
+
+        > “In strict mode, `this` inside a function becomes `undefined`.”
+
+        ---
+         `this` Depends on HOW It Is Called
+
+        Same function, different calls 👇
+
+        function show() {
+          console.log(this);
+        }
+
+        show();
+
+        ➡ `this` = `window`
+
+        const obj = { show };
+        obj.show();
+
+        ➡ `this` = `obj`
+
+        🔥 SAME function
+        🔥 DIFFERENT `this`
+
+        This proves the golden rule.
+
+        ---
+
+
+
+    **Inside an object method:**
+    -------------------------------------
+        When a function is called as an object method, `this` refers to that object.
+
+        const user = {
+          name: "Ajmal",
+          greet() {
+            console.log(this.name);
+          }
+        };
+
+        user.greet();
+
+        ### Output:
+
+        Ajmal
+
+
+        📌 Why?
+
+        * Method is called using `user`
+        * So `this` = `user`
+
+
+    **How it is called matters:**
+    -------------------------------------
+        The same function can have different `this` values based on how it is invoked.
+
+    **call, apply, and bind:**
+    -------------------------------------
+        These methods are used to explicitly set the value of `this`.
+        They are commonly used for method sharing and fixing `this` in callbacks.
+
+
+        * Reuse same function
+        * Control `this`
+        * Very common in real projects
+
+
+    **Arrow functions:**
+    -------------------------------------
+        -->Arrow functions do not have their own `this`.
+        -->They inherit `this` from their surrounding scope, which is called lexical `this`.
+
+        -->Normal functions decide this at call time. Arrow functions take this from where they are written.
+
+        ⚠️ Arrow functions **do NOT have their own `this`**.
+
+        const obj = {
+          name: "Ajmal",
+          greet: () => {
+            console.log(this.name);
+          }
+        };
+
+        obj.greet();
+
+
+        ### Output:
+
+        undefined
+
+        📌 Why?
+
+        * Arrow function takes `this` from **parent scope**
+        * Parent scope = global
+
+        ---
+
+
+    **Nested arrow functions:**
+    -------------------------------------
+        A nested arrow function continues to use the `this` value from its parent function.
+
+        `this` Inside Nested Arrow Function (IMPORTANT)
+
+        const obj = {
+          name: "Ajmal",
+          greet() {
+            const inner = () => {
+              console.log(this.name);
+            };
+            inner();
+          }
+        };
+
+        obj.greet();
+
+
+        ### Output:
+
+        Ajmal
+
+
+        📌 Why?
+
+        * `greet()` has `this = obj`
+        * Arrow function **inherits it**
+
+        🔥 This is the correct use of arrow functions.
+
+
+    **DOM events:**
+    -------------------------------------
+
+        In a normal event handler function, `this` refers to the DOM element that triggered the event.
+        In an arrow function, `this` refers to the outer scope instead of the element.
+    
+        ### Normal function (GOOD)
+    
+        button.addEventListener("click", function () {
+          console.log(this);
+        });
+    
+        ➡ `this` = button element
+    
+        ### Arrow function (NOT GOOD)
+    
+        button.addEventListener("click", () => {
+          console.log(this);
+        });
+    
+        ➡ `this` = `window`
+    
+        📌 Why?
+    
+        * Arrow ignores event binding
+    

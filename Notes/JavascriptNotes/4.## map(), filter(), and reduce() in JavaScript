@@ -1,0 +1,125 @@
+
+In JavaScript, **map()**, **filter()**, and **reduce()** are array methods.
+They are used to work with arrays and **create new results without changing the original array**.
+
+
+---
+## 1. map() Method
+
+**What is map()?**	
+
+map() is used when we want to change every element in an array and get a new array.
+.
+
+**In simple words:**
+
+* It goes through every element
+* It changes the value
+* It returns a new array
+
+### Example
+
+```javascript
+let arr = [2, 4, 8, 10];
+let updatedArr = arr.map(val => val + 2);
+
+console.log(arr);
+console.log(updatedArr);
+```
+
+**Output**
+
+```
+[2, 4, 8, 10]
+[4, 6, 10, 12]
+```
+
+
+---
+
+## 2. filter() Method
+
+**What is filter()?**
+The `filter()` method is used to **select elements** from an array based on a **condition**.
+
+### Example
+
+```javascript
+let arr = [2, 4, 8, 10];
+let updatedArr = arr.filter(val => val < 5);
+
+console.log(arr);
+console.log(updatedArr);
+```
+
+**Output**
+
+```
+[2, 4, 8, 10]
+[2, 4]
+```
+
+
+---
+
+## 3. reduce() Method
+
+**What is reduce()?**
+
+reduce() is used to combine all array values into one single value.
+
+**In simple words:**
+
+* It adds, subtracts, multiplies, or combines values
+* Final result is one value, not an array
+
+### Correct Example (Sum of all numbers)
+
+```javascript
+let arr = [2, 4, 8, 10];
+let result = arr.reduce((total, curr) => total + curr, 0);
+
+console.log(arr);
+console.log(result);
+```
+
+**Output**
+
+```
+[2, 4, 8, 10]
+24
+```
+
+---
+
+## Difference Between map(), filter(), and reduce()
+
+| Method   | What it returns | What it does                        |
+| -------- | --------------- | ----------------------------------- |
+| map()    | New array       | Changes every element               |
+| filter() | New array       | Keeps elements that match condition |
+| reduce() | Single value    | Combines all elements               |
+
+---
+
+## One-Line Interview Explanation (Very Easy)
+
+* **map()** → Change every value
+* **filter()** → Select some values
+* **reduce()** → Make one value
+
+
+forEach vs map / filter / reduce (Comparison Table)
+======================================================= 
+
+| No. | Feature                 | forEach           | map                 | filter              | reduce                 |
+| --- | ----------------------- | ----------------- | ------------------- | ------------------- | ---------------------- |
+
+| 1   | Main purpose            | Just run code     | Change each item    | Select items        | Combine items          |
+| 2   | Creates new array       | ❌ no              | ✅ yes               | ✅ yes               | ❌ no                   |
+| 3   | Code length             | Longer            | Short               | Short               | Short                  |
+| 4   | Readability             | Less clear        | Very clear          | Very clear          | Clear                  |
+| 5   | Side effects            | ✅ mostly used     | ❌ avoid             | ❌ avoid             | ❌ avoid                |
+| 6   | React / Redux usage     | Rare              | Very common         | Common              | Common                 |
+
+

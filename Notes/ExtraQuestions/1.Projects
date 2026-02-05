@@ -1,0 +1,43 @@
+    
+Projects : 
+============
+
+I have worked on **US-based e-commerce projects** like **Straunt, Holiq, Kiosk, and POS systems, back office**.
+
+**Straunt** is a project for the **food industry**, and **Holiq** is for the **alcohol industry**. These applications are **multi-tenant**, which means multiple businesses can use the same system. Even though they are different industries, they use **shared concepts and code**, so we don’t need to write new code if a new industry comes in. We just add a **new industry ID**, and it works.
+
+Both **Straunt** and **Holiq** support **three order types**:
+
+* **Pickup**
+* **Curbside**
+* **Delivery**
+
+We also have **Auto Order Confirmation** and **Auto Cancellation**. This means if a customer places a delivery order, once the merchant confirms it, the order is automatically sent to **delivery partners** like **DoorDash, Uber, or Shipday**. In India, it is similar to **Zomato or Swiggy**.
+
+We maintain **two portals** in our project:
+
+1. **Storefront portal** – where customers see the store and place orders.
+2. **Merchant portal** – where merchants can **configure products, pricing, and store data**.
+
+A **special feature** in our project is **Channel Prices**. Merchants can set **different prices for different sales channels**. For example, the price for a delivery platform can be higher than for a pickup order.
+
+Another feature is **Channel Items**. Merchants can **control which items appear in each store or channel**. This helps stores **show different menus** for **pickup, curbside, or delivery orders**.
+
+We also have **ghost stores**. This means merchants can **create multiple stores with different names**, but all belong to one main store. Customers see these as **different stores**, even though they are managed by the same merchant. Merchants can **add the same items with different prices** to attract more customers to ghost stores.
+
+The **key strength** of our project is **reusability and flexibility**. One code works for different industries, different order types, and multiple sales channels. Merchants can easily manage products, prices, and menus without changing the code.
+
+In summary:
+
+* Worked on **food and alcohol e-commerce projects**.
+* **Multi-tenant** architecture for multiple industries.
+* Supports **pickup, curbside, and delivery orders**.
+* **Auto-confirmation and auto-cancellation** of orders.
+* Integration with **delivery partners**.
+* **Merchant portal** for product and store management.
+* **Channel prices and channel items** for flexible pricing and menu management.
+* **Ghost stores** for multiple store branding.
+* **Generic and reusable code** for any new industry.
+
+This is how our system helps merchants **manage orders, pricing, and stores efficiently**, and it is **scalable for new industries or platforms**.
+

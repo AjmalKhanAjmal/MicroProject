@@ -1,0 +1,229 @@
+---
+Call, Apply and bind methods : 
+=================================
+
+    In JavaScript, call, apply, and bind are methods that allow you to control the value of the this keyword within a function 
+    and also enable you to pass arguments to a function in different ways. These methods are commonly used in object-oriented
+    programming and functional programming paradigms.
+
+call 
+======
+    --> The call method is used to call a function immediately with the given this value and Arguments are passed one by 
+    one (individually).
+
+    Use case  :
+    -----------
+    --> Mostly call is used when want to reuse the same function logic across different contexts(for different objects or services)
+    , such as logging or shared utility functions
+    Ex : logging function for different services
+
+
+    ### ✅ Use `call` when:
+
+    * You want to execute immediately
+    * Reusing logic across services
+    * Context switching
+
+    Call example 
+    ----------------
+
+    # 5️⃣ `call` — REAL USE CASE (REUSE LOGIC)
+
+    ### Example: Logging utility reused across services
+
+    function log(prefix, message) {
+      console.log(`[${this.module}] ${prefix}: ${message}`);
+    }
+
+    const orderContext = { module: "Order" };
+    const paymentContext = { module: "Payment" };
+
+    log.call(orderContext, "INFO", "Order created");
+    log.call(paymentContext, "ERROR", "Payment failed");
+    ```
+
+    ### Output
+
+    ```txt
+    [Order] INFO: Order created
+    [Payment] ERROR: Payment failed
+    ```
+
+    ---
+
+    # 7️⃣ Node.js REAL-WORLD EXAMPLE — DB CONNECTION REUSE
+
+
+    ```js
+    function query(sql) {
+      console.log(`${this.dbName}: ${sql}`);
+    }
+
+    const mysql = { dbName: "MySQL" };
+    const mongo = { dbName: "MongoDB" };
+
+    query.call(mysql, "SELECT * FROM orders");
+    query.call(mongo, "db.orders.find()");
+    ```
+
+
+apply : 
+==========
+    --> apply method is similar to call method, the only difference is that instead of passing argument individually, 
+    will pass the argument in a list/array
+
+    use case : 
+    ----------
+    --> It’s useful when the arguments are already available in array form, such as dynamic data or error lists.
+
+    ---
+
+    ### Why `apply`?
+
+    👉 Arguments already in an **array**
+
+
+
+    ### ✅ Use `apply` when:
+
+    * Arguments are already in array
+    * Dynamic argument lists
+    * Math / validation utilities
+
+
+
+    # 6️⃣ `apply` — REAL USE CASE (ARRAY DATA)
+
+    ### Example: Validation errors from DB
+
+    ```js
+    function sendErrors(code, message1, message2) {
+      console.log(this.service, code, message1, message2);
+    }
+
+    const context = { service: "OrderAPI" };
+
+    const errors = [400, "Invalid price", "Invalid quantity"];
+
+    sendErrors.apply(context, errors);
+    ```
+
+
+bind : 
+=========
+    -->`bind` is used when I want to fix the value of `this` and use the function later.
+    --> It does not execute the function immediately. Instead, it returns a new function with `this` permanently bound.”
+
+    **Real use case:**
+
+    --> “In Express, when I pass a controller method as a route handler, I use `bind` so that `this` still points to the controller
+     instance.”
+
+    Example explanation (no code needed):
+
+    --> “Without `bind`, `this` becomes undefined inside the controller method.”
+
+    ### 💡 Real use
+
+    * Passing function as callback
+    * Express routes
+    * setTimeout / setInterval
+    * Event listeners
+    * Background jobs
+
+
+
+    Example bind : 
+    ----------------
+
+    class OrderService {
+      constructor() {
+        this.name = "OrderService";
+      }
+
+      createOrder() {
+        console.log("Service:", this.name);
+      }
+    }
+
+    const service = new OrderService();
+
+    // simulate passing method as callback
+    setTimeout(service.createOrder, 1000);
+    ```
+
+    ### ❌ Output
+
+    Service: undefined
+
+
+    Why?
+    👉 `this` is LOST when method is passed as callback
+
+
+
+    ## ✅ FIX USING `bind` (MOST COMMON IN NODE)
+
+    setTimeout(service.createOrder.bind(service), 1000);
+
+    ### ✅ Output
+
+    Service: OrderService
+    ---------------------------------------
+    # 4️⃣ `bind` — REAL EXPRESS USE CASE (VERY IMPORTANT)
+
+    ### ❌ Without bind (BUG)
+
+    class OrderController {
+      constructor(service) {
+        this.service = service;
+      }
+
+      create(req, res) {
+        this.service.createOrder();
+        res.send("OK");
+      }
+    }
+
+    const controller = new OrderController(orderService);
+
+    app.post("/orders", controller.create); // ❌
+
+
+    Error:
+
+    Cannot read property 'createOrder' of undefined
+
+    --------------------------
+
+    ## ✅ With `bind`
+    app.post("/orders", controller.create.bind(controller));
+
+
+# 8️⃣ call vs apply vs bind (REAL DIFFERENCE)
+==========================================
+
+    function demo(a, b) {
+      console.log(this.name, a, b);
+    }
+
+    const ctx = { name: "NodeJS" };
+
+    demo.call(ctx, 1, 2);        // executes now
+    demo.apply(ctx, [1, 2]);    // executes now
+    const fn = demo.bind(ctx);  // does NOT execute
+
+    fn(1, 2);                   // executes later
+
+
+
+
+Q. Why not arrow functions instead of bind?
+==========================================
+    Yes — in many cases, arrow functions can replace bind.But they are NOT the same thing, and each has a different purpose.
+
+    Express calls the function later, and at that time this reference is lost.
+    Using bind creates a new function where this is permanently set to the controller, so when Express executes it, 
+    this.service works correctly
+
+
