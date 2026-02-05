@@ -1,0 +1,7 @@
+Higher Order Functions : 
+=======================
+→ A function which takes another function as an argument or returns functions from it is known as higher order functions 
+→check in in real time our project publish event passed callback as argument function as argument
+→When we writing code code should below fashion not 
+→If we abstract code into smaller functions  and each every function has its own responsibility 
+→Function programming deals with reusability, modularity 

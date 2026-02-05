@@ -1,0 +1,5 @@
+Does the Event Loop ever stop?**
+
+→ No.
+The event loop is almost infinite.
+It keeps running and continuously checks the queues and the call stack.

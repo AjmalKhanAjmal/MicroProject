@@ -1,0 +1,29 @@
+Microtask Queue : 
+================
+→ The Microtask Queue is a high-priority queue.
+Tasks from **Promises** and **Mutation Observers** go into the microtask queue.
+
+→ Microtask Queue is a high-priority waiting area for promise callbacks, and JavaScript runs these tasks immediately after the current code finishes in the call stack—before any other callbacks.
+→just like callback queue we also have micro task queue it is similar to call back queue but it has higher priority 
+→What ever comes in microtask queue executed first and functions in callback queue executed later 
+ →In microtask queue placed only which are coming from promises
+→Microtask  and callbackqueues are executed only after executing complete code; the event loop always checks if the callback queue is empty or not.
+
+→suppose example if have millions of lines before “END” micro task queue and callback queue will be executed only after completion of all the code 
+→because of microtask queue having higher priority so it will execute first after popped up it , callback queue will be executing
+
+
+→ If there are many microtasks, they can delay the callback queue—this is called *callback queue starvation*.
+
+
+IMP
+→Here microtask queue has higher priority all the functions which are coming from promises and Mutation observer will go inside the microtask queue 
+→And something known as Mutation observer , Mutation observer keeps on checking whether some mutation is in the dom tree or not.
+ if there is any dom tree it can execute some callback functions.
+→two callback functions
+|-- which are coming from promises as well as
+|-- Mutation observer (home work)
+→callback queue also called as task queue
+→suppose if have 4 to 5 tasks in ,micro task queue and task in callback queue so event loop only give opportunity to callback queue task once all the tasks from the micro task is completed 
+ → let's for example we have many micro tasks in which 1 micro task has nested one ….so at that time callback queue never get the chance to execute for long time right because micro task has more priority in this case known as starvation of callback queue
+Homework–starvation of callback queue , mutation observer

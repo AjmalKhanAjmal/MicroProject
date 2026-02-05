@@ -1,0 +1,91 @@
+Node Js : 
+=============
+→Node js is a not a programming language not a frame work its a basically run time environment where we can run javascript 
+→A runtime environment is the place where your code actually runs — it provides all the tools and resources your program needs to execute.+
+→To convert code into machine level langauage runtime environment required (memory managemt ), for node js we have node .js similarly for java jvm, django cython, .net CLR
+→ 
+→ Node.js runtime environment, which provides:
+	The V8 engine (to execute JavaScript)
+Built-in modules (like fs, http, path)
+	Event loop (to handle async tasks)
+	Access to your computer’s OS and file system
+Features of Node.js are:
+Single-threaded
+Non-Blocking, Asynchronous I/O
+Cross-platform (Cross-platform means Node.js can run the same code on different operating systems (Windows, macOS, Linux, etc.) without modification.)
+Fast Execution (V8 Engine)
+Real-Time Data Handling.
+→using node js we can develop standalone application 
+→Nde js is server side run time and express js is a frame work for building a web applications 
+
+
+## 🚀 **7 Main Features of Node.js**
+======================================
+Below are the **7 core features of Node.js**, explained **simply and clearly** 👇
+
+### 1️⃣ **Asynchronous & Non-Blocking I/O**
+
+* Node.js does **not wait** for slow operations (DB, file, API)
+* Uses callbacks, promises, and `async/await`
+
+👉 **Result:** Handles many users at the same time
+
+---
+
+### 2️⃣ **Single-Threaded Event Loop**
+
+* Runs on **one main thread**
+* Uses an **event loop** to manage multiple requests
+
+👉 **Result:** Less memory, no thread overhead
+
+---
+
+### 3️⃣ **High Performance (V8 Engine)**
+
+* Built on **Google V8 JavaScript Engine**
+* JavaScript is compiled to **machine code**
+
+👉 **Result:** Very fast execution
+
+---
+
+### 4️⃣ **Event-Driven Architecture**
+
+* Everything is based on **events**
+* Uses event emitters and listeners
+
+👉 **Result:** Efficient real-time communication
+
+---
+
+### 5️⃣ **Scalable & Lightweight**
+
+* Can handle **thousands of concurrent connections**
+* Ideal for microservices and APIs
+
+👉 **Result:** Easy horizontal scaling
+
+---
+
+### 6️⃣ **NPM (Huge Package Ecosystem)**
+
+* Comes with **Node Package Manager**
+* Millions of reusable libraries
+
+👉 **Result:** Faster development
+
+---
+
+### 7️⃣ **Cross-Platform Support**
+
+* Runs on **Windows, Linux, macOS**
+* Same code works everywhere
+
+👉 **Result:** Easy deployment
+
+---
+
+## ⭐ Interview One-Line Summary
+
+> **Node.js is a fast, single-threaded, non-blocking, event-driven JavaScript runtime built on the V8 engine, ideal for scalable network applications.**

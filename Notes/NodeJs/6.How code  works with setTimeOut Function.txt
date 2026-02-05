@@ -1,0 +1,7 @@
+How code  works with setTimeOut unction 
+=====================================
+
+SetTimeout takes the’ function and is stored in someplace and attaches the timer to it,once the timer is
+ done (timer expires ) then it takes that function pushed again into callstack and runs it. 
+ That's how setTimeout works.
+

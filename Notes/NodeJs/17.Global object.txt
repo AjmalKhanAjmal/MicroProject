@@ -1,0 +1,6 @@
+→Global object
+===============
+→global object is window 
+→Browser gives all facilities to js engine to use all the facilities through a keyword known as window
+→At the time of writing code we wrote only setTimeout() instead of window.setTimeout()  because the setTimeout is present in the global object or the global scope so we can access it without the window keyword.
+

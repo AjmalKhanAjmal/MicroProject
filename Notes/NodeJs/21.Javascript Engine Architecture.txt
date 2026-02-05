@@ -1,0 +1,46 @@
+→Javascript Engine Architecture 
+============================
+
+
+
+# **🔟 What is the JavaScript Engine? Explain Parsing, Compilation, Execution.**
+
+→ The JS engine (like Google V8) takes JavaScript code and converts it into machine code.
+It works in three steps:
+→google v8 engine written in c++
+→ A javascript engine takes piece of code and splits ot machine level code 
+→Js engine takes code as input and this code goes into 3 steps 
+1.parsing, 2.compilation, 3.Exection
+1.parsing
+
+→in parsing code broken down into token 
+|-- SYNTAX parser , it takes the code and converts it into AST (abstract syntax tree) it makes like json.
+ 2.compilation stage : 
+→javascript has just in time compilation 
+→ Initially javascript is interpreted language but now todays world most of the modern engines interpreter + compiler both together 
+→ Modern JS uses Just-In-Time (JIT) compilation combining interpreter + compiler for optimization.
+
+3. **Execution** – Code executes inside the call stack and uses memory from the memory heap.”
+
+
+# **11️⃣ What is the Memory Heap?**
+→ The memory heap is where JavaScript allocates memory for variables, objects, arrays, functions, etc.
+It’s a large, unstructured region of memory managed by the engine.”
+
+---
+→ Garbage Collector : 
+→ Garbage collector free up the space which are not being used 
+
+
+Conclusion :
+ Things learned:
+1. The JS runtime environment contains all elements required to run JS.
+2. It contains a JS engine, set of API's, callback queue, microtask queue, event loop.
+3. The JS engine is a piece of code.
+4. Process includes Parsing ---> Compilation -----> Execution.
+5. Parsing breaks code into tokens and converts it into AST(Abstract Syntax Tree).
+6. Modern JS engine follows JIT compilation, it interprets while it optimises code as much as it can.
+7. Execution and Compilation are done together.
+8. Execution has Garbage collector and other optimisation such as inlining, copy elusion, inline caching etc.
+
+

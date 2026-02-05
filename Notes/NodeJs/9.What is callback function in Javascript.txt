@@ -1,0 +1,42 @@
+
+What is callback function in Javascript : 
+=================================
+
+→Function are first class citizens in javascript  
+→Callback functions 
+→take a function and pas
+s it to another function is known as a callback function.
+→ those callback functions are very powerful in javascript it gives access to whole asynchronous in a single threaded language 
+→ Javascript single threaded language that means  it only does one thing at a time in a specific order  but due to callbacks we can do asynchronous things inside javascript
+→ś
+
+
+setTimeout(function (){
+console.log(“time”)
+},5000)
+
+Function x(y){
+console.log(“x”)
+y()
+}
+
+x(functiont(){
+console.log(“y”)
+})
+
+
+setimeOut basically takes a callback and it executes piece of code some time else and gets out the callstack 
+→setTimeout(function (){
+console.log(“time”)
+},5000)
+→function (){
+console.log(“time”)
+}    →first class functions
+
+
+
+
+
+
+
+

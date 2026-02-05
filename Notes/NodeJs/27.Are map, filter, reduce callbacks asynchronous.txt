@@ -1,0 +1,5 @@
+Are map, filter, reduce callbacks asynchronous?**
+
+→ No.
+map, filter, and reduce run synchronously.
+Their callbacks do NOT go to Web APIs, callback queue, or microtask queue.
