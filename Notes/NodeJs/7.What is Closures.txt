@@ -1,0 +1,92 @@
+What is Closures : 
+===================
+A function along with reference to a outer environment like together forms a closure so in other words we can say that closure is a combination of a function and it's lexical scope bundle together forms a closure 
+–can you explain more about it 
+Each and every function in javascript has access to its outer lexical environment that means like access to variable, functions which is present in environment of its parent 
+
+→ point -2 : even when this function is executed in some other scope not in an original scope it still remembers its outer lexical environment where it was originally present in the code so that is what closure is.
+
+Even when a function is executed outside of its original scope, it still remembers and can access the variables from the scope where it was created. This “remembering” of the lexical environment is what we call a closure.
+
+EX: it's for especially point :2
+function outer() {
+  let count = 0; // outer lexical environment
+
+  function inner() {
+    count++; // inner remembers `count` from outer
+    console.log("Count is:", count);
+  }
+
+  return inner; // return inner function
+}
+
+const fn = outer(); // outer() runs and returns inner
+fn(); // Count is: 1
+fn(); // Count is: 2
+fn(); // Count is: 3
+
+
+Explanation
+
+outer() creates a variable count and defines inner().
+
+When we return inner, and call it later (even outside of outer), it still remembers count because of closure.
+
+That’s why every call increases the same count, not a new one.
+
+Outer()()
+2nd parenthesis call the inner function 
+
+
+Advantages of Closures : 
+======================
+
+→ Closures are very useful  and closers are in fact the most beautiful part of javascript  would say and closers have lot of advantages like it used in module pattern, there is a  function currey 
+
+in javascript closers used there and closers used in middlewares higher order function like memorize once on more important advantage of closers is it helps is in data hiding encapsulation that is very very important 
+
+Data hiding ; 
+Suppose we have a variable and  we want some data privacy over it like other functions or other pieces of code  cannot have access to that particular data that is known as data hiding , data privacy or we can say encapsulate data so other functions or other part o programs  cannot access to it
+
+Xampl : 
+Var count =0
+  Function incrementConter() {
+    count++; 
+     }
+→ th major problem n above code is anybody in our code can access this count variable and change it so here comes data hiding and data privacy into picture we want to somehow see that nobody ls in th program can modify this count and we can do through increment control function so we achieve that 
+we can  closers th
+so   have to wrap above function (whole thing ) inside a functon 
+
+  Function counter() {
+Var count =0
+  Rtrn function incrementConter() {
+    count++; 
+ console.log("Count is:", count)
+     }
+
+}
+
+Var contr1 = contr()
+contr1()
+contr1()contr1()
+
+
+
+Var contr2 = contr()  //chck ths
+contr2()
+contr2()
+contr2()
+
+
+
+→ now cont variable is hidden no body can access it from out side of code , we can achieve only through a   Function incrementConter()
+
+
+Blow s scalablty cod
+
+
+
+Disadvantages of closures : 
+=======================
+→ There could be over consumption of memory in closures because every time closure is form so it costumes lot o memory and a sometimes those closed over variables are not garbage collector, that means accumulating lot o memory when we create lot closers in our program because those variables are not garbage collected when the program expires so that is the major disadvantage of closer 
+→ it can also lead to memory leaks  memory accumulated over time  can also seize  browser  if not handled properly

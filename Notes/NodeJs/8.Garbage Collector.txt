@@ -1,0 +1,8 @@
+Garbage Collector : 
+=================
+→ Garbage is like a program in browser or javascript engine which kind of freeze and utilize the memory when ever we create a function 
+→ js basically high level programming language in programming languages like c, c++, java, how we allocate memory deallocate memory is up to developers but in high level programing like javascript most of the work done by the js engine 
+→ there is garbage collector in js when ever there is un used variables garbage collector takes it out of memory ,just  freeze p memory that is what garbage collector 
+
+How garbage collector and closures are related each other 
+=============================================

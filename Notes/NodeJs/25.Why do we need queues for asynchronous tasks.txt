@@ -1,0 +1,6 @@
+Why do we need queues for asynchronous tasks?**
+
+
+→ Because many async operations can be completed at the same time—timers, network calls, DOM events.
+
+→ We need queues to store these callbacks in order, and the event loop processes them one by one when the call stack becomes empty.”

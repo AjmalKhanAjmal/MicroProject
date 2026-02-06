@@ -1,0 +1,58 @@
+Callstack : 
+=========
+→ JavaScript is a synchronous, single-threaded language, so it can execute only one task at a time.
+→ The *call stack* is a data structure inside the JavaScript engine where functions are executed.
+→ When a JavaScript program starts, the Global Execution Context (GEC) is created and pushed into the call stack.
+→ Whenever a function is called, a new execution context is created and pushed to the top of the stack.
+→ After the function finishes, its execution context is popped out.
+→ JavaScript always executes code from the top of the call stack.”
+
+
+
+Ex : 
+Function a(){
+	console.log(“a”)
+}
+a()
+console.log(“End”)
+
+From above example : 
+Suppose we are executing above piece of code 
+When ever any js program is run a global execution context is created and that global execution context pushed into callstack 
+→ In GEC code runs line by line 
+→ at 1st line function  definition of a so here for function A will be allocated memory and function will be stored 
+→next at function invocation a() again execution context is created for fn a() to execute function a() and this execution context again pushes into a callstack 
+
+So here code of function a execute line by line that means print a to console 
+After going to last of function there is nothing to execute inside a so pops p the a() execution context from call stack  
+
+Function a(){
+	console.log(“a”)
+}
+
+
+
+
+
+→ Now control moves to next line and it prints end to console 
+console.log(“End”)
+
+→ After that there is nothing to execute now GEC also pops up the callstack 
+
+
+
+Browser → JS Engine → callStack
+Browser→inside browser →localstorage ,timer, url(netflix rl)
+
+
+
+
+
+
+→Now comes into event loop and callback queue :
+===========================================
+
+
+
+
+

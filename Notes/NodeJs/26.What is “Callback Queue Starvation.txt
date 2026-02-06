@@ -1,0 +1,4 @@
+What is “Callback Queue Starvation”?**
+
+→ When too many microtasks keep running continuously, the event loop never gets a chance to pick tasks from the callback queue.
+So callback tasks remain waiting—this is called callback queue starvation.”

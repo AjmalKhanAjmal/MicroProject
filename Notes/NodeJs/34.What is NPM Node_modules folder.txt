@@ -1,0 +1,12 @@
+Npm : 
+=======
+→ NPM (Node Package Manager ) is used to manage the dependencies for your Node project
+→ Node_modules folder contains all the dependencies of  the node project
+
+→ Npm is most important topic 
+→ Node js is most famous because it provides a lot of features one of is non blocking io another o npm
+ →Node has lot of in built modules one of that is http, for file system we have fs  
+→If we want extra modules if we want to se some one else models that were we have concept of NPM
+→it has 1million packages
+→If we have module we can also push or package to github and the entre world can se it
+

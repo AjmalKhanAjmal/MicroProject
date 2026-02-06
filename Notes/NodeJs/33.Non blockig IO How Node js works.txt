@@ -1,0 +1,41 @@
+How Node js works : 
+
+→  Non-blocking I/O : 
+====================
+
+→ In node js we run javascript right, In javascript dont have concept of multiple threads
+→Node.js runs JavaScript on a single thread but can handle many tasks at once using non-blocking I/O.
+→ When a client sends a request to someone else the current thread will not block or not be busy working with that request 
+like reading a file or querying a database, it asks the system or background threads to do it and keeps running other code instead of waiting
+→ We have.
+→node js has some worker threads working with the  server assign request to another worker thats how it work 
+→Node js is the concept of non blocking IO simply means its not wait or it will not block itself for one request 
+→ I/O intensive work — look on it
+→to implement this workers thread node js  concept of libuv 
+→ Libuv is a special library build for node js its provided concept of non-blocking I/O it is build in C language which uses system kernel and kernel has multiple threads,
+→ we are not using multiple threads but the behind the scenes kernel is implementing multiple threads so these workers are also thread.
+→ when send the request to server node js is single threaded but behind the scenes they are using multiple threads thats what make node js fast and flexible 
+
+Kernel : Kernel is the core part of the OS that manages hardware, threads, memory, file system, and all low-level operations. Node.js relies on the kernel — via libuv — to perform non-blocking I/O using background threads.
+what is libuv : 
+libuv = A C library inside Node.js
+ It handles:
+✔ Event loop
+ ✔ Thread pool
+ ✔ Non-blocking I/O
+ ✔ Timers
+ ✔ Async operations
+But libuv itself cannot read files, open sockets, or write to disk directly.
+Because only the Operating System Kernel is allowed to do those low-level tasks.
+Kernel : 
+The kernel is the one that actually talks to:
+File system
+Network
+CPU
+Disk
+Threads
+System resources
+libuv only requests the kernel to perform these tasks.
+Libuv and kernel relation : 
+libuv sends I/O work to the OS kernel, and the kernel executes it using its internal threads, drivers, and system calls.
+
