@@ -3,7 +3,7 @@ const db = require("../config/db")
 const tax_rates = require("../model/tax_rates")
 const { where } = require("sequelize")
 
-function createTaxRates(name, description, tax_category_id, rate) {
+function createTaxRates(name, description, tax_category_id, rate,) {
   try {
     let results = Tax_rates.create({
       name, description, tax_category_id, rate

@@ -2,56 +2,71 @@ const { connectMongo } = require("../config/mongo");
 const mongoose = require("mongoose");
 const { Order } = require("../domain/order");
 const { getIO } = require('../socket/index')
-async function orderService() {
-
+const axios = require("axios")
+async function orderService(payload) {
+try{
+  
   const order = new Order()
-
-  let products = []
-
-
-  db_tax_details = [{
-    id: "68ee53c195cf76d135e4e29d",
-    amount: 10
-  },
-  {
-    id: "68ee53c195cf76d135e4e29d",
-    amount: 20
+  let product_ids = []
+  let tax_category_ids = []
+  if (payload?.data?.order_details) {
+    product_ids = payload.data.order_details.map((item) => item.product_id)
   }
-  ]
 
-  products = await getData();
-  order.addTaxDetails(tax_details)
+  products = await getProductsData(product_ids);
   order.addItems(products)
+  if(products){
+    tax_category_ids = products.map((item)=>item.product__tax_category_id)
+  }
+console.log("tax_category_ids", tax_category_ids);
 
-  order.calculateSubTotal()
-  order.calculateTax(db_tax_details)
-  order.calculateTip("percentage", 10)
+
+  let tax_details = getTaxDetails(tax_category_ids)
+
+  console.log("tax_details",tax_details);
+  
+
+  // get parallel tax product with promise all
+  order.addTaxDetails(tax_details)
+
+
+  // order.calculateSubTotal()
+  // order.calculateTax(db_tax_details)
+  // order.calculateTip("percentage", 10)
 
   setTimeout(() => {
     getIO().emit("orderCreated", order);
-  },10000)
+  }, 10000)
 
   // await Promise.all([order.calculateTax(db_tax_details),order. calculateTip("percentage",10)])
 
   // console.log(order.toJSON());
   return order.toJSON()
+}catch(error){
+  console.log("eror Message  : ",error.message
+
+  );
+  
+}
 
 }
 
 
-async function getData() {
+async function getProductsData(productIds) {
   const conn = await connectMongo();
-  const productIds = [
-    "68ee53c195cf76d135e4e29d",
-    "68ee53c895cf76d135e4e29e"
-  ];
+  // const productIds = [
+  //   "68ee53c195cf76d135e4e29d",
+  //   "68ee53c895cf76d135e4e29e"
+  // ];
 
 
   products = await conn.db
     .collection("products")
     .find({
-      _id: {
-        $in: productIds.map(id => new mongoose.Types.ObjectId(id))
+      product__id: {
+        // $in: productIds.map(id => new mongoose.Types.ObjectId(id))
+        $in: [...productIds]
+
       }
     })
     .toArray();
@@ -62,7 +77,31 @@ async function getData() {
 
 
 
-orderService()
+// orderService()
+
+
+let payload = {
+  "data": {
+    "order_details": [{ "product_id": 1 }, { "product_id": 2 }, { "product_id": 4 }, { "product_id": 5 }]
+  }
+
+}
+
+orderService(payload)
+
+
+
+async function getTaxDetails(tax_category_ids) {
+  console.log("tadsdvs" , tax_category_ids);
+  
+  url = 'http://localhost:3004/api/tax/tax_categories'
+  payload = {
+    "tax_category_ids": tax_category_ids
+  }
+  let results = await axios.post(url, payload)
+  console.log(results.data);
+
+}
 
 
 

@@ -2,7 +2,7 @@ const { error } = require("winston");
 const { Product } = require("../model/product")
 const logger = require("../utills/logger")
 
-const createProduct = async (name, price, description, status, category_id, store_id, service_type, subscribed_application_id, product_id, variant_id) => {
+const createProduct = async (name, price, description, status, category_id, store_id, service_type, subscribed_application_id, product_id, variant_id,tax_category_id) => {
     // logger.debug("Creating product with name: %s", name )
     logger.debug(`Creating product with name: ${name}`);
 
@@ -18,6 +18,7 @@ const createProduct = async (name, price, description, status, category_id, stor
         const product__id = product_id/*  */
         const variant__id = variant_id
         let application_id = subscribed_application_id
+        const product__tax_category_id = tax_category_id
         let results = await Product.create({
             product__name,
             product__descritpion,
@@ -28,7 +29,8 @@ const createProduct = async (name, price, description, status, category_id, stor
             products__service_type,
             application_id,
             product__id,
-            variant__id
+            variant__id,
+            product__tax_category_id
         })
         return results
     } catch (error) {
@@ -311,6 +313,25 @@ module.exports = { createProduct, deleteProduct, getProducts, productIndexSearch
 
 
 
+
+
+
+// {
+//     "name": "Butter naan",
+//     "category_id": 100,
+//     "price": "30",
+//     "status": "active",
+//     "store_id": 1,
+//     "service_type": [
+//         "pickup",
+//         "delivery"
+//     ],
+//     "application_id": 5454,
+//     "product_id":3,
+//     "variant_id":1
+// }
+
+
 // Index Notes
 // ================
 
@@ -339,7 +360,7 @@ module.exports = { createProduct, deleteProduct, getProducts, productIndexSearch
 
 
 // ✅ So “Coffee Mug” is most relevant — it matches both terms and likely more strongly in higher-weighted fields.
-
+ 
 
 // {
 //     "name": "Mushroom Pickle",

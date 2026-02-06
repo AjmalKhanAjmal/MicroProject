@@ -1,5 +1,6 @@
 const db = require('../config/db')
 const { DataTypes } = require("sequelize")
+const tax_category = require('./tax_category')
 const tax_rates = db.define("tax_rate", {
     name: {
         type: DataTypes.STRING,
@@ -12,6 +13,10 @@ const tax_rates = db.define("tax_rate", {
     rate: {
         type: DataTypes.DECIMAL,
         allowNull: true
+    },
+    tax_category_id : {
+        type : DataTypes.BIGINT,
+        allowNull : true
     }
 }, {
     tableName: "tax_rates",

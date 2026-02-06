@@ -31,3 +31,27 @@
 {"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2025-11-10T12:14:33.513Z"}
 {"application_id":5454,"category_id":101,"description":"Gulab Jamun","level":"info","message":" input fields : ","name":"Gulab Jamun","price":110,"product_id":23,"service":"post-service","service_type":["curbside","pickup","delivery"],"status":"active","store_id":1,"timestamp":"2025-11-10T12:14:33.513Z","variant_id":25}
 {"level":"debug","message":"Creating product with name: Gulab Jamun","service":"post-service","timestamp":"2025-11-10T12:14:33.514Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T07:06:19.609Z"}
+{"category_id":102,"level":"info","message":" input fields : ","name":"Mushroom Pickle","price":"29.99","product_id":1,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2026-02-06T07:06:19.613Z","variant_id":2}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"application_id\" is required","timestamp":"2026-02-06T07:06:19.616Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T07:07:21.276Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Mushroom Pickle","price":"29.99","product_id":1,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2026-02-06T07:07:21.277Z","variant_id":2}
+{"level":"debug","message":"Creating product with name: Mushroom Pickle","service":"post-service","timestamp":"2026-02-06T07:07:21.279Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T07:08:28.588Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Mushroom Pickle","price":"29.99","product_id":1,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2026-02-06T07:08:28.592Z","variant_id":2}
+{"level":"debug","message":"Creating product with name: Mushroom Pickle","service":"post-service","timestamp":"2026-02-06T07:08:28.596Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T07:09:04.475Z"}
+{"application_id":5454,"category_id":102,"level":"info","message":" input fields : ","name":"Dum Biryani","price":"29.99","product_id":2,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2026-02-06T07:09:04.476Z","variant_id":1}
+{"level":"debug","message":"Creating product with name: Dum Biryani","service":"post-service","timestamp":"2026-02-06T07:09:04.478Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T07:09:33.259Z"}
+{"application_id":5454,"category_id":100,"level":"info","message":" input fields : ","name":"Butter naan","price":"30","product_id":3,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2026-02-06T07:09:33.260Z","variant_id":1}
+{"level":"debug","message":"Creating product with name: Butter naan","service":"post-service","timestamp":"2026-02-06T07:09:33.261Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T12:52:18.514Z"}
+{"application_id":5454,"category_id":100,"level":"info","message":" input fields : ","name":"Butter naan","price":"30","product_id":3,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"timestamp":"2026-02-06T12:52:18.518Z","variant_id":1}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"tax_category_id\" is not allowed","timestamp":"2026-02-06T12:52:18.524Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T12:55:28.361Z"}
+{"application_id":5454,"category_id":100,"level":"info","message":" input fields : ","name":"Butter naan","price":"30","product_id":3,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"tax_category_id":1,"timestamp":"2026-02-06T12:55:28.364Z","variant_id":1}
+{"level":"debug","message":"Creating product with name: Butter naan","service":"post-service","timestamp":"2026-02-06T12:55:28.367Z"}
+{"level":"info","message":" received request to saveProduct /api/product","service":"post-service","timestamp":"2026-02-06T12:55:52.288Z"}
+{"application_id":5454,"category_id":100,"level":"info","message":" input fields : ","name":"Mutton Biryani","price":"30","product_id":5,"service":"post-service","service_type":["pickup","delivery"],"status":"active","store_id":1,"tax_category_id":1,"timestamp":"2026-02-06T12:55:52.289Z","variant_id":1}
+{"level":"debug","message":"Creating product with name: Mutton Biryani","service":"post-service","timestamp":"2026-02-06T12:55:52.291Z"}

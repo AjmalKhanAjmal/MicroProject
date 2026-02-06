@@ -1,5 +1,8 @@
 const Tax_category = require("../model/tax_category")
 const db = require("../config/db")
+
+
+
 const createTaxCategory = async (name, description) => {
    try {
       let results = await Tax_category.create({
@@ -22,7 +25,7 @@ const updateTaxCategory = async (id, name, description) => {
             id: id
          }
       })
-      if(results[0] == 0){
+      if (results[0] == 0) {
          return null
       }
       return {
@@ -46,9 +49,9 @@ const getTaxCategory = async (limit, offset, sort, sort_type, search) => {
       let total_count = `SELECT COUNT(*) AS total_count FROM shop.tax_categories`
       let results = await db.query(get_query)
       let total_count_results = await db.query(total_count)
-    
+
       return {
-         status : "success",
+         status: "success",
          pagination: {
             total_count: total_count_results[0][0].total_count
          },
@@ -62,18 +65,29 @@ const getTaxCategory = async (limit, offset, sort, sort_type, search) => {
 
 
 
-const getTaxCategoryById  = async(id) => {
-   try{
-      let results = await Tax_category.findOne({where : {
-         id : id
-      }})
-      console.log("results : ",results);
-      
+const getTaxCategoryById = async (id) => {
+   try {
+      let results = await Tax_category.findOne({
+         where: {
+            id: id
+         }
+      })
+      console.log("results : ", results);
+
       return results
 
-   }catch(error){
+   } catch (error) {
       throw new Error(error.message)
    }
 }
 
-module.exports = { createTaxCategory, updateTaxCategory, getTaxCategory,getTaxCategoryById }
+
+
+const getTaxCategoryBasedIds = async (ids) => {
+   let results = await db.query(`SELECT tc.id as 'tax_category_id',t.id,t.rate,t.name FROM tax_rates t inner join tax_categories tc ON tc.id = t.tax_category_id WHERE tc.id IN (${ids}) `)
+   return results[0]
+}
+// getTaxCategoryBasedIds([12,31,1])
+
+
+module.exports = { createTaxCategory, updateTaxCategory, getTaxCategory, getTaxCategoryById ,getTaxCategoryBasedIds}

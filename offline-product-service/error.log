@@ -1,3 +1,5 @@
 {"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"product__id\" is not allowed","timestamp":"2025-11-10T12:03:35.662Z"}
 {"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"product_id\" is not allowed","timestamp":"2025-11-10T12:09:18.309Z"}
 {"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"product_id\" must be an array","timestamp":"2025-11-10T12:11:59.174Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"application_id\" is required","timestamp":"2026-02-06T07:06:19.616Z"}
+{"level":"error","message":"error while saving product : ","service":"post-service","stack":"ValidationError: \"tax_category_id\" is not allowed","timestamp":"2026-02-06T12:52:18.524Z"}

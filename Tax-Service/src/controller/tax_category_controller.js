@@ -91,4 +91,17 @@ const getTaxCategById = async (req,res)=>{
   }
 }
 
-module.exports = { insertTaxCategory, editTaxCategory, getAllTaxCategory ,getTaxCategById}
+
+
+const getTaxAndTaxCategoryDetails = async (req,res)=>{
+ try{
+   let results =  await tax_category_service.getTaxCategoryBasedIds(req.body.tax_category_ids)
+  res.status(200).json(results)
+ }catch(error){
+  res.status(500).json({
+    status : "error",
+    message : error.message
+  })
+ }
+}
+module.exports = { insertTaxCategory, editTaxCategory, getAllTaxCategory ,getTaxCategById,getTaxAndTaxCategoryDetails}

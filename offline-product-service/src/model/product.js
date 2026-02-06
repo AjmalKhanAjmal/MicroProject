@@ -13,6 +13,11 @@ const product_schema = new Schema({
     product__category_id: {
         type: Number,
         required: false
+    }
+    ,
+    product__tax_category_id: {
+        type: Number,
+        required: false
     },
     // product__price: {
     //     type: Schema.Types.Decimal128,
@@ -55,7 +60,7 @@ const product_schema = new Schema({
 
 // searchPostSchema.index({ content: "text" });
 // product_schema.index({ product__name: 'text' });
-const Product = mongoose.model("proucts", product_schema)
+const Product = mongoose.model("products", product_schema)
 
 module.exports = { Product }
 

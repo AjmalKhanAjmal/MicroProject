@@ -3,14 +3,14 @@ const logger = require("../utills/logger")
 const { productSchema } = require("../utills/productValidator")
 const saveProduct = async (req, res, next) => {
     logger.info(" received request to saveProduct /api/product")
-    const { name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id } = req.body
-    logger.info(" input fields : ", { name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id })
+    const { name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id,tax_category_id } = req.body
+    logger.info(" input fields : ", { name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id,tax_category_id})
     try {
         let { error } = productSchema.validate(req.body)
         if (error) {
             throw error
         }
-        let results = await product_service.createProduct(name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id)
+        let results = await product_service.createProduct(name, price, description, status, category_id, store_id, service_type, application_id, product_id, variant_id,tax_category_id)
         res.status(200).json(results)
 
     } catch (error) {

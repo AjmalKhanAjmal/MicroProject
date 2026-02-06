@@ -11,7 +11,8 @@ let productSchema = joi.object({
     service_type: joi.array().optional(),
     description: joi.string().optional(),
     product_id: joi.number().optional(),
-    variant_id: joi.number().optional()
+    variant_id: joi.number().optional(),
+    tax_category_id : joi.number().optional()
 })
 
 module.exports = { productSchema }
