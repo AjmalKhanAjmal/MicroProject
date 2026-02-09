@@ -34,15 +34,6 @@ class Order {
   }
 
 
-  initial_product_details = [{
-    "product__id": 1,
-    "products__price": 9.0,
-    "products__tax_category_id": "68ee53c195cf76d135e4e29d",
-  }, {
-    "product__id": 1,
-    "products__price": 19.0,
-    "products__tax_category_id": "68ee53c195cf76d135e4e29d",
-  }]
 
   discount = {
     "status": "success",
@@ -67,30 +58,29 @@ class Order {
       //   if (details.tax_category_id == current_record.products__tax_category_id) {
       //     return accu + current_record.product__price * details.amount / 100
       //   }
-      // }, 0)
+      // }, 0
     }
     this.sub_total = sub_ttl
-    // this.total = this.platform_fee + this.included_tax_total + this.sub_total
+    
   }
 
 
 
 
 
-  async calculateTax(db_tax_details) {
-    await Promise.all(
+  calculateTax() {
       this.#items.map(async (item) => {
-        const taxRule = db_tax_details.find(
-          (tax) => String(tax.id) === String(item._id)
+        const taxRule = this.#tax_details.find(
+          (tax) => String(tax.tax_category_id) === String(item.product__tax_category_id)
         );
 
         if (taxRule) {
           this.included_tax_total +=
             Number(item.product__price) *
-            (Number(taxRule.amount) / 100);
+            (Number(taxRule.rate) / 100);
         }
       })
-    );
+    
   }
 
   async calculateTip(tip_type, tip_amount) {
@@ -134,7 +124,7 @@ calculateTotal() {
     this.included_tax_total +
     this.sub_total +
     this.tip_total;
-    return this.total
+    return this.total.toFixed(2)
 }
 
   toJSON() {

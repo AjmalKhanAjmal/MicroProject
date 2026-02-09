@@ -1,53 +1,44 @@
 const { connectMongo } = require("../config/mongo");
 const mongoose = require("mongoose");
 const { Order } = require("../domain/order");
-const { getIO } = require('../socket/index')
+// const { getIO } = require('../socket/index')
 const axios = require("axios")
 async function orderService(payload) {
-try{
-  
-  const order = new Order()
-  let product_ids = []
-  let tax_category_ids = []
-  if (payload?.data?.order_details) {
-    product_ids = payload.data.order_details.map((item) => item.product_id)
+  try {
+    let product_ids = []
+    let tax_category_ids = []
+    const order = new Order()
+
+    if (payload?.data?.order_details) {
+      product_ids = payload.data.order_details.map((item) => item.product_id)
+    }
+
+    // 1️⃣ Data fetching
+    products = await getProductsData(product_ids);
+    if (products) {
+      tax_category_ids = products.map((item) => item.product__tax_category_id)
+    }
+    let tax_details = await getTaxDetails(tax_category_ids)
+
+    // 2️⃣ Business logic
+    order.addItems(products)
+    order.addTaxDetails(tax_details)
+    order.calculateSubTotal()
+    order.calculateTax()
+    // order.calculateTip("percentage", 10)
+    const response = order.toJSON()
+
+    // 3️⃣ Emit event (SIDE EFFECT)
+    setTimeout(() => {
+      getIO().emit("orderCreated", order);
+    }, 1000)
+
+    return response
+
+  } catch (error) {
+    console.log("eror Message  : ", error.message);
+    return error.message
   }
-
-  products = await getProductsData(product_ids);
-  order.addItems(products)
-  if(products){
-    tax_category_ids = products.map((item)=>item.product__tax_category_id)
-  }
-console.log("tax_category_ids", tax_category_ids);
-
-
-  let tax_details = getTaxDetails(tax_category_ids)
-
-  console.log("tax_details",tax_details);
-  
-
-  // get parallel tax product with promise all
-  order.addTaxDetails(tax_details)
-
-
-  // order.calculateSubTotal()
-  // order.calculateTax(db_tax_details)
-  // order.calculateTip("percentage", 10)
-
-  setTimeout(() => {
-    getIO().emit("orderCreated", order);
-  }, 10000)
-
-  // await Promise.all([order.calculateTax(db_tax_details),order. calculateTip("percentage",10)])
-
-  // console.log(order.toJSON());
-  return order.toJSON()
-}catch(error){
-  console.log("eror Message  : ",error.message
-
-  );
-  
-}
 
 }
 
@@ -92,14 +83,19 @@ orderService(payload)
 
 
 async function getTaxDetails(tax_category_ids) {
-  console.log("tadsdvs" , tax_category_ids);
-  
-  url = 'http://localhost:3004/api/tax/tax_categories'
-  payload = {
-    "tax_category_ids": tax_category_ids
+  try {
+    console.log("tadsdvs", tax_category_ids);
+
+    url = 'http://localhost:3004/api/tax/tax_categories'
+    payload = {
+      "tax_category_ids": tax_category_ids
+    }
+    let results = await axios.post(url, payload)
+    return results.data
+  } catch (error) {
+    console.log("errror from getTaxDetails : ", error.message);
+
   }
-  let results = await axios.post(url, payload)
-  console.log(results.data);
 
 }
 
@@ -107,13 +103,7 @@ async function getTaxDetails(tax_category_ids) {
 
 module.exports = { orderService }
 
-let tax_details = [{
-  "amount": 6.33,
-  "zone_id": 2,
-  "tax_category_id": 3880217089818077,
-  "included_in_price": true,
-  "name": "Sample Modifier Tax3"
-}]
+
 
 // let products = [{
 //   "products__name": "Upma",

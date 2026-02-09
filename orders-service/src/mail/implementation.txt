@@ -1,0 +1,16 @@
+src/
+ ├── controllers/
+ ├── services/
+ │    └── order.service.js
+ ├── queues/
+ │    └── email.queue.js
+ ├── workers/
+ │    └── email.worker.js
+ ├── mail/
+ │    ├── email.service.js
+ │    └── templates/
+ │         ├── order-created.hbs
+ │         ├── order-confirmed.hbs
+ │         ├── order-shipped.hbs
+ │         └── order-cancelled.hbs
+ └── app.js

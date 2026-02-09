@@ -84,7 +84,8 @@ const getTaxCategoryById = async (id) => {
 
 
 const getTaxCategoryBasedIds = async (ids) => {
-   let results = await db.query(`SELECT tc.id as 'tax_category_id',t.id,t.rate,t.name FROM tax_rates t inner join tax_categories tc ON tc.id = t.tax_category_id WHERE tc.id IN (${ids}) `)
+   let  tax_category_ids = ids.filter((id)=>id)
+   let results = await db.query(`SELECT tc.id as 'tax_category_id',t.id,t.rate,t.name FROM tax_rates t inner join tax_categories tc ON tc.id = t.tax_category_id WHERE tc.id IN (${tax_category_ids}) `)
    return results[0]
 }
 // getTaxCategoryBasedIds([12,31,1])
