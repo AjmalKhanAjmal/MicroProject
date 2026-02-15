@@ -1,0 +1,226 @@
+Promise :
+=========
+→ A Promise is like a placeholder for a future value — the result is not available immediately, but it 
+will be available at some point.
+→Promise object called as placeholder which will be filled later with a value 
+→promise object is a placeholder for until certain period of time until we receive value from 
+asynchronous operations 
+→Promises in Node.js are used to handle asynchronous operations more cleanly compared to callbacks.
+→ Two important issues we face that remain above….
+→ Promises help manage tasks like file reading, API calls, or database queries without blocking the main
+ thread. 
+→A Promise has three states: pending, fulfilled, and rejected. Pending means the operation is still 
+running. Fulfilled means it succeeded and returned a result. Rejected means it failed and returned an 
+error. 
+→We use .then() to handle success and .catch() to handle failure.”** 
+
+→Earlier, we used callbacks for these async tasks, but callbacks create many problems. When we put 
+callbacks inside callbacks — like createOrder → proceedToPayment → sendSMS — the code becomes nested and 
+messy. This is called callback hell. It’s hard to read, hard to debug, and if the flow grows, it becomes 
+unmanageable, grows horizontally.”
+→ “Another big issue is Inversion of Control. When we pass our callback into another function like 
+createOrder, we give control to that function. We are trusting createOrder to call our function correctly. But if createOrder has bugs or calls our callback twice, then proceedToPayment will also run twice, meaning payment can be deducted twice. So we lose control over our own logic
+→We given control of payment to createOrder API so it is the responsibility of createOrder API to 
+call our function back, and we are blindly trusting createOrder api and there is lot of bugs inside 
+create order api and inter-communication problem that we face when we are using call back Promises were 
+    introduced to solve these problems.
+Promises give us a guarantee that a function will resolve only once or reject only once.
+ So even if createOrder tries to resolve twice, JavaScript ignores the second call.
+ This solves the inversion of control problem because our next step runs only once.”
+“Promises also solve callback hell.
+ Instead of nesting callbacks, we can chain .then() and .catch() in a clean flat structure.”
+
+function createOrder(cart) {
+  return new Promise((resolve, reject) => {
+    resolve("ORDER123");      // ✔ first resolve works
+    resolve("ORDER456");      // ❌ ignored
+    reject("Some error");     // ❌ ignored
+  });
+}
+
+
+Real time Callback hell and Inversion of control example : 
+createOrder(cart, function(orderId) {
+  proceedToPayment(orderId, function(paymentInfo) {
+    sendSMS(paymentInfo, func tion(message) {
+      console.log("Order complete", message);
+    }, function(err) {
+      console.log("SMS failed", err);
+    });
+  }, function(err) {
+    console.log("Payment failed", err);
+  });
+}, function(err) {
+  console.log("Order failed", err);
+});
+
+Step : 2 
+Problems of Inversion of Control
+If createOrder has bugs, your callback may never run
+If createOrder API calls callback twice, then:
+createOrder()  // called twice
+→ proceedToPayment()  // called twice
+→ payment deducted twice ❗❗
+You lose control over when your function runs.
+Hard to track flow in big codebases.`
+You give your ATM card to someone
+
+
+You tell them: “Withdraw ₹500 for me and come back”
+
+
+But the person makes two withdrawals because of a mistake
+
+
+You trusted them
+ You gave control
+ They misused it (even by accident)
+ You get double loss
+This is exactly how callbacks behave.
+
+
+
+function createOrder(cart, callback) {
+  callback("ORDER123");
+  callback("ORDER123"); // Bug: called twice
+}
+
+proceedToPayment("ORDER123")  // Runs 2 times
+→ Payment done twice
+→ sendSMS 2 times
+→ Customer charged twice
+
+Promises guarantee:
+A function is executed only once
+You get proper error handling
+No more callback hell
+
+
+Example:
+createOrder(cart)
+  .then(orderId => proceedToPayment(orderId))
+  .then(paymentInfo => sendSMS(paymentInfo))
+  .catch(err => console.log("Error:", err));
+
+
+
+
+
+Promise Example code : 
+
+// app.js
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+// --- Mock async functions implemented with Promises ---
+function saveOrderToDatabase(orderData) {
+  return new Promise((resolve, reject) => {
+    // simulate async DB save
+    setTimeout(() => {
+      // simulate success - add an id and return saved order
+      resolve({ ...orderData, orderId: Date.now() });
+      // if you want to simulate failure use: reject(new Error("DB failed"));
+    }, 200); // 200ms
+  });
+}
+
+function sendEmail(order) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Email sent for order", order.orderId);
+      resolve();
+    }, 300);
+  });
+}
+
+function reduceStock(order) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Stock reduced for order", order.orderId);
+      resolve();
+    }, 250);
+  });
+}
+
+function sendSMS(phone) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("SMS sent to", phone);
+      resolve();
+    }, 150);
+  });
+}
+
+// --- 1) Promise-based (then/catch) version ---
+app.post("/place-order-promise", (req, res) => {
+  saveOrderToDatabase(req.body)
+    .then((order) => {
+      // fire-and-forget non-blocking tasks
+      sendEmail(order).catch((e) => console.error("Email error:", e));
+      reduceStock(order).catch((e) => console.error("Stock error:", e));
+      sendSMS(order.phone).catch((e) => console.error("SMS error:", e));
+
+      // respond quickly
+      res.send({ message: "Order Placed Successfully (promise)", orderId: order.orderId });
+    })
+    .catch((err) => {
+      console.error("DB error:", err);
+      res.status(500).send({ message: "Order failed", error: err.message });
+    });
+});
+
+// --- 2) async/await version with parallel post-processing (recommended) ---
+app.post("/place-order", async (req, res) => {
+  try {
+    // save order (await since we need order object first)
+    const order = await saveOrderToDatabase(req.body);
+
+    // Start other tasks in parallel (don't await each one sequentially if you don't need to)
+    const emailPromise = sendEmail(order);
+    const stockPromise = reduceStock(order);
+    const smsPromise = sendSMS(order.phone);
+
+    // Respond to client immediately with success (non-blocking)
+    res.send({ message: "Order Placed Successfully", orderId: order.orderId });
+
+    // Option A: wait for all to finish and log (optional background handling)
+    // await Promise.all([emailPromise, stockPromise, smsPromise]);
+    // console.log("All post-order tasks finished for", order.orderId);
+
+    // Option B: handle individually (allow independent failures)
+    emailPromise.catch(e => console.error("Email error:", e));
+    stockPromise.catch(e => console.error("Stock error:", e));
+    smsPromise.catch(e => console.error("SMS error:", e));
+
+  } catch (err) {
+    console.error("place-order error:", err);
+    res.status(500).send({ message: "Order failed", error: err.message });
+  }
+});
+
+app.listen(3000, () => console.log("Server listening on :3000"));
+
+
+
+
+Fetch() :
+========
+It is a api given by browser to us to make external calls
+
+
+
+------
+Validate
+Create
+Order id
+Promise all : 
+=============
+Promise settle : 
+====================
+
+Error handling : 
+============
+Catch block () : without using catch it will show error but it shows red color error in the browser this red color error overs that we are not handled error or exeption, that is failing inside the browser, as a developer should never do this we should write code to handle errors.
+If we push this code to production this will fail in users computers and they will silently get this error in their browser console so user cannot se anything on there page so we should always handle error when ever we are writing code.
+We can show through pop ups

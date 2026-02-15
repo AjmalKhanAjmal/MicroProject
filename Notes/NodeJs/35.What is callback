@@ -1,0 +1,92 @@
+
+What is callback function in Javascript : 
+=================================
+
+→Function are first class citizens in javascript  
+→Callback functions 
+→take a function and pass it to another function is known as a callback function.
+→ those callback functions are very powerful in javascript it gives access to whole asynchronous in a 
+single threaded language 
+→ Javascript single threaded language that means  it only does one thing at a time in a specific order
+but due to callbacks we can do asynchronous things inside javascript
+
+
+setTimeout(function (){
+console.log(“time”)
+},5000)
+
+Function x(y){
+console.log(“x”)
+y()
+}
+
+x(functiont(){
+console.log(“y”)
+})
+
+
+const fs = require('fs');
+// Asynchronous file reading with a callback
+console.log("Starting file read...");
+
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.log("Error reading file:", err);s
+  } else {
+    console.log("File content:", data); // This will be printed after the file is read
+  }
+});
+
+console.log("File read initiated.");
+
+Importance  of Callbacks :
+-------‐------‐--------‐------‐--
+1.Callbacks are super powerful way handling async operations in javascript g
+2.infact asynchronous javascript programs exist because call backs exist.
+
+Issues : 
+-------------
+Another thing us to remember is that while we are writing call back we are facing lot of issues 
+Two important issues we face that 
+1.callback hell (nested call back) : call back inside a lot of nested call backs and code becomes unmaintainable.grows horizontally,difficult to debug
+2.inversion of control : we loss control of program because we pass that callback function into another function control and we giving control of Function to some other function and we don't know whether that function will ever execute callback or not so this invert of function is another function 
+
+2.Issues 
+I.callback hell
+ii.inversion of control  :
+Without Promises : inversion of control problem
+
+
+
+
+
+
+setTimeout(function (){
+console.log(“time”)
+},5000) 
+
+Function x(y){
+console.log(“x”)
+y()\
+}
+
+x(functiont(){
+console.log(“y”)
+})
+
+
+setimeOut basically takes a callback and it executes piece of code some time else and gets out the callstack 
+→setTimeout(function (){
+console.log(“time”)
+},5000)
+→function (){
+console.log(“time”)
+}    →first class functions
+
+
+
+
+
+
+
+
