@@ -1,0 +1,4 @@
+How to serialize and deserialize in Node js?
+====================================
+→ serialize JSON.stringify()
+→ deserialize JSON.parse()

@@ -1,0 +1,3 @@
+What is the purpose of the app.use() function in Express js ?
+===================================================
+→ app.use() is used to apply common middleware and route handling logic for incoming requests in an Express application.”

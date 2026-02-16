@@ -1,0 +1,12 @@
+What is Middleware in Express js and  when to use them ?
+================================================
+→ Middleware works like a middleman between the client request and the server response.
+→ In Express.js, middleware is a function that handles HTTP requests, performs required operations, and then passes control to the next middleware in the request–response cycle.
+→ Common examples of middleware include authentication, CORS handling, logging, and error handling. 
+→ When we send a request to the Create Order API, it first checks authentication. If the user is valid, the request is allowed to proceed to the API logic; otherwise, it throws an error.
+ Steps to use middleware in Express.js
+1️⃣ Create a middleware function
+2️⃣ Add logic inside the middleware
+3️⃣ Call next()
+4️⃣ Register the middleware using app.use()
+5️⃣ Handle the API request

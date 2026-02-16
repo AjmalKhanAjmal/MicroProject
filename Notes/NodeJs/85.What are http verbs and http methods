@@ -1,0 +1,11 @@
+What are http verbs and http methods ?
+===================================
+HTTP verbs (also called HTTP methods) define the action a client wants to perform on a resource in an API.
+They describe what operation should be done on the server.
+🔹 Common HTTP Methods
+GET – Retrieve data from the server
+POST – Create new data
+PUT – Update an existing resource (full update)
+PATCH – Update part of a resource
+DELETE – Remove a resource
+

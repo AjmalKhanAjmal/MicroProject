@@ -1,0 +1,35 @@
+What are Template Engines in Express js ?
+=======================================
+→ Template engines are libraries that enable developers to generate dynamic HTML content by combining static HTML templates with data
+Name some Template Engines libraries : 
+EJS (Embedded JavaScript)
+Pug (formerly Jade),Handlebars,Mustache,Nunjucks
+
+Step by step Implementation : 
+→npm init -y
+→npm install express ejs
+→project/
+│
+├── app.js
+├── views/
+│   └── index.ejs
+└── package.json
+→ const express = require("express");
+const app = express();
+// set EJS as template engine
+app.set("view engine", "ejs");
+// route
+app.get("/", (req, res) => {  res.render("index", { name: "Aziz", role: "Backend Developer" });});
+// start server
+app.listen(3000, () => {  console.log("Server running on port 3000");});
+Create EJS file (views/index.ejs)
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EJS Example</title>
+</head>
+<body>
+  <h1>Hello <%= name %></h1>
+  <p>Your role is: <%= role %></p>
+</body>
+</html>

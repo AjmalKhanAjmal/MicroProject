@@ -1,0 +1,16 @@
+What is thread?
+--> a thread is a sub part of the process.
+
+--> a flow of execution in the process is called a thread.
+
+--> an independent path of execution in the process is called as thread.
+
+--> a thread is a light weight process.
+
+What is multi-threading : 
+
+--> executing more than one thread simultaneously in the process is called 
+    as multi-threading.
+advantages of multi-threading
+-----------------------------
+--> multi-threading reduces response time and improves performance.

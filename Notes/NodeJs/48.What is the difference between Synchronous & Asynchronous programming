@@ -1,0 +1,19 @@
+## **Q. What is the difference between Synchronous & Asynchronous programming?**
+
+### **Synchronous programming**
+
+1. In synchronous programming, tasks are executed one after another in a **sequential manner**.
+2. Each task must complete before the program moves on to the next task.
+3. Execution of code is **blocked** until a task is finished.
+4. Synchronous operations can lead to **blocking and unresponsiveness**.
+
+---
+
+### **Asynchronous programming**
+
+1. In asynchronous programming, tasks can start, run, and complete in **parallel**.
+2. Tasks can be executed **independently** of each other.
+3. Asynchronous operations are typically **non-blocking**.
+4. It enables better **concurrency and responsiveness**.
+
+---

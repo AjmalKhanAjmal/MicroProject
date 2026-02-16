@@ -1,0 +1,12 @@
+What are Router object and RouterMethods and how to implement them?
+===============================================================
+→A Router object is used to group related routes.
+→ First, we create an instance of the router using the Express instance by calling the Router() method.
+→This method returns a router object.Using this router object, we can define routes using methods like get(), post(), put(), and delete().
+→ In these methods, the first parameter is the URL path and the second parameter is the route handler function.
+→ By separating the routing logic this way, we can define routes in a separate file and then import the router into the main application instead of writing all routes using app.get() or app.post().
+const express = require("express");
+const router = express.Router();   → router object
+Router methods : 
+router.get(), post,put..
+router.use() (for middleware)

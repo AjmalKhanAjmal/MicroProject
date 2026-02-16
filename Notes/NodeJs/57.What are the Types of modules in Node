@@ -1,0 +1,36 @@
+What are the Types of modules in Node? 
+===================================
+In Node.js, there are three types of modules.
+
+1) Built-in Modules (Core Modules)
+-----------------------------------
+Built-in modules are already available in Node.js.
+We do not need to install them.
+They give basic features.
+Examples:
+fs for file handling,
+http for creating server,
+path for file path.
+
+2) Local Modules
+------------------------
+Local modules are created by us.
+These are our own JavaScript files.
+We use them to separate code and reuse code.
+
+3) Third-Party Modules
+---------------------------------
+These modules are created by others and installed using npm
+Third-party modules are created by other developers.
+They are not available by default.
+We install them using npm.
+Example:
+express, lodash
+
+What are Top 5 built-in Node.js modules
+==================================
+fs
+http
+path
+os
+events

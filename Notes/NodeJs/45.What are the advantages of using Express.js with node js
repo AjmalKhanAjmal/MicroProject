@@ -1,0 +1,22 @@
+What are the advantages of using Express.js with node js?
+=================================================
+→ Express.js provides many advantages. Some of the main advantages are:
+→ Simplified web development
+Express.js makes web development easy because it provides many built-in methods and features.
+We do not need to write complex code for handling requests and responses like in pure Node.js.
+→ Middleware support
+Middleware is one of the most important features of Express.js.
+Middleware handles incoming requests and outgoing responses.
+It is commonly used for authentication, validation, logging, and error handling.
+We can use multiple middlewares in a single application, which helps us manage a large number of requests efficiently.
+→ Flexible routing system
+Express.js provides a flexible and powerful routing system.
+It routes incoming requests based on URLs and HTTP methods such as GET, POST, PUT, and DELETE.
+Express easily understands URL patterns and maps them to the correct functions using very minimal code.
+→ Template engine integration
+Express.js supports template engines.
+Sometimes we need to generate dynamic HTML from the Node.js API.
+In such cases, template engines help us generate HTML pages dynamically on the server side.
+
+Short interview answer (you can memorize this):
+“Express.js simplifies web development in Node.js by providing built-in features like routing, middleware, and request–response handling. It reduces code, improves structure, and helps us build fast and scalable applications.”

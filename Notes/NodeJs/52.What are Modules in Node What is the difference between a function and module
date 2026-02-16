@@ -1,0 +1,4 @@
+→A module contains a specific functionality that can be easily reused within a Node js application
+→ Ideally in Node js, a javascript file can be treated as a module.
+→ A module is a broader concept that encapsulates functionality, while a function is a specific set of instructions within that module 
+→ module can contain multiple functions and variables

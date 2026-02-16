@@ -1,0 +1,21 @@
+What is Token based and JWT authentication ?
+========================================
+→Token-based authentication is a method where the server gives a token to the user after successful login.
+→The client sends this token with every request to access protected APIs.
+→The server does not store session data; it only verifies the token.
+How JWT Authentication Works
+User logs in
+Server creates a JWT using a secret key
+JWT is sent to the client
+Client sends JWT in every request
+Server verifies JWT signature
+If valid → access granted
+Example : 
+const jwt = require("jsonwebtoken");
+const token = jwt.sign(
+  { userId: user.id, role: user.role },
+  process.env.JWT_SECRET,
+  { expiresIn: "1h" }
+);
+Verifying :
+jwt.verify(token, process.env.JWT_SECRET

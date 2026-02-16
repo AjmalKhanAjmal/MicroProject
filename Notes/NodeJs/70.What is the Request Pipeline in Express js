@@ -1,0 +1,4 @@
+What is the Request Pipeline in Express js?
+=======================================
+The request pipeline in Express.js is the flow where a request passes through middleware and routes in order until a response is sent back to the client
+app.get('/order', authMiddleware, validateOrder, createOrder);

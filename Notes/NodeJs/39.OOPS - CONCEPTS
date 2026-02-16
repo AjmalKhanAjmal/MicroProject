@@ -1,0 +1,377 @@
+OOPS - CONCEPTS  : 
+==================
+
+→ We use OOP because as projects grow, normal functions become messy, hard to maintain, have too many parameters, are not reusable,difficult to manage, and hard to reuse.
+→ OOP helps us keep the code clean and organized
+→  OOP organizes the application using objects.
+Encapsulation keeps data + logic together.
+Abstraction hides complexity.
+Inheritance avoids code duplication.
+Polymorphism keeps the system flexible so we can easily switch implementations like Stripe, PayPal, Razorpay.
+This makes the system scalable, maintainable, and perfect for industry-level projects.
+
+What is object oriented programming?
+
+--> object oriented programming is a programming paradigm.
+
+principles of oop 
+-----------------
+1. class
+2. object
+3. data hiding
+4. abstraction
+5. encapsulation
+6. inheritance
+7. composition
+8. polymorphism
+
+What is a class?
+
+● a class is a blueprint for creating objects and a class represents the structure of an object.
+●as class is imagination that's why class will not occupy memory or space.
+●a class represents the state and behaviours of an object.
+
+●a class contains variables and methods as members, where variables are used to hold data thats why variables are called as data members and methods use data members to perform operations that's why
+methods are called as member methods
+
+--‐------Object----‐—
+
+What is an object?
+
+--> anything which exists physically in this real world is called an object.
+●an object is called as an instance (physical form) of the class.
+●Memory is allocated only after Object instantiation.
+●an object has state and behaviours
+●what an object possesses or owns that represents the state of an object and the operations an object performs using the state are called as behaviours of an object.
+●instance variables represent the state of an object and methods represent the behaviours of an object
+
+----------Data Hiding--‐------‐
+
+> hiding the data members of the class from outside people so that outside people
+should not access the data members of the class outside the class directly is
+called as data hiding.
+●We can achieve data hiding by using a private modifier.
+●it provides security for the data.
+ 
+
+
+
+1) Encapsulation — hide internal data, expose safe operations
+----------------Encapsulation----------------
+Encapsulation in Javascript describes the concept of bundling data and methods within a single unit.
+●we can achieve encapsulation in Javascript by using classes and packages
+advantages
+1. it provides security
+2. it provides modularity in our programs
+disadvantages
+1. It increases the length of the program.
+
+What it is (one line): Keep data and the methods that change it together; prevent outsiders from directly touching internal details.
+
+
+In code: Order uses private fields #items and #discount. Callers use applyDiscount(), addItem(), calculateTotal() — they cannot modify #items directly.
+
+
+Why useful: Prevents other parts of the program from accidentally corrupting order data (e.g., changing price directly).
+
+
+Analogy: A bank account — you deposit/withdraw using methods; you can’t directly change the balance.
+
+
+2) Abstraction — provide a simple interface, hide complexity
+---------------Abstraction -------------
+●Abstraction is used to hide internal details and show only functionalities.
+●showing necessary services or features to the end user by hiding their implementation details is called an abstraction.
+-> we can achieve abstraction in Javascript by using abstract classes and interfaces.
+Advantage:
+1. it provides security.
+
+What it is: Expose simple methods so callers don’t need to know internal details.
+
+
+In code:
+
+
+order.calculateTotal() hides how subtotal, taxes, discounts work.
+
+
+PaymentGateway.charge() hides the complexity of talking to Stripe/PayPal.
+
+
+Why useful: If internals change (new discount rules), only the Order class changes; other code keeps calling the same method.
+
+
+Analogy: Using a TV remote — you press “volume up” without needing to know how the circuit works.
+
+
+3) Inheritance — reuse common behavior, extend for specifics
+-----‐-------Inheritance-----------
+-> acquiring the properties of one class into another class is called inheritance.
+●In javascript, to use inheritance we use extends keyword.
+●inheritance establishes is -a relationship (parent child relationship) between the classes.olkj
+●in inheritance it is always recommended to create sub class object but not super class object because
+sub class has sub class properties and super class properties so we can access both super class and sub class properties using sub class objects.
+Why use inheritance in javascript
+* It provides the reusability of a code. We don’t have to write the same code again and again. Also, it allows us to  add more features to a class without modifying it.
+* It is transitive in nature, which means that if class B inherits from another class A, then all the subclasses of B would automatically inherit from class A.
+Types of inheritance in java
+On the basis of class, there can be three types of inheritance in java: single, multilevel and hierarchical.
+
+In javascript programming, multiple and hybrid inheritance is supported through interface only. We will learn about interfaces later.
+* Single inheritance:
+•  When a child class inherits from only one parent class, it is called single inheritance. We saw an example above.
+
+* Multiple inheritances: 
+* When a child class inherits from multiple parent classes, it is called multiple inheritances. 
+
+* Multilevel inheritance:
+* When there is a chain of inheritance, it is known as multilevel inheritance. 
+* When a child class becomes a parent for another child class
+* And multilevel inheritance shows the child and grandchild relationship. 
+Hierarchical Inheritance Example
+When two or more classes inherit a single class, it is known as hierarchical inheritance. In the example given below, Dog and Cat classes inherit the Animal class, so there is hierarchical inheritance. 
+5.Hybrid Inheritance
+It is the combination of more than one type of Inheritance is called hybrid Inheritance
+Hybrid inheritance is a combination of
+multiple inheritance and multilevel inheritance. A class is
+derived from two classes as in multiple inheritance
+
+https://www.javatpoint.com/inheritance-in-java
+●Why is multiple inheritance not supported in java.
+
+● Multiple inheritance faces problems when there exist methods with the same name in both the super classes.
+ 
+
+What it is: A child class reuses or customizes behavior from a parent.
+
+
+In code: StripeGateway and PayPalGateway both extend PaymentGateway. They share the idea of having config and a charge() method but implement the details differently.
+
+
+Why useful: Avoid duplicating common setup code; add provider-specific logic only once.
+
+
+Analogy: Vehicle base class → Car, Bike subclasses share common properties but implement specific behaviors.
+
+
+4) Polymorphism — use different objects the same way
+Polymorphism: 
+================
+●In javascript, we achieve polymorphism through methods
+●One method can perform different operations or we create a method in many forms
+● In javascript we have two types of polymorphism. The first one is compile time polymorphism and the second is run time polymorphism.
+●By using method overloading we can achieve compile time Polymorphism and using method Overriding we can achieve runtime polymorphism.
+●Method Overloading :
+-------------------------------
+--> writing two or more methods in the same class with same name but with different method signatures is called as method overloading and such methods are called as overloaded methods
+class A
+{
+   void m1() {   }
+
+   void m1(int i) {
+   } 
+   void m1(int i, int j) {
+   }
+}
+
+method overriding :
+---------------------------
+--> overriding super class method in sub class with different implementation is called method overriding.
+--> super class method is called as overridden method and sub class method
+is called as overriding method
+●To achieve we have to follow certain rules
+●^inheritance is mandatory
+●^the non static method declaration of super class and sub class must be same
+●If we don't want super class implementation in sub class, we want different implementation at that time we override.
+ 
+
+
+What it is: Call the same method on different objects and get different behavior.
+
+
+In code: OrderService calls this.gateway.charge(order, amount) — whether gateway is StripeGateway or PayPalGateway, charge() runs. OrderService does not change.
+Why useful: Swap implementations (providers) without touching the service/controller code.
+
+
+Analogy: Plugging different power adapters into the same socket — the socket interface is constant.
+
+
+
+Practical content for each pillar (short checklist & tips)
+Encapsulation — checklist
+Use private fields (e.g., #items) or clearly documented private properties.
+
+
+Provide methods for allowed actions (applyDiscount, addItem).
+
+
+Don’t expose direct setters for sensitive fields like price/payment status.
+
+
+Common mistake: Using global variables or exporting internal arrays directly.
+
+
+Abstraction — checklist
+Keep complex logic inside methods (calculateTotal()).
+
+
+Controllers/services should call high-level methods only.
+
+
+Common mistake: Repeating low-level logic across controllers.
+
+
+Inheritance — checklist
+Use base classes for shared contract/behavior.
+
+
+Keep subclasses small: only provider-specific logic.
+
+
+Common mistake: Deep inheritance chains — prefer simple base + composition.
+
+
+Polymorphism — checklist
+Depend on interfaces/contracts, not concrete classes (OrderService uses gateway contract).
+
+
+Use dependency injection (pass gateway into constructor).
+
+
+Common mistake: Using if (provider === 'stripe') ... else ... everywhere.
+
+
+ Does JavaScript have real classes? How Node.js uses OOP? Why OOP?
+**“JavaScript technically doesn’t have real classes like Java or C#.
+**JavaScript classes are mainly for cleaner code.
+ Internally, JavaScript behind the scenes still uses prototypes to reuse data and functions.
+** The ‘class’ keyword in JavaScript is just syntactic sugar — behind the scenes, it still uses prototype-based inheritance
+ But from a developer point of view, JavaScript classes behave just like real classes:
+ we can define properties, methods, do inheritance, and create multiple objects.
+Even though JavaScript is prototype-based, Node.js uses OOP everywhere internally.
+ For example, Express creates ‘Request’, ‘Response’, and ‘Router’ objects for every request.
+ Mongoose and Sequelize models are built using classes.
+ The EventEmitter, Streams, Buffers, and File System modules all use classes.
+ So OOP is actually very important in Node.js.”
+
+
+What is a prototype-based language?
+“A language where objects inherit from other objects, not from classes.”
+ Why is JavaScript prototype-based?
+Because:
+In JavaScript, every object has a hidden parent object, called prototype.
+
+
+When you call a method, JavaScript searches in:
+
+
+That object
+
+
+Its prototype
+
+
+Then prototype’s prototype
+ (This chain is called prototype chain)
+
+
+Even when you write:
+class User {}
+JavaScript secretly converts it to:
+function User() {}
+User.prototype = { ... }
+
+So class keyword is fake → it's a clean syntax, but internally JavaScript is still prototype based.
+
+ Interview answer (easy English)
+Here is the best answer you can tell in interviews:
+“JavaScript is not class-based like Java.
+ JavaScript uses prototypes — objects inherit from other objects.
+ The class keyword in JavaScript is only a cleaner syntax, but behind the scenes JavaScript still uses prototypes.
+ So we say JavaScript is a prototype-based language.”
+class, prototype, and object creation in JavaScript step by step
+=====================================================
+Step 1: 
+You might write:
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHi() {
+    console.log(`Hi, I am ${this.name}`);
+  }
+}
+
+You see class → you think it’s like Java class.
+
+
+Reality: JS does not create a real class.
+
+
+It only creates a function + a prototype object behind the scenes.
+
+
+
+⭐ Step 2 — Internally, JS converts class to function + prototype
+Your class:
+class User {
+  constructor(name) { this.name = name; }
+  sayHi() { console.log(`Hi, I am ${this.name}`); }
+}
+
+Becomes internally:
+function User(name) {
+  this.name = name;  // this will be the object properties
+}
+
+User.prototype.sayHi = function() {
+  console.log(`Hi, I am ${this.name}`);
+}
+
+Explanation in simple terms:
+The constructor becomes a normal function User().
+
+
+The methods inside the class (sayHi) go to User.prototype.
+
+
+Every object created from User links to this prototype.
+
+
+
+⭐ Step 3 — What happens when we use new
+const user1 = new User("Ajmal");
+
+When JS sees new User("Ajmal"), it does 4 things:
+Create a new empty object
+
+ user1 = {}
+
+
+Set its prototype to User.prototype
+
+ user1.__proto__ = User.prototype
+ → Now user1 can use all methods in User.prototype like sayHi()
+
+
+Run the constructor function with this pointing to user1
+
+ this.name = "Ajmal"
+ → Now user1 has property name = "Ajmal"
+
+
+Return the object automatically
+
+ return user1
+
+
+
+⭐ Step 4 — Where the method is stored
+user1.sayHi();  // Hi, I am Ajmal
+sayHi() is not inside user1 itself.
+
+
+JavaScript looks at user1.__proto__ (User.prototype) → finds sayHi() → executes it.
+
+
+✅ This is prototype-based inheritance.

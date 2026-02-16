@@ -1,0 +1,8 @@
+What are HTTP Request and Response structures in UI and  REST API ?
+==========================================================
+HTTP works on request–response model
+UI sends requests to REST API
+REST API processes requests and sends responses
+Requests contain method, URL, headers, and optional body
+Responses contain status code, headers, and response body
+REST APIs usually communicate using JSON

@@ -1,0 +1,28 @@
+constructors
+---------------
+What is a constructor?
+→ In JavaScript, the constructor() method is a special function inside a class.Whenever you create an object using the ‘new’ keyword, JavaScript automatically calls the constructor.
+→ Its job is to set initial values for the object’s properties.”
+note: constructor is used to initialize instance variables of the class.
+
+
+this keyword
+-------------
+--> this is a keyword and a reference variable which holds the reference
+    of current class object and points to current class object.
+
+--> this keyword is used to access current class object and the members 
+    of the current class.
+
+uses of this keyword :
+--------------------
+1. this keyword is used to access current class variables.
+
+   syntax: this.instanceVariableName;
+
+2. this keyword is used to access current class methods.
+
+   syntax: this.instanceMethodName();
+→ add more notes
+
+

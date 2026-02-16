@@ -1,0 +1,4 @@
+A Router object is used to group related routes.
+============================================
+→A Router object helps group related routes and improve code organization.
+→ If the number of routes increases, the code will not look readable.

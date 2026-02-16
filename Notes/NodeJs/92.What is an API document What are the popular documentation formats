@@ -1,0 +1,52 @@
+
+What is an API document? What are the popular documentation formats?
+========================================================
+→ An API document describes how to use an API, including endpoints, request and response formats, and authentication details.
+Popular API Documentation Formats / Tools
+1️⃣ Swagger / OpenAPI (Most Popular)
+Industry standard
+Supports interactive UI
+Auto-generated documentation
+👉 Example tools:
+Swagger UI
+Swagger Editor
+2️⃣ Postman Documentation
+Created directly from Postman collections
+Easy to share with teams
+Good for testing + docs together
+3️⃣ RAML (RESTful API Modeling Language)
+YAML-based
+Used to design APIs before development
+Clear and structured
+What is the typical structure of a REst API project in Node?
+==================================================
+project-root/
+│
+├── src/
+│   ├── app.js
+│   ├── server.js
+│   │
+│   ├── routes/
+│   │   └── user.routes.js
+│   │
+│   ├── controllers/
+│   │   └── user.controller.js
+│   │
+│   ├── services/
+│   │   └── user.service.js
+│   │
+│   ├── models/
+│   │   └── user.model.js
+│   │
+│   ├── middlewares/
+│   │   └── auth.middleware.js
+│   │
+│   ├── config/
+│   │   └── db.config.js
+│   │
+│   └── utils/
+│       └── response.util.js
+│
+├── .env
+├── package.json
+└── README.md

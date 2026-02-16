@@ -1,0 +1,5 @@
+What is Route Chaining in  Express js ?
+=================================
+→Route chaining is a process of defining multiple HTTP methods for a single route.
+→In route chaining, we can attach middleware before the route handler for each HTTP method.
+→Middleware runs first, and if it calls next(), the request is passed to the route handler.

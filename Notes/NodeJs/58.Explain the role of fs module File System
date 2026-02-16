@@ -1,0 +1,26 @@
+
+Explain the role of fs module (File System)
+===========================================
+The fs module in Node.js is used to work with files and folders on the system.
+like reading, writing, creating, and deleting files in Node.js, and also manage directories.
+In simple words, it helps Node.js interact with the file system.
+
+Some important functions of fs module
+
+File operations
+------------------
+fs.readFile() – read file content
+fs.writeFile() – write data to a file
+fs.appendFile() – add data to an existing file . If the file does not exist, it is created 
+fs.unlink() – delete a file
+
+Directory operations
+---------------------
+fs.mkdir() – create a folder
+fs.readdir() – read files inside a folder
+fs.rmdir() – remove a folder
+
+File info
+-----------
+fs.existsSync() – check if file exists
+fs.stat() – get file details (size, type, etc.)

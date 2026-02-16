@@ -1,0 +1,9 @@
+What is API key Authentication  ? 
+============================
+Server generates an API key for a client
+Client stores the API key securely
+Client sends the API key with each request (usually in headers or query params)
+Server validates the key
+If valid → access granted
+ If invalid → request denied
+And it expires after 1 hour in our  project

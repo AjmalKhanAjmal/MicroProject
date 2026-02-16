@@ -1,0 +1,121 @@
+What is a prototype-based language?
+“A language where objects inherit from other objects, not from classes.”
+ Why is JavaScript prototype-based?
+Because:
+In JavaScript, every object has a hidden parent object, called prototype.
+
+
+When you call a method, JavaScript searches in:
+
+
+That object
+
+
+Its prototype
+
+
+Then prototype’s prototype
+ (This chain is called prototype chain)
+
+
+Even when you write:
+class User {}
+JavaScript secretly converts it to:
+function User() {}
+User.prototype = { ... }
+
+So class keyword is fake → it's a clean syntax, but internally JavaScript is still prototype based.
+
+ Interview answer (easy English)
+Here is the best answer you can tell in interviews:
+“JavaScript is not class-based like Java.
+ JavaScript uses prototypes — objects inherit from other objects.
+ The class keyword in JavaScript is only a cleaner syntax, but behind the scenes JavaScript still uses prototypes.
+ So we say JavaScript is a prototype-based language.”
+class, prototype, and object creation in JavaScript step by step
+=====================================================
+Step 1: 
+You might write:
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHi() {
+    console.log(`Hi, I am ${this.name}`);
+  }
+}
+
+You see class → you think it’s like Java class.
+
+
+Reality: JS does not create a real class.
+
+
+It only creates a function + a prototype object behind the scenes.
+
+
+
+⭐ Step 2 — Internally, JS converts class to function + prototype
+Your class:
+class User {
+  constructor(name) { this.name = name; }
+  sayHi() { console.log(`Hi, I am ${this.name}`); }
+}
+
+Becomes internally:
+function User(name) {
+  this.name = name;  // this will be the object properties
+}
+
+User.prototype.sayHi = function() {
+  console.log(`Hi, I am ${this.name}`);
+}
+
+Explanation in simple terms:
+The constructor becomes a normal function User().
+
+
+The methods inside the class (sayHi) go to User.prototype.
+
+
+Every object created from User links to this prototype.
+
+
+
+⭐ Step 3 — What happens when we use new
+const user1 = new User("Ajmal");
+
+When JS sees new User("Ajmal"), it does 4 things:
+Create a new empty object
+
+ user1 = {}
+
+
+Set its prototype to User.prototype
+
+ user1.__proto__ = User.prototype
+ → Now user1 can use all methods in User.prototype like sayHi()
+
+
+Run the constructor function with this pointing to user1
+
+ this.name = "Ajmal"
+ → Now user1 has property name = "Ajmal"
+
+
+Return the object automatically
+
+ return user1
+
+
+
+⭐ Step 4 — Where the method is stored
+user1.sayHi();  // Hi, I am Ajmal
+sayHi() is not inside user1 itself.
+
+
+JavaScript looks at user1.__proto__ (User.prototype) → finds sayHi() → executes it.
+
+
+✅ This is prototype-based inheritance.
+

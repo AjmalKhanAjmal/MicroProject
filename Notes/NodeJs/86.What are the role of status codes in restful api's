@@ -1,0 +1,29 @@
+?
+==========================================
+→They help the client understand:
+A status code tells us whether the request was successful or not, if any error occurred, we can easily decide what action to take next
+.
+🔹 Why Status Codes Are Important
+Provide clear communication between client and server
+Help clients handle success and error cases properly
+Improve API readability and debugging
+Follow standard HTTP behavior
+✅ 2xx – Success
+200 OK – Request successful
+201 Created – Resource successfully created
+202 Accepted – Request accepted and processing started
+204 No Content – Request successful but no response body
+🔄 3xx – Redirection
+300 Multiple Choices – Multiple possible responses available
+
+❌ 4xx – Client Errors
+400 Bad Request – Invalid request data
+401 Unauthorized – Authentication required or failed
+403 Forbidden – Access denied
+404 Not Found – Resource not found
+
+🔥 5xx – Server Errors
+500 Internal Server Error – Server failed to process request
+501 Not Implemented – Requested method not supported
+502 Bad Gateway – Invalid response from upstream server
+503 Service Unavailable – Server temporarily unavailable

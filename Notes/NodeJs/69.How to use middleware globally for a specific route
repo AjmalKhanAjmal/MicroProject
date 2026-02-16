@@ -1,0 +1,3 @@
+How to use middleware globally for a specific route ?
+==============================================
+→ use app.use(“/orders”, authentication ) to use middleware globally for a specific route in Express js.

@@ -1,0 +1,55 @@
+What are the types of middlewares in Express js ?
+=============================================
+
+Application-level middleware – app.use()
+Router-level middleware – router.use()
+Built-in middleware – express.json(), express.urlencoded(), express.static()
+Third-party middleware – cors, morgan, helmet
+Error-handling middleware – (err, req, res, next)
+1️⃣ Application-level middleware
+→ Application level middlewares applies globally to all incoming requests in the entire express js application
+→ Applied to the entire app using app.use()
+→ Example: logging, authentication, CORS
+app.use(loggerMiddleware);
+
+2️⃣ Router-level middleware
+→ Applied to specific routes not for all incoming reques using router.use()
+→ Helps organize middleware by feature or module
+router.use(authMiddleware);
+
+
+3️⃣ Built-in middleware
+→ Provided by Express.js itself
+→ Common examples:
+express.json()
+express.urlencoded()
+express.static()
+→ We use static for Industry logos but not for this not required authenticatio
+project
+├── public
+│   ├── style.css
+│   ├── logo.png
+│   └── app.js
+
+app.use(express.static('public'));
+http://localhost:3000/logo.png
+app.use(express.json());
+
+
+4️⃣ Third-party middleware
+→ Middleware created by external libraries
+→ Examples:
+cors
+morgan
+Helmet → use for setting  HTTP security headers
+Compression →  use for compression HTTP responses
+app.use(cors());
+
+
+5️⃣ Error-handling middleware
+→ It is a special kind of middleware in express used to manage errors happening while handling incoming requests. 
+→ Used to handle errors in the application
+→ To implement error handling in express, define with four parameters: err, req, res, next here  additionally error object parameter will be use for error handling
+app.use((err, req, res, next) => {
+  res.status(500).send('Something went wrong');
+});

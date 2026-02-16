@@ -1,0 +1,6 @@
+What are Authentication and Authorization ? 
+=======================================
+Authentication :  It helps to verify the user identity by validating their username and password.
+Authorization : Authorization is the process of determining if a user or account has permission to access a resource or perform an action. It comes after authentication, which verifies the identity of the user. 
+→ Authorization is used to control access after login.
+In our project, the admin can create basic users and assign specific stores to them. After login, the user can only view and manage the stores that are assigned to them and cannot access other stores and create a store.           

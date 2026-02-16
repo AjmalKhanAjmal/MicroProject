@@ -1,0 +1,5 @@
+What are Route Handlers ?
+=======================
+→ Route handlers are functions is used to process the request and generate the response
+→ We pass it as the second argument.
+→app.get("/products", (req, res) => { res.json({ message: "Products list" });});

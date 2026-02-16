@@ -1,0 +1,79 @@
+7 Key Features of Node
+
+Single Threaded
+Asynchronous
+Event-Driven
+V8 JavaScript Engine
+Cross-Platform
+NPM (Node Package Manager)
+Real-Time Capabilities
+Scalable Applications
+
+
+Here is a simple explanation in **normal English** you can speak in interview 👇
+
+---
+
+## 7 Key Features of Node.js (Simple Explanation)
+
+### 1. Single Threaded
+
+Node.js runs on a single main thread.
+Instead of creating many threads for each user, it handles many users using smart background processing.
+This makes it lightweight and fast.
+
+---
+
+### 2. Asynchronous
+
+Node.js does not wait for slow tasks like database, API, or file reading.
+It sends the request and continues doing other work.
+When the result comes back, it handles it.
+So the server never stops.
+
+---
+
+### 3. Event-Driven
+
+Node.js works based on events (something happens → run function).
+Example: user clicks, data received, payment done, message arrived.
+Because of this, it is perfect for real-time apps.
+
+---
+
+### 4. V8 JavaScript Engine
+
+Node.js uses Google Chrome’s V8 engine.
+This engine converts JavaScript into machine code very fast.
+That is why Node.js performance is very high.
+
+---
+
+### 5. Cross-Platform
+
+You can run Node.js on Windows, Linux, or Mac without changing code.
+Write once → run anywhere.
+
+---
+
+### 6. NPM (Node Package Manager)
+
+Node.js has a huge library collection called NPM.
+You don’t need to build everything from scratch.
+You can install ready-made packages like Express, Mongoose, JWT, etc.
+
+---
+
+### 7. Real-Time Capabilities
+
+Node.js is best for applications where data updates instantly:
+
+* Chat apps
+* Live tracking
+* Notifications
+* Online games
+  Because it supports continuous connection between client and server.
+
+---
+
+If you want, I can also give a **very short 5-line version** (for HR round).

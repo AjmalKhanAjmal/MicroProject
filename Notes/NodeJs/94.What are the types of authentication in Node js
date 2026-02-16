@@ -1,0 +1,44 @@
+What are the types of authentication in Node js?
+===========================================
+Node.js supports multiple authentication methods depending on the application requirement.
+
+1️⃣ Username & Password Authentication (Basic)
+User logs in using username/email and password
+Server verifies credentials from the database
+Passwords are stored in hashed format
+👉 Commonly used for simple applications
+Example:
+Email + Password → Verify → Login
+
+2️⃣ Token-Based Authentication (JWT) ⭐ Most Common
+After login, server generates a JWT token
+Token is sent to the client
+Client sends token in every request
+Server verifies token
+👉 Used in REST APIs, mobile apps, SPAs
+Example:
+Authorization: Bearer <JWT_TOKEN>
+
+3️⃣ Session-Based Authentication
+Server creates a session after login
+Session ID is stored in a cookie
+Server maintains session data
+👉 Mostly used in traditional web applications
+
+4️⃣ OAuth Authentication (Third-Party Login)
+Login using Google, Facebook, GitHub, etc.
+User is authenticated by third-party provider
+Server receives access token
+👉 Used for social logins
+
+5️⃣ API Key Authentication
+Client sends an API key with every request
+Server validates the API key
+👉 Used for internal services and public APIs
+Example:
+x-api-key: abc123
+
+6️⃣ Multi-Factor Authentication (MFA / 2FA)
+Uses more than one verification method
+Example: Password + OTP
+👉 Used in banking and secure systems

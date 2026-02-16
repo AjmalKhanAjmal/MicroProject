@@ -1,0 +1,113 @@
+In **Node.js (CommonJS)** there are **3 main ways** to export a module.
+
+# 1️⃣ Export Single Thing (Default Export)
+-----------------------------------------------
+You export only one function/object/value.
+
+### math.js
+
+function calculateTax(amount) {
+  return amount * 0.18;
+}
+
+module.exports = calculateTax;
+
+
+### app.js
+
+
+const calculateTax = require("./math");
+
+console.log(calculateTax(1000));
+
+
+### Real-time Use Case
+
+👉 Payment service exporting only one main function
+Example: **payment gateway calculation**
+
+---
+
+# 2️⃣ Export Multiple Things (Named Exports using object)
+-----------------------------------------------
+You export many functions together.
+
+### orderService.js
+
+function createOrder() {
+  console.log("Order created");
+}
+
+function cancelOrder() {
+  console.log("Order cancelled");
+}
+
+module.exports = {
+  createOrder,
+  cancelOrder
+};
+
+
+### app.js
+
+const orderService = require("./orderService");
+
+orderService.createOrder();
+orderService.cancelOrder();
+
+### Real-time Use Case
+
+👉 E-commerce order module
+Create / Cancel / Update / Track order in same file
+
+---
+
+# 3️⃣ Export Properties One-by-One
+-----------------------------------------------
+Attach values directly to `exports`
+
+### auth.js
+
+exports.login = function() {
+  console.log("User logged in");
+};
+
+exports.logout = function() {
+  console.log("User logged out");
+};
+
+### app.js
+
+const auth = require("./auth");
+
+auth.login();
+auth.logout();
+
+### Real-time Use Case
+
+👉 Authentication module
+login, logout, verifyToken functions
+
+---
+
+# ⚠️ Important Interview Point
+
+`exports` is just a shortcut of `module.exports`
+
+But ❌ this will break:
+
+exports = function() {}   // WRONG
+
+---
+
+# Quick Revision Table
+
+| Method                | When Used         | Example Project     |
+| --------------------- | ----------------- | ------------------- |
+| `module.exports = fn` | One main feature  | Payment calculation |
+| `module.exports = {}` | Group features    | Order service       |
+| `exports.xyz = fn`    | Utility functions | Auth module         |
+
+---
+
+

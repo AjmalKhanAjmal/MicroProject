@@ -1,0 +1,11 @@
+What is Routing in Express js ?
+=============================
+→ Routing in Express.js means deciding which code should run for a specific URL and HTTP method.
+→ Routing tells Express what to do when a user hits a particular API or page.
+→ If we have routes like /orders or /products, routing maps these URLs to the correct controller functions.
+
+🔹 Using Router (industry style)
+const router = require("express").Router();
+router.post("/order", createOrder);
+router.get("/order/:id", getOrder);
+module.exports = router;

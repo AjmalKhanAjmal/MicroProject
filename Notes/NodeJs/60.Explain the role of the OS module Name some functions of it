@@ -1,0 +1,28 @@
+Explain the role of the OS module? Name some functions of it?
+==================================================
+✅ Role of the OS module in Node.js
+The OS (Operating System) module is a built-in Node.js module that helps us get information about the system (computer/server) on which our Node.js application is running.
+In simple words:
+👉 The OS module allows Node.js to talk to the operating system and read system details like memory, CPU, user info, platform, etc.
+We mainly use the OS module to:
+Check system memory
+Get CPU information
+Know the OS type and platform
+Get user details
+Monitor system performance
+
+
+
+os.platform() → Tells which OS is running (Windows, Linux, mac)
+os.arch() → Tells system architecture (32-bit or 64-bit)
+os.hostname() → Gives the system/computer name
+os.type() → Gives the operating system name
+os.release() → Shows OS version
+os.totalmem() → Returns total system memory
+os.freemem() → Returns available free memory
+os.cpus() → Gives CPU core details
+os.userInfo() → Used to give user information like username, user ID, group ID, and home directory
+os.uptime() → Shows how long the system is running
+✅ Example (easy to understand)
+const os = require('os');
+console.log(os.platform());   // win32

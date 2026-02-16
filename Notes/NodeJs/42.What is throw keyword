@@ -1,0 +1,15 @@
+throw :
+-----------
+--> throw is a keyword, if we want to create exception object and throw 
+    explicitly from the method we use to throw keywords.
+
+syntax: throw exceptionObj;
+
+--> using throw keyword we can throw checked exceptions and unchecked 
+    exceptions.
+
+try with multiple catch blocks 
+------------------------------
+--> if multiple exceptions are there in try block and on the occurrence
+    of different exceptions if we want to execute different handling code 
+    then we should use multiple catch blocks.

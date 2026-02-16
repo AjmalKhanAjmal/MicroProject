@@ -1,0 +1,23 @@
+What is HTTP, createServer, and listen : 
+================================= 
+HTTP : 
+HTTP means Hyper Text Transfer Protocol.
+It is used for communication between client and server, like browser and backend.
+→ To use HTTP features, we first import the http module.
+→ In our project, we used the HTTP module to create a server.
+→ The http module provides methods like createServer() to create a server.
+
+createServer()
+→ We use createServer() to create an HTTP server.
+→ It takes a callback function with two parameters: request (req) and response (res).
+→ The request object contains client request details like URL and method.
+→ The response object is used to send data back to the client.
+→ Inside this function, we write the logic to handle client requests and send responses.
+
+listen()
+→ After creating the server, we use the listen() method.
+→ “The listen() method assigns a port number so the server can receive client requests.”
+→ The listen() method binds the server to a port number.
+→ The server starts listening for incoming client requests on that port.
+→ When a client sends a request, the server processes it and sends a response.
+

@@ -1,0 +1,32 @@
+Explain the role of the path module? Name some functions of it?
+============================================================
+The path module in Node.js is used to work with file and folder paths.
+It helps us build, join, and manage paths safely, so our code works the same on Windows, Linux, and macOS.
+In simple words, it avoids path errors like \ vs / and makes file paths reliable.
+→ The path.parse() method is used to break a file path into parts.
+We pass the path as a string to the parse method.
+It converts the path string into an object.
+That object contains different properties like root, directory name, file name, extension, etc.
+We can use these parts based on our requirement.
+→ The path.join() method is used to combine multiple path parts into one proper path.
+Instead of writing the full path manually, we give each part separately.
+Node.js joins them and creates a correct path for the operating system.
+It also removes extra slashes and avoids path errors. ("/users//data//files///test.txt")
+path.join(__dirname, 'uploads', 'image.png');
+
+
+
+
+
+
+Some important functions of path module
+path.join() – join multiple path parts into one path
+path.resolve() – get absolute path
+path.basename() – get file name from path
+path.dirname() – get folder name from path
+path.extname() – get file extension
+path.parse() – break path into parts
+path.format() – build path from parts
+
+One-line interview answer
+The path module is used to handle and manage file paths in a safe and platform-independent way in Node.js.

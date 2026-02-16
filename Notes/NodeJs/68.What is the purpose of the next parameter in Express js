@@ -1,0 +1,6 @@
+What is the purpose of the next parameter in Express js? 
+=================================================
+→The next parameter  is a callback function which used to pass control to the next middleware function in the stack
+→ When a middleware finishes its work, it calls next() so that Express can continue processing the request.
+→ If next() is not called, the request will stop and the API will not be executed.
+→ next helps us chain multiple middleware functions in an ordered way.

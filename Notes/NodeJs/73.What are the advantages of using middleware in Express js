@@ -1,0 +1,20 @@
+What are the advantages of using middleware in Express js ?
+=======================================================
+1️⃣ Separation of concerns (modularity)
+ Middleware helps separate common logic like authentication, logging, and validation from business logic, making code clean and easy to maintain.
+
+2️⃣ Code reusability
+ The same middleware can be reused across multiple routes instead of writing the same code again and again.
+
+3️⃣ Better request handling
+ Middleware processes requests step by step, which makes request handling more organized and controlled.
+
+4️⃣ Centralized logic
+ We can handle common tasks like authentication, CORS, and error handling in one place.
+
+5️⃣ Improved security
+ Middleware can be used for authentication, authorization, input validation, and security headers.
+6️⃣ Easy debugging and logging
+7️⃣ Scalable application design
+ Middleware makes the application scalable by allowing us to add or remove features without changing core API logic.
+

@@ -1,0 +1,12 @@
+Difference between object and JSON 
+================================
+Here it is in proper tabular format:
+
+| Feature            | Object                   | JSON                      |
+| ------------------ | ------------------------ | ------------------------- |
+| Type               | In-memory data structure | Text format               |
+| Exists Where       | Inside the program       | Network / File            |
+| Functions Allowed  | Yes                      | No                        |
+| Language Dependent | Yes                      | No (language-independent) |
+| Used For           | Logic & Processing       | Data Transfer             |
+

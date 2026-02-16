@@ -1,0 +1,4 @@
+What are Route Parameters in Express js?
+====================================
+→ Route parameters allow us to pass dynamic values in the URL that allow us to pass data (like an ID) to the server and access them using req.params
+→ They are defined using a colon (:) in the route path and accessed using req.params.

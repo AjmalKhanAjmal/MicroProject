@@ -1,0 +1,82 @@
+Explain the role of events module?how to handle events in node?
+========================================================
+
+
+What are Events, Event Emitter, Event Queue, Event Loop & Event Driven?
+
+Event: Signals that something has happened in a program.
+---------
+Event Emitter: Create or emit events.
+----------------
+Event Queue: Events emitted queued (stored) in event queue.
+--------------
+Event Handler (Event Listener): Function that responds to specific events.
+----------------------------------
+Event Loop: The event loop picks up event from the event queue and executes them in the order they were added.
+------------
+Event Driven Architecture: It means operations in Node are drive or based by events.
+-----------------------------
+
+
+1️⃣ Event
+Event means something happened in the system, like button clicked, order placed, payment success, or file finished reading.
+→In our project, we used events in the orders module.
+→To implement events, we first import the events module.
+ →The events module provides an EventEmitter class, which has many methods and properties.
+→To use these methods, we create an instance (object) of EventEmitter.
+→Then we register an event using the on() method.
+→ Registering an event means we give an event name like order_placed as the first parameter, and a function as the second parameter.
+Next, we emit the event using the emit() method with the same event name order_placed.
+When the event is emitted, the event listener listens to the event, and if the event name matches, it executes the function passed as the second parameter.
+In that function, we added the order refresh page logic to refresh the grid when a new order is placed by the customer.
+What are Event Arguments : 
+========================
+→ If we want to pass additional information like order_id or store_id, we can pass it as arguments while emitting the event.
+
+
+// Register event
+emitter.on('order_placed', (order_id, store_id) => {
+  console.log(`Order ${order_id} placed in store ${store_id}`);
+});
+// Emit event with arguments
+emitter.emit('order_placed', 101, 25);
+
+
+2️⃣ Event Emitter
+Event emitter is the object which creates or sends the event, like sending order placed or payment success event.
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter(); // this is emitter
+
+emitter.emit('orderPlaced');
+
+
+3️⃣ Event Handler (Event Listener)
+Event handler is the function which runs when the event happens, like starting cooking after order placed or sending confirmation after payment success.
+emitter.on('orderPlaced', () => {
+  console.log('Kitchen started cooking');
+})
+
+4️⃣ Event Queue
+
+Event queue is a waiting line where events are stored before execution.
+
+5️⃣ Event Loop (VERY IMPORTANT)
+Event Loop means:
+👉 Manager who checks the event queue again and again
+Event loop continuously checks the event queue and executes events when they are ready.
+
+6️⃣ Event-Driven Architecture
+Event-Driven Architecture means:
+👉 Application works based on events
+“Event-driven architecture means the system works based on events and responses.”
+Meaning:
+One action happens
+Another action starts automatically
+Example:
+Order placed → payment → confirmation → delivery
+Node.js works like this.
+
+Very small real-world example (easy to say)
+orderPlaced  → page reload,order update → page reload
+

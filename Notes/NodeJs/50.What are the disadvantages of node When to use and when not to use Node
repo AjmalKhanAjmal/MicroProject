@@ -1,0 +1,59 @@
+When to Use Node.js?
+--------------------------
+
+Ideal for real-time applications like chat applications, online gaming, and collaborative tools due to its event-driven architecture.
+
+Excellent for building lightweight and scalable RESTful APIs that handle a large number of concurrent connections.
+
+Well-suited for building microservices-based architectures, enabling modular and scalable systems.
+
+Perfect Use Cases
+
+REST APIs
+
+Microservices
+
+Real-time chat apps
+
+Live tracking (Swiggy/Zomato/Uber type)
+
+Notifications systems
+
+Streaming apps
+
+Online multiplayer games
+
+Dashboard with frequent updates
+
+IoT applications
+
+
+
+When NOT to Use Node.js
+---------------------------
+
+CPU-Intensive Tasks: Avoid for applications that involve heavy CPU processing
+(Image/Video Processing, Data Encryption/Decryption), as Node.js may not provide optimal performance in such scenarios because it is single-threaded and for heavy computation multi-threaded is better.
+
+Avoid Node when app does heavy calculations
+
+Bad Use Cases
+
+Video rendering software
+
+Image manipulation server
+
+Data science computation
+
+Large Excel processing (lakhs of rows calculation)
+
+Banking core transaction engine
+
+AI training engine
+
+👉 Better choices: Java, Python, Go, .NET
+
+Quick Memory Trick (Interview)
+
+Node.js = I/O heavy → GOOD
+Node.js = CPU heavy → BAD

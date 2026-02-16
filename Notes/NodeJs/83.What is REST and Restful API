@@ -1,0 +1,152 @@
+
+What is REST and Restful API ?
+============================
+→REST is an architectural style, and when an application follows this style, it is called a REST API, which is stateless and works on a client–server model.
+Client–Server architecture
+Stateless
+Uniform Interface
+Resource-based
+Layered System
+Cacheable
+
+
+Early Days (Before SOAP & REST)
+In the early days, communication between client and server was difficult because data was exchanged in binary formats, which were not human-readable and hard to debug.
+
+🔹 SOAP Introduction
+To solve this problem, Microsoft introduced SOAP (Simple Object Access Protocol).
+SOAP uses XML messaging, which is:
+Human-readable
+Machine-readable
+Because of this, SOAP became popular.
+SOAP Features
+SOAP is a protocol
+Uses strict standards
+Built-in security
+Built-in ACID properties
+Supports WS-Security
+Very reliable for enterprise applications
+SOAP Limitations
+Supports only XML (no JSON or other formats)
+XML is heavy and verbose
+Requires lengthy and complex code
+Uses action-based URLs
+Example (SOAP): saveTeacher,getTeacher,updateTeacher
+
+To overcome SOAP’s complexity, REST (Representational State Transfer) was introduced.
+REST is not a protocol — it is an architectural style.
+
+🔹 SOAP vs REST (Key Difference)
+SOAP
+REST
+Protocol
+Architectural style
+Only XML
+JSON / XML
+Action-based
+Resource-based
+Heavy & complex
+Lightweight & simple
+Built-in security
+Security via JWT, OAuth
+
+
+🔹 REST Security & ACID
+REST does not have built-in security or ACID properties,
+but we can implement them using:
+JWT (JSON Web Token)
+OAuth
+HTTPS
+Database transactions
+
+📌 REST is Resource-Oriented
+In REST, everything is a resource.
+In REST, we use one resource and perform different operations using HTTP methods.
+️ Same resource
+✔️ Different HTTP methods
+This is REST design.
+Example: School Application
+Resources:
+Teachers
+Students
+Base URL:
+/api/teachers
+/api/students
+
+
+🔹 What is Representational State Transfer?
+Representational State Transfer means:
+Data stored in the database is converted into a representation (JSON/XML)
+That representation is transferred from server to client
+Example:
+GET /api/teachers/1
+This means:
+Fetch teacher data with ID = 1
+Convert database state into JSON/XML
+Send it as a response
+
+🔹 SOAP vs REST URL Style
+SOAP (Action-based):
+saveTeacher,getTeacher,updateTeacher
+REST (Resource-based):
+/api/teachers
+
+
+📌 REST Architectural Constraints (6)
+If an API follows these constraints, it is called a RESTful API.
+
+1️⃣ Client–Server Architecture
+Client and server are independent
+Server sends data in JSON/XML
+Client decides how to display it (web, mobile, desktop)
+
+2️⃣ Stateless
+Server should not store client data
+Every request is independent
+Client must send all required information (token, headers, params)
+Example:
+HDFC Net Banking
+Mobile app and web app both send credentials every time
+👉 Even if the same client sends multiple requests, the server treats them as new requests.
+
+3️⃣ Cacheable
+Client can store responses in HTTP cache
+Reduces repeated requests
+Improves performance
+Example:
+Product list
+User profile data
+
+4️⃣ Uniform Interface
+Same API works for:
+Web app
+Mobile app
+Desktop app
+Request structure remains the same
+✔️ Consistency
+✔️ Simplicity
+
+5️⃣ Layered System
+Application is divided into layers
+Security layer
+Business layer
+Database layer
+If one layer fails, others are not affected
+✔️ Better security
+✔️ Easy maintenance
+
+5️⃣ Resorce oriented
+—----------------------------------------
+6️⃣ Code on Demand (Optional)
+Server can send executable code to the client
+Client can run that code if needed
+✔️ Optional
+✔️ Rarely used
+Advantages of using REST API’s : 
+Simple and Easy to Use
+Lightweight and Fast because for XML processing it takes time 
+Stateless Architecture Each request is independent, and the server does not store client state.
+Separation of Client and Server (not monolithic arch) Frontend and backend can be developed independently Changes in UI do not affect backend APIs
+Cacheable Responses Reduced server load
+Supports Multiple Data Formats (JSON,XML,plain text)
+

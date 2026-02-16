@@ -1,0 +1,4 @@
+What is the difference between runtime environment and framework?
+
+→ A runtime environment is responsible for executing the code and providing system resources like memory and APIs, whereas a framework provides a structured way and reusable tools to build applications efficiently.
+For example, Node.js is a runtime environment that runs JavaScript, while Express.js is a framework that helps us build web applications on top of Node.js.

@@ -1,0 +1,75 @@
+What is Error Handling? In how many ways can you do error handling in Node js?
+==================================================================
+→Error handling in Node.js is used to handle runtime issues and errors without crashing the application  during the execution of the program.
+→We can handle errors using try-catch, error-first callbacks, Promise catch, async-await, Express error middleware, custom errors, and global process handlers.
+Got it 👍
+Below are clear, short, interview-ready examples for each error-handling method in Node.js. You can remember and explain these easily.
+
+ Try–Catch (Synchronous / await)
+—------------------------------------------------
+try {  const data = JSON.parse("{invalid json}");
+} catch (err) {  console.log("Error:", err.message);}
+→  Used for synchronous code and async-await.
+
+ Error-First Callbacks
+—------------------------------------------------
+const fs = require("fs");
+fs.readFile("test.txt", (err, data) => {
+  if (err) {    console.log("File error:", err);    return;  }
+  console.log(data.toString());
+});
+→ The first parameter is always an error.
+
+
+ Promise .catch()
+—------------------------------------------------
+function getUser() {  return Promise.reject("User not found");}
+getUser()
+  .then(data => console.log(data))
+  .catch(err => console.log("Promise error:", err));
+
+→ Handles Promise rejections.
+
+ Async–Await with Try–Catch
+—------------------------------------------------
+async function fetchUser() {  try {
+    const user = await getUser();
+    console.log(user);  }
+ catch (err) {    console.log("Async error:", err);  }
+}
+fetchUser();
+
+→ Most commonly used in real projects.
+
+ Express Error Middleware
+—------------------------------------------------
+app.get("/user", (req, res) => {
+  throw new Error("User not found");
+});
+app.use((err, req, res, next) => {
+  res.status(500).json({ message: err.message });
+});
+
+→ Centralized error handling in Express
+→  Must have 4 parameters
+
+ Custom Errors
+—------------------------------------------------
+class NotFoundError extends Error {
+  constructor(message) {
+    super(message);
+    this.statusCode = 404;
+  }
+}
+throw new NotFoundError("Product not found");
+
+👉 Used for business logic validation.
+
+ Global Process Handlers
+—------------------------------------------------
+process.on("uncaughtException", err => {
+  console.log("Uncaught Exception:", err.message);
+});
+process.on("unhandledRejection", err => {
+  console.log("Unhandled Rejection:", err);
+});

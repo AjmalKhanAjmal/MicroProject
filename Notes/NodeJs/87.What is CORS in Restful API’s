@@ -1,0 +1,34 @@
+What is CORS in Restful API’s 
+=========================
+→ CORS (Cross-Origin Resource Sharing) is a rule used by browsers to check whether a website is allowed to access data from another server.
+→ CORS policy by default not allows to access the resource (api)e from  different websites
+→ Even if we access different protocol (https) or different port number cors restrict the accessing the api
+
+🔹 What is an Origin?
+An origin is defined by:
+Protocol (http / https)
+Domain (example.com)
+Port (3000, 5173, etc.)
+
+🔹 Preflight Request
+For some requests, the browser sends an OPTIONS request first (called a preflight request) to check permissions before making the actual API call.
+
+🔹 Example
+Access-Control-Allow-Origin: http://localhost:5173
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+🔹 Important Note
+CORS is enforced by browsers, not by REST APIs themselves.
+Tools like Postman are not affected by CORS.
+
+How to remove CORS restrictions RESTful API's?
+===========================================
+→ CORS restrictions can be removed by enabling CORS middleware in application
+→Allow the frontend origin to access the REST API.
+EX : 1 : app.use(cors({ origin: "http://localhost:5173"}));
+EX : 2 : Allow Multiple Origins (Array)
+app.use(cors({
+origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://myfrontend.com"
+  ]}));

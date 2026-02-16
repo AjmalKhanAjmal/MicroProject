@@ -1,0 +1,150 @@
+Perfect 👍 This is a **very common follow-up interview question**
+
+> Difference between **CommonJS (require)** vs **ES Modules (import/export)**
+
+---
+
+# 1️⃣ Syntax Difference
+
+| CommonJS (Old Node)     | ES Modules (Modern JS)                 |
+| ----------------------- | -------------------------------------- |
+| `require()`             | `import`                               |
+| `module.exports`        | `export`                               |
+| Runs by default in Node | Need `"type":"module"` in package.json |
+| Synchronous loading     | Asynchronous loading                   |
+| Mostly backend          | Frontend + Backend                     |
+
+---
+
+# 2️⃣ Example with Real-Time Use Case
+
+---
+
+## 🧾 Case: Payment Service
+
+---
+
+## CommonJS (require / module.exports)
+
+👉 Used in many existing Node.js projects
+
+### payment.js
+
+```js
+function pay(amount) {
+  console.log(`Paid ${amount}`);
+}
+
+module.exports = pay;
+```
+
+### app.js
+
+```js
+const pay = require("./payment");
+
+pay(500);
+```
+
+### Where used in real life
+
+* Old Express projects
+* Legacy backend systems
+* Many production Node APIs today
+
+---
+
+## ES Modules (import / export)
+
+👉 Modern way (React + Node + Next.js)
+
+### payment.js
+
+```js
+export function pay(amount) {
+  console.log(`Paid ${amount}`);
+}
+```
+
+### app.js
+
+```js
+import { pay } from "./payment.js";
+
+pay(500);
+```
+
+### Where used in real life
+
+* React apps
+* Next.js
+* Modern Node microservices
+* TypeScript projects
+
+---
+
+# 3️⃣ Default Export vs Named Export
+
+### Default Export (One main thing)
+
+```js
+// tax.js
+export default function tax(price) {
+  return price * 0.18;
+}
+
+// app.js
+import tax from "./tax.js";
+```
+
+👉 Real Use: Main service (Payment gateway, DB connection)
+
+---
+
+### Named Export (Multiple utilities)
+
+```js
+// auth.js
+export function login() {}
+export function logout() {}
+export function verifyToken() {}
+
+// app.js
+import { login, logout } from "./auth.js";
+```
+
+👉 Real Use: Auth module
+
+---
+
+# 4️⃣ Key Concept Difference (Important)
+
+| Feature         | CommonJS        | ES Modules          |
+| --------------- | --------------- | ------------------- |
+| Loading         | Blocking        | Non-blocking        |
+| Performance     | Slower startup  | Better optimization |
+| Tree shaking    | ❌ No            | ✅ Yes               |
+| Used by         | Node older apps | Modern JS ecosystem |
+| Top-level await | ❌               | ✅                   |
+
+---
+
+# 🧠 Simple Memory Trick
+
+> **require = old Node way**
+> **import = modern JavaScript way**
+
+---
+
+# 🎯 20-Second Interview Answer
+
+You can say:
+
+> CommonJS uses require and module.exports and loads modules synchronously, mainly used in older Node.js applications.
+> ES Modules use import/export and load modules asynchronously, support tree-shaking and are used in modern frameworks like React and Next.js.
+> Nowadays most new projects prefer ES Modules.
+
+---
+
+Want next common question?
+👉 *"Why Node.js is single threaded but still handles multiple requests?"* (very frequently asked)

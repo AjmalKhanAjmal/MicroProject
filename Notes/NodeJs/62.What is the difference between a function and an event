@@ -1,0 +1,4 @@
+What is the difference between a function and an event?
+================================================
+A function is executed when we call it directly.
+An event is triggered when something happens, and the event handler runs automatically.. Events call functions internally

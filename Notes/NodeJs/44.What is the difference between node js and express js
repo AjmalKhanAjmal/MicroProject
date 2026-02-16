@@ -1,0 +1,6 @@
+What is the difference between node js and express js ? 
+Node.js is a JavaScript runtime environment that allows us to run JavaScript code on the server, whereas Express.js is a web framework built on top of Node.js that helps us create web applications and APIs easily.
+Node.js provides core features like file system access and event handling, while Express.js provides routing, middleware, and request–response handling.
+Node.js is a JavaScript runtime environment that lets us run JavaScript on the server. It gives basic features like creating a server, handling requests and responses, working with files, and handling events. Node.js can do routing, but we have to write a lot of manual code, and it does not have a built-in middleware system.
+Express.js is a framework built on top of Node.js. It makes things easier by providing simple ways to handle routes, use middleware, and manage requests and responses. Express.js reduces extra code and helps us build applications faster and in a cleaner way.
+So, Node.js runs the server, and Express.js makes building the server application easy and efficient.

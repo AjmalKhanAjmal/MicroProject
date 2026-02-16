@@ -1,0 +1,4 @@
+Explain the concept  of versioning in RESTful  API’s ?
+=================================================
+→ How we have versions in mobile, laptops  similarly we have versions for API’s. API versioning allows us to upgrade APIs by adding new features while making updates without affecting existing clients
+→We require API versions because different clients may use different versions of the API. For example, if we have versions v1, v2, and v3, and we add new features or make changes in v3, some clients may update their applications to use v3. However, some clients may not be able to upgrade due to limitations like budget, time, or developer availability, so they continue using older versions like v2 or v1 . So we cannot force them to upgrade immediately right so to support both old and new clients at the same time API versioning is required.

@@ -1,0 +1,49 @@
+
+What are Serialization and Deserialization ?
+=======================================
+🔹 What is Serialization?
+→ Serialization means Converting an object into a transferable format like JSON or XML that can be sent or stored
+Why do we need it?
+To send data over the network (api response)
+To save data in a file or database
+To communicate between client and server
+Example (Serialization)
+JavaScript object:
+const user = { id: 1, name: "Aziz" };
+After serialization (JSON):
+{"id":1,"name":"Aziz"}
+👉 Object → JSON
+👉 This is serialization
+
+🔹 What is Deserialization?
+Deserialization means converting the received format (JSON/XML) back into a usable object.
+Example (Deserialization)
+JSON received from API:
+{"id":1,"name":"Aziz"}
+After deserialization:
+const user = { id: 1, name: "Aziz" };
+👉 JSON → Object
+👉 This is deserialization
+Client → Server
+UI sends JSON
+Server converts JSON to object
+👉 Deserialization
+Server → Client
+Server converts object to JSON
+UI receives JSON
+👉 Serialization
+
+UI Object
+  ↓ JSON.stringify()
+JSON text
+  ↓ (HTTP)
+Server
+  ↓ express.json() → JSON.parse()
+JS Object
+  ↓ res.json() → JSON.stringify()
+JSON text
+  ↓ (HTTP)
+Browser
+  ↓ response.json()
+UI Object
+

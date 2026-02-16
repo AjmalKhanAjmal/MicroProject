@@ -1,0 +1,6 @@
+What is Route Nesting in Express js ?
+=================================
+→Route nesting groups related routes under a common URL prefix to represent parent–child relationships. 
+EX :  www.example.com/users/profile
+  www.example.com/users
+  www.example.com/products

@@ -1,0 +1,10 @@
+What is the difference between middleware and routing?
+====================================================
+Middleware
+-------------
+Middleware is a function.
+It is used to process, modify, or validate requests before they reach the route handler.
+Routing
+----------
+Routing is a mechanism (not a function).
+It is used to map URLs and HTTP methods to their respective controller logic.
