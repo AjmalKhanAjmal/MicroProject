@@ -13,11 +13,11 @@ s it to another function is known as a callback function.
 
 setTimeout(function (){
 console.log(“time”)
-},5000)
+},5000) 
 
 Function x(y){
 console.log(“x”)
-y()
+y()\
 }
 
 x(functiont(){

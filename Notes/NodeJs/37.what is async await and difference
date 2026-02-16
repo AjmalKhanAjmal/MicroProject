@@ -1,0 +1,236 @@
+**Async Await — 1 Minute Interview Answer**
+
+JavaScript is single thread language.
+It can do only one task at a time.
+
+But some operations take time like API call, database call, file read.
+If JavaScript waits → application becomes slow.
+
+So JavaScript uses asynchronous programming.
+
+First we used Promises with then and catch.
+But when steps increase, code becomes complex.
+
+So async/await introduced to solve this problem.
+
+Async makes function return a promise.
+Await waits for the result inside async function.
+It pauses only that function, not whole program.
+
+So async/await makes asynchronous code look like normal synchronous code.
+It improves readability and error handling using try and catch.
+
+In simple words:
+Async/await is cleaner and better way to write promises.
+
+
+Example : 
+============
+async function demo() {
+    return "Hello";
+}
+
+demo().then(res => console.log(res));
+
+Output:
+Hello
+
+function getData() {
+    return new Promise(resolve => {
+        setTimeout(() => resolve("Data received"), 2000);
+    });
+}
+
+async function show() {
+    const result = await getData();
+    console.log(result);
+}
+
+show();
+console.log("Other work running");
+
+Output:
+
+Other work running
+Data received
+
+So program did not stop — only function waited.
+
+# 🔹 Error Handling in Async/Await
+=======================================
+We use `try...catch`
+
+async function test() {
+    try {
+        const data = await getData();
+        console.log(data);
+    } catch (err) {
+        console.log("Error:", err);
+    }
+}
+
+
+
+Nice 👍 — this is **callback hell example**.
+Interviewers love this question:
+
+> “Convert callback code → Promise → Async/Await”
+=====================================================
+
+
+Your code means:
+
+1. Create order
+2. Do payment
+3. Send SMS
+
+But it becomes **deep nested pyramid** 😵\
+---
+
+## 1️⃣ Your Original (Callback Hell)
+-----------------------------------------
+    createOrder(cart, function(orderId) {
+    proceedToPayment(orderId, function(paymentInfo) {
+        sendSMS(paymentInfo, function(message) {
+        console.log("Order complete", message);
+        }, function(err) {
+        console.log("SMS failed", err);
+        });
+    }, function(err) {
+        console.log("Payment failed", err);
+    });
+    }, function(err) {
+    console.log("Order failed", err);
+    });
+
+
+Problem:
+
+* Hard to read
+* Hard to debug
+* Hard to maintain
+
+---
+
+## 2️⃣ Convert to Promise (Better)
+-------------------------------------
+
+
+    function createOrder(cart) {
+    return new Promise((resolve, reject) => {
+        // logic
+        resolve(orderId);
+    });
+    }
+
+    function proceedToPayment(orderId) {
+    return new Promise((resolve, reject) => {
+        resolve(paymentInfo);
+    });
+    }
+
+    function sendSMS(paymentInfo) {
+    return new Promise((resolve, reject) => {
+        resolve("SMS Sent");
+    });
+    }
+
+    createOrder(cart)
+    .then(orderId => proceedToPayment(orderId))
+    .then(paymentInfo => sendSMS(paymentInfo))
+    .then(message => console.log("Order complete", message))
+    .catch(err => console.log("Failed:", err));
+
+
+Better than callback 👍
+But still chaining.
+
+---
+
+## 3️⃣ Convert to Async/Await (Best — Industry Style)
+----------------------------------------------------------------
+
+    async function placeOrder() {
+    try {
+        const orderId = await createOrder(cart);
+        const paymentInfo = await proceedToPayment(orderId);
+        const message = await sendSMS(paymentInfo);
+
+        console.log("Order complete", message);
+    } catch (err) {
+        console.log("Failed:", err);
+    }
+    }
+
+    placeOrder();
+
+
+---
+
+## 🧠 How to Explain in Interview (Important)
+
+You say:
+
+> First code is callback hell, difficult to read.
+> Promises solve nesting using chaining.
+> Async/await makes it look like synchronous code and improves readability and error handling.
+
+---
+
+### One Line Closing Answer
+
+> Async/await is mainly introduced to remove callback hell and make asynchronous code clean.
+
+---
+
+If you want, next they usually ask:
+👉 *Does await block event loop?*
+I can prepare answer for that also.
+
+
+# 🔹 Difference Between Promise and Async/Await
+
+| Feature              | Promise         | Async/Await        |
+| -------------------- | --------------- | ------------------ |
+| Introduced           | ES6             | ES8                |
+| Syntax               | .then().catch() | try/catch          |
+| Readability          | Hard            | Easy               |
+| Looks like           | Chain code      | Normal code        |
+| Debugging            | Difficult       | Easy               |
+| Error handling       | Separate catch  | Normal catch block |
+| Interview preference | Less            | More               |
+| Internally           | Base concept    | Built on promises  |
+
+---
+
+## Example Difference
+
+### Promise Style
+
+```js
+loginUser()
+.then(user => getOrders(user.id))
+.then(orders => getProducts(orders))
+.then(products => console.log(products))
+.catch(err => console.log(err));
+```
+
+Hard to read ❌
+
+---
+
+### Async/Await Style
+
+async function process() {
+    try {
+        const user = await loginUser();
+        const orders = await getOrders(user.id);
+        const products = await getProducts(orders);
+        console.log(products);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+Clean and readable ✅
