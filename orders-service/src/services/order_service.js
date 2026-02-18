@@ -1,6 +1,7 @@
 const { connectMongo } = require("../config/mongo");
 const mongoose = require("mongoose");
 const { Order } = require("../domain/order");
+const { orderQueue } = require("../queues/email.queue")
 // const { getIO } = require('../socket/index')
 const axios = require("axios")
 async function orderService(payload) {
@@ -26,6 +27,12 @@ async function orderService(payload) {
     order.calculateSubTotal()
     order.calculateTax()
     // order.calculateTip("percentage", 10)
+    
+   // Push to queue
+    await orderQueue.add("order_created", order);
+
+
+
     const response = order.toJSON()
 
     // 3️⃣ Emit event (SIDE EFFECT)
