@@ -27,23 +27,16 @@ async function orderService(payload) {
     order.calculateSubTotal()
     order.calculateTax()
     // order.calculateTip("percentage", 10)
-    
-   // Push to queue
-    await orderQueue.add("order_created", order);
-
 
 
     const response = order.toJSON()
 
-    // 3️⃣ Emit event (SIDE EFFECT)
-    setTimeout(() => {
-      getIO().emit("orderCreated", order);
-    }, 1000)
+    // Push to queue
+    let job = await orderQueue.add("order_created", response);
 
     return response
 
   } catch (error) {
-    console.log("eror Message  : ", error.message);
     return error.message
   }
 
@@ -85,7 +78,7 @@ let payload = {
 
 }
 
-orderService(payload)
+// orderService(payload)
 
 
 
@@ -100,6 +93,14 @@ async function getTaxDetails(tax_category_ids) {
     let results = await axios.post(url, payload)
     return results.data
   } catch (error) {
+
+    // 🔴 1. Service not running / connection refused
+    // if (error.code === "ECONNREFUSED") {
+    //   console.error("Tax Service Down ❌");
+    //   throw new Error("TAX_SERVICE_UNAVAILABLE");
+    // }
+    // const errorr = new Error(error.message)
+    // throw error
     console.log("errror from getTaxDetails : ", error.message);
 
   }

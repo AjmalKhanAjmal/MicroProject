@@ -1,7 +1,8 @@
 When to Use Node.js?
 --------------------------
 
-Ideal for real-time applications like chat applications, online gaming, and collaborative tools due to its event-driven architecture.
+Ideal for real-time applications like chat applications, online gaming, and collaborative tools due to its event-driven 
+architecture.
 
 Excellent for building lightweight and scalable RESTful APIs that handle a large number of concurrent connections.
 

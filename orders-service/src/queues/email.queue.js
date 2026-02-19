@@ -21,22 +21,32 @@
 
 const { Queue } = require("bullmq");
 const connection = require("../config/redis");
-const { log } = require("handlebars");
+// const { log } = require("handlebars");
 
-try{
-    var orderQueue = new Queue("order_queue", { connection });
-const order = {
-      _id: Date.now().toString(),
-      email: "req.body.email",
-      name:" req.body.name",
-      amount: "req.body.amount",
-      userId: "req.body.userId"
-    };
- orderQueue.add("order_created", order);
+try {
+    var orderQueue ={};
+    (async () => {
+       orderQueue = new Queue("order_queue", { connection });
+        // const order = {
+        //     _id: Date.now().toString(),
+        //     email: "req.body.email",
+        //     name: " req.body.name",
+        //     amount: "req.body.amount",
+        //     userId: "req.body.userId"
+        // };
+        // const job = await orderQueue.add("order_created", order);
+
+        // console.log("JOB ADDED:", job);
+
+        // console.log("JOB ADDED ID:", job.id);
+        // orderQueue.add("order_created", order);
+        
+    })()
 }
-catch(error){
+catch (error) {
     console.log("erorrrr : ", error.message);
-    
 }
 
- module.exports = { orderQueue };
+module.exports = { orderQueue };
+
+
