@@ -50,7 +50,7 @@ async function importProductsWithStream(path) {
   console.log("batch : ", data);
   // fs.unlink(path);
 
- 
+
   return data
 
   console.log("Products inserted USING streams + Sequelize");
@@ -90,32 +90,103 @@ function getSafeValue(cell) {
 
 
 
+// async function readProductsFromExcel(filePath, onBatch) {
+//   const workbook = new ExcelJS.stream.xlsx.WorkbookReader(filePath);
+//   let batch = [];
+//   // const BATCH_SIZE = 500;
+//   const BATCH_SIZE = 5;
+
+//   for await (const worksheet of workbook) {
+//     let isHeader = true;
+
+//     for await (const row of worksheet) {
+//       if (isHeader) {
+//         isHeader = false;
+//         continue;
+//       }
+
+//       const product = {
+//         // name: row.getCell(1).text,
+//         name: getCellValue(row.getCell(1)),
+//         price: Number(row.getCell(2).value),
+//         stock: Number(row.getCell(3).value),
+//         category: row.getCell(4).value,
+//       };
+
+//       if (!product.name || isNaN(product.price) || isNaN(product.stock)) {
+//         continue;
+//       }
+
+//       batch.push(product);
+
+//       if (batch.length === BATCH_SIZE) {
+//         await onBatch(batch);
+//         batch = [];
+//       }
+//     }
+//   }
+
+//   if (batch.length) {
+//     await onBatch(batch);
+//   }
+
+
+//   fs.unlink(filePath, (err) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       console.log("File deleted");
+//     }
+//   });
+// }
+
+
+
+
+
+
 async function readProductsFromExcel(filePath, onBatch) {
   const workbook = new ExcelJS.stream.xlsx.WorkbookReader(filePath);
   let batch = [];
-  // const BATCH_SIZE = 500;
   const BATCH_SIZE = 5;
 
-
   for await (const worksheet of workbook) {
-    let isHeader = true;
+
+    let columnMap = null;
 
     for await (const row of worksheet) {
-      if (isHeader) {
-        isHeader = false;
+
+      // ---- READ HEADER ----
+      if (!columnMap) {
+        columnMap = {};
+
+        row.eachCell((cell, colNumber) => {
+          const header = cell.text
+
+          if (header.includes("name")) columnMap.name = colNumber;
+          if (header.includes("price")) columnMap.price = colNumber;
+          // if (header.includes("stock") || header.includes("qty")) columnMap.stock = colNumber;
+          // if (header.includes("category")) columnMap.category = colNumber;
+        });
+
+        console.log("Detected Columns:", columnMap);
         continue;
       }
+
+      // ---- READ DATA ----
+      const name = getCellValue(row.getCell(columnMap.name));
+      const price = Number(getCellValue(row.getCell(columnMap.price)));
+      // const stock = Number(getCellValue(row.getCell(columnMap.stock)));
+      // const category = getCellValue(row.getCell(columnMap.category));
 
       const product = {
-        name: row.getCell(1).text,
-        price: Number(row.getCell(2).value),
-        stock: Number(row.getCell(3).value),
-        category: row.getCell(4).value,
+        name: name ? `${name}` : null,
+        price
+        // stock,
+        // category
       };
 
-      if (!product.name || isNaN(product.price) || isNaN(product.stock)) {
-        continue;
-      }
+      if (!product.name || isNaN(product.price)) continue;
 
       batch.push(product);
 
@@ -126,21 +197,36 @@ async function readProductsFromExcel(filePath, onBatch) {
     }
   }
 
-  if (batch.length) {
-    await onBatch(batch);
-  }
+  if (batch.length) await onBatch(batch);
 
-
-   fs.unlink(filePath, (err) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log("File deleted");
-    }
-  });
+  fs.unlink(filePath, () => {});
 }
 
 
+
+
+function getCellValue(cell) {
+  if (!cell) return null;
+
+  const v = cell.value;
+
+  // plain
+  if (typeof v === "string" || typeof v === "number") return v;
+
+  // shared string
+  if (v?.sharedString !== undefined) return cell.text;
+
+  // rich text
+  if (v?.richText) return v.richText.map(t => t.text).join("");
+
+  // formula
+  if (v?.formula) return v.result;
+
+  // hyperlink
+  if (v?.text) return v.text;
+
+  return cell.text || null;
+}
 
 module.exports = {
   readProductsFromExcel

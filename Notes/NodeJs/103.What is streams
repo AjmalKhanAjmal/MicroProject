@@ -1,0 +1,31 @@
+Streams : 
+==============
+The stream module in Node.js is used to handle large data by reading it in small chunks instead of loading everything into memory.
+If we import data from an Excel file without streams, the entire file is loaded into memory and then inserted into the database, which can cause memory issues.
+When we use streams, the Excel file is read gradually. In our case, ExcelJS gives us one row at a time. We collect these rows into an array, and when the array reaches
+ a fixed size like 100 records, we insert them into the database. This improves memory usage and performance.
+
+
+memory issues means : 
+---------------------
+Node.js has a memory limit (default ~1.5 GB)”
+
+One Node.js process cannot use unlimited RAM.
+
+Node.js uses V8 engine (from Chrome). V8 puts a limit to : Protect system,Prevent OS crash,Control garbage collection
+
+Default limits: 64-bit system → ~1.5 GB 
+problems API down, JavaScript heap out of memory
+
+Multer :
+============
+
+--> Multer is a middleware that handles file uploads gives access to the uploaded file in the controller in Node.js. Express cannot read files by default, so Multer parses multipart form data, saves the file to disk or memory, and provides file information through req.file like originalname, filename ... 
+
+req.file = {
+  originalname: "products.xlsx",
+  filename: "170000-products.xlsx",
+  path: "uploads/170000-products.xlsx",
+  mimetype: "application/vnd.openxmlformats...",
+  size: 12345
+}

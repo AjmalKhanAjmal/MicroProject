@@ -22,3 +22,7 @@ routes.post("/upload/product",temporay_uploads.single("file"),product_controller
 routes.post("/product/stream/upload",upload.single("file"),product_controller.productStream)
 
 module.exports = routes
+
+
+// curl --location 'http://localhost:3003/api/products/product/stream/upload' \
+// --form 'file=@"/C:/Users/Aziz/Downloads/Book11.xlsx"'

@@ -173,11 +173,13 @@ let products_data = []
         
         await readProductsFromExcel(req.file.path, async (productsBatch) => {
             
+             await Product.bulkCreate(productsBatch);
+
             //   await Product.bulkCreate(productsBatch, {
             //     transaction,
             //     validate: true,
             //   });
-           products_data =  productsBatch
+        //    products_data =  productsBatch
            
         });
 
