@@ -1,0 +1,110 @@
+As you know My name is Aziz. I am working as a Node.js backend developer with 1.5 years of experience in AJR Info it is a product-based
+ e-commerce company. one is Holiq it is a alcohol e-commerce platform and another is Straunt (food ordering platform) and also worked
+on saloons appointment booking where customer can select staff, stylings
+This all applications are multitenant applications
+
+
+ I am currently working on multi-tenant applications like Holiq (alcohol e-commerce platform) and Straunt (food ordering platform)
+
+In these projects, I work on backend development, API creation, and database integration. Our system follows a multi-tenant and
+shared architecture concept. I have experience with Node.js, Express.js, MySQL, Sequelize, and Redis. I also worked with 
+background jobs, email services, and queue systems.
+
+I handle API development, bug fixing, and performance improvements. I use Git for version control and follow clean coding 
+practices. I am always ready to learn new technologies and improve my backend skills. I am looking for a good opportunity to
+ grow and contribute to the company.
+
+
+
+multi - tennat : 
+ Multi-tenant means one application serves multiple clients (tenants), but each client has separate data. 
+ In our e-commerce product, different businesses use the same application, but their data is separated using tenant identification.
+
+Shared architecture : 
+Shared architecture means all these tenants use the same server, same backend code, and same database structure. 
+The infrastructure is shared to reduce cost and make maintenance easy.
+
+So, multi-tenant is about serving multiple clients in one application, and shared architecture is about sharing system resources
+ like server and database
+
+
+In our company, we use the term industry for different platforms like Holiq, Straunt, and Service Front. All these industries use 
+the same backend system, but data is separated using tenant ID. This is multi-tenant with shared architecture.
+
+
+
+1️⃣ Basic Introduction
+
+Your name
+
+Your experience (1.5 years)
+
+Your role (Node.js Backend Developer)
+
+2️⃣ Company & Domain
+
+Product-based company
+
+E-commerce platform
+
+Multi-tenant system
+
+Different domains (Holiq, Straunt, Service Front)
+
+3️⃣ Technical Skills
+
+Mention only important skills:
+
+Node.js
+
+Express.js
+
+MySQL
+
+Sequelize
+
+Redis
+
+Microservices
+
+REST APIs
+
+Git
+
+(Only tools you really worked on)
+
+4️⃣ Responsibilities
+
+API development
+
+Database integration
+
+Bug fixing
+
+Performance improvement
+
+Multi-tenant logic handling
+
+5️⃣ Architecture Knowledge
+
+Multi-tenant architecture
+
+Shared infrastructure
+
+Background jobs / Queues
+
+Email services
+
+6️⃣ Soft Skills
+
+Team player
+
+Quick learner
+
+Problem solving
+
+7️⃣ Career Goal (Very Short)
+
+Looking for growth
+
+Want to improve backend skills
