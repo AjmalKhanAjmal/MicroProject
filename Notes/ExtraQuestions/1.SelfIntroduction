@@ -1,18 +1,33 @@
-As you know My name is Aziz. I am working as a Node.js backend developer with 1.5 years of experience in AJR Info it is a product-based
- e-commerce company. one is Holiq it is a alcohol e-commerce platform and another is Straunt (food ordering platform) and also worked
-on saloons appointment booking where customer can select staff, stylings
-This all applications are multitenant applications
+As you know My name is Aziz. 
+I am a full stack developer with 2 years of experience,having experience in node.js, express js, MySQL, mongodb I also worked 
+with redis,Most of my work is in the US based E-commerce domain current company is a product-based E-commerce company, We developed a 
+products called Holiq it is a alcohol e-commerce platform and another is Straunt (food ordering platform) and also 
+worked on saloons appointment booking application where customers can select staff and choose services or styles all these
+applications are follows a multi-tenant and shared architecture concept I enjoyed there learning new technologies and 
+solving problem 
 
 
- I am currently working on multi-tenant applications like Holiq (alcohol e-commerce platform) and Straunt (food ordering platform)
+Roles and Responsibilities :
+===============================
 
-In these projects, I work on backend development, API creation, and database integration. Our system follows a multi-tenant and
-shared architecture concept. I have experience with Node.js, Express.js, MySQL, Sequelize, and Redis. I also worked with 
-background jobs, email services, and queue systems.
+-->My responsibility is to develop APIs and manage complete order flow.
 
-I handle API development, bug fixing, and performance improvements. I use Git for version control and follow clean coding 
-practices. I am always ready to learn new technologies and improve my backend skills. I am looking for a good opportunity to
- grow and contribute to the company.
+-->I created REST APIs for Product management, Cart,tax Checkout,Order creation, Payment, Order status update and Implementing 
+auto order confirmation,auto cancellation logic store the store related the data into redis so those changes reflect 
+on store front it means  where customer place order
+
+-->I handled complete order flow:  from cart,payment intent creation, order creation an Sent orders to delivery partners
+like DoorDash,Uber,Shipday 
+Cart → Checkout → Payment → Order Confirmation → Delivery Partner (quote creation)
+
+--> We used multi-tenant architecture. One code handles multiple industries like Food and Alcohol using industry_id. We 
+separate logic based on industry. For example, we have separate email templates for Holiq and separate for Straunt. If a new
+industry comes, no need to write new code from scratch. Same code is reusable.
+
+--> after completed the development we focused on bug fixing, and performance improvements
+
+-->One code supports multiple industries, order types and sales channels.”
+
 
 
 
@@ -31,80 +46,3 @@ So, multi-tenant is about serving multiple clients in one application, and share
 In our company, we use the term industry for different platforms like Holiq, Straunt, and Service Front. All these industries use 
 the same backend system, but data is separated using tenant ID. This is multi-tenant with shared architecture.
 
-
-
-1️⃣ Basic Introduction
-
-Your name
-
-Your experience (1.5 years)
-
-Your role (Node.js Backend Developer)
-
-2️⃣ Company & Domain
-
-Product-based company
-
-E-commerce platform
-
-Multi-tenant system
-
-Different domains (Holiq, Straunt, Service Front)
-
-3️⃣ Technical Skills
-
-Mention only important skills:
-
-Node.js
-
-Express.js
-
-MySQL
-
-Sequelize
-
-Redis
-
-Microservices
-
-REST APIs
-
-Git
-
-(Only tools you really worked on)
-
-4️⃣ Responsibilities
-
-API development
-
-Database integration
-
-Bug fixing
-
-Performance improvement
-
-Multi-tenant logic handling
-
-5️⃣ Architecture Knowledge
-
-Multi-tenant architecture
-
-Shared infrastructure
-
-Background jobs / Queues
-
-Email services
-
-6️⃣ Soft Skills
-
-Team player
-
-Quick learner
-
-Problem solving
-
-7️⃣ Career Goal (Very Short)
-
-Looking for growth
-
-Want to improve backend skills
