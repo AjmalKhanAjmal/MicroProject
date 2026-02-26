@@ -1,0 +1,214 @@
+Clusters in node js : 
+=================
+→Cluster is used  
+For example we are running a node server on 8000 ports and here one user sends a request to server and another  user sends connecting request .. over time here users  are increasing here problem is load increasing on server 
+→When our application published so may may be 1000 or millions of users connect to our users so here not possible to handle these users with single server , here may increase time,memory will be increase or here is a chance of server crashing.
+→ So in this case we servers
+→Clusters  distribute work load among their application threads
+→ Using clusters we can make multiple threads or multiple workers so that can distribute to users	
+→ Here we can make worker thread based on our laptop or server cpus
+→For example we may have 8 core cpu, 16 core cpu based on this we can make worker threads
+→using os package in node js we can see how many cpus in ourqssaaa                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 laptop 
+
+
+
+
+Request handling with non - blocking I/o and load balancing 
+(learn complete each line for clear understand)
+===================================================
+Absolutely! Here’s a **complete, concise, interview-friendly set of notes** covering your **recent 4 questions**, explained from start to finish with examples and analogies.
+
+---
+
+# **Node.js Process, Thread, Requests, and Concurrency – Complete Notes**
+
+---
+
+## **1️⃣ Node.js Process and Main Thread**
+
+* **Process:** A running instance of Node.js (`node server.js`).
+
+  * Each process has its **own memory, main thread, and event loop**.
+* **Main thread:** Executes all **JavaScript code**.
+
+  * Only **one thread per process** runs JS code.
+  * Uses **event loop** to handle asynchronous tasks.
+* **Call stack:** Executes functions line by line.
+* **Example:**
+
+```js
+console.log("A");
+console.log("B");
+```
+
+Output:
+
+```
+A
+B
+```
+
+**Analogy:**
+
+* Process = kitchen
+* Main thread = chef in the kitchen
+
+---
+
+## **2️⃣ HTTP Requests (Postman Example)**
+
+* **One request = one HTTP call** (e.g., hitting API from Postman).
+* **Multiple requests** can come from:
+
+  * Same Postman multiple times
+  * Different devices (laptop, browser, mobile app)
+* **All requests to the same Node.js process are handled by the same main thread**.
+* **Node.js does NOT create a new process per request.**
+
+**Analogy:**
+
+* Postman request = food order
+* Node.js process = kitchen
+* One chef handles multiple orders, coordinating with helpers (I/O tasks).
+
+---
+
+## **3️⃣ Non-blocking I/O and libuv Thread Pool**
+
+* **I/O (Input/Output):** Operations that interact with external systems:
+
+  * File reads/writes
+  * Database queries
+  * Network requests
+* Node.js **does not wait** for I/O to finish.
+* **How it works:**
+
+  1. Main thread delegates I/O to **libuv thread pool** (default 4 threads) or kernel.
+  2. Main thread continues handling other requests or code.
+  3. When I/O finishes, **callback is queued in the callback queue**.
+  4. Event loop executes callback when the **main thread is free**.
+
+**Example:**
+
+```js
+const fs = require("fs");
+fs.readFile("file.txt", "utf8", (err, data) => {
+    console.log("File read done");
+});
+console.log("Processing other tasks");
+```
+
+Output:
+
+```
+Processing other tasks
+File read done
+```
+
+**Analogy:**
+
+* Main thread = chef
+* File read = helper boiling water
+* Chef continues cooking while helpers finish slow tasks
+
+---
+
+## **4️⃣ Handling Multiple Requests Concurrently**
+
+* Node.js **single process** can handle **thousands of requests** using:
+
+  * Event loop
+  * Callback queue
+  * Non-blocking I/O
+
+**Important:**
+
+* Requests are **not tied to separate processes**.
+* JS execution remains **single-threaded**; only I/O uses background threads.
+
+**Analogy:**
+
+* One chef handles multiple orders at the same time, helpers do slow tasks in the background.
+
+---
+
+## **5️⃣ Multiple Processes for Scaling (Cluster / PM2)**
+
+* Node.js is single-threaded; for **multi-core CPUs**, multiple processes are used.
+* **Each process has:**
+
+  * Its own main thread, event loop, memory
+* **How requests are assigned:**
+
+  * Via **load balancer** or Cluster module
+  * Common strategies:
+
+    1. **Round-robin:** First request → process 1, second → process 2, etc.
+    2. **Least connections:** Send request to process with fewer active connections
+    3. **Random**
+
+**Example with Cluster:**
+
+```js
+const cluster = require('cluster');
+const http = require('http');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+} else {
+    http.createServer((req, res) => {
+        res.end(`Handled by process ${process.pid}`);
+    }).listen(3000);
+}
+```
+
+**Key Points:**
+
+* **One request ≠ one process**.
+* Multiple requests can be handled by **any available process**, based on the distribution strategy.
+
+**Analogy:**
+
+* Kitchen = process
+* Chef = main thread
+* Multiple orders are sent to available kitchens by a waiter (load balancer).
+
+---
+
+## **6️⃣ Summary Flow of a Request (Postman → Node.js)**
+
+```
+Postman Request
+      ↓
+Node.js Server Process (Main Thread)
+      ↓
+Synchronous JS executes immediately
+      ↓
+Asynchronous I/O (file, DB, network)
+      ↓
+Delegated to libuv thread pool / kernel
+      ↓
+Callback is queued → Event Loop picks it up
+      ↓
+Response sent back to Postman
+```
+
+---
+
+### **7️⃣ Key Takeaways for Interviews**
+
+1. Node.js is **single-threaded**, one main thread per process.
+2. **All requests to a single process are handled concurrently** using event loop + non-blocking I/O.
+3. **I/O operations** are handled by **libuv background threads**, not main JS thread.
+4. **Multiple processes** are used for scaling across CPU cores.
+5. **Requests are distributed by OS or load balancer**, not by default one per process.
+6. **One Postman request = one HTTP request**, not a new process.
+
+---
+
+If you want, I can also make a **full visual diagram with multiple Postman requests, single Node.js process, libuv thread pool, and multiple processes**, which makes this **super easy to explain in interviews**.
+
+Do you want me to make that diagram?

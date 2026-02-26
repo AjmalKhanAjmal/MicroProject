@@ -1,9 +1,7 @@
 As you know My name is Aziz. 
 I am a full stack developer with 2 years of experience,having experience in node.js, express js, MySQL, mongodb I also worked 
-with redis,Most of my work is in the US based E-commerce domain current company is a product-based E-commerce company, We developed a 
-products called Holiq it is a alcohol e-commerce platform and another is Straunt (food ordering platform) and also 
-worked on saloons appointment booking application where customers can select staff and choose services or styles all these
-applications are follows a multi-tenant and shared architecture concept I enjoyed there learning new technologies and 
+with redis,Most of my work is in the US based E-commerce domain current company is a product-based E-commerce company,and we 
+followed a multi-tenant and shared architecture concept I enjoyed there learning new technologies and 
 solving problem 
 
 
@@ -13,7 +11,7 @@ Roles and Responsibilities :
 -->My responsibility is to develop APIs and manage complete order flow.
 
 -->I created REST APIs for Product management, Cart,tax Checkout,Order creation, Payment, Order status update and Implementing 
-auto order confirmation,auto cancellation logic store the store related the data into redis so those changes reflect 
+auto order confirmation,auto cancellation logic store the store related the data (industry_id,application_id) into redis so those changes reflect 
 on store front it means  where customer place order
 
 -->I handled complete order flow:  from cart,payment intent creation, order creation an Sent orders to delivery partners

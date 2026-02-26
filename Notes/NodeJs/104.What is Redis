@@ -1,0 +1,25 @@
+
+Redis  👍
+===========
+It is a open source
+Redis is a in memory store 
+
+Let us say user come and  visited our web page or server he hit on server at that time we needs to query some data at that 
+data may etch some 4 to 5 tables using foreign keys to get data actual output so that out will get user 
+
+Lets take ex l ace book 👍
+Whenever we go to ace book, linkdin in that it will show recent chat history, profile details so here etching data rom multiple
+tables 
+And now coming to pint this all architecture  working ine but when user refresh the page at that time again server visits ourt 
+data base again it etches the all details here we un necessary querying data, increasing user waiting timing, increasing api 
+reads and when refresh it takes again time to give results it also eect on perormance to solve this problems we have rediss
+Here redisis a in memory data store in memory nothing but RAM 
+RAM nothing but primary memory it is fast but it is temporary
+Using in memory we can make architecture fast and optimize we store computed data in redis s
+
+Computed meaning 
+=================
+Lets take example : 
+I we want to etch un read messages rom table  at that that we etch data rom   table it will will show count that count will be 
+store in redis here 10 count : 10 is computed datawe store computed value lets confirm with chat gpt we store only computed values
+We can also increment ion redis when unread increases

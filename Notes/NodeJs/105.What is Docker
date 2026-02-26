@@ -1,0 +1,23 @@
+Docker 👏
+==================
+Whenever we work on back end development In our local machine we developing projects  by installing node js, postgress, 
+redis this all things working on local machine, in case in future one new developer will join our team at that time new back 
+end developer needs to install  node js postgress, and redis and there is a chance that code will note work the new developer 
+may instal latest versions o software.. We can solve this all problems with docker
+
+Note : when developing project it is a better to oinstall docker and create one container in that install  edis , nodew js and 
+redis, so when  new user we can easily give that container, when new user run that container same configuration will run on
+ his laptop, here operating system is not ,matter docker will run obn any platforms
+
+
+
+Docker : 
+==========
+→ Docker container is combination  of application (code) and dependencies (redis, mongo db,node js…) as a single unit and we 
+can deploying as our applications 
+→ we can also share to another person so if any new person came to office without setting up entirely
+→ to share docker container — docker image 
+→ suppose we are developing 2 applications (projects) in on  project  using node version  - 16 and in another project node
+ version - 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+→ version - 16 developed in one container and version - 20 in another container
+→Inside docker image having docker containers 

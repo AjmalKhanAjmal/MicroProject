@@ -1,0 +1,78 @@
+✅ What is `process.nextTick()` ?
+====================================
+
+    > Sir, process.nextTick is used to run a function immediately after current code execution.
+    > It runs before event loop continues.
+    > It has higher priority than setTimeout and setImmediate.
+
+    If interviewer asks again:
+
+    > It runs in microtask queue.
+    > It executes before timers and I/O.
+    > If we use too much, it can block event loop.
+
+    ---
+
+# ✅ What is `setImmediate()` ?
+===================================
+
+    > Sir, setImmediate is used to run a function after I/O operations.
+    > It runs in check phase of event loop.
+    > It executes after current event loop cycle.
+
+    If interviewer asks difference:
+
+    > process.nextTick runs first.
+    > setImmediate runs later in event loop.
+
+---
+
+# ✅ Simple Difference (Very Important)
+
+    You can say like this:
+
+    > process.nextTick runs immediately after current function.
+    > setImmediate runs in next event loop cycle.
+    > nextTick has higher priority.
+    > setImmediate is better for background tasks.
+
+    ---
+
+# ✅ Real Example (Your Product API Example)
+
+    You can say:
+
+    > In my project, after creating product, I send response to client first.
+    > inserting into publish log and websocket I run inside setImmediate.
+    > Because I don't want client to wait.
+    > So background work runs separately.
+
+    Very good practical answer 👌
+
+    ---
+
+# ✅ If interviewer asks “Why not nextTick?”
+
+    You say:
+
+    > nextTick runs immediately and can block event loop if heavy task.
+    > So for DB calls or background work, setImmediate is safer.
+
+    ---
+
+Example : 
+    console.log("Start");
+
+    setTimeout(() => {
+      console.log("setTimeout");
+    }, 0);
+    
+    setImmediate(() => {
+      console.log("setImmediate");
+    });
+    
+    process.nextTick(() => {
+      console.log("nextTick");
+    });
+    
+    console.log("End");

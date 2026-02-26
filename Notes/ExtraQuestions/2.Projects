@@ -2,7 +2,8 @@ Projects :
 ============
 
 I have worked on US based E-commerce domain current company is a product-based E-commerce company, We developed a 
-products called Holiq it is a alcohol e-commerce platform and another is Straunt (food ordering platform)
+products called Holiq it is a alcohol e-commerce platform and another is Straunt (food ordering platform), saloons 
+appointment booking application where customers can select staff and choose services or styles
 and also worked on Kiosk, and POS systems, back office (wher sales team track order track the bugs, orders)
 
 **Straunt** is a project for the **food industry**, and **Holiq** is for the **alcohol industry**. These applications are 
@@ -19,6 +20,11 @@ Both **Straunt** and **Holiq** support **three order types**:
 We also have **Auto Order Confirmation** and **Auto Cancellation**. 
 If a customer places a delivery order, once the merchant confirms it, the order is automatically hand over to **delivery partners** 
 like **DoorDash, Uber, or Shipday**. In India, it is similar to **Zomato or Swiggy**.
+we provide webhooks so delivery agents post events suppose once order is confirmed from doordash he post some details on webhoook
+like tracking link,event_name like confirmed,dasher_arrived, delivery person info like bike details, bike number.. so we send email
+to customer with tracking link your order is confirmed below is tracking link so customer can track the order.
+once deleiveryy agent post event called order_delivered we send immediatly delivery to customer and capture the payment to
+store owner
 
 We maintain **two portals** in our project:
 
@@ -33,7 +39,10 @@ Another feature is **Channel Items**. Merchants can **control which items appear
 
 We also have **ghost stores**. This means merchants can **create multiple stores with different names**, but all belong to one 
 main store. Customers see these as **different stores**, even though they are managed by the same merchant.
-Merchants can **add the same items with different prices** to attract more customers to ghost stores.
+Merchants can **add the same items with different prices** to attract more customers to ghost stores
+
+--> our project is scalability because we implement th based on merchant requiremets simple example like ghost stores,channel prices
+this requirement came fro  merchnat.
 
 The **key strength** of our project is **reusability and flexibility**. One code works for different industries, different order types, and multiple sales channels. Merchants can easily manage products, prices, and menus without changing the code.
 
