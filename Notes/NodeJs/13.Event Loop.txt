@@ -3,28 +3,28 @@ Event Loop :
 
 
 
-→Here job   of event loop the Event Loop continuously checks two things:
+    →Here job   of event loop the Event Loop continuously checks two things:
 
-1. Is the call stack empty?
-2. Is there any task waiting in the callback queue or microtask queue?
+    1. Is the call stack empty?
+    2. Is there any task waiting in the callback queue or microtask queue?
 
-→ If it’s empty, it moves tasks from the microtask queue first, then the callback queue, into the stack.
-→ Here event loop acts like gatekeeper it checks weather we have something in the callback queue and if we have something then it will pushed inside the callstack 
-→that how whole things works 
+    → If it’s empty, it moves tasks from the microtask queue first, then the callback queue, into the stack.
+    → Here event loop acts like gatekeeper it checks weather we have something in the callback queue and if we have something then 
+    it will pushed inside the callstack 
+    →that how whole things works 
 
 Why do we need event loop : 
 —--------------------
-→Event loop directly could have a callback put it in the callstack whenever the callstack is empty but we need a callback queue ?
-→If the user clicks several times continuously click.click…. In that case cb() pushed into the queue 5 to 6 times. To so event loops executes all the cb() 
-→In real time a lot of timers ,event listeners are happening , so that is why I need to queue all of the callback functions.
+    →Event loop directly could have a callback put it in the callstack whenever the callstack is empty but we need a callback queue ?
+    →If the user clicks several times continuously click.click…. In that case cb() pushed into the queue 5 to 6 times. To so event loops 
+    executes all the cb() 
+    →In real time a lot of timers ,event listeners are happening , so that is why I need to queue all of the callback functions.
+
 —----------------------------------------------------
 
 Example : two ;
 
 From example related to DOM 
-
-
-
 
  —----------------------------------------------------------------
  —----------------------------------------------------------------

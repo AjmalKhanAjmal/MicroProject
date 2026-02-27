@@ -1,32 +1,37 @@
 # **3️⃣ What are Web APIs? Why do we need them?**
+======================================================
 
-→ Web APIs are features provided by the browser—not by JavaScript.
-Examples: `setTimeout`, `fetch`, DOM APIs, localStorage, timers, geolocation, console, etc.
-→ JavaScript alone cannot access these superpowers.
-→ In our js code which is running inside callstack we need access to this access the super powers of the browsers suppose we need to access the timer ,page which is rendering, url ,localstorage, bluetooth,maps…what ever
-→above one are not part of javascript all are part of browsers
-→Browser gives  access to this javascript engine ( inside js callstack) to use super powers.
-→To access those super power browsers expose them through the global object—`window`—and the JS engine can use them from inside the call stack.”
+    → Web APIs are features provided by the browser—not by JavaScript.
+    Examples: `setTimeout`, `fetch`, DOM APIs, localStorage, timers, geolocation, console, etc.
+    → JavaScript alone cannot access these superpowers.
+    → In our js code which is running inside callstack we need access to this access the super powers of the browsers suppose we need to 
+    access the timer ,page which is rendering, url ,localstorage, bluetooth,maps…what ever
+    →above one are not part of javascript all are part of browsers
+    →Browser gives  access to this javascript engine ( inside js callstack) to use super powers.
+    →To access those super power browsers expose them through the global object—`window`—and the JS engine can use them from inside the call stack.”
 
-→Suppose we have to use timer super power it give access to setTimeOut()
-→→Suppose we have to use DOM super power to give access to domAPIs (document.)
-→browsers are get into callstack because of global object
+    →Suppose we have to use timer super power it give access to setTimeOut()
+    →→Suppose we have to use DOM super power to give access to domAPIs (document.)
+    →browsers are get into callstack because of global object
 
 For Node Js : 
-→ In the browser, JavaScript gets extra features like setTimeout, fetch, DOM APIs, and localStorage from the Web APIs that the browser provides through the global object window.
-→ for node js it wold be different
-→ But in Node.js, there is no browser and no Web APIs.
- Instead, Node.js provides its own set of APIs through the global object global.
-→ Node.js uses the V8 JavaScript engine to execute JS code, and it implements additional features such as:
-File System APIs (fs)
-Timers (setTimeout, setInterval)
-HTTP module
-Process module
-Crypto
-Buffer
-Streams
-EventEmitter
-These are not part of JavaScript itself — they are part of the Node.js Runtime Environment.
-So just like the browser gives superpowers through Web APIs,
- Node.js gives its own superpowers through Node APIs.”
-
+==================
+    
+    → In the browser, JavaScript gets extra features like setTimeout, fetch, DOM APIs, and localStorage from the Web APIs that the browser 
+    provides through the global object window.
+    → for node js it wold be different
+    → But in Node.js, there is no browser and no Web APIs.
+     Instead, Node.js provides its own set of APIs through the global object global.
+    → Node.js uses the V8 JavaScript engine to execute JS code, and it implements additional features such as:
+    File System APIs (fs)
+    Timers (setTimeout, setInterval)
+    HTTP module
+    Process module
+    Crypto
+    Buffer
+    Streams
+    EventEmitter
+    These are not part of JavaScript itself — they are part of the Node.js Runtime Environment.
+    So just like the browser gives superpowers through Web APIs,
+     Node.js gives its own superpowers through Node APIs.”
+    

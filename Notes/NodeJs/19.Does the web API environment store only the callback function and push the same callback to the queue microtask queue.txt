@@ -1,4 +1,6 @@
 Does the web API environment store only the callback function and push the same callback to the queue/microtask queue?
-→  Yes, the callback functions are stored, and a reference is scheduled in the queues. Moreover, in the case of event listeners(for example click handlers), the original callbacks stay in the web API environment forever, that's why it's advised to explicitly remove the listeners when not in use so that the garbage collector does its job.
+    →  Yes, the callback functions are stored, and a reference is scheduled in the queues. Moreover, in the case of event listeners(for example 
+    click handlers), the original callbacks stay in the web API environment forever, that's why it's advised to explicitly remove the listeners 
+    when not in use so that the garbage collector does its job.
 
 

@@ -7,18 +7,22 @@ Second is code component
 → memory component : this is the place where all the variables and functions are stored as a key value pairs In memory component 
 → there is another word for memory component is also known as variable environment
 →second Code component : This is the place where code is executed one line at a time
- → there is another word for code component is also known as thread o execution
+→ there is another word for code component is also known as thread o execution
 → thread o execution just like thread where in which whole code one line at a time 
 → Javascript synchronous single threaded language
-→Let us single threaded means javascript can executes one command at a time why we say say single threaded that means javascript  can only executes one command(line by line) at a time and in specific order that means it goes only next line once the current line has been 
-Finished this is known as synchronous single threaded language
+→Let us single threaded means javascript can executes one command at a time why we say say single threaded that means javascript 
+can only executes one command(line by line) at a time and in specific order that means it goes only next line once the current line 
+has been Finished this is known as synchronous single threaded language
 
 → When you run javascript program execution context created
 → When you run js code allocates memory for variables 
- → When function invokes (Calls) again one execution context created and inside of function what we declared variables for that memory is created similar as earlier
+→ When function invokes (Calls) again one execution context created and inside of function what we declared variables for that memory 
+is created similar as earlier
 →it's goes to deep level if function has nested function (nested functions)
 → execution context creation, deletion control managed through stack.
-→ when execution context is created one call stack is created and complete execution context pushed into call stack called global execution context and if any function calls that function pushed again pushed into call stack after returning function it moved out of stack.
+→ when execution context is created one call stack is created and complete execution context pushed into call stack called global 
+execution context and if any function calls that function pushed again pushed into call stack after returning function it moved out 
+of stack.
 → After whole thinks executed the call stacks gets empty
 → callstack also called as execution context stack,program stack , control, runtime,machine stack
 

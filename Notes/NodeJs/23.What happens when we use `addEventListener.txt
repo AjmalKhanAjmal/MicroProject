@@ -2,8 +2,9 @@
 # **8️⃣ What happens when we use `addEventListener`?**
 
 
-→When we attach an event listener, the callback is registered in the Web APIs environment.
-It stays there until the event occurs.
-When the user triggers the event, the callback moves to the callback queue and waits for the call stack to become free.
-Then the event loop pushes it into the call stack.
-
+    →When we attach an event listener, the callback is registered in the Web APIs environment.
+    It stays there until the event occurs.
+    When the user triggers the event, the callback moves to the callback queue and waits for the call stack to become free.
+    Then the event loop pushes it into the call stack.
+    
+    

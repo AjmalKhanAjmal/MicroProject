@@ -1,5 +1,6 @@
 What is the difference between the Callback Queue and Microtask Queue?**
 
 
-→ Microtask Queue (Promises, Mutation Observers) has higher priority.
-→ Callback Queue (setTimeout, DOM events) runs only after all microtasks are finished.”
+    → Microtask Queue (Promises, Mutation Observers) has higher priority.
+    → Callback Queue (setTimeout, DOM events) runs only after all microtasks are finished.”
+    

@@ -1,8 +1,9 @@
 Conclusion : 
 ==========
-1. Browser has superpowers that are lent to JS engine to execute some tasks, these superpowers include web API's such as console, location, DOM API, setTimeout, fetch, local storage.
-2. Callback functions and event handlers are first stored in the Web API environment and then transferred to the callback queue.
-3. Promises and mutation observers are stored in the API environment and then transferred to the microtask queue.
-4. The event loop continuously observes the call stack and when it is empty it transfers tasks to the call stack.
-5. Micro tasks are given priority over callback tasks.
-6. Too many micro tasks generated can cause Starvation (not giving time to callback tasks to execute).
+    1. Browser has superpowers that are lent to JS engine to execute some tasks, these superpowers include web API's such as console,
+         location, DOM API, setTimeout, fetch, local storage.
+    2. Callback functions and event handlers are first stored in the Web API environment and then transferred to the callback queue.
+    3. Promises and mutation observers are stored in the API environment and then transferred to the microtask queue.
+    4. The event loop continuously observes the call stack and when it is empty it transfers tasks to the call stack.
+    5. Micro tasks are given priority over callback tasks.
+    6. Too many micro tasks generated can cause Starvation (not giving time to callback tasks to execute).

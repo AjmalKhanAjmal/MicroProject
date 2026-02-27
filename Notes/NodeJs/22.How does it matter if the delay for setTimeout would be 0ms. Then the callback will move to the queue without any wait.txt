@@ -1,5 +1,6 @@
 How does it matter if the delay for setTimeout would be 0ms. Then the callback will move to the queue without any wait? 
 
-→ Even with a 0ms delay, the callback is placed in the callback queue.
-It will run only when the call stack becomes empty.
-So if the stack is busy, a 0ms timer may run after 50ms or even 200ms.
+    → Even with a 0ms delay, the callback is placed in the callback queue.
+    It will run only when the call stack becomes empty.
+    So if the stack is busy, a 0ms timer may run after 50ms or even 200ms.
+    
