@@ -151,7 +151,6 @@ async function readProductsFromExcel(filePath, onBatch) {
   const BATCH_SIZE = 5;
 
   for await (const worksheet of workbook) {
-
     let columnMap = null;
 
     for await (const row of worksheet) {
@@ -169,7 +168,6 @@ async function readProductsFromExcel(filePath, onBatch) {
           // if (header.includes("category")) columnMap.category = colNumber;
         });
 
-        console.log("Detected Columns:", columnMap);
         continue;
       }
 
@@ -202,6 +200,83 @@ async function readProductsFromExcel(filePath, onBatch) {
   fs.unlink(filePath, () => {});
 }
 
+
+
+
+// async function readProductsFromExcel(filePath, onBatch) {
+
+//   console.log("reached stream ");
+  
+//   return new Promise((resolve, reject) => {
+
+//     const workbook = new ExcelJS.stream.xlsx.WorkbookReader(filePath, {
+//       worksheets: "emit",
+//       sharedStrings: "cache"
+//     });
+
+//     const BATCH_SIZE = 5;
+//     let batch = [];
+//     let columnMap = null;
+
+//     workbook.on("worksheet", worksheet => {
+
+//       worksheet.on("row", async row => {
+
+//         try {
+
+//           // HEADER ROW
+//           if (!columnMap) {
+//             columnMap = {};
+
+//             row.eachCell((cell, colNumber) => {
+//               const header = String(cell.text).trim().toLowerCase();
+
+//               if (header === "name") columnMap.name = colNumber;
+//               if (header === "price") columnMap.price = colNumber;
+//             });
+
+//             if (!columnMap.name || !columnMap.price) {
+//               return reject(new Error("Excel must contain name and price columns"));
+//             }
+
+//             console.log("Detected Columns:", columnMap);
+//             return;
+//           }
+
+//           // DATA ROW
+//           const name = row.getCell(columnMap.name).text;
+//           const price = Number(row.getCell(columnMap.price).text);
+
+//           if (!name || isNaN(price)) return;
+
+//           batch.push({ name, price });
+
+//           if (batch.length >= BATCH_SIZE) {
+//             worksheet.pause();          // IMPORTANT
+//             await onBatch(batch);
+//             batch = [];
+//             worksheet.resume();         // IMPORTANT
+//           }
+
+//         } catch (err) {
+//           reject(err);
+//         }
+//       });
+
+//       worksheet.on("finished", async () => {
+//         if (batch.length) await onBatch(batch);
+//       });
+
+//     });
+
+//     workbook.on("end", () => {
+//       fs.unlink(filePath, () => {});
+//       resolve();
+//     });
+
+//     workbook.on("error", reject);
+//   });
+// }
 
 
 

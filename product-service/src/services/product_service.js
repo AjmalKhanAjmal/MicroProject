@@ -2,6 +2,8 @@ const Product = require("../model/product_modal")
 const db = require("../config/db")
 
 const logger = require("../utills/logger")
+
+const {producer} = require("../utills/product_producer")
 // const createProduct = async (req) => {
 //   //  console.log("rom service");
 
@@ -57,6 +59,8 @@ const createProduct = async (req, redisClient) => {
 
       const product = await Product.create({ name, price, description, status, category_id, store_id });
 
+
+      producer()
       await inValidateProductCache(redisClient, product.id)
       logger.info(`Product created successfully with ID: ${product.id}`);  // Success info
       logger.debug(`Product details: ${JSON.stringify(product)}`);  // Debug - very detailed info

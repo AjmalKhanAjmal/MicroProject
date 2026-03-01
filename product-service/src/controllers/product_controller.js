@@ -162,31 +162,43 @@ async function productStream(req, res) {
 
 
     // console.log("folders name ",__dirname);
-    
+
     //   const transaction = await sequelize.transaction();
     if (!req.file) {
-    return res.status(400).json({ success: false, message: "No file uploaded" });
-  }
-let products_data = []
+        return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
+    let products_data = []
     try {
         console.log("req.file.path : ", req.file.path);
-        
-        await readProductsFromExcel(req.file.path, async (productsBatch) => {
-            
-             await Product.bulkCreate(productsBatch);
+        let results = {}
+        process.nextTick(async () => {
+            await readProductsFromExcel(req.file.path, async (productsBatch) => {
 
-            //   await Product.bulkCreate(productsBatch, {
-            //     transaction,
-            //     validate: true,
-            //   });
-        //    products_data =  productsBatch
-           
-        });
+                results = await Product.bulkCreate(productsBatch)
+                // console.log(results);
+
+                // const publishLogs = results.map(product => ({
+                //     product_id: product.id,
+                //     created_at: new Date()
+                // }));
+
+                // // ⭐ insert only ids into publish_log
+                // await PublishLog.bulkCreate(publishLogs);
+                /*  */
+
+                //   await Product.bulkCreate(productsBatch, {
+                //     transaction,
+                //     validate: true,
+                //   });
+                //    products_data =  productsBatch
+
+            });
+        })
 
         // await transaction.commit();
 
         res.status(200).json({
-            data : products_data,
+            data: results,
             success: true,
             message: "Products imported successfully",
         });
@@ -201,6 +213,14 @@ let products_data = []
         });
     }
 };
+
+
+
+
+
+
+
+
 
 
 

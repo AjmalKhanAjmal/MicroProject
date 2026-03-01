@@ -5,6 +5,10 @@ const  {routes} = require("./routes/product_routes")
 const dbConnection = require("./config/db")
 const {errorHandler} = require("./middlewares/errorHandler")
 const cors = require('cors')
+
+const{emailConsumer}= require("./utills/product_consumer")
+
+emailConsumer()
 // Allow your frontend origin
 app.use(cors({
   origin: "http://localhost:5173", // your Vite dev server
