@@ -1,11 +1,13 @@
 Blocking main thread in javascript : 
 
-→Javascript has only one call stack and we also call it as the man thread,everything executed from our its executed through the callstack
-→so any operation block this  callstack this  is  known as  blocking  the
+    →Javascript has only one call stack and we also call it as the man thread,everything executed from our its executed through the callstack
+    →so any operation block this  callstack this  is  known as  blocking  the
 
-→suppose in function	x has heavy operation takes around 20 30 seconds to complete that function by that time because js has just one callstack it has one main thread it wont be execute another function in the code that means everything blocked on the code that why we said that we should never never block our main thread we should always async operations for things which takes time 
-→If did not have have first class function,
-→if we could not have callback and pass function to another functions 
-→We were not able to do asynchronous operations.
-→so using web api setTimeout and callback function we can achieve asynchronous operation 
+    →suppose in function	x has heavy operation takes around 20 30 seconds to complete that function by that time because js has just one
+     callstack it has one main thread it wont be execute another function in the code that means everything blocked on the code that why we 
+     said that we should never never block our main thread we should always async operations for things which takes time 
+    →If did not have have first class function,
+    →if we could not have callback and pass function to another functions 
+    →We were not able to do asynchronous operations.
+    →so using web api setTimeout and callback function we can achieve asynchronous operation 
 

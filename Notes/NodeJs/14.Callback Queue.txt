@@ -1,11 +1,13 @@
 Callback Queue : 
 ===============
 
-→ The Callback Queue, also called the Task Queue.
-→ It is a place where asynchronous callbacks wait after finishing their task. Tasks from Web APIs like setTimeout, DOM events, and other async APIs wait here.
-→ When the call stack becomes empty, the event loop moves the callbacks from this queue to the call stack.
+    → The Callback Queue, also called the Task Queue.
+    → It is a place where asynchronous callbacks wait after finishing their task. Tasks from Web APIs like setTimeout, DOM events, and 
+    other async APIs wait here.
+    → When the call stack becomes empty, the event loop moves the callbacks from this queue to the call stack.
 
-→From above code when code enters line number 2 5000 milli sec timer was running and cb() registered as soon as timer expires that cb() method needs go inside a call stack but it cannot = go directly into callstack 
-→It will goes to call stack through the callback queue 
-→When the timer expires the cb() function put inside the callback queue
+    →From above code when code enters line number 2 5000 milli sec timer was running and cb() registered as soon as timer expires that 
+    cb() method needs go inside a call stack but it cannot = go directly into callstack 
+    →It will goes to call stack through the callback queue 
+    →When the timer expires the cb() function put inside the callback queue
 

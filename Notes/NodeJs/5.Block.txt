@@ -1,20 +1,21 @@
 Block :
-→ Block is denied by curly bases { }
-→Block is also known as compound statement
-→block is used to combine multiple javascript statements into one group
-→ I we make code into on block so javascript expects or take it as one statement
-→  EX - 1 : 
-if(true) console.log(“ Hello World  “)
-
-→In the above example if() expects one statement if we do not declare even one statement it will give an error.
-→So one statement can be anything here ex : console.log(“ Hello World  “)
-→ But if we want to write multiple statements we can do that only grouping by them using curly braces that is use use o block
-→so this group of multiple statements can be used in a place where javascript expects a single statement. 
-EX: 2 multiple statements 
-if(true){
-	Var a = 10
-console.log(a)
-}
-→ Imp So in javascript  expects a single statement after this (if(true)) this is correct syntax but i we want to use multiple statements so we use block it grouping multiple statements so that we can used in a place where javascript expects one statement
-→ And that is the reason why we often use without any {} curly braces right 
+	→ Block is denied by curly bases { }
+	→Block is also known as compound statement
+	→block is used to combine multiple javascript statements into one group
+	→ I we make code into on block so javascript expects or take it as one statement
+	→  EX - 1 : 
+	if(true) console.log(“ Hello World  “)
+	
+	→In the above example if() expects one statement if we do not declare even one statement it will give an error.
+	→So one statement can be anything here ex : console.log(“ Hello World  “)
+	→ But if we want to write multiple statements we can do that only grouping by them using curly braces that is use use o block
+	→so this group of multiple statements can be used in a place where javascript expects a single statement. 
+	EX: 2 multiple statements 
+	if(true){
+		Var a = 10
+	console.log(a)
+	}
+	→ Imp So in javascript  expects a single statement after this (if(true)) this is correct syntax but i we want to use multiple statements
+	 so we use block it grouping multiple statements so that we can used in a place where javascript expects one statement
+	→ And that is the reason why we often use without any {} curly braces right 
 

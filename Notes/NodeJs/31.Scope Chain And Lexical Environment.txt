@@ -2,15 +2,17 @@ Scope Chain And Lexical Environment :
 =================================
  
 
-Lexical Environment : 
-→ Whenever an execution context is created a lexical environment is created 
-→ Lexical environment along with local memory along with the lexical environment of its parent
-→Lexical is term means in hierarchy or in sequence in this code term we can that c() function lexically sitting inside a() function that means lexical, in order, in hierarchy 
-→ In code terms we assumed to be where that specific code is present physically inside the code so in below example function c() present inside the a() and a() function lexically inside a global scope. This is known as lexical.
-Function a(){
-Var b = 10;
-c();
-Function c(){
-}}
+    Lexical Environment : 
+    → Whenever an execution context is created a lexical environment is created 
+    → Lexical environment along with local memory along with the lexical environment of its parent
+    →Lexical is term means in hierarchy or in sequence in this code term we can that c() function lexically sitting inside a() function 
+    that means lexical, in order, in hierarchy 
+    → In code terms we assumed to be where that specific code is present physically inside the code so in below example function c() 
+    present inside the a() and a() function lexically inside a global scope. This is known as lexical.
+    Function a(){
+    Var b = 10;
+    c();
+    Function c(){
+    }}
 
-a();
+    a();

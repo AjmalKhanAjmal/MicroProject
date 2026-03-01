@@ -1,15 +1,15 @@
 JavaScript Runtime Environment : 
 ============================
-→Javascript can run on smart watch,robo,browser,server. This is all possible because of the javascript runtime environment.
-→Javascript run time environment is like a big container which has all the things required to run javascript code.
-→ Because of the runtime environment, JavaScript can run in browsers, Node.js, smart watches, robots, servers, etc.”
-→To run any javascript code definitely need Javascript run time environment,it has
-	|--JavaScript engine, Web APIs, the call stack, the event loop, the callback                                                                                          queue, and the microtask queue.
-
-→Javascript engine is heart of runtime environment 
-→Browser executes javascript code just because it has the javascript runtime environment.
-→Node js also has a run time environment.
-→Inside a browser had aAPI known as local storage in case of node js it could be different
-→There are few API's that have the same name which are available in browsers as well as node js.
-	For example : setTimeout(),console….
-
+	→Javascript can run on smart watch,robo,browser,server. This is all possible because of the javascript runtime environment.
+	→Javascript run time environment is like a big container which has all the things required to run javascript code.
+	→ Because of the runtime environment, JavaScript can run in browsers, Node.js, smart watches, robots, servers, etc.”
+	→To run any javascript code definitely need Javascript run time environment,it has
+		|--JavaScript engine, Web APIs, the call stack, the event loop, the callback                                                                                          queue, and the microtask queue.
+	
+	→Javascript engine is heart of runtime environment 
+	→Browser executes javascript code just because it has the javascript runtime environment.
+	→Node js also has a run time environment.
+	→Inside a browser had aAPI known as local storage in case of node js it could be different
+	→There are few API's that have the same name which are available in browsers as well as node js.
+		For example : setTimeout(),console….
+	

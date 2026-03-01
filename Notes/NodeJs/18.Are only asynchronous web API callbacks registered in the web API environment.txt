@@ -1,2 +1,4 @@
 1.  Are only asynchronous web API callbacks registered in the web API environment?
-→  YES, the synchronous callback functions like what we pass inside map, filter, and reduce aren't registered in the Web API environment. It's just those async callback functions that go through all this.
+
+    →  YES, the synchronous callback functions like what we pass inside map, filter, and reduce aren't registered in the Web API environment. 
+    It's just those async callback functions that go through all this.

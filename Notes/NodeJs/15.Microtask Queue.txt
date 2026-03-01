@@ -3,7 +3,8 @@ Microtask Queue :
 → The Microtask Queue is a high-priority queue.
 Tasks from **Promises** and **Mutation Observers** go into the microtask queue.
 
-→ Microtask Queue is a high-priority waiting area for promise callbacks, and JavaScript runs these tasks immediately after the current code finishes in the call stack—before any other callbacks.
+→ Microtask Queue is a high-priority waiting area for promise callbacks, and JavaScript runs these tasks immediately after the 
+current code finishes in the call stack—before any other callbacks.
 →just like callback queue we also have micro task queue it is similar to call back queue but it has higher priority 
 →What ever comes in microtask queue executed first and functions in callback queue executed later 
  →In microtask queue placed only which are coming from promises
@@ -24,6 +25,8 @@ IMP
 |-- which are coming from promises as well as
 |-- Mutation observer (home work)
 →callback queue also called as task queue
-→suppose if have 4 to 5 tasks in ,micro task queue and task in callback queue so event loop only give opportunity to callback queue task once all the tasks from the micro task is completed 
- → let's for example we have many micro tasks in which 1 micro task has nested one ….so at that time callback queue never get the chance to execute for long time right because micro task has more priority in this case known as starvation of callback queue
+→suppose if have 4 to 5 tasks in ,micro task queue and task in callback queue so event loop only give opportunity to callback queue task 
+once all the tasks from the micro task is completed 
+ → let's for example we have many micro tasks in which 1 micro task has nested one ….so at that time callback queue never get the chance 
+ to execute for long time right because micro task has more priority in this case known as starvation of callback queue
 Homework–starvation of callback queue , mutation observer

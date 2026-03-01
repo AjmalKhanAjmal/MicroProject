@@ -1,10 +1,13 @@
 JavaScript Execution Flow
-“JavaScript is a synchronous, single-threaded language, which means it can run only one task at a time using the call stack.
- When the program starts, the Global Execution Context is created and pushed into the call stack, and JavaScript executes each line of code one by one.
-If JavaScript encounters asynchronous tasks like setTimeout, fetch, or DOM events, it hands them over to the Web APIs provided by the browser.
- Once those tasks complete, their callbacks are placed either in the microtask queue (for Promises and Mutation Observers) or the callback queue (for timers and event listeners).
-The event loop continuously watches the call stack.
- Whenever the call stack becomes empty, it first processes all microtasks, and then moves tasks from the callback queue into the call stack.
-This is how JavaScript achieves asynchronous behavior, even though it has only one thread.
- The combination of the call stack, Web APIs, queues, and the event loop forms the complete JavaScript runtime flow.”
+============================
+    JavaScript is a synchronous, single-threaded language, which means it can run only one task at a time using the call stack.
+    When the program starts, the Global Execution Context is created and pushed into the call stack, and JavaScript executes each line of code 
+    one by one.
+    If JavaScript encounters asynchronous tasks like setTimeout, fetch, or DOM events, it hands them over to the Web APIs provided by the browser.
+    Once those tasks complete, their callbacks are placed either in the microtask queue (for Promises and Mutation Observers) or the callback queue 
+    (for timers and event listeners).
+    The event loop continuously watches the call stack.
+    Whenever the call stack becomes empty, it first processes all microtasks, and then moves tasks from the callback queue into the call stack.
+    This is how JavaScript achieves asynchronous behavior, even though it has only one thread.
+    The combination of the call stack, Web APIs, queues, and the event loop forms the complete JavaScript runtime flow.”
 
