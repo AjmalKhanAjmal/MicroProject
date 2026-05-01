@@ -1,0 +1,82 @@
+Get Started
+   ↓
+Models
+   ↓
+Prompts
+   ↓
+Chains
+   ↓
+Messages
+   ↓
+Tools
+   ↓
+Agents
+   ↓
+Memory
+   ↓
+Retrieval (RAG)
+   ↓
+LangGraph
+   ↓
+Integrations
+
+
+
+
+
+
+learning map :
+1. LLM
+   ↓
+2. Messages
+   ↓
+3. Prompts
+   ↓
+4. Chains
+   ↓
+5. Tools
+   ↓
+6. Tool Calling
+   ↓
+7. Agents
+   ↓
+8. Memory
+
+
+
+
+| Concept  | Meaning        |
+| -------- | -------------- |
+| Model    | Brain          |
+| Prompt   | Instructions   |
+| Messages | Conversation   |
+| Tool     | Action         |
+| Agent    | Decision-maker |
+
+
+
+
+
+
+
+
+
+
+executed :
+
+
+Models : 
+
+left from Tool calling 
+
+
+
+
+Messages : 
+
+left from Streaming and chunks
+
+
+Agents :
+
+left from dynamic tools

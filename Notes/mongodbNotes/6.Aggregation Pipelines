@@ -1,7 +1,8 @@
 
 -->aggregation helps us to process data step by step, and  get summary results like total, count, and group by
 
--->Aggregation works by taking data stage wise. In each stage , MongoDB does one simple job like filtering data, grouping data, sorting data, or calculating totals. At the end, we get the final result.
+-->Aggregation works by taking data stage wise. In each stage , MongoDB does one simple job like filtering data, grouping data, 
+sorting data, or calculating totals. At the end, we get the final result.
 
 -->Aggregation operations in MongoDB are performed using the aggregate method. This method takes an array of pipeline stages
 

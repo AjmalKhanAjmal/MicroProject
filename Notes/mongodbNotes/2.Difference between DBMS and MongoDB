@@ -1,4 +1,3 @@
-
 -->DBMS stores data in tables with rows and columns.
 -->DBMS is used when structure is fixed and relations are important.
 Ex : orders
@@ -16,7 +15,8 @@ manually in application code
 complex joins and makes read operations faster.
 --> Campaigns are primarily read-heavy, retrieved as a whole for execution and analytics, and MongoDB fits that access 
 pattern well.
-For entities with strict relationships and transactional consistency—like users, billing, and permissions—we still use SQL. So the choice was data-driven, not technology-driven.
+For entities with strict relationships and transactional consistency—like users, billing, and permissions—we still use SQL. 
+So the choice was data-driven, not technology-driven.
 
 
 When to use MongoDB?

@@ -1,0 +1,9 @@
+LLMs are powerful AI tools that can interpret and generate text like humans. They’re versatile enough to write content, translate languages, summarize, and answer questions without needing specialized training for each task.
+In addition to text generation, many models support:
+ Tool calling - calling external tools (like databases queries or API calls) and use results in their responses.
+ Structured output - where the model’s response is constrained to follow a defined format.
+ Multimodality - process and return data other than text, such as images, audio, and video.
+ Reasoning - models perform multi-step reasoning to arrive at a conclusion.
+Models are the reasoning engine of agents. They drive the agent’s decision-making process, determining which tools to call, how to interpret results, and when to provide a final answer.
+The quality and capabilities of the model you choose directly impact your agent’s baseline reliability and performance. Different models excel at different tasks - some are better at following complex instructions, others at structured reasoning, and some support larger context windows for handling more information.
+LangChain’s standard model interfaces give you access to many different provider integrations, which makes it easy to experiment with and switch between models to find the best fit for your use case.

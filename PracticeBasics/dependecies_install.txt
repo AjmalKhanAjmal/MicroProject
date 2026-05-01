@@ -1,0 +1,2 @@
+Install the LangChain Docs MCP server to give your agent access to up-to-date LangChain documentation and examples.
+Install LangChain Skills to improve your agent’s performance on LangChain ecosystem tasks.
