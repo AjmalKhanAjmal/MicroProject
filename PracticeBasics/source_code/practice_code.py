@@ -2,6 +2,7 @@ from langgraph.graph import MessagesState, StateGraph, END
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_community.tools import tool
 from langchain_tavily import TavilySearch
+from langgraph.prebuilt import tools_condition, ToolNode
 
 
 from dotenv import load_dotenv
@@ -24,11 +25,14 @@ llm = init_chat_model(
 
 
 def search_web(query: str):
-    print("query :", query)
+    # print("query :", query)
     """Search the web for the answer to the query."""
     talvily_search = TavilySearch(max_results=1)
     reponse = talvily_search.invoke(query)
     return reponse
+
+
+tools = [search_web]
 
 
 def researcher_agent(state: AgentState):
@@ -37,24 +41,26 @@ def researcher_agent(state: AgentState):
     system_prompt = SystemMessage(
         content="you are a research assistant. Use the search_web tool to find information"
     )
-    llm_with_tools = llm.bind_tools([search_web])
+    # llm_with_tools = llm.bind_tools([search_web])
+
+    # response = llm_with_tools.invoke([system_prompt] + messages)
+    llm_with_tools = llm.bind_tools(tools)
 
     response = llm_with_tools.invoke([system_prompt] + messages)
-
     # 🔥 HANDLE TOOL CALL
-    if response.tool_calls:
-        tool_call = response.tool_calls[0]
-        tool_name = tool_call["name"]
-        tool_args = tool_call["args"]
+    # if response.tool_calls:
+    #     tool_call = response.tool_calls[0]
+    #     tool_name = tool_call["name"]
+    #     tool_args = tool_call["args"]
 
-        if tool_name == "search_web":
-            tool_result = search_web(**tool_args)
+    #     if tool_name == "search_web":
+    #         tool_result = search_web(**tool_args)
 
-            # send tool result as message
-            return {
-                "messages": [HumanMessage(content=str(tool_result))],
-                "next_agent": "writer",
-            }
+    #         # send tool result as message
+    #         return {
+    #             "messages": [HumanMessage(content=str(tool_result))],
+    #             "next_agent": "writer",
+    #         }
 
     return {"messages": [response], "next_agent": "writer"}
 
@@ -77,9 +83,14 @@ def writer_agent(state: AgentState):
 workflow = StateGraph(AgentState)
 workflow.add_node("researcher", researcher_agent)
 workflow.add_node("writer", writer_agent)
+workflow.add_node("tools", ToolNode(tools=tools))
 
 
-workflow.add_edge("researcher", "writer")
+# workflow.add_edge("researcher", "writer")
+workflow.add_conditional_edges("researcher", tools_condition)
+
+workflow.add_edge("tools", "writer")
+
 workflow.add_edge("writer", END)
 workflow.set_entry_point("researcher")
 
