@@ -1,0 +1,36 @@
+Step : 1 -- python -m venv venv
+Step : 2 -- pip install mcp-use
+Step : 3 -- https://github.com/openbnb-org/mcp-server-airbnb/blob/main/README.md
+Step : 4 -- copy airbnb object 
+Step : 5 -- https://github.com/zhsama/duckduckgo-mcp-server/blob/main/README.md
+Step : 6 -- copy duckduckgo-search
+Step : 7 -- completly thre different servers 
+Step : 3
+
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    },
+
+    "airbnb": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openbnb/mcp-server-airbnb"
+      ]
+    },
+
+    "duckduckgo-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "duckduckgo-mcp-server"
+      ]
+    }
+  }
+}
